@@ -21,7 +21,7 @@ def auth_gate():
         if st.button("Login"):
             if token in allowed_tokens:
                 st.session_state["auth_ok"] = True
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.error("Ungültiger Token")
         st.stop()
