@@ -1,0 +1,11 @@
+streamlit
+faiss-cpu
+sentence-transformers==2.6.1
+numpy>=1.24
+pypdf
+lxml
+rdflib
+requests
+qdrant-client
+rank-bm25
+torch
