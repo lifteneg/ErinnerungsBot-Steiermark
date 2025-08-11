@@ -11,20 +11,27 @@ from pathlib import Path
 
 # ===== Auth-Gate =====
 def auth_gate():
-    allowed_tokens = [t.strip() for t in os.getenv("AUTH_TOKENS", "").split(",") if t.strip()]
-    if not allowed_tokens:
-        return
-    if "auth_ok" not in st.session_state:
-        st.session_state["auth_ok"] = False
-    if not st.session_state["auth_ok"]:
-        token = st.text_input("Access Token", type="password")
-        if st.button("Login"):
-            if token in allowed_tokens:
-                st.session_state["auth_ok"] = True
+    tokens_raw = os.getenv("AUTH_TOKENS", "").strip()
+    tokens = [t.strip() for t in tokens_raw.split(",") if t.strip()]
+    if not tokens:
+        return True  # Auth deaktiviert
+
+    if st.session_state.get("authed"):
+        with st.sidebar:
+            if st.button("Logout"):
+                st.session_state["authed"] = False
                 st.rerun()
-            else:
-                st.error("Ungültiger Token")
-        st.stop()
+        return True
+
+    st.title("🔐 Login")
+    token = st.text_input("Access Token", type="password")
+    if st.button("Anmelden"):
+        if token in tokens:
+            st.session_state["authed"] = True
+            st.rerun()
+        else:
+            st.error("Ungültiger Token")
+    st.stop()
 
 # ===== Initialisierung =====
 st.set_page_config(page_title="Privater Daten-Chatbot – Skalierbar", layout="wide")
