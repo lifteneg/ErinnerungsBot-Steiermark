@@ -1,0 +1,236 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Das „Freiheitskämpfer-Ehrenmal“ der Stadt Graz</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty34</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty34</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty173</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty207</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty208</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty256</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die Auseinandersetzung mit dem „Freiheitskämpfer-Ehrenmal“ in der Paulustorgasse zielt drauf ab, den SchülerInnen die rasch abnehmende Bedeutung des Widerstandsgedenkens im Zweiten Republik zu reflektieren. Dies soll entlang eines Textes der Historikerin Heidemarie Uhl erarbeitet werden. Als Abschluss wird wiederum ein subjektorientierter Zugang gewählt, wenn die SchülerInnen ihren eigenen Denkmalsentwurf entwickeln sollen.</p>
+<p rend="Ort, Gemeinde EO/EZ">Stadt Graz (8010)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum bzw. (besser) öffentlicher Raum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Das Denkmal zu Ehren der österreichischen Freiheitskämpfer während des nationalsozialistischen Regimes ist das erste kommunale Projekt einer Denkmalsetzung nach dem Ende des Zweiten Weltkrieges im Grazer Zentralraum. Bereits unmittelbar nach Kriegsende wurde ein
+<ref target="https://gams.uni-graz.at/o:derla.thesaurus#concept3">Erinnerungszeichen</ref>
+am Grazer Zentralfriedhof errichtet, in der Grazer Innenstadt dauert es insgesamt viereinhalb Jahre, bis ein Denkmal für die Gegner und Opfer des Nationalsozialismus realisiert werden konnte. In dieser Zeitspanne veränderte sich jedoch die Haltung der Öffentlichkeit gegenüber der Verantwortung für die NS-Verbrechen, wovon auch das Vorhaben dieser Denkmalsetzung betroffen war.
+<lb/>
+War im Gemeinderatsbeschluss von 1945 zunächst ein monumentales Denkmal an einem zentralen Platz in der Grazer Innenstadt geplant, so wurde nach der mehrjährigen Verzögerung ein schlichter Gedenkstein in der stillen Paulustorgasse angebracht. Auch die ursprünglich vorgesehene, aufwändige Gestaltung mit lebensgroßen Figuren wurde nicht umgesetzt, am Ende wurde nicht einmal das vom Grazer Künstler Hans Beres für das Denkmal intendierte österreichische Staatswappen angebracht.
+<lb/>
+Der Ort, gegenüber der ehemaligen Gestapo-Zentrale ist ziemlich bedeutungsbeladen, wird durch das Erinnerungszeichen ebenfalls nicht thematisiert, und so wirkt die noch heute sichtbare, an die Seitenansicht eines Sarkophags erinnernde Marmorplatte etwas verloren an der Mauer der alten Burganlage. Es ist kein Ort, der große Versammlungen zulässt, heute ist er von Verkehrslärm und PassantInnen geprägt, die den Weg zwischen Innenstadt und dem Universitätsviertel in Geidorf zurücklegen. Auch anlässlich der Enthüllung des Erinnerungszeichens waren nicht viele Interessierte anwesend, die Historikerin Heidemarie Uhl spricht von 50 Personen, wobei sich Bürgermeister und Landeshauptmann vertreten ließen, sodass die gesamte Veranstaltung in der Zeitung „Wahrheit“ als „lästige Pflicht“ der Politik beschrieben wurde. Die Parteizeitung der KPÖ vermisste am Tag der Denkmalsetzung, dem 1. November 1949, zudem eine echte „Würdigung der heroischen Taten der Freiheitskämpfer“ für den Widerstand gegen den Nationalsozialismus.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Heidemarie Uhl, Gedächtnisraum Graz. Zeitgeschichtliche Erinnerungszeichen im öffentlichen Raum nach 1945, in: Historisches Jahrbuch der Stadt Graz (Graz 1994), 625–642.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Das „Freiheitskämpfer-Ehrenmal“ der Stadt Graz</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Durch die Beschäftigung mit dem „Freiheitskämpfer-Ehrenmal“ in der Paulustorgasse erarbeiteten sich die SchülerInnen einen wichtigen Bestandteil der öffentlichen Erinnerungskultur in Graz. Die Besonderheit des Denkmals als einziges Widerstandsdenkmal in Graz, soll den SchülerInnen die Marginalisierung des Widerstandsgedenkens ab den 1950er-Jahren deutlich machen. Die Reflexion dieses Umstandes soll der Entwicklung von historischen Orientierungskompetenzen der SchülerInnen dienen.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Beschreibe das Erinnerungszeichen in fünf bis sieben Sätzen. Gehe dabei auch auf die Sichtbarkeit des Denkmals ein und führe positive und negative Eindrücke an, die dir beim Betrachten des Gedenkorts auffallen!</item>
+<item>
+Im folgenden Text beschreibt die Historikerin Heidemarie Uhl die offizielle Einweihung des Denkmals im November 1949:
+<lb/>
+„Auch die Enthüllungsfeier am 1. November 1949 brachten den reduzierten Stellenwert der „antifaschistischen“ Gedächtniskultur zum Ausdruck. Nicht einmal 50 Personen, darunter die Hälfte Ehrengäste, sollen daran teilgenommen haben, die Situierung der Gedenktafel unmittelbar an einer Straße erlaubte ohnehin keine größeren Versammlungen. Offizielle Stellen waren kaum repräsentiert, der Bürgermeister und Landeshauptmann ließen sich vertreten, die Übergabe nahm der ÖVP-Vizebürgermeister von Graz, Mrazek, vor. Insgesamt entstand der Eindruck, dass die Denkmalerrichtung wohl eher „eine lästige Pflicht war als eine Anerkennung und Würdigung der heroischen Taten der Freiheitskämpfer“, bemerkte das KPÖ-Organ ‚Wahrheit‘“ (Heidemarie Uhl, Gedächtnisraum Graz.)
+<lb/>
+</item>
+<item>
+Fasse den Text in deinen eigenen Worten knapp zusammen und beantworte folgende Fragen stichwortartig:
+<lb/>
+<list style="ordered">
+<item>Wodurch kam der „reduzierte Stellenwert der „antifaschistischen Gedächtniskultur“ zum Ausdruck?</item>
+<item>Was meint die kommunistische Zeitung „Wahrheit“ damit, wenn sie von einer „lästigen Pflicht“ schreibt?</item>
+<item>den Standort der Ehrentafel mit den oben zitierten Aussagen – inwiefern ist dieser ein weiterer Beweis für die mangelhafte Motivation der Regierenden, sich dem Thema Widerstand anzunehmen?</item>
+</list>
+</item>
+<item>Du wirst von der Stadtregierung ausgewählt, ein neues Design für dieses Erinnerungszeichen zu entwerfen; Standort und Text dürfen dabei aber nicht verändert werden. Wie würde dein Denkmal aussehen? Fertige eine Skizze an!</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Der erste Auftrag dient zur Rezeption des Denkmals und seiner Umgebung, da sowohl Gestaltung und als auch Positionierung des Erinnerungszeichens die bereits abgenommene Bedeutung des Widerstandsgedenkens verdeutlichen. Diese rasche Marginalisierung in den ersten Jahren der Zweiten Republik soll auch durch die Analyse des Historikerinnentextes im zweiten Auftrag deutlich werden. Schließlich zielt der dritte Auftrag darauf ab, die Perspektive der SchülerInnen auf das Widerstandsgedenken in kreativer Weise zu thematisieren.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich mit der Entwicklung des österreichischen Nachkriegsgedächtnisses.</item>
+<item>Die SchülerInnen erkennen die Marginalisierung des Widerstandsgedenkens in der unmittelbaren Nachkriegszeit.</item>
+<item>Die SchülerInnen gewinnen Orientierung für die Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list>
+<item>Heidemarie Uhl, Gedächtnisraum Graz. Zeitgeschichtliche Erinnerungszeichen im öffentlichen Raum nach 1945, in: Historisches Jahrbuch der Stadt Graz (Graz 1994), 625–642.</item>
+</list>
+</div>
+<div type="quellenText">
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty34" xml:id="IMAGE.1">
+<desc>Im November 1945 beschloss der Grazer Gemeinderat die Errichtung eines monumentalen Denkmals in Erinnerung an die Freiheitskämpfer. 1946 wurde dazu eine österreichweiter Wettbewerb ausgeschrieben, aus dem zahlreiche Entwürfe für freistehende und monumentale Denkmäler hervorgingen. Keines davon wurde realisiert. </desc>
+<desc type="title">Stadtarchiv Graz</desc>
+</graphic>
+</facsimile>
+</TEI>

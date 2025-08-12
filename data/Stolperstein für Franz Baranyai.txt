@@ -1,0 +1,283 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Franz Baranyai: Vom Überleben in der steirischen Provinz</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty256</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty256</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty164</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty165</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty166</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die Schülerinnen beschäftigen sich mit der Biografie Franz Baranyais und bearbeiten Arbeitsaufträge basierend auf einem Quellentext</p>
+<p rend="Ort, Gemeinde EO/EZ">Stadt Graz (8010)</p>
+<p rend="Zeitbedarf">15–30 Minuten</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klasse oder außerschulischer Ort in der Region</p>
+</div>
+<div type="mehrErfahren">
+<p>
+2013 wurde vor dem Gebäude der ehemaligen Landespolizeidirektion, in dem während der NS-Zeit auch die
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss62">Gestapo</ref>
+untergebracht war, in Erinnerung an Franz Baranyai ein
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss198">Stolperstein</ref>
+verlegt. Franz Baranyai wurde als sogenannter „Zigeuner“ von den Nationalsozialisten ermordet.
+<lb/>
+Franz Baranyai wurde am 23. 12. 1891 in Zahling, im heutigen Bezirk Jennersdorf im Burgenland geboren. Er war mit Anna verheiratet und lebte seit 1908 als Arbeiter und Musiker in Graz. Mitte Februar 1941 rückte er zum
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss205">Sicherheits- und Hilfsdienst</ref>
+, Sanitätsbereitschaft II in Andritz ein. Damit war er Mitglied einer Hilfspolizei, die sich ab 1940 um den Luftschutz kümmerte.
+<lb/>
+Im Februar 1942 richtete er an
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss206">Gauleiter Uiberreither</ref>
+ein Bittgesuch, da er sich bei der Zuteilung von Kleiderkarten für seine Ehefrau vom Landrat des Kreises Fürstenfeld benachteiligte fühlte. Als Grund für die Benachteiligung vermutete er seinen Familiennamen, der von den Nationalsozialisten als Hinweis für eine Zugehörigkeit zur Gruppe der „Zigeuner“ gesehen wurde.
+<lb/>
+Sein Schreiben löste jedoch eine Reihe von behördlichen Erhebungen zu seiner Familiengeschichte aus. Die Untersuchungen ergaben, dass er in seinem Heimatort in der sogenannten
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss207">„Zigeunerevidenz“</ref>
+geführt wurde und seine Brüder im Rahmen der sogenannten „Zigeuneraktion“ bereits nach
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss99">Litzmannstadt</ref>
+deportiert worden waren. Diesbezüglich schrieb der Landrat des Kreises Fürstenfeld am 25. 3. 1942 an den Reichsstatthalter der Steiermark:
+<lb/>
+<emph style="cursive">
+„Auf Ihr Schreiben RSt 61/10/1942 vom 12. März 1942 hin habe ich sofort die nötigen Erhebungen über den Obengenannten angestellt. Dieselben haben ergeben, dass Baranyai zweifelsohne Vollzigeuner ist und samt seiner Frau schon für die in nächster Zeit in Aussicht genommene weitere Abschiebung von Zigeunern vorgesehen war.
+<lb/>
+Hiernach muss es als eine Dreistigkeit bezeichnet werden, dass sich Baranyai persönlich an den Herrn Gauleiter und Reichsstatthalter wendet, wie es auf der anderen Seite erstaunlich ist, dass Baranyai beim SHD Dienst verrichtet. Dies wird auch in der Bevölkerung von Deutsch-Kaltenbrunn, wie aus dem vorletzten Absatz des betreffenden Gendarmerieberichts hervorgeht, lebhaft kritisiert.
+<lb/>
+Ich trete der Ansicht des Gendarmeriepostens Rudersdorf, dessen Bericht vom 20. d. M. ich zur gefälligen Kenntnisnahme in Abschrift beifüge, voll und ganz bei, wonach der Ahnennachweis Baranyai’s bis zum Jahre 1837 noch lange nicht als Nachweis gelten kann, dass er deutschblütiger Abstammung ist, da eben in den betreffenden Dokumenten erfahrungsgemäss das Wort „Zigeuner“ nicht vorkommt“ (StLA, Reichsstatthalterei, 61/10/42).
+</emph>
+<lb/>
+Als Folge der Erhebungen wurde Franz Baranyai schließlich im April 1942 aus seiner Dienststelle in Graz entlassen und er versuchte in weiterer Folge unterschiedliche Tätigkeiten anzunehmen.
+<lb/>
+Erneut richtete er sich in einem Schreiben, das undatiert ist, an Reichsstatthalter und Gauleiter Uiberreither:
+<lb/>
+<emph style="cursive">
+„An meinen Herrn Reichstatthalter u. Gauleiter in Graz.
+<lb/>
+Ergebenstgefertigter S.H.D. Mann Franz Baranyai, geb. 23. XII. 1891 in Zahling, zuständig Deutsch Kaltenbrunn, Kreis Fürstenfeld, eingerückt zum Sicherheits- und Hilfsdienst am 10. II. 1941 in Graz, bittet ergebenst seine Bitte entgegen [zu nehmen] und anhören zu wollen.
+<lb/>
+Schon seit meinem 17. Lebensjahr bin ich zum Großteil hier in der Landeshauptstadt Graz als Arbeiter u. Musiker beschäftigt und hatte mein ehrliches Fortkommen so dass ich bis heute von keiner Behörde beanstandet wurde. Es war mein Fühlen und Denken ‚geh immer im Leben ehrlich deine Wege durch die Welt‘. Meine Schulbildung war gering, da man sich bei dem Magyarischen Staat sich wenig kümmerte.
+<lb/>
+Durch Fleiß und Streben hab ich mich in der deutschen Heimat empor gearbeitet dass ich heute in allem Kenntnisse besitze. Das danke ich meiner deutschen Heimat, meinem Vaterland. Arbeit, Fleiß u. Ehrlichkeit brachten mir Segen, so daß ich mir ein kleines Heim schaffen konnte. Und ich will dem Staat, meinem Führer und Vaterland danken und dienen. Mein ganzes Denken ist und war deutsch sein, deutsch bleiben. Kämpfen und Opfer bringen und das will ich für meine Heimat, für Führer, Volk und mein Heimatland treu bis zum Tod.
+<lb/>
+Ich habe viel überwunden und will mehr und bin bereit für jeden Einsatz, wenn mich mein Vaterland ruft. Es lebe unser edler Führer. Ewig wird Deutschland bestehen und seine starke Nation.“
+</emph>
+<lb/>
+Doch all die Versuche der NS-Verfolgung zu entgehen scheiterten, da der Landrat des Kreis Fürstenfeld stets bei seinen neuen Arbeitgebern intervenierte, auf seine „Zigeuner-Abstammung“ hinwies und seine Verhaftung vorantrieb. Letztlich wurde Franz Baranyai verhaftet, deportiert und im Juli 1943 im
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss25">Konzentrationslager Auschwitz</ref>
+ermordet.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Heimo Halbrainer/Gerald Lamprecht, Nationalsozialismus in der Steiermark. Opfer – Täter – Gegner. Innsbruck-Wien-Bozen 2015.</item>
+<item>StLA, Reichsstatthalterei, 61/10/42</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Franz Baranyai: Vom Überleben in der steirischen Provinz</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Die Beschäftigung mit historischen Biografien ist für die vertiefte Auseinandersetzung mit Verfolgung und Widerstand in der Zeit des Nationalsozialismus essenziell. Biografische Zugänge ermöglichen besondere Einblicke in die Geschichte, eröffnen sie doch Perspektiven auf das historische Geschehen. Die Orientierung an Bild- und Textquellen ermöglicht es, diese Perspektiven selbsttätig zu erschließen und sich auf diese Weise reflektiert mit der Vergangenheit auseinander.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Ermitteln Sie aus dem biografischen Text (siehe Mehr Erfahren) den Grund für die Verfolgung und Ermordung Franz Baranyais.</item>
+<item>Analysieren Sie den Brief Franz Baranyais vom 6. Februar 1942 (siehe Textquellen) hinsichtlich seiner Einstellung zu den herrschenden politischen Verhältnissen.</item>
+<item>Bewerten Sie basierend auf dem biografischen Text und dem darin zitierten Schreiben, die Beteilung des Landrats an der Verfolgung und Ermordung Franz Baranyais.</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>
+Zunächst erarbeiten sich die Lernenden anhand des einführenden Textes die wichtigsten Informationen zur Verfolgungsgeschichte Franz Baranyais.
+<lb/>
+Auftrag 2 soll vermitteln, dass für die „Mechanismen der Verfolgung“ nicht die Einstellung gegenüber dem NS-Regime, sondern lediglich dessen rassistische Verfolgungskriterien ausschlaggebende waren.
+<lb/>
+Dies will auch der abschließende Arbeitsauftrag erreichen, der zudem die Rolle und Bedeutung einzelner Täter im Rahmen der Verfolgung verdeutlichen soll.
+</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+<item>Die SchülerInnen erwerben historische Methodenkompetenzen.</item>
+<item>Die SchülerInnen setzen sich vertieft mit lokalgeschichtlichen Zusammenhängen auseinander und bauen historische Sachkompetenzen auf.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<p>
+An meinen Herrn Reichsstatthalter u. Gauleiter!
+<lb/>
+<lb/>
+Ergebenster bittet Sie innigst nehmen Sie meine Bitte entgegen. Nachdem mein Name Baranyai aus dem Ungarischen stammt und es deren Namens viele gibt und daher kaum zigeunerischer Abstammung sein kann, mein Ahnenausweis reicht bis zum Jahre 1837 zurück und meine Ahnen in Deutsch Kaltenbrunn ständigen Wohnsitz u. Heimatrecht bis heute hatten. Ich wende mich daher an meinen Reichsstatthalter u. Gauleiter mit der Bitte mir weitere Weisungen zu erteilen. Nachdem es heißt alle die mit Namen Baranyai sind zigeunerischer Abstammung und kommen von der Ostmark fort. Bei mir kann das kaum zutreffen, dass ich rein zigeunerischer Abstammung bin, da weder meine Ahnen noch Eltern gewandert sind und nie das Gefühl u. Denken wie Zigeuner hatten.
+<lb/>
+Mein Herr Gauleiter! Nehmen sie bitte sich um meine Verhältnisse an. Was soll ich tun? Meine 2 kleinen Häuschen verkaufen? Das Erbe meines Vaters u. mein Heim. Ich bin allein mit meiner Frau Anna Baranyai, geb. Sobel in Drösseldorf Oberschlesien, kinderlos, und möchte daher hier in der Ostmark meine Tage die ich noch zum Leben habe zubringen und mein Heim benützen, weiter die Grund- u. Realsteuer bezahlen.
+<lb/>
+Mein Reichstatthalter u. Gauleiter, anbei erlaube ich mir 2 Beilagen an Sie zu senden mit einem Lichtbild. Es betrifft Kleiderkarte meiner Frau, welche sich zur Zeit in Oberschlesien befindet. Meine Frau, rein arischer Abstammung hat schon seit dem Jahr 1940 keine Kleiderkarte bekommen. Obwohl andere Kleiderkarten mit Namen Baranyai von ihrem Landrat erhielten wurde im Landkreis Fürstenfeld für die Baranyai keine Kleiderkarte herausgegeben. Welche Gründe da vorliegen, weiß ich nicht. Ich bitte vielmals um die Erteilung der Kleiderkarte an meine Frau Anna Baranyai, geb. Sobel in Deutsch Kaltenbrunn Nr. 139 Kreis Fürstenfeld und mein Ansuchen um die Kleiderkarte an Landrat Fürstenfeld zu leiten. In der Hoffnung meinem Ansuchen u. Weisungen von meinem Herrn Reichsstatthalter u. Gauleiter entgegensehend.
+<lb/>
+<lb/>
+Heil Hitler ergebenst Ihr Untertan
+<lb/>
+Franz Baranyai
+<lb/>
+S.H.D Mann San. Bereitschaft II in Andritz Graz Nord
+<lb/>
+Andritz am 6. II. 1942
+</p>
+<caption>Titel / Beschreibung</caption>
+<p>Schreiben von Franz Baranyai an Reichsstatthalter und Gauleiter Sigfried Uiberreither vom 6. Februar 1942, in dem er um Hilfe bei der Ausstellung einer Kleiderkarte durch den Landrat des Kreises Fürstenfeld bittet.</p>
+<caption>Quellenzitat</caption>
+<p>StLA, Reichsstatthalterei, 61/10/42</p>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty256" xml:id="IMAGE.1">
+<desc>Franz Baranyai in der Uniform des Sicherheits- und Hilfsdienstes.</desc>
+<desc type="title">Quelle: Steiermärkisches Landesarchiv.</desc>
+</graphic>
+</facsimile>
+</TEI>

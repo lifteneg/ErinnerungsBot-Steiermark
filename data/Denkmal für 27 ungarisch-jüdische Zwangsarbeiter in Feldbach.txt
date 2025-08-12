@@ -1,0 +1,296 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Das Massaker am Steinberg im März 1945 – Die Ermordung ungarisch-jüdischer Zwangsarbeiter</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty186</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty186</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty150</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty151</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty152</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty153</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty154</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty155</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty156</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty157</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty158</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty159</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty160</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty181</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty162</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty163</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty252</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty465</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty524</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit einem so genannten Endzeitverbrechen auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext Verfolgung und Massenmord.</p>
+<p rend="Ort, Gemeinde EO/EZ">Feldbach (8330)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Im Jahr 2020 wurde vor dem Bahnhofsgebäude der Stadt Feldbach ein Denkmal in Erinnerung an die 1945 dort und in der Nähe ermordeten ungarisch-jüdischen Zwangsarbeiter errichtet.
+<lb/>
+<lb/>
+<emph style="bold">Die Tat</emph>
+<lb/>
+Am 25 März 1945, es war ein Palmsonntag, kam es zu einem Luftangriff auf Feldbach. Konkret wurde ein mit ungarisch-jüdischen Zwangsarbeitern besetzer Zug, der gerade in den Bahnhof einfuhr, angegriffen. Daraufhin spielten sich turbulente Szenen ab. Einzelne Menschen waren verletzt, andere suchten Schutz, wieder andere versuchten den Verletzten zu helfen und die anwesenden Wachmannschaften – u.a. der SS – wollten die Lage wieder unter Kontrolle bringen. Das Ganze führte schließlich dazu, dass einzelne Verwundete sowie weitere Zwangsarbeiter hinter dem Bahnhof auf einen LKW verfrachtet und unter Begleitung von NS-Führern sowie SS-Männern zum nahe gelegenen „Russenfriedhof“ – Friedhof eines Kriegsgefangenlagers des Ersten Weltkrieges, der 1915 angelegt wurde – gebracht wurden. Dort mussten die noch lebenden eine Grube ausheben und nachdem sie die Leichen der bereits Verstorbenen hineingeworfen hatten, wurden sie selbst erschossen.
+<lb/>
+Eine alliierte Untersuchungskommission öffnete 1947 dieses Massengrab und fand darin 27 Leichen, wovon bei 16 von ihnen Kopfschüsse festgestellt wurden und bei 11 die Todesursache nicht mehr eindeutig festgestellt werden konnte. Die Opfer dieses so genannten
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss230">Endphase-Verbrechen</ref>
+waren ungarisch-jüdische Zwangsarbeiter, die beim Bau der sogenannten „Reichsschutzstellung“, dem sogenannten „Südostwall“ eingesetzt waren.
+<lb/>
+<lb/>
+<emph style="bold">Die Vorgeschichte, der historische Kontext</emph>
+<lb/>
+Im Sommer 1944 beschloss die Reichsleitung zur Abwehr der vorrückenden Roten Armee die Errichtung einer „Reichsschutzstellung“, den sogenannten Südostwalls zu errichten. Dabei handelte es sich um eine Verteidigungslinie vom Baltikum bis zur Adria. Für die Umsetzung waren die betroffenen Gauleiter, in der Steiermark
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss206">Gauleiter Uiberreither</ref>
+und das Wehrkreiskommando XVIII verantwortlich. Beim Südostwall handelte es sich um eine Befestigungsanlage aus zwei Linien mit Panzergräben und Stellungen, die in einzelne Abschnitte unterteilt war. In den Kreisen Oberwart, Fürstenfeld, Feldbach und Radkerburg-Mureck begannen die Arbeiten Mitte Oktober 1944. Als Arbeitskräfte waren notverpflichteten Zivilisten aus dem gesamten Reichsgau, Arbeitskräften aus Bayern, der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss79">Hitlerjugend</ref>
+, Wehrmachts- und SS-Angehörige sowie jüdische ZwangsarbeiterInnen aus
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss231">Ungarn</ref>
+vorgesehen.
+<lb/>
+In Ungarn blieben nach den Deportationen im Sommer 1944 zunächst nur noch die Jüdinnen und Juden in Budapest und jene die für die ungarische Armee Zwangsarbeit verrichten mussten. Als schließlich die Deutsche Führung den Bau der Reichsschutzstellung, des „Südostwalls“ beschloss, wurden in einem Abkommen die Jüdinnen und Juden dem Deutschen Reich als Arbeitskräfte zur Verfügung gestellt. Zwischen 2. und 11. November 1944 wurde so 75.000 Menschen in Gewaltmärschen von Budapest nach Nickelsdorf getrieben und dann anschließend auf die einzelnen Bauabschnitte entlang des Südostwalls verteilt. 10.000 von ihnen starben bereits am Weg zur Grenze.
+<lb/>
+Im Gau Steiermark entstanden in weiterer Folge rund 34 Lager mit rund 12.000 ungarisch-jüdischen ZwangsarbeiterInnen (Höchststand 25.000). Diese mussten in den folgenden Monaten unter menschenunwürdigen Bedingungen Zwangsarbeit leisten, und viele starben an Entkräftung, Unterernährung, Seuchen und Krankheiten oder wurden ermordet. Die Stadt Feldbach war insofern direkt in den Bau des Südostwall involviert, als jüdische ZwangsarbeiterInnen hier untergebracht worden waren und jeden Tag mit dem Zug zu ihren Arbeitsstätten gebracht wurden. Als klar war, dass die Front zusammenbrechen würde, erging Ende März 1945 der Befehl zur „Evakuierung“, wie das genannt wurde, nach
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss101">Mauthausen.</ref>
+<lb/>
+<lb/>
+<emph style="bold">Die Nachgeschichte</emph>
+<lb/>
+Im Fokus der gerichtlichen Ahndung der NS-Verbrechen durch die
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss177">Volksgerichte</ref>
+und alliierte Gerichte standen nach dem Krieg auch die „Endphase-Verbrechen“, wie jenes in Feldbach.
+<lb/>
+So wurde das Massaker von Feldbach gerichtlich untersucht und 1951 kam es zu einem Prozess gegen den ehemaligen politischen Leiter Anton Rößle aus Bayern, der die jüdischen Schanzarbeiter damals befehligte und laut Zeugenaussagen auch beim Abtransport zum Russenfriedhof ebenso dabei war wie der Kompanieführer des Volkssturms Josef Tomaschitz. Will man den Prozess gegen Rößle in knappen Worten zusammenfassen, so kann man als Ergebnis festhalten: Alle waren dabei, jeder hat es gesehen, doch niemand hat es getan. Rößle wurde letztlich aus Mangel an Beweisen freigesprochen. Die Prozessakten zeigen, dass das Verbrechen in vielen Zeugenaussagen klar dokumentiert und nachgezeichnet werden konnte, doch niemand konnte oder wollte bezeugen, wer tatsächlich für die Erschießung und Ermordung verantwortlich war. Dementsprechend wurde auch nie jemand für die Ermordung der 27 ungarischen jüdischen Zwangsarbeiter zur Rechenschaft gezogen.
+<lb/>
+Das Massengrab selbst wurde 1947 von einer alliierten Untersuchungskommission geöffnet und die sterblichen Überreste wurden auf den 1938 verwüsteten und wieder in Stand gesetzten jüdischen Friedhof nach Trautmannsdorf gebracht. Dort hat man sie in einem Massengrab mit weiteren rund 50 jüdischen Opfer der Endphase-Verbrechen in dieser Region beigesetzt. 1949 wurde dieses Grab erneut geöffnet, die Überreste der einzelnen Leichen wurden in Särge gelegt und nach Budapest überstellt.
+<lb/>
+1954 errichtete die Grazer jüdische Gemeinde über dem Massengrab einen
+<ref target="http://gams.uni-graz.at/o:derla.sty159">Gedenkstein</ref>
+, der über viele Jahre eines der wenigen Zeichen der Erinnerung an die jüdischen Opfer der letzten Kriegsmonate war.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Eleonore Lappin-Eppel, Ungarisch-jüdische Zwangsarbeiter und Zwangsarbeiterinnen in Österreich 1944/45 : Arbeitseinsatz, Todesmärsche, Folgen, Wien 2010.</item>
+<item>Rudolf Grasmug, Der Mann mit dem steifen Bein. Die NS-Zeit im Raum Feldbach und die Judenerschießung am 25. März am „Russenfriedhof“ am Fuße des Steinbergs, in: Wolfram Dornik, Rudolf Grasmug, Peter Wiesflecker (Hg.), Projekt Hainfeld. Beiträge zur Geschichte von Schloss Hainfeld, der Familie Hammer-Purgstall und der gesellschaftspolitischen Situation der Südoststeiermark im 19. und 20. Jahrhundert, Innsbruck-Wien-Bozen 2010, 208–229.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Das Massaker am Steinberg im März 1945 – Die Ermordung ungarisch-jüdischer Zwangsarbeiter</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus kann durch den Fokus auf die so genannten „Endphase-Verbrechen“ eine sinnvolle Vertiefung erfahren, da diese kurz vor dem Ende des NS-Regimes begangenen Verbrechen als Beispiel für die totalitäre Ausprägung des Regimes dienen können. Die Beschäftigung mit den Endphase-Verbrechen eröffnet zusätzliche Perspektiven auf die Ausprägung des Gewaltregimes. Deren häufige Nicht-Aufarbeitung erzählt weiters vom Umgang mit der NS-Vergangenheit in Österreich.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Fasse die Vorgänge in Feldbach im Frühjahr 1945 zusammen (siehe Mehr Erfahren, Bildquellen), besonders hinsichtlich der Ermordung der jüdischen Zwangsarbeiter.</item>
+<item>Erkläre nach der Lektüre des Einführungstextes (siehe Mehr Erfahren), weshalb die Tat als „Endzeitverbrechen“ der Nationalsozialisten bezeichnet werden kann.</item>
+<item>Nimm zum Ausgang des Prozesses von 1951 persönlich Stellung.</item>
+<item>Erkläre, weshalb das Erinnerungszeichen für die jüdischen Zwangsarbeiter am Bahnhof Feldbach errichtet wurde.</item>
+<item>Beurteile die Denkmalsetzung am Bahnhof Feldbach – aus welchen Gründen könnte die Stadtgemeinde 2020 das Denkmal aufgestellt haben.</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Die Auseinandersetzung mit nationalsozialistischen Gewaltverbrechen ist maßgeblich, um die Diktatur und ihre Folgen in ihrer Gesamtheit zu begreifen. Der totalitäre Charakter des Regimes wird insbesondere an den so genannten „Endphase-Verbrechen“, die zu einem Zeitpunkt verübt wurden, als das Ende des Krieges und auch der NS-Herrschaft längst absehbar waren. Darüber hinaus lässt sich am Beispiel des „Massakers am Steinberg“ deutlich machen, wie lange das Schweigen über die Verbrechen andauerte und es aber letztlich doch zu einer offiziellen Auseinandersetzung damit kam.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die Schülerinnen beschäftigen sich bewusst mit einem konkreten NS-Verbrechen.</item>
+<item>Die SchülerInnen erkennen die Notwendigkeit von offiziellem Gedenken an die NS-Gewaltherrschaft.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty186" xml:id="IMAGE.1">
+<desc>Nach 1945 wurden polizeiliche Erhebungen durchgeführt. Der Gendarmerieposten Feldbach fertige Lagepläne an und versuchte die Tat zu rekonstruieren. Das gelang auch, wobei letztlich jedoch kein Schuldiger genannt werden konnte und das Verbrechen blieb damit ungesühnt.</desc>
+<desc type="title">Vom Gendarmerieposten Feldbach angefertigter Lageplan, 6.Mai 1947. (Quelle: Steiermärkisches Landesarchiv.)</desc>
+</graphic>
+</facsimile>
+</TEI>

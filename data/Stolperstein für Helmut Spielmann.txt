@@ -1,0 +1,335 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Helmut Spielmann – Eine Jugend in Shanghai</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty430</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty430</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty426</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty427</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty428</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty429</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty431</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty432</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty433</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit der Biografie eines im Nationalsozialismus Verfolgten auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext der Verfolgung der jüdischen Bevölkerung.</p>
+<p rend="Ort, Gemeinde EO/EZ">Graz (8020)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+In Erinnerung an die Familie Spielmann, die in der Annenstraße ein Kleidergeschäft betrieb, wurden im Jahr 2013
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss198">Stolpersteine</ref>
+für die Familienmitglieder
+<ref target="http://gams.uni-graz.at/o:derla.sty426">Amalia</ref>
+,
+<ref target="http://gams.uni-graz.at/o:derla.sty427">Ernst</ref>
+,
+<ref target="http://gams.uni-graz.at/o:derla.sty428">Grete</ref>
+,
+<ref target="http://gams.uni-graz.at/o:derla.sty429">Hans</ref>
+, Helmut,
+<ref target="http://gams.uni-graz.at/o:derla.sty431">Paula</ref>
+,
+<ref target="http://gams.uni-graz.at/o:derla.sty432">Rudolf</ref>
+und
+<ref target="http://gams.uni-graz.at/o:derla.sty433">Wilhelm</ref>
+verlegt. Bis auf Ernst Spielmann, der von den Nationalsozialisten ermordet wurde, konnte alle weiteren Familienmitglieder flüchten und überlebten den
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss81">Holocaust</ref>
+. Helmut Spielmann, damals ein Kind, floh mit seinen Eltern Rudolf und Paula nach Shanghai.
+<lb/>
+<lb/>
+<emph style="bold">Eine wohlbehütete Kindheit in Graz</emph>
+<lb/>
+Helmut Spielmann wurde am 22. Mai 1930 in Graz als einziges Kind von Rudolf und Paula Spielmann geboren. Er wuchs im Umfeld der Grazer jüdischen Gemeinde auf, und besuchte 1938 die zweite Klasse der jüdischen Volksschule.
+<lb/>
+Die Geschichte seiner Familie reicht in Graz zurück bis in die Anfangstage der jüdischen Gemeinde in den 1860er Jahren. Sein Großvater wanderte zunächst als Hausierer nach Graz zu und eröffnete später ein Kleidermachergewerbe. Sein Vater Rudolf wurde 1889 in Graz geboren und trat nach Abschluss seiner Ausbildung als Angestellter in das Kleiderhaus „Spielmann und Co“ seines um 13 Jahre älteren Bruders Wilhelm in der Annenstraße ein, wo er später auch Geschäftsleiter wurde.
+<lb/>
+<lb/>
+<emph style="bold">1938 – Verfolgung und Vertreibung</emph>
+<lb/>
+Im März 1938 lebte die Familie von Helmut Spielmann in der Sparbersbachgasse 17 in Graz. Im August 1938 wurde Helmuts Vater Rudolf vom
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss232">„kommissarischen Verwalter“</ref>
+der Firma seines Bruders entlassen, zudem wurde ihm der Zugriff auf sein Bankkonto entzogen. Wenige Wochen später wurde er im Zuge der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss9">Pogromnacht</ref>
+von der die
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss62">Gestapo</ref>
+verhaftet und ins
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss41">KZ Dachau</ref>
+gebracht. Von dort kam er am 20. Dezember 1938 wieder frei. Körperlich und seelisch schwer gezeichnet kam er nach Graz zurück und es blieben ihm nur wenige Wochen, um seine Heimat endgültig zu verlassen.
+<lb/>
+Da viele Länder die Aufnahme von jüdischen Flüchtlingen verweigerten blieb der Familie von Helmut Spielmann letztlich nur noch die Flucht nach Shanghai, das für die Einreise weder ein Visum noch einen Kapitalnachweis verlangte. Am 20. Februar 1939 verließ die Familie Spielmann Graz in Richtung Genua, wo sie am 22. Februar das Linienschiff „Victoria“ des Lloyd Triestino bestieg. Mit dabei hatte sie ein wenig Geld, ein paar Wertgegenstände und etwas Umzugsgut. Das meiste ihres Besitzes musste die Familie zurücklassen.
+<lb/>
+<lb/>
+<emph style="bold">Shanghai – letzter Zufluchtsort</emph>
+<lb/>
+Helmut Spielmann und seine Eltern erreichten nach vier Wochen Reise über Neapel, Port Said, Suez, Aden, Bombay, Colombo, Singapur, Manila und Hongkong endlich Shanghai. Die Reise selbst beschrieb Helmut als Abenteuer und gleichsam als die Ruhe vor dem Sturm. Denn die fremde Kultur, das ungewohnte Klima und die unwirtlichen Lebensbedingungen Shanghais erlebte die Familie nach ihrer Ankunft geradezu als Schock.
+<lb/>
+Zwar konnte sie mit dem wenigen mitgebrachten Geld eine billige Wohnung im Zuwanderer- und Flüchtlingsviertel Hongkou erwerben. Doch die mangelnden Sprachkenntnisse und sein immer schlechter werdender Gesundheitszustand machten es dem Vater unmöglich, eine Arbeit zu finden. So musste die Familie vom Verkauf der wenigen mitgebrachten Habseligkeiten und den Unterstützungen von jüdischen Hilfsorganisationen leben. Als Rudolf Spielmann, der sich mit der fremden Lebenssituation nicht zurechtfinden konnte, einen Ausweg im Glückspiel suchte, trennte sich seine Ehefrau von ihm und der 10jährige Helmut blieb bei seiner Mutter. Rudolf Spielmann starb am 11. April 1941 an den Folgen der Verfolgung im Emigrantenspital in Shanghai.
+<lb/>
+Die Mutter Paula, die vor ihrer Ehe vom Christentum zum Judentum konvertiert war, trat nach der Trennung von ihrem Mann wieder zum katholischen Glauben über. Sie nahm Helmut aus der jüdischen Schule und meldete ihn in einer katholischen Ordensschule an. Obwohl er innerhalb weniger Monate seinen Vater und seine jüdischen Spielkameraden verloren hatte, fand sich der mittlerweile 11-jährige Helmut im neuen Umfeld rasch zurecht. Er gewann neue Freunde und wurde begeistertes Mitglied der Pfadfinder.
+<lb/>
+Doch an ein normales Leben war trotzdem nicht zu denken, da Shanghai seit 1937 massiv vom japanisch-chinesischen Krieg betroffen war und mit dem Kriegseintritt der USA im Dezember 1941 von japanischen Truppen besetzt wurde. Ab Februar 1943 zwangen die japanischen Besatzungstruppen die staatenlosen Flüchtlinge aus Europa dazu, in einem eigenen Bezirk, der „restricted area“, zu wohnen, der nur mit besonderer Genehmigung verlassen werden durfte. In diesem Ghetto herrschte Lebensmittelknappheit, die hygienischen Zustände warten katastrophal, sodass Unterernährung und Seuchen zu massenhaften Erkrankungen und vielen Todesfällen führten. Gegen Ende des Krieges litt die vier Millionen Metropole Shanghai zunehmend auch unter den Bombardierungen durch die amerikanischen Luftstreitkräfte.
+<lb/>
+<lb/>
+<emph style="bold">Befreiung und Rückkehr nach Österreich</emph>
+<lb/>
+Die Atombombenabwürfe auf Hiroshima und Nagasaki am 6. und 9. August 1945 beendeten den Zweiten Weltkrieg auch im Pazifik und brachten die Befreiung Shanghais von den japanischen Besatzern. An eine Ausreise war für die rund 17.000 noch in der Stadt lebenden Flüchtlinge zunächst nicht zu denken. Die Nothilfe der Vereinten Nationen, die UNRRA (United Nations Relief and Rehabilitation Administration) versorgte die Flüchtlinge fortan mit dem Nötigsten und übernahm die weitere Planung der Repatriierung oder Weiterreise der Flüchtlinge. Helmut Spielmann war in dieser Zeit für die amerikanischen Truppen als Übersetzer tätig und überlegte eine Auswanderung in die USA. Doch auf Wunsch seiner Mutter entschloss er sich zu einer Rückkehr nach Österreich. Gemeinsam bestiegen sie am 17. Jänner 1947 den US-Truppentransporter „SS. Marine Falcon“, der mit 952 europäischen Flüchtlingen an Bord nach Europa fuhr. Nach acht Jahren in der Emigration kamen Helmut und Paula Spielmann am 22. Februar 1947 in Österreich an. Den ersten Unterschlupf fanden sie bei ihren Verwandten in Knittelfeld.
+<lb/>
+Die mittlerweile 47-jährige Paula Spielmann bemühte sich mit Hilfe einer Hinterbliebenenrente sowie öffentlichen Unterstützungen als Opfer nationalsozialistischer Verfolgung ihr weiteres Leben zu meistern. Helmut wurde zunächst Übersetzer für die britischen Besatzungstruppen, ehe er im Dezember 1948 in Graz eine Ausbildung als Fachlehrer für Englisch und Deutsch begann. Seine Matura an der englischsprachigen Schule in Shanghai wurde ihm in Österreich nicht anerkannt. Helmut schloss schließlich das Sprachlehrerseminar der Privatlehr- und Erziehungsanstalt „Institut Anderl-Rogge“ in Graz erfolgreich ab und trat mit dem Schuljahr 1949/50 in der Hauptschule von Arnfels, im steirisch-slowenischen Grenzgebiet, die Stelle eines Vertragslehrers für Englisch an.
+<lb/>
+Er gründete eine eigene Familie und ging 1991 nach 41 Berufsjahren als „Hauptschuloberlehrer“ in Pension. Seine Mutter Paula lebte zunächst in Knittelfeld und dann immer wieder bei ihrem Sohn in Arnfels. Sie starb am 1. März 1979. Helmut Spielmann starb am 14. Dezember 2012 in Feldbach.
+</p>
+<caption>Literatur</caption>
+<list>
+<item><p>In Erinnerung an die Familie Spielmann, die in der Annenstraße ein Kleidergeschäft betrieb, wurden im Jahr 2013 <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss198">Stolpersteine</ref> für die Familienmitglieder<ref target="http://gams.uni-graz.at/o:derla.sty426">Amalia</ref>,<ref target="http://gams.uni-graz.at/o:derla.sty427">Ernst</ref>,<ref target="http://gams.uni-graz.at/o:derla.sty428">Grete</ref>,<ref target="http://gams.uni-graz.at/o:derla.sty429">Hans</ref>,Helmut,<ref target="http://gams.uni-graz.at/o:derla.sty431">Paula</ref>,<ref target="http://gams.uni-graz.at/o:derla.sty432">Rudolf</ref> und<ref target="http://gams.uni-graz.at/o:derla.sty433">Wilhelm</ref> verlegt. Bis auf Ernst Spielmann, der von den Nationalsozialisten ermordet wurde, konnten alle weiteren Familienmitglieder flüchten und überlebten den <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss81">Holocaust</ref>. Helmut Spielmann, damals ein Kind, floh mit seinen Eltern Rudolf und Paula nach Shanghai. <lb></lb><lb></lb><emph style="bold">Eine wohlbehütete Kindheit in Graz</emph><lb></lb>Helmut Spielmann wurde am 22. Mai 1930 in Graz als einziges Kind von Rudolf und Paula Spielmann geboren. Er wuchs im Umfeld der Grazer jüdischen Gemeinde auf, und besuchte 1938 die zweite Klasse der jüdischen Volksschule.<lb></lb>Die Geschichte seiner Familie reicht in Graz zurück bis in die Anfangstage der jüdischen Gemeinde in den 1860er-Jahren. Sein Großvater wanderte zunächst als Hausierer nach Graz zu und eröffnete später ein Kleidermachergewerbe. Sein Vater Rudolf wurde 1889 in Graz geboren und trat nach Abschluss seiner Ausbildung als Angestellter in das Kleiderhaus „Spielmann und Co“ seines um 13 Jahre älteren Bruders Wilhelm in der Annenstraße ein, wo er später auch Geschäftsleiter wurde. <lb></lb><lb></lb><emph style="bold">1938 – Verfolgung und Vertreibung</emph><lb></lb>Im März 1938 lebte die Familie von Helmut Spielmann in der Sparbersbachgasse 17 in Graz. Im August 1938 wurde Helmuts Vater Rudolf vom <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss232"> „kommissarischen Verwalter“</ref> der Firma seines Bruders entlassen, zudem wurde ihm der Zugriff auf sein Bankkonto entzogen. Wenige Wochen später wurde er im Zuge der <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss9">Pogromnacht</ref> von der<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss62">Gestapo</ref> verhaftet und ins <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss41">KZ Dachau</ref> gebracht. Von dort kam er am 20. Dezember 1938 wieder frei. Körperlich und seelisch schwer gezeichnet kam er nach Graz zurück und es blieben ihm nur wenige Wochen, um seine Heimat endgültig zu verlassen.<lb></lb>Da viele Länder die Aufnahme von jüdischen Flüchtlingen verweigerten blieb der Familie von Helmut Spielmann letztlich nur noch die Flucht nach Shanghai, das für die Einreise weder ein Visum noch einen Kapitalnachweis verlangte. Am 20. Februar 1939 verließ die Familie Spielmann Graz in Richtung Genua, wo sie am 22. Februar das Linienschiff „Victoria“ des Lloyd Triestino bestieg. Mit dabei hatte sie ein wenig Geld, ein paar Wertgegenstände und etwas Umzugsgut. Das meiste ihres Besitzes musste die Familie zurücklassen. <lb></lb><lb></lb><emph style="bold">Shanghai – letzter Zufluchtsort</emph><lb></lb>Helmut Spielmann und seine Eltern erreichten nach vier Wochen Reise über Neapel, Port Said, Suez, Aden, Bombay, Colombo, Singapur, Manila und Hongkong endlich Shanghai. Die Reise selbst beschrieb Helmut als Abenteuer und gleichsam als die Ruhe vor dem Sturm. Denn die fremde Kultur, das ungewohnte Klima und die unwirtlichen Lebensbedingungen Shanghais erlebte die Familie nach ihrer Ankunft geradezu als Schock.<lb></lb>Zwar konnte sie mit dem wenigen mitgebrachten Geld eine billige Wohnung im Zuwanderer- und Flüchtlingsviertel Hongkou erwerben. Doch die mangelnden Sprachkenntnisse und sein immer schlechter werdender Gesundheitszustand machten es dem Vater unmöglich, eine Arbeit zu finden. So musste die Familie vom Verkauf der wenigen mitgebrachten Habseligkeiten und den Unterstützungen von jüdischen Hilfsorganisationen leben. Als Rudolf Spielmann, der sich mit der fremden Lebenssituation nicht zurechtfinden konnte, einen Ausweg im Glückspiel suchte, trennte sich seine Ehefrau von ihm und der 10jährige Helmut blieb bei seiner Mutter. Rudolf Spielmann starb am 11. April 1941 an den Folgen der Verfolgung im Emigrantenspital in Shanghai.<lb></lb>Die Mutter Paula, die vor ihrer Ehe vom Christentum zum Judentum konvertiert war, trat nach der Trennung von ihrem Mann wieder zum katholischen Glauben über. Sie nahm Helmut aus der jüdischen Schule und meldete ihn in einer katholischen Ordensschule an. Obwohl er innerhalb weniger Monate seinen Vater und seine jüdischen Spielkameraden verloren hatte, fand sich der mittlerweile 11-jährige Helmut im neuen Umfeld rasch zurecht. Er gewann neue Freunde und wurde begeistertes Mitglied der Pfadfinder.<lb></lb>Doch an ein normales Leben war trotzdem nicht zu denken, da Shanghai seit 1937 massiv vom japanisch-chinesischen Krieg betroffen war und mit dem Kriegseintritt der USA im Dezember 1941 von japanischen Truppen besetzt wurde. Ab Februar 1943 zwangen die japanischen Besatzungstruppen die staatenlosen Flüchtlinge aus Europa dazu, in einem eigenen Bezirk, der „restricted area“, zu wohnen, der nur mit besonderer Genehmigung verlassen werden durfte. In diesem Ghetto herrschte Lebensmittelknappheit, die hygienischen Zustände warten katastrophal, sodass Unterernährung und Seuchen zu massenhaften Erkrankungen und vielen Todesfällen führten. Gegen Ende des Krieges litt die vier Millionen Metropole Shanghai zunehmend auch unter den Bombardierungen durch die amerikanischen Luftstreitkräfte. <lb></lb><lb></lb><emph style="bold">Befreiung und Rückkehr nach Österreich</emph><lb></lb>Die Atombombenabwürfe auf Hiroshima und Nagasaki am 6. und 9. August 1945 beendeten den Zweiten Weltkrieg auch im Pazifik und brachten die Befreiung Shanghais von den japanischen Besatzern. An eine Ausreise war für die rund 17.000 noch in der Stadt lebenden Flüchtlinge zunächst nicht zu denken. Die Nothilfe der Vereinten Nationen, die UNRRA (United Nations Relief and Rehabilitation Administration) versorgte die Flüchtlinge fortan mit dem Nötigsten und übernahm die weitere Planung der Repatriierung oder Weiterreise der Flüchtlinge. Helmut Spielmann war in dieser Zeit für die amerikanischen Truppen als Übersetzer tätig und überlegte eine Auswanderung in die USA. Doch auf Wunsch seiner Mutter entschloss er sich zu einer Rückkehr nach Österreich. Gemeinsam bestiegen sie am 17. Jänner 1947 den US-Truppentransporter „SS. Marine Falcon“, der mit 952 europäischen Flüchtlingen an Bord nach Europa fuhr. Nach acht Jahren in der Emigration kamen Helmut und Paula Spielmann am 22. Februar 1947 in Österreich an. Den ersten Unterschlupf fanden sie bei ihren Verwandten in Knittelfeld.<lb></lb>Die mittlerweile 47-jährige Paula Spielmann bemühte sich mit Hilfe einer Hinterbliebenenrente sowie öffentlichen Unterstützungen als Opfer nationalsozialistischer Verfolgung ihr weiteres Leben zu meistern. Helmut wurde zunächst Übersetzer für die britischen Besatzungstruppen, ehe er im Dezember 1948 in Graz eine Ausbildung als Fachlehrer für Englisch und Deutsch begann. Seine Matura an der englischsprachigen Schule in Shanghai wurde ihm in Österreich nicht anerkannt. Helmut schloss schließlich das Sprachlehrerseminar der Privatlehr- und Erziehungsanstalt „Institut Anderl-Rogge“ in Graz erfolgreich ab und trat mit dem Schuljahr 1949/50 in der Hauptschule von Arnfels, im steirisch-slowenischen Grenzgebiet, die Stelle eines Vertragslehrers für Englisch an.<lb></lb>Er gründete eine eigene Familie und ging 1991 nach 41 Berufsjahren als „Hauptschuloberlehrer“ in Pension. Seine Mutter Paula lebte zunächst in Knittelfeld und dann immer wieder bei ihrem Sohn in Arnfels. Sie starb am 1. März 1979. Helmut Spielmann starb am 14. Dezember 2012 in Feldbach.</p></item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Helmut Spielmann – Eine Jugend in Shanghai</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus erfährt durch die Implementierung biografischer Zugänge eine produktive Erweiterung. Die Beschäftigung mit Biografien eröffnet zusätzliche Perspektiven auf das historische Geschehen und ermöglicht es den Lernenden, sich über einen konkreten Lebensweg der Alterität der Vergangenheit anzunähern. Die Verbindung des biografischen Arbeitens mit Quellenarbeit ermöglicht dabei den Aufbau diverser historischer Kompetenzen, wie etwa der historischen Methodenkompetenzen und Orientierungskompetenzen.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Lies den Einführungstext (siehe Mehr Erfahren), markiere jene Teile, die für dich unklar sind und formuliere dazu Fragen, die dich an der Geschichte Helmut Spielmanns besonders interessieren.</item>
+<item>Helmut Spielmann erzählt seine Fluchtgeschichte im Stil eines Abenteuerromas (siehe Textquellen). Arbeite jene Stellen heraus, an denen das besonders deutlich wird!</item>
+<item>Rekonstruiere anhand Helmut Spielmanns Erzählung die Lebensbedingungen der Flüchtlinge in Shanghai.</item>
+<item>Beurteile den Wert, den Helmut Spielmanns Erzählung für die historische Forschung einnimmt – welche besonderen und einzigartigen Facetten eröffnet der Bericht von Helmut Spielmann für die Beschäftigung mit dem Nationalsozialismus?</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Helmut Spielmanns Erzählung „50 Jahre danach – Shanghai: ein Erlebnisbericht.“ eignet sich besonders gut, um sich mit der Thematik Flucht und (Über)Leben in der Emigration zu befassen. Daher wird der Text auch als Ausgangspunkt verwendet und soll zunächst über selbst formulierte Fragen erschlossen werden. Die Bearbeitung dieser Fragen soll in weiterer Folge zu einem besseren Verständnis für den besonderen Stil der Erzählung führen. Nachdem diese im dritten Arbeitsauftrag auch inhaltlich analysiert wird, soll schließlich der Reflexionsprozess über den Quellenwert des Textes im letzten Arbeitsauftrag angeregt werden.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich bewusst mit den Folgen der nationalsozialistischen Gewaltherrschaft.</item>
+<item>Die SchülerInnen reflektieren den Wert von literarischen Quellen für die historische Forschung.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<p>
+<emph style="bold">Aus den Lebenserinnerungen von Helmut Spielmann:</emph>
+<lb/>
+<lb/>
+„Der Ernst des Lebens begann für mich knapp nach meinem achten Geburtstag, als man meinen Vater abholte und ins KZ Dachau transportierte. Plötzlich war alles anders – Angst, Unruhe, keine geregelten Zeiten mehr, die Mutter verweint, ständig unterwegs, um zu versuchen, meinem Vater Sachen und Geld nachzuschicken.
+<lb/>
+Ich war jetzt öfters mit einem Mädchen namens Edith beisammen, die in derselben Situation war wie ich, Vater als Jude im KZ, Mutter als „Arierin“ noch da, aber nicht wissend, wie es weitergehen sollte. Sie war etwas älter als ich, und versuchte mir so en passant zu erklären, wo und wie die Kinder herkamen, was mir aber nicht ganz einleuchten wollte. Wir saßen in einem finsteren Zimmer gegenüber der Herz-Jesu-Kirche in Graz, und sie sagte, ihre Leute wollten nach Palästina. Ich hatte etwas von einem Ort namens China gehört, wusste aber nur, dass es ziemlich weit weg sein müsste.
+<lb/>
+Dann kam im Dezember 1938, nachdem Mutter und ich schon einige Zeit in Knittelfeld bei den mütterlich-großmütterlichen Verwandten verbracht hatten, mein Vater aus Dachau zurück. Es war ein anderer Mensch, der da erschien, gebrochen, voller Angst, bereit alles herzugeben, wenn er nur wegfahren konnte von diesem Ort. Wir hatten zu diesem Zeitpunkt relativ viel Geld, da ein Onkel gestorben war, der eine Wäschefabrik in Wien gehabt, und uns einiges vermacht hatte. Ich hatte eine goldene Uhr erhalten, die irgendeine Melodie spielte.“ (Seite 21)
+<lb/>
+<lb/>
+Von Singapur fuhren wir nach Manila, damals eine weiße, schöne Stadt, wo ich zum ersten Mal in einer
+<emph style="cursive">Rickshaw</emph>
+saß; überall so viele fremde Gerüche. Später im Leben bildete ich mir oft ein, ich hätte wieder einen gleichen Geruch wahrgenommen, was stets auch eine Assoziation auslöste.
+<lb/>
+Hongkong war auch eine große Überraschung, da man hier zum ersten Mal wieder einen Berg sah, Victoria Hill. Hier wurden wir potentielle Emigranten von den Engländern schon etwas schief angeschaut und behandelt. Man musste sein Visum für China zeigen.
+<lb/>
+Es kamen drei Sturmtage im Chinesischen Meer. Mama ging es schlecht und Papa war schon sehr erregt, wie es uns im fremden Shanghai wohl ergehen würde. Dann fuhren wir den Whangpoo hinauf und waren nach 28 Tagen am Ziel.
+<lb/>
+Alles war sehr enttäuschend, nur mit
+<emph style="cursive">cumshaw</emph>
+im Pass wurde man halbwegs flott abgefertigt. Leute, die ein oder zwei Wochen vor uns dort angekommen waren, also „alte Hasen“, brachten uns in eine Art Lager, wo tausende Emigranten lebten, bis sie ein eigenes Quartier gefunden hatten. Ich musste mit meinem Vater in einer Männerbaracke, die Mama in einer Frauenbaracke schlafen. In einer großen Halle gab es kaum was Essbares. In riesigen Kesseln kochten sie morgens Tee, dann wurden diese provisorisch ausgewaschen und zu Mittag gab es aus demselben Kessel einen Bohnen-Karotten Eintopf. Ich habe die nächsten 15 Jahre Karotten nicht mehr angerührt.
+<lb/>
+Nach etwa einer Woche zogen wir in ein Haus, welches eine Emigrantenfamilie aus Deutschland gemietet hatte, in ein großes Zimmer mit drei Betten und sonst fast keinem Mobiliar. Wir aßen noch den Eintopf aus dem Lager, da wir keine Kochgelegenheit hatten, außer für Tee oder Kaffee auf einem Elektrokocher.
+<lb/>
+Mein Vater, noch immer unter Dachauschock, konnte keine geregelte Arbeit finden und begann Wertgegenstände zu verkaufen. Dann brachte ihn jemand auf die gute Idee, in einem Kasino sein Glück zu versuchen und da ging er jeden Abend hin und brachte ganz selten wieder etwas Geld nach Hause. Es gab jetzt oft Streit deswegen und ich wusste eigentlich nicht warum.
+<lb/>
+Ich besuchte eine von Emigranten gegründete Schule, wo es ganz wild zuging; niemand wusste, in welcher Klasse er oder sie sein sollte, die Lehrer versuchten, eine Mischung aus Deutsch und Englisch an die Kinder heranzubringen, aber es passte keiner auf. Als ich dann mehr als ein Jahrzehnt später in Österreich als Lehrer einen Chef hatte, der, auch um mich zu reizen, öfters von Zuständen wie in einer Judenschule sprach, musste ich immer an diese Schule denken.“ (Seite 25–27)
+<lb/>
+<lb/>
+„Also, der Sommer 1941, Krieg in Europa, und deswegen konnten wir nicht mehr, wie Mama wollte, über Vladiwostok mit der Transsibirischen Eisenbahn nach Knittelfeld zurück. Außerdem war ich immer noch ein trauriges Etwas, das nicht ins Großdeutsche Reich heimkehren konnte. Meine Mutter bekam auf der Botschaft das „J“ aus dem Pass gestrichen, aber ich fiel unter die „Nürnberger Gesetze“ und wurde als
+<emph style="cursive">Stateless German Refugee</emph>
+eingestuft, was mir später noch viel Ärger bringen sollte.
+<lb/>
+Ich glaube, es war der letzte Sommer, in dem ich mich noch als Kind fühlte und auch so aufführte. (Seite 38–19)
+<lb/>
+<lb/>
+Ich habe das alles so ausführlich geschildert, weil es für meine weiteren Handlungen und Schwierigkeiten die Grundlage bildet. Ich lebte also weiter bei meiner Mutter im sich leerenden Heim, durfte aber nicht in den
+<emph style="cursive">district</emph>
+, weil ich ja nicht mehr heraus durfte. Aber natürlich waren jetzt die meisten meiner Bekannten dort, und viele Dinge waren nur von den anderen Flüchtlingen zu bekommen. Also musste ich doch irgendwie hinein. Nach Muster der Kapos in den KZs hatten die
+<emph style="cursive">Japs</emph>
+eine Art Hilfstruppe aufstellen lassen. Sie hießen „Pao Chia“, trugen Armbinden und waren manchmal genauso lästig wie die Japaner selbst. Das Glück war, dass die meisten nicht wussten, was sie von meinem Ausweis ohne Farbrand halten sollten. Ich spielte mich immer als Mensch auf, der das Recht hatte, außerhalb des
+<emph style="cursive">districts</emph>
+zu leben und daher auch keine Erlaubnis zum Verlassen benötigte. Meistens ging es gut, besonders am Anfang der Kontrollen, aber später wurden die Leute etwas gewitzter und glaubten meinen Schmähs nicht mehr. Der
+<emph style="cursive">district</emph>
+umfasste den Teil von Hongkew, in dem die meisten Flüchtlinge lebten, einschließlich der von mir schon erwähnten Bombenruinen aus der Zeit des Krieges von 1937, und dort kannte ich mich wirklich gut aus. (Seite 54)“
+</p>
+<caption>Titel / Beschreibung</caption>
+<p>Die Jahre der Emigration prägten Helmut Spielmann und seine Familie bis ins hohe Alter. Er schrieb in mehreren Anläufen ab den 1950er Jahren an seinen Erinnerungen über seine Jugend in Shanghai. Das Manuskript stellte er schließlich 1988 fertig.</p>
+<caption>Quellenzitat</caption>
+<p>Helmut Spielmann, 50 Jahre danach – Shanghai: ein Erlebnisbericht, in: Gerald Lamprecht/Ingeborg Radimsky (Hg.), Helmut Spielmann. Shanghai – Eine Jugend im Exil, Graz 2015, 21–183.</p>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty430" xml:id="IMAGE.1">
+<desc>Auf den Bild zu sehen sind Rudolf und Paula Spielmann mit dem kleinen Helmut.</desc>
+<desc type="title">Rudolf und Paula Spielmann mit dem kleinen Helmut (© Familie Spielmann)</desc>
+</graphic>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty430" xml:id="IMAGE.2">
+<desc>Ausweis von Helmut Spielmann mit dem gelben Streifen für jüdische Flüchtlinge rechts oben.</desc>
+<desc type="title">Ausweis von Helmut Spielmann mit dem gelben Streifen für jüdische Flüchtlinge rechts oben. (© Familie Spielmann)</desc>
+</graphic>
+</facsimile>
+</TEI>

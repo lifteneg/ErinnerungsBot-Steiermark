@@ -1,0 +1,246 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Ein Ort des Terrors – die Hinrichtungsstätte Graz</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty176</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty176</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty174</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty177</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty181</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty182</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit einer der zentralen Terrororte des NS-Regimes auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext Verfolgung und Massenmord.</p>
+<p rend="Ort, Gemeinde EO/EZ">Graz (8010)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Die steirischen Opferverbände haben 1962 im ehemaligen Hinrichtungsraum der Justizanstalt des Landesgerichts Graz einen Gedenkraum eingerichtet, in dem jährlich Gedenkveranstaltungen der steirischen Opferverbände mit den slowenischen Opferverbänden stattfinden. Auf ursprünglich vier Tafeln wurde der damals namentlich bekannten Männern und Frauen gedacht, die hier hingerichtet wurden. Im Jahr 2014 wurde eine neue, um zahlreiche Personen erweiterte Gedenktafel angebracht. An der Außenseite des Landesgerichts erinnert seit 1989 zudem eine
+<ref target="http://gams.uni-graz.at/o:derla.sty177">Tafel</ref>
+an die ehemalige Hinrichtungsstätte und ihre Opfer.
+<lb/>
+<lb/>
+Durch die sprunghafte Zunahme von Todesurteilen vor dem
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss178">Volksgerichtshof</ref>
+von 102 im Jahr 1941 auf 1.192 im darauffolgenden Jahr, beschloss das Reichsjustizministerium im gesamten Land neue Hinrichtungsstätten zu errichtet. In diesem Zusammenhang sollte auch im ehemaligen Österreich zusätzlich zu der Hinrichtungsstätte in Wien eine Guillotine in Linz oder Graz aufgestellt werden. Während sich das Gericht in Linz als Standort für eine Guillotine rasch als ungeeignet erwies, hieß es aus Graz Ende des Jahres 1942, dass in der Untersuchungshaftanstalt Graz „die Errichtung einer Richtstätte möglich“ sei. Die Dringlichkeit, in Graz rasch eine Hinrichtungsstätte zu errichten, ergab sich für das Reichsjustizministerium Anfang des Jahres 1943 u.a. auch daraus, „dass sich in Wien in den dortigen Gefängnissen und Vollzugsanstalten etwa 200 zum Tode Verurteilte befinden.“ Darunter waren auch 38 Widerstandskämpfer, die vom Volksgerichtshof in Graz zum Tode verurteilt worden waren. Wien könnte – so hieß es in einem Bericht an den Minister – „dadurch entlastet werden, dass in Graz und in Prag neue Richtstätten errichtet werden. Sobald diese fertig sind, werden die Verurteilten aus dem Bezirk Graz in Graz, die Verurteilten aus dem Bezirk Brünn in Prag hingerichtet werden.“
+<lb/>
+<lb/>
+Es sollte schließlich bis Ende Juli 1943 dauern, bis die Hinrichtungsstätte in Graz fertiggestellt wurde. In den folgenden knapp mehr als 18 Monaten wurden hier 155 Personen exekutiert, darunter 44 Männer und fünf Frauen, die wegen diverser krimineller Delikte von den Sondergerichten Graz, Leoben und Klagenfurt bzw. der Strafkammer beim Landgericht in Marburg zum Tode verurteilt wurden. Zudem wurden hier noch 23 Soldaten, die von verschiedenen Gerichten der Wehrmacht verurteilt worden waren, sowie 14 Frauen und 69 Männer, die wegen politischer Delikte (Hochverrat, Landesverrat, Wehrkraftzersetzung) zum Tode verurteilt worden waren, hingerichtet.
+<lb/>
+<lb/>
+Die Hinrichtungen im Keller der Untersuchungshaftanstalt hörten erst auf, als am 27. März 1945 der damals diensthabende Wachkommandant das Fallbeil verschwinden und von einem Justizwachebeamten und einem Häftling im südlichen Teil des Gartens des Gefangenenhauses vergraben ließ. Damit endeten allerdings in Graz die Hinrichtungen nicht. Die bereits zum Tode verurteilten Häftlinge, die in der Justizanstalt auf ihre Exekution warteten, wurden am 7. April 1945 von der Gestapo abgeholt und in die
+<ref target="http://gams.uni-graz.at/o:derla.sty181">SS-Kaserne Graz-Wetzelsdorf</ref>
+gebracht, wo sie erschossen wurden.
+<lb/>
+<lb/>
+<emph style="bold">Die letzten Stunden</emph>
+<lb/>
+Über die letzten Stunden der zum Tode verurteilten Häftlinge berichtete 1945 Pfarrer Dr. Anton Weber, der den Verurteilten – so sie es wünschten – als Seelsorger bei der Hinrichtung beistand.
+<lb/>
+<lb/>
+„Vor jeder Hinrichtung wurde ich vom Landesgericht telephonisch verständigt, und zwar von einem Gerichtsbeamten etwa 1 bis 5 Stunden vor der Hinrichtung. Ich hatte mich dann in das Gerichtsgebäude begeben und wurde in die Zelle der Verurteilten geführt. Zur Verleihung der hl. Sakramente wurde mir eine eigene Zelle zur Verfügung gestellt, in welcher ich mit den Verurteilten allein sein konnte. Hier hatte ich noch Gelegenheit, ihre Namen aufzuschreiben oder Mitteilungen entgegen zu nehmen. Diese Mitteilungen musste ich geheim halten und habe ich diese aufgehoben, um sie bei einem geeigneten Zeitpunkt einzeln weiterleiten zu können. […] Nach der Aussprache mit mir wurden die Delinquenten [= die Verurteilten] meistens wieder in ihre Zelle zurückgeführt, mussten dort bis zur Hinrichtung warten und auch ich wartete in der Zelle. Die Angeklagten erhielten auch vom Gericht die Bewilligung, noch Briefe zu schreiben, doch weiß ich nicht, ob diese Briefe je abgesandt wurden. Die Delinquenten wurden dann zur Hinrichtung von den Beamten des Hauses vorbereitet, sie wurden mit neuen Sträflingskleidern versehen, die Hände wurden ihnen mit Kettenspangen auf dem Rücken gefesselt und so wurden sie dann durch den Gang hin zum Raum geführt, in welchem die Hinrichtung stattfand. […] Ich konnte aus den Gesprächen der Häftlinge erfahren, warum sie verurteilt worden sind, und konnte die verschiedensten Delikte feststellen. Zum Großteil, fast immer, handelte es sich dabei um politische Vergehen, in ganz seltenen Fällen um kriminelle.
+<lb/>
+Einmal ist mir in Erinnerung, wurde ein Mann hingerichtet, welcher nur deswegen zum Tode verurteilt war, weil er einer Frau 5 RM zur Unterstützung gegeben hat und es sich herausstellte, dass diese Frau Kommunistin gewesen ist.
+<lb/>
+Viele der Angeklagten haben mir erzählt, dass sie auf der Gestapo furchtbar misshandelt worden sind. Man hat sie mit Stiefeln getreten und ihnen die Zähne eingeschlagen.
+<lb/>
+Die erste Hinrichtung, bei der ich zugegen war, war eine Frau namens Serfecz. Sie war sehr mutig. Sie war wegen kommunistischer Tätigkeit angeklagt und erklärte sich unschuldig. Sie erklärte dort, für ihre Überzeugung in den Tod zu gehen. Sie sang in ihrer Zelle noch Lieder, bis man sie zur Hinrichtung holte. Ein anderer Fall ist mir in Erinnerung. Es ist der Vizebürgermeister aus Judenburg, welcher sich sehr anständig verhielt und den Eindruck eines sehr lieben Menschen machte. Dieser war Sozialdemokrat. Ein anderer Fall ist mir in Erinnerung, wo ein schon weit über 60 Jahre altes Ehepaar aus Marburg zum Tode verurteilt wurde, weil man ihnen vorwarf, Partisanen unterstützt zu haben. […] Ich kann noch sagen, dass die meisten der zum Tode Verurteilten sehr mutig waren und auf Bestrafung ihrer Mörder große Hoffnung gesetzt haben.“
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Wolfgang Form / Oliver Uthe (Hg.): NS-Justiz in Österreich. Lage- und Reiseberichte 1938–1945. Wien 2004.</item>
+<item>Heimo Halbrainer: „Sei nicht böse, dass ich im Kerker sterben muss.“ Die Opfer der NS-Justiz in Graz 1938 bis 1945. Ein Gedenkbuch. Graz 2014.</item>
+<item>Heimo Halbrainer: Der Tod im Keller der Conrad-von-Hötzendorf-Straße Nr. 43, in: Nicole Pruckermayer (Hg.): Demokratie und Frieden auf der Straße: Comrade Conrade. Ein Kunst-, Forschungs- und Friedensprojekt in Graz 2016–2019. Graz 2019, S. 42–44.</item>
+<item>Hans Janeschitz (Hg.): Felieferhof. Ein Bericht über die amtlichen Untersuchungen der Massenmorde in der Schießstätte Felieferhof. Graz 1946.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Ein Ort des Terrors – die Hinrichtungsstätte Graz</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus kann durch den Fokus auf die Hinrichtungsstätte in Graz eine sinnvolle Vertiefung erfahren, da diese ein wesentlicher Ort des NS-Terrors war. Daher ist das Wissen um die dort begangenen Verbrechen entscheidend, um das NS-Regime als Gewaltherrschaft beschreiben zu können.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Fasse den Text über die Hinrichtungsstätte Graz (siehe Mehr Erfahren) zusammen, indem du dich insbesondere ihre Entstehung und ihr Ende konzentrierst.</item>
+<item>Erkläre anhand seiner Selbstzeugnisse (siehe Mehr Erfahren) die Rolle, die dem Gefängnisseelsorger Dr. Anton Weber in der Hinrichtungsstätte zukam.</item>
+<item>Erörtert die Bedeutung der Selbstzeugnisse von Dr. Anton Weber für die Erforschung der NS-Gewaltverbrechen.</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Die Auseinandersetzung mit nationalsozialistischen Gewaltverbrechen ist maßgeblich, um die Diktatur und ihre Folgen in ihrer Gesamtheit zu begreifen. Der totalitäre Charakter des Regimes wird insbesondere an den im Namen des Regimes begangenen Verbrechen deutlich. Im abschließenden Arbeitsauftrag soll schließlich quellenkritisch über die Erforschung dieses Aspekts der NS-Gewaltherrschaft nachgedacht werden.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die Schülerinnen beschäftigen sich bewusst mit den Tätigkeiten einer NS-Organisation.</item>
+<item>Die SchülerInnen reflektieren die Facetten der Erforschung der NS-Gewaltherrschaft.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty176" xml:id="IMAGE.1">
+<desc>Die Hinrichtungen von WiderstandskämpferInnen wurden zur Abschreckung öffentlich kundgemacht.</desc>
+<desc type="title">Kundmachung der Hinrichtung (DÖW)</desc>
+</graphic>
+</facsimile>
+</TEI>

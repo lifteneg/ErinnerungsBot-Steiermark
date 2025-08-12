@@ -1,0 +1,258 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Karl Drews: Ein Flugblatt gegen die NS-Euthanasie</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty31</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty31</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty24</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty39</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty81</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty292</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty300</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty378</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit der Biografie eines im Nationalsozialismus Verfolgten auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext von Verfolgung und Widerstand.</p>
+<p rend="Ort, Gemeinde EO/EZ">Graz (8010)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Im Jahr 2005 bringen die Stadt Graz und das Schauspielhaus Graz in Erinnerung an den Schauspieler, Regisseur und Widerstandkämpfer Karl Drews im Schauspielhaus eine Gedenktafel an. 2015 wird ihm zu Ehren auch ein
+<ref target="http://gams.uni-graz.at/o:derla.sty292">Stolperstein</ref>
+. Bereits 1996 wurde im Volkshaus der KPÖ in der Schützgasse der
+<ref target="http://gams.uni-graz.at/o:derla.sty39">„Karl-Drews-Klub“ mit Erinnerungstafel</ref>
+geschaffen.
+<lb/>
+<lb/>
+Karl Drews wurde 1901 in Triest geboren und seine Familie übersiedelte noch vor dem Ersten Weltkrieg nach Graz. Die Liebe zur Kunst war ihm schon in die Wiege gelegt, sein Onkel war der bekannte steirische Komponist und Volksliedforscher Viktor Zack. Karl Drews lernte am Konservatorium Violine und nahm Schauspielunterricht. Im Alter von 19 Jahren versuchte er eine in Graz völlig unbekannte Form des aus Paris und Berlin kommenden Varietétheaters populär zu machen: Er gründete das Grazer Überbrettl. Die Reaktionen der Öffentlichkeit waren positiv und dennoch musste Karl Drews sein Theater nach kurzer Zeit wieder schließen. Er arbeitete in der Folge im Rahmen des Werkbunds Freiland mit, wo er mit dem Marionettentheater Anfang der 1920er Jahre erste Erfolge feierte. In den nächsten Jahren wirkte er als Regisseur und Schauspieler an verschiedenen deutschsprachigen Bühnen in der Tschechoslowakei, in Graz, Salzburg, Linz und Leoben, ehe er bedingt durch die Wirtschaftskrise und der Schließungen der Theater keine Engagements mehr bekam. Er kehrte daraufhin nach Graz zurück, gründete den Verein arbeitsloser Schauspieler und veranstaltete an verschiedenen kleinen Bühnen Aufführungen von arbeitslosen Berufsschauspielern. Zudem gehörte Drews zu den Mitbegründern des Steiermärkischen Schriftstellerverbandes, wo er für das Theater- und Kabarettprogramm sowie für die Bildungsarbeit zuständig war.
+<lb/>
+Bereits seit Anfang der 1920er Jahre engagierte sich Drews auch politisch, wobei er vorerst vor allem Kulturveranstaltungen der Sozialdemokratischen und Kommunistischen Partei leitete. 1932 ging er nach Jugoslawien, heiratete, arbeitete am Zagreber Nationaltheater und inszeniert Carl Maria von Webers Oper „Der Freischütz“. 1935 wurde er als unerwünschter Ausländer aus Jugoslawien abgeschoben und kehrte in das von Arbeitslosigkeit und Diktatur gebeutelte Graz zurück. Dort übernahm er als Leiter die Kleinkunstbühne des Orpheum. Darüber hinaus gründete er eine eigene Film- und Schauspielschule.
+<lb/>
+<lb/>
+<emph style="bold">Im Widerstand gegen den Nationalsozialismus</emph>
+<lb/>
+In den letzten Wochen vor dem
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss4">„Anschluss“</ref>
+1938 beteiligte sich Karl Drews an Flugblattaktionen für die Unabhängigkeit Österreichs. Nach der NS-Machtübernahme brach er nach Frankreich auf, kehrte jedoch um, als er von der Verhaftung seiner Frau erfuhr. Während sie später allein nach Großbritannien reiste, blieb Karl Drews im Land und übernahm im Schauspielhaus Graz in der Spielsaison 1938/39 kleinere Rollen als Schauspieler. Unmittelbar nach seinem ersten Auftritt in Kleists „Prinz Friedrich von Homburg“ wurde er im Zuge einer großen Verhaftungswelle gegen bekannte Kommunisten verhaftet, wenige Tage später jedoch wieder freigelassen.
+<lb/>
+Ab 1940 arbeitete er als Versicherungsvertreter und baute die 1939 durch die Verhaftungen zerstörte Grazer Organisation der KPÖ mit Dr. Franz Weiß, Anton Kröpfl und
+<ref target="https://gams.uni-graz.at/o:derla.perssty#perssty319">Josef Neuhold</ref>
+wieder auf. Er knüpfte auch Kontakte in die Ober- und Weststeiermark sowie in die Umgebungsgemeinden von Graz. Nach der Rückkehr des Grazer Architekten
+<ref target="https://gams.uni-graz.at/o:derla.perssty#perssty51">Herbert Eichholzer</ref>
+aus der Türkei, der von der Exil-Führung der KPÖ den Auftrag hatte, die Verbindungen der Führung mit Wien und der Steiermark wieder herzustellen, verfasste die Gruppe um Drews und Eichholzer eine Reihe von Flugblättern. Darüber hielt die Oberreichsanwaltschaft am
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss178">Volksgerichtshof</ref>
+fest:
+<lb/>
+„Von der von den Angeschuldigten gebildeten Gruppe wurden illegale Schriften hergestellt und verbreitet. In der Schrift ‚Nazikultur‘ wird die Behauptung aufgestellt, dass die Insassen von Heil- und Pflegeanstalten in der Ostmark ins Altreich geschafft werden und dort plötzlich verstorben seien, und dass deshalb die Angehörigen der Ansicht seien, an diesen Insassen seien neue Giftgase erprobt worden. Sie schließt mit der Drohung: Ihr Nazi! Die anständigen Leute werden sich die Schandtaten merken. Vielleicht wird auch euer Hitler, den ihr vor März 1938 in Vorausahnung schon auf die Außenseite der Feldhofmauer gemalt habe, in Steinhof, aber innerhalb der Mauern landen.“ (7 J 497/41: Anklage des Oberreichsanwalts gegen Karl Drews u.a.)
+<lb/>
+<lb/>
+Anfang Februar 1941 wurde Karl Drews verhaftet, am 28. Juli 1942 in Graz gemeinsam mit seinen Mitstreitern zum Tode verurteilt und am 7. Oktober 1942 in Wien hingerichtet. In seinem letzten Brief an seine Mutter schrieb er am Tag der Exekution:
+<lb/>
+„Lebe glücklich, gesund und denke in heiteren Bildern an Deinen Buben, der bis zuletzt ein glücklicher
+<emph style="cursive">Phantast</emph>
+war – wie Ihr alle meint – und vielleicht doch immer am klarsten gesehen hat.“ (Brief von Karl Drews an seine Mutter, 7.10.1942. in: Halbrainer, „In der Gewißheit, daß Ihr den Kampf weiterführen werdet.“ S. 95.)
+</p>
+<caption>Literatur</caption>
+<list>
+<item><p>Im Jahr 2005 bringen die Stadt Graz und das Schauspielhaus Graz in Erinnerung an den Schauspieler, Regisseur und Widerstandkämpfer Karl Drews im Schauspielhaus eine Gedenktafel an. 2015 wird ihm zu Ehren auch ein<ref target="http://gams.uni-graz.at/o:derla.sty292">Stolperstein</ref>. Bereits 1996 wurde im Volkshaus der KPÖ in der Schützgasse der <ref target="http://gams.uni-graz.at/o:derla.sty39">„Karl-Drews-Klub“ mit Erinnerungstafel</ref> geschaffen.<lb></lb><lb></lb>Karl Drews wurde 1901 in Triest geboren und seine Familie übersiedelte noch vor dem Ersten Weltkrieg nach Graz. Die Liebe zur Kunst war ihm schon in die Wiege gelegt worden, sein Onkel war der bekannte steirische Komponist und Volksliedforscher Viktor Zack. Karl Drews lernte am Konservatorium Violine und nahm Schauspielunterricht. Im Alter von 19 Jahren versuchte er eine in Graz völlig unbekannte Form des aus Paris und Berlin kommenden Varietétheaters populär zu machen: Er gründete das Grazer Überbrettl. Die Reaktionen der Öffentlichkeit waren positiv und dennoch musste Karl Drews sein Theater nach kurzer Zeit wieder schließen. Er arbeitete in der Folge im Rahmen des Werkbunds Freiland mit, wo er mit dem Marionettentheater Anfang der 1920er-Jahre erste Erfolge feierte. In den nächsten Jahren wirkte er als Regisseur und Schauspieler an verschiedenen deutschsprachigen Bühnen in der Tschechoslowakei, in Graz, Salzburg, Linz und Leoben, ehe er bedingt durch die Wirtschaftskrise und der Schließungen der Theater keine Engagements mehr bekam. Er kehrte daraufhin nach Graz zurück, gründete den Verein arbeitsloser Schauspieler und veranstaltete an verschiedenen kleinen Bühnen Aufführungen von arbeitslosen Berufsschauspielern. Zudem gehörte Drews zu den Mitbegründern des Steiermärkischen Schriftstellerverbandes, wo er für das Theater- und Kabarettprogramm sowie für die Bildungsarbeit zuständig war.<lb></lb>Bereits seit Anfang der 1920er Jahre engagierte sich Drews auch politisch, wobei er vorerst vor allem Kulturveranstaltungen der Sozialdemokratischen und Kommunistischen Partei leitete. 1932 ging er nach Jugoslawien, heiratete, arbeitete am Zagreber Nationaltheater und inszeniert Carl Maria von Webers Oper „Der Freischütz“. 1935 wurde er als unerwünschter Ausländer aus Jugoslawien abgeschoben und kehrte in das von Arbeitslosigkeit und Diktatur gebeutelte Graz zurück. Dort übernahm er als Leiter die Kleinkunstbühne des Orpheum. Darüber hinaus gründete er eine eigene Film- und Schauspielschule. <lb></lb><lb></lb><emph style="bold">Im Widerstand gegen den Nationalsozialismus</emph><lb></lb>In den letzten Wochen vor dem <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss4">„Anschluss“</ref> 1938 beteiligte sich Karl Drews an Flugblattaktionen für die Unabhängigkeit Österreichs. Nach der NS-Machtübernahme brach er nach Frankreich auf, kehrte jedoch um, als er von der Verhaftung seiner Frau erfuhr. Während sie später allein nach Großbritannien reiste, blieb Karl Drews im Land und übernahm im Schauspielhaus Graz in der Spielsaison 1938/39 kleinere Rollen als Schauspieler. Unmittelbar nach seinem ersten Auftritt in Kleists „Prinz Friedrich von Homburg“ wurde er im Zuge einer großen Verhaftungswelle gegen bekannte Kommunisten verhaftet, wenige Tage später jedoch wieder freigelassen.<lb></lb>Ab 1940 arbeitete er als Versicherungsvertreter und baute die 1939 durch die Verhaftungen zerstörte Grazer Organisation der KPÖ mit Dr. Franz Weiß, Anton Kröpfl und <ref target="https://gams.uni-graz.at/o:derla.perssty#perssty319">Josef Neuhold</ref> wieder auf. Er knüpfte auch Kontakte in die Ober- und Weststeiermark sowie in die Umgebungsgemeinden von Graz. Nach der Rückkehr des Grazer Architekten <ref target="https://gams.uni-graz.at/o:derla.perssty#perssty51">Herbert Eichholzer</ref> aus der Türkei, der von der Exil-Führung der KPÖ den Auftrag hatte, die Verbindungen der Führung mit Wien und der Steiermark wieder herzustellen, verfasste die Gruppe um Drews und Eichholzer eine Reihe von Flugblättern. Darüber hielt die Oberreichsanwaltschaft am <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss178">Volksgerichtshof</ref> fest:<lb></lb>„Von der von den Angeschuldigten gebildeten Gruppe wurden illegale Schriften hergestellt und verbreitet. In der Schrift ‚Nazikultur‘ wird die Behauptung aufgestellt, dass die Insassen von Heil- und Pflegeanstalten in der Ostmark ins Altreich geschafft werden und dort plötzlich verstorben seien, und dass deshalb die Angehörigen der Ansicht seien, an diesen Insassen seien neue Giftgase erprobt worden. Sie schließt mit der Drohung: Ihr Nazi! Die anständigen Leute werden sich die Schandtaten merken. Vielleicht wird auch euer Hitler, den ihr vor März 1938 in Vorausahnung schon auf die Außenseite der Feldhofmauer gemalt habe, in Steinhof, aber innerhalb der Mauern landen.“ (7 J 497/41: Anklage des Oberreichsanwalts gegen Karl Drews u.a.)<lb></lb><lb></lb>Anfang Februar 1941 wurde Karl Drews verhaftet, am 28. Juli 1942 in Graz gemeinsam mit seinen Mitstreitern zum Tode verurteilt und am 7. Oktober 1942 in Wien hingerichtet. In seinem letzten Brief an seine Mutter schrieb er am Tag der Exekution:<lb></lb>„Lebe glücklich, gesund und denke in heiteren Bildern an Deinen Buben, der bis zuletzt ein glücklicher <emph style="cursive">Phantast</emph> war – wie Ihr alle meint – und vielleicht doch immer am klarsten gesehen hat.“ (Brief von Karl Drews an seine Mutter, 7.10.1942. in: Halbrainer, „In der Gewißheit, daß Ihr den Kampf weiterführen werdet.“ S. 95.)</p></item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Karl Drews: Ein Flugblatt gegen die NS-Euthanasie</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus erfährt durch die Implementierung biografischer Zugänge eine produktive Erweiterung. Die Beschäftigung mit Biografien eröffnet zusätzliche Perspektiven auf das historische Geschehen und ermöglicht es den Lernenden, sich über einen konkreten Lebensweg der Alterität der Vergangenheit anzunähern. Die Verbindung des biografischen Arbeitens mit Quellenarbeit ermöglicht dabei den Aufbau diverser historischer Kompetenzen, wie etwa der historischen Methodenkompetenzen und Orientierungskompetenzen.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Arbeite aus dem Flugblatt (siehe Bildquellen) heraus, was die Verfasser anklagen. Versuche rhetorische Stilmittel zu verdeutlichen, die von den Verfassern verwendet werden, um die Bevölkerung zu erreichen.</item>
+<item>Erkläre anhand der Textquelle (siehe Textquellen), weshalb Karl Drews zum Ziel der Verfolgung durch die Nationalsozialisten wurde.</item>
+<item>Nimm persönlich Stellung zu Karl Drews Widerstandshandlung – wie siehst du sein Auftreten gegen den nationalsozialistischen Massenmord?</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Das Vermittlungsangebot zielt darauf ab, sich anhand der Widerstandshandlung von Karl Drews dem Themenkomplex „Ermordung von Menschen mit Beeinträchtigung“ anzunähern. Die Arbeitsaufträge 1 und 2 dienen dazu, Drews Widerstandshandlung zu erkennen und die „Gefahr“, die von solchen Flugblättern für die Nationalsozialisten ausging, zu verstehen. Abschließend soll die Fähigkeit zur historischen Urteilsbildung anhand des Schicksals von Karl Drews gestärkt werden.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich bewusst mit den Folgen der nationalsozialistischen Gewaltherrschaft.</item>
+<item>Die SchülerInnen lernen eine spezifische Widerstandshandlung kennen.</item>
+<item>Die SchülerInnen befassen sich mit der Ermordung von Menschen mit Beeinträchtigung im Nationalsozialismus.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty31" xml:id="IMAGE.1">
+<desc>Karl Drews (1901–1942)</desc>
+<desc type="title">Karl Drews (1901–1942) (© Heimo Halbrainer)</desc>
+</graphic>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty31" xml:id="IMAGE.2">
+<desc>Die Nationalsozialisten unternahmen zahlreiche Propagandaversuche, um Menschen mit Beeinträchtigung in der Gesellschaft als „unwertes Leben“ darzustellen und Akzeptanz für die NS-Euthanasie zu erreichen. Trotzdem sollten jedoch die konkreten Maßnahmen im Rahmen der NS-Euthanasie im Geheimen stattfinden. Von den Verbrechen sollte nichts nach außen dringen, weshalb zahlreiche Verschleierungsversuche unternommen wurden. So wurde den Angehörigen der im Zuge der NS-Euthanasie ermordeten Pfleglinge erfundene Todesursachen, falsche Todesorte und oft auch falsche Todestage mitgeteilt. Trotzdem drang das Verbrechen an die Öffentlichkeit. In Graz verfasste die Leitung der Widerstandsgruppe der KPÖ um Karl Drews und Herbert Eichholzer ein Flugblatt, das über den Massenmord informierte.</desc>
+<desc type="title">Flugblatt der Widerstandgruppe um Karl Drews und Herbert Eichholzer (© Heimo Halbrainer)</desc>
+</graphic>
+</facsimile>
+</TEI>

@@ -1,0 +1,225 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Die Gestapo Graz – Ort des Terrors</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty174</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty174</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty176</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty177</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit einer der zentralen Institutionen des NS-Regimes auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext Verfolgung und Massenmord.</p>
+<p rend="Ort, Gemeinde EO/EZ">Stadt Graz (8010)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+1995 wurde durch den damaligen Innenminister Caspar Einem in Erinnerung daran, dass im Gebäudekomplex Polizeidirektion Paulustorgasse zwischen 1938 und 1945 auch der Sitz der Gestapo war, im Innenhof ein Kirschbaum gepflanzt und eine Gedenktafel angebracht.
+<lb/>
+Unmittelbar nach dem „Anschluss“ 1938 wurde mit dem Runderlass des Chefs der Deutschen Polizei, Reichsführer SS Heinrich Himmler, über die „Organisation der Geheimen Staatspolizei“ die ehemalige Sicherheitsdirektion für Steiermark zur Staatspolizeistelle. Verdienstvolle ehemalige illegale Nationalsozialisten und anpassungsfähige Polizeibeamte bildeten in der Folge in Graz den über 100 Personen umfassenden Gestapoapparat, der beim Paulustor, im Haus Parkring 4, seinen Sitz hatte.
+<lb/>
+Die Gestapo in Graz gliederte sich in verschiedene Referate, wobei diese wieder Unterabteilungen hatten. So gab es ein sogenanntes Nachrichtenreferat, in dem die Informationen der V-Leute bearbeitet wurden, sowie Referate, die zuständig waren für die Linksopposition, Verstöße gegen das Rundfunk- und Heimtückegesetz, die Rechtsopposition, Religions- und Judenangelegenheiten, Schutzhaft- und KZ-Angelegenheiten sowie für Spionage und Grenzangelegenheiten. Ein eigenes Referat gab es für „Ausländerangelegenheiten“, da diese in Strafsachen einer „Sonderbehandlung“ durch das Reichssicherheitshauptamt (RSHA) in Berlin unterlagen. Dabei kam es zu einer Arbeitsteilung zwischen der Gestapo Graz und dem RSHA in Berlin. Demnach war die Gestapo für Verhaftung, Einvernahme und Strafanträge zuständig, während das RSHA in Berlin den Vollzug der in den meisten Fällen beantragten Todesstrafe anordnete. Die Hinrichtungen fanden letztlich wieder vor Ort, in den Gemeinden, wo die AusländerInnen „straffällig“ geworden waren, oder im hinteren Hof des Polizeipräsidiums statt. .
+<lb/>
+Die Gestapostelle Graz war – trotz ihrer über 100 Mitarbeitern – personell nicht sehr gut ausgestattet. Dennoch gelange es ihr in der Steiermark nicht nur tausende RegimegegnerInnen auszuforschen, sondern auch einen Großteil des organisierten Widerstands zu zerschlagen. Neben Misshandlungen und Folter konnte sie zur Gewinnung von Informationen auch auf den systematischen Einsatz von Konfidenten (V-Leuten) zurückgreifen. Dazu wurden verhaftete politische GegnerInnen um den Preis der Nichtabschiebung in ein Konzentrationslager wieder freigelassen, damit diese in den Widerstandsorganisationen wieder tätig sein und das Nachrichtenreferat der Gestapo mit Informationen beliefern konnten. Außerdem konnte die Gestapo sich auf die Zuträgerdienste von „Partei- und Volksgenossen und -genossinnen“ verlassen, die jede Form abweichenden Verhaltens – von „wehrkraftzersetzenden“ Reden über das verbotene Hören von „Feindsendern“ bis hin zu verbotenen Kontakten mit ZwangsarbeiterInnen oder Kriegsgefangenen – denunzierten. Zigtausende solche „kleine Widersätzlichkeiten“ landeten so bei der Gestapo in Graz, wo die jeweiligen Referate die unterschiedlichen Delikte bearbeiteten.
+<lb/>
+Diese entschieden in der Folge, was mit den angezeigten bzw. ihr überstellten Personen geschehen sollte. Dabei hatte die Gestapo unterschiedliche Möglichkeiten. Sie reichten von einer Geldstrafe, dem so genannten Sicherungsgeld, über Redeverbot und Gauverweis – dies betraf vielfach Priester – bis hin zur sogenannten
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss144">„Schutzhaft“</ref>
+, in welche die meisten politisch Verdächtigen genommen wurden. Im „Schutzhafterlass“ aus dem Jahr 1939 hieß es: „Die Schutzhaft kann als Zwangsmaßnahme der Geheimen Staatspolizei zur Abwehr aller volks- und staatsfeindlichen Bestrebungen gegen Personen angeordnet werden, die durch ihr Verhalten den Bestand und die Sicherheit des Volkes und Staates gefährden.“ Die „Schutzhaft“ ist „grundsätzlich in staatlichen Konzentrationslagern zu vollstrecken.“
+<lb/>
+Zwischen 12. März 1938 und dem Kriegsende waren in der Steiermark von der Gestapo sowie anderen Dienststellen insgesamt 46.730 Personen beim Paulustor eingeliefert worden. Rund die Hälfte wurde nach erfolgter Einvernahme wieder auf freien Fuß gesetzt. Die anderen wurden den Gerichten übergeben, in ein Konzentrations- bzw. ein Arbeitslager eingeliefert oder an andere Sicherheitsdienststellen und Gefangenenhäuser überstellt. .
+<lb/>
+Im Zuge der Räumung der Haftanstalten in der Endphase der NS-Herrschaft wurden Häftlinge der Grazer Gestapo einer sogenannten „Sonderbehandlung“ unterzogen. Angehörige der Grazer Gestapo überstellten zwischen 2. April und 2. Mai 1945 49 Gestapo-Häftlinge in die SS-Kaserne nach Wetzelsdorf, wo diese erschossen wurden.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Heimo Halbrainer: NS-Terror in der Steiermark, in: Heimo Halbrainer/ Gerald Lamprecht / Ursula Mindler (Hg.): NS-Herrschaft in der Steiermark. Positionen und Diskurse, Wien-Köln-Weimar 2012, S. 243–266.</item>
+<item>Heimo Halbrainer: Palais Wildenstein: Die Polizeidirektion während der NS-Zeit, in: herbst. Theorie zur Praxis. Magazin des Steirischen Herbst 2014, S. 106–109.</item>
+<item>Heimo Halbrainer: Widerstand und Verrat – Die Unterwanderung des steirischen Widerstands durch V-Leute der Gestapo, in: Margit Franz / Heimo Halbrainer / Gerald Lamprecht u.a. (Hg.): Mapping contemporary history. Zeitgeschichten im Diskurs, Wien-Köln-Weimar 2008, S. 321–349.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Die Gestapo Graz – Ort des Terrors</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus kann durch den Fokus auf die Terrororganisation der Gestapo eine sinnvolle Vertiefung erfahren, da diese eine zentrale Rolle in der Etablierung und Stabilisation des totalitären Herrschaftsanspruchs des Regimes spielte. Daher ist das Wissen um die Verbrechen der Gestapo entscheidend, um das NS-Regime als Gewaltherrschaft beschreiben zu können.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Arbeite aus dem Text (siehe Mehr Erfahren) die Tätigkeiten der Gestapo heraus.</item>
+<item>Erkläre anhand der Ergebnisse aus Arbeitsauftrag 1 die Bedeutung der Gestapo im NS-Machtapparat. .</item>
+<item>Erörtert die Bedeutung, die eine Geheimpolizei in einer Diktatur hat!</item>
+<item>Beurteile die derzeitige Situation in Graz, in der die Geschichte des Palais Wildenstein von außen nicht erkennbar ist.</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Die Auseinandersetzung mit nationalsozialistischen Gewaltverbrechen ist maßgeblich, um die Diktatur und ihre Folgen in ihrer Gesamtheit zu begreifen. Der totalitäre Charakter des Regimes wird insbesondere an den Verbrechen der Geheimen Staatspolizei deutlich. Im abschließenden Arbeitsauftrag soll schließlich über den Umgang mit der Vergangenheit von Orten, Gebäuden und Plätzen nachgedacht werden.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die Schülerinnen beschäftigen sich bewusst mit den Tätigkeiten einer NS-Terrororganisation.</item>
+<item>Die SchülerInnen reflektieren die Notwendigkeit von offiziellem Gedenken an die NS-Gewaltherrschaft.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty174" xml:id="IMAGE.1">
+<desc>Den Menschen war die Existenz der Gestapo und ihre Funktion bewussst. So berichtete beispielsweise die Tageszeitung "Tagespost" stolz über das neue Amtsgebäude der Gestapo, in der sich auch ein Gefängnis befand.</desc>
+<desc type="title">Tagespost, 2. Juli 1938</desc>
+</graphic>
+</facsimile>
+</TEI>

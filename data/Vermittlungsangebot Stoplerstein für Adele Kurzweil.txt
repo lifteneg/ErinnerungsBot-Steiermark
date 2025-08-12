@@ -1,0 +1,260 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Adele Kurzweil: Auschwitz – das Ende einer Flucht</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty346</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty346</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty347</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty348</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit der Biografie einer im Nationalsozialismus Verfolgten auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext Verfolgung und Widerstand.</p>
+<p rend="Ort, Gemeinde EO/EZ">Stadt Graz (8010)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Im Jahr 2014 wurden vom Verein für Gedenkkultur in Graz, in der Schröttergasse 7, dem ehemaligen Wohnhaus der Familie Kurzweil, in Erinnerung an Adele und ihre Eltern
+<ref target="http://gams.uni-graz.at/o:derla.sty347">Bruno</ref>
+und
+<ref target="http://gams.uni-graz.at/o:derla.sty348">Gisela</ref>
+Kurzweil
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss198">Stolpersteine</ref>
+verlegt. Die Familie Kurzweil, von den Nationalsozialisten als Juden verfolgt, floh 1938 aus Graz nach Frankreich, war allerdings nach dem Überfall der Wehrmacht auf Frankreich im Frühjahr 1940 erneut zur Flucht gezwungen. Letztlich wurden Sie verhaftet, deportiert und in Auschwitz ermordet.
+<lb/>
+<emph style="bold">Eine glückliche Kindheit</emph>
+<lb/>
+Die Familie Kurzweil kam vor dem Ersten Weltkrieg aus Wien nach Graz. Der 1891 geborene Bruno, Sohn eines k.u.k. Stabsarztes, maturierte 1809 am heutigen Akademischen Gymnasium und studierte anschließend bis 1914 in Graz Jus. Bereits während seines Studiums schloss er sich den Sozialdemokraten an. Auch wenn er selbst nie politische Funktionen innegehabt hatte, so zählten die Sozialdemokratische Partei und viele ihrer Mitglieder ebenso wie die Freie Gewerkschaft, die Mietervereinigung und die Stadtgemeinde Graz zu seinen Klienten als Rechtsanwalt. Wiederholt verteidigte Bruno Kurzweil Sozialdemokraten vor Gericht und er führte spektakuläre Prozesse gegen Nationalsozialisten. Auch sein ganzes privates Umfeld bestand aus sozialdemokratischen FreundInnen.
+<lb/>
+Im Jahr 1922 heiratete Bruno Kurzweil Gisela und am 31. Jänner 1925 kam ihr einziges Kind Adele zur Welt. Adele besuchte zunächst die Mädchenvolksschule am Graben und anschließend das Franz Ferdinand Oberlyzeum in der Sackstraße. Zur jüdischen Gemeinde hatte sie keinen Kontakt, da ihr Vater bereits 1912 aus der jüdischen Gemeinde ausgetreten war. Sie selbst folgte ihm mit ihrer Mutter im Jahr 1926, womit die Familie konfessionslos war. Mit der Machtübernahme durch die Nationalsozialisten 1938 und der Einführung der „Nürnberger Rassengesetze“ wurden Adele, Bruno und Gisela jedoch wieder zu „Juden“ gemacht und verfolgt.
+<lb/>
+<emph style="bold">Flucht aus Graz nach Paris</emph>
+<lb/>
+Während Adele das Schuljahr 1937/38 noch beendete, waren ihre Eltern bereits auf der Suche nach Fluchtmöglichkeiten. Ihrem Vater war bewusst, dass er wegen seiner jüdischen Abstammung und seiner politischen Einstellung keine Zukunft im Deutschen Reich mehr hatte. So wurde er Anfang Juni 1938 aus der Rechtsanwaltskammer ausgeschlossen und mit Berufsverbot belegt.
+<lb/>
+Im Sommer 1938 boten sich mit Australien und Frankreich zwei Staaten für eine Auswanderung an. Die Entscheidung fiel jedoch auf Frankreich, da sich die gesamte Führung der österreichischen Sozialdemokratie im Pariser Exil befand und Bruno Kurzweil sich ihr anschließen wollte. Am 24. August 1938 erhielt die Familie ihre Reisepässe und am 17. Oktober erreichte die Familie Paris.
+<lb/>
+Bruno Kurzweil arbeitete für die „Auslandsvertretung der österreichischen Sozialisten“ und schrieb juristische Texte für die Zeitschrift „Sozialistischer Kampf“. Seine Frau Gisela ließ sich zur Masseurin ausbilden, Tochter Adele besuchte in Paris die Schule. Sie war nicht das einzige Flüchtlingskind und schloss sich der von ExilantInnen in Paris gegründeten Gruppe „Freundschaft“, der „Roten Falken“ an. Mit ihren neuen FreundInnen unternahm sie gemeinsame Wanderungen, machte Ausflüge, diskutierte und erfreute sich an der Gemeinschaft.
+<lb/>
+<emph style="bold">Der Weltkrieg: Paris – Montmorency – Montauban – Auschwitz</emph>
+<lb/>
+Mit Kriegsausbruch wurde Bruno Kurzweil als deutscher Staatsbürger zum „feindlichen Ausländer“ und im Lager Meslay-du-Maine interniert. Auch Adele konnte nicht mehr zu ihrer Mutter zurück und kam mit ihren FreundInnen in ein Heim für Flüchtlingskinder in Montmorency nahe Paris. Nur die Mutter Gisela konnte in Paris bleiben.
+<lb/>
+Im Heim, das von einer privaten jüdischen Hilfsorganisation
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss212">(Organisation de Secours aux Enfants, OSE)</ref>
+mit reformpädagogischen Ansätzen geführt wurde, konnte die Gruppe der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss213">„Roten Falken“</ref>
+zusammenbleiben. Adele ging weiter zur Schule, litt aber sehr unter der Trennung von ihrer Familie, mit der sie nur über Briefe und Postkarten in Kontakt sein konnte.
+<lb/>
+Nach dem Überfall der Deutschen Wehrmacht auf Belgien, die Niederlande, Luxemburg und Frankreich im Mai 1940, mussten die Flüchtlinge Paris und jene Teile Frankreichs, die von der Wehrmacht eingenommen wurden, fluchtartig verlassen. Sie versuchten sich nach Südfrankreich zu retten, auch die Familie Kurzweil. Adele verließ Anfang Juni 1940 das Kinderheim und fuhr wie viele andere Bekannte nach Montauban. In der kleinen Stadt nördlich von Toulouse hatte sich auch die Auslandsvertretung der österreichischen Sozialisten zurückgezogen. Hier im freien Frankreich, dessen Regierung ihren Sitz in der Stadt Vichy hatte, versuchten die Flüchtlinge Ausreisepapiere in sichere Länder, vor allem in Übersee, zu organisieren. Auch Bruno Kurzweil, der im Februar 1940 aus der Internierung entlassen worden war, setzte sich für Flüchtlinge ein und versuchte zugleich, auch für seine eigene Familie gültige Papiere zu erhalten. Zwar ergaben sich immer wieder Möglichkeiten, doch nie für die ganze Familie. Eine Trennung der Familie kam für ihn jedoch nicht in Frage, doch die Zeit wurde immer knapper und das Leben gefährlicher.
+<lb/>
+Denn die Regierung in Vichy kollaborierte mit den Nationalsozialisten und so mussten sich im Juli 1941 alle Jüdinnen und Juden registrieren lassen. Während viele dieser Anordnung nicht Folge leisteten und in den Untergrund abtauchten, ließ Bruno Kurzweil, wahrscheinlich im Vertrauen auf den „Rechtsstaat“, seine Familie registrieren: ein Fehler, wie sich später herausstellen sollte. Denn auf Drängen der deutschen Regierung begann man Mitte Juli 1942 in
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss214">Vichy-Frankreich</ref>
+Razzien durchzuführen. Am 26. August 1942 wurde die Familie Kurzweil in ihrer Wohnung verhaftet, in das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss215">Arbeitslager Camp de Septfonds</ref>
+gebracht und am 1. und 2. September in das Sammel- und Durchgangslager
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss199">Drancy</ref>
+, rund 20 Kilometer nordöstlich von Paris verfrachtet. Von hier aus erfolgten die Deportationen der Jüdinnen und Juden in die Vernichtungslager. Im Transport Nr. 30 vom 9. September 1942 saßen viele Erwachsene, rund 100 Kinder und auch die Familie Kurzweil. Das Ziel war Auschwitz, Endstation einer vier Jahre andauernden Flucht. Unmittelbar nach der Ankunft wurde der Großteil der Deportierten sofort in den Gaskammern ermordet, so auch Bruno, Gisela und Adele Kurzweil.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Heimo Halbrainer, Graz-Pais-Montauban-Auschwitz. Stationen eines kurzen Lebens. Biographische Skizzen zur Familie Bruno, Gisela und Adele Kurzweil, in: ARGE Jugend gegen Gewalt und Rassismus/Christian Ehetreiber/Heimo Halbrainer/Bettina Ramp (Hg.), Der Koffer der Adele Kurzweil. Auf den Spuren einer Grazer jüdischen Familie in der Emigration, Graz 2001, 21–40,</item>
+<item>Heimo Halbrainer, Die gescheiterte Flucht der Adele Kurzweil und ihrer Familie, in: Christian Ehetreiber/Bettina Ramp/Sarah Ulrych (Hg.), … und Adele Kurzweil und … Fluchtgeschichte(n) 1938 bis 2008, Graz 2009, 17–62.</item>
+<item> Hanna Papanek, Die unentbehrliche, unerträgliche Forschung, in: ARGE Jugend gegen Gewalt und Rassismus/Christian Ehetreiber/Heimo Halbrainer/Bettina Ramp (Hg.), Der Koffer der Adele Kurzweil. Auf den Spuren einer Grazer jüdischen Familie in der Emigration, Graz 2001, 41–54.</item>
+<item>Heimo Halbrainer/Gerald Lamprecht, Nationalsozialismus in der Steiermark. Opfer – Täter – Gegner. Innsbruck-Wien-Bozen 2015.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Adele Kurzweil: Auschwitz – das Ende einer Flucht</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus erfährt durch die Implementierung biografischer Zugänge eine produktive Erweiterung. Die Beschäftigung mit Biografien eröffnet zusätzliche Perspektiven auf das historische Geschehen und ermöglicht es den Lernenden, sich über einen konkreten Lebensweg der Alterität der Vergangenheit anzunähern. Die Verbindung des biografischen Arbeitens mit Quellenarbeit ermöglicht dabei den Aufbau diverser historischer Kompetenzen, wie etwa der historischen Methodenkompetenzen und Orientierungskompetenzen.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Beschreibe die Fotografien (siehe Bildquellen) möglichst genau und verfasse davon ausgehend drei Fragen, über die du gerne mehr erfahren möchtest!</item>
+<item>Bewerte aufbauend auf Adeles Biografie (siehe Mehr Erfahren) und Hanna Papeneks Lebenserinnerungen (siehe Textquellen) die Bedeutung der Gruppe der „Roten Falken“, der die beiden angehörten, für die geflüchteten Jugendlichen.</item>
+<item>Formuliere drei neue Erkenntnisse, die dir anhand von Adeles Fluchtgeschichte klar wurden.</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Ausgangspunkt der Beschäftigung mit Adele Kurzweil ist die Fotografie ihres im Stadtmuseum ausgestellten Koffers, die zur Entwicklung von Forschungsfragen anregen soll. Mit Auftrag zwei soll erreicht werden, eine wichtige Facette von Flucht – nämlich die Bedeutung von sozialen Kontakten – kennenzulernen und einzuordnen. Auch der abschließende Arbeitsauftrag soll besonders die Fluchterfahrung Adele Kurzweils fokussieren, wodurch auch Orientierung bezüglicher aktueller Fluchtgeschichten gestiftet werden soll.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich bewusst mit den Folgen der nationalsozialistischen Gewaltherrschaft.</item>
+<item>Die SchülerInnen reflektieren die Gründe, Merkmale und Folgen von Fluchterfahrungen.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<p>
+Damals wusste ich nur, dass ich mich in der Gruppe sehr glücklich fühlte. Im Rückblick sind mir viele Gründe dafür klar geworden. Als Kinder im Exil, ganz plötzlich aus unserer bekannten Welt gerissen, fanden wir in der Gruppe andere Kinder, die unser Schicksal teilten und mit denen wir uns sehr rasch anfreundeten. Auch sprachen wir miteinander meistens Deutsch, obwohl wir in der Schule und auf der Straße auch schnell Französisch lernten. Die Solidarität innerhalb der Gruppe war uns außerordentlich wichtig, aber es wurde uns auch bewusst, dass wir (und unsere Eltern) ein Teil der internationalen Arbeiterbewegung waren. Durch unsere politischen Diskussionen lernten wir vieles, das uns unser Exil nicht nur verständlich machte, sondern uns (und unseren Eltern) eine wichtige Rolle als Mitglieder des politischen Widerstands gab. Wir waren keine isolierten Flüchtlinge, sondern teilten ein Schicksal mit vielen anderen, die mutig gegen den Nationalsozialismus fochten.
+<lb/>
+Vor allem lernten wir aus der marxistischen ‚Logik der Geschichte’, die wir in der Gruppe diskutierten, dass der Sieg der sozialistischen Arbeiterbewegung unabwendbar war. Wir glaubten so fest an unseren zukünftigen Sieg, dass wir die Schwierigkeiten des Exils leichter ertragen konnten.
+</p>
+<caption>Titel / Beschreibung</caption>
+<p>Hanna Papanek, ebenfalls Mitglied der Gruppe der „Roten Falken“ erinnerte sich an diese Zeit:</p>
+<caption>Quellenzitat</caption>
+<p>Hanna Papanek, Die unentbehrliche, unerträgliche Forschung, in: ARGE Jugend gegen Gewalt und Rassismus/Christian Ehetreiber/Heimo Halbrainer/Bettina Ramp (Hg.), Der Koffer der Adele Kurzweil. Auf den Spuren einer Grazer jüdischen Familie in der Emigration, Graz 2001, 41–54, hier 44.</p>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty346" xml:id="IMAGE.1">
+<desc>Graz 1928: Bruno Kurzweil am Steuer seines Autos. Am Trittbrett sitzen Gisela und Adele, auf dem Rücksitz hat die befreundete Familie Robinson Platz genommen.</desc>
+<desc type="title">Familien Kurzweil und Robinson, 1928 © Hans Kern Graz.</desc>
+</graphic>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty346" xml:id="IMAGE.2">
+<desc>In den 1990er Jahren entdeckte ein Student einige Koffer in einem Magazin im Gemeindeamt von Montauban. Auch LehrerInnen und SchülerInnen des Ortes wurden auf sie aufmerksam. Es handelte sich um jene Koffer, die die Familie Kurzweil in der Hoffnung auf eine Ausreise nach Mexiko oder in die USA gepackt hatte, aber wegen ihrer Verhaftung zurücklassen musste. Nun begann man sich in Frankeich und dann auch in Graz für das Schicksal der Familie Kurzweil zu interessieren. In Graz entstand eine Ausstellung und im Lycée Michelet in Montauban, der letzten Schule, die Adele besuchen konnte, wurde eine Gedenktafel enthüllt.</desc>
+<desc type="title">Der Koffer der Adele Kurzweil © Foto: UMJ/J.J. Kucek</desc>
+</graphic>
+</facsimile>
+</TEI>

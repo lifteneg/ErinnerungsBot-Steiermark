@@ -1,0 +1,320 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Zwei Tage Zeit – Die Flucht der aus Mürzzuschlag vertriebenen Herta Eisler 1938–1944</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty124</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty124</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty123</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit der Biografie einer im Nationalsozialismus Verfolgten auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext der Verfolgung der jüdischen Bevölkerung.</p>
+<p rend="Ort, Gemeinde EO/EZ">Mürzzuschlag (8680)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">16–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Im Jahr 2021 wurde am ehemaligen Wohnhaus von Herta Reich (Eisler) in der Ton Schruf Gasse 11 eine Gedenktafel angebracht. Im selben Jahr wurde auch das Gymnasium in Mürzzuschlag in Erinnerung an die 1938 mit ihrer Familie aus ihrer Heimat vertriebene Herta Eisler (verehelichte Reich) in
+<ref target="http://gams.uni-graz.at/o:derla.sty123">„Herta Reich Gymnasium und Realgymnasium“</ref>
+umbenannt.
+<lb/>
+<lb/>
+<emph style="bold">Kindheit in Mürzzuschlag</emph>
+<lb/>
+Herta Eislers Vater Ignaz hatte sich gemeinsam mit seiner Mutter Rosa 1912 in Mürzzuschlag als Kaufmann niedergelassen und am 3. Juni 1915 die aus Gmünd stammende Katharina Schwarz geheiratet. Noch während des Ersten Weltkrieges wurden zwei Töchter geboren; am 12. Februar 1915 Ilse, die 18 Tage später starb, und am 19. September 1917 Herta. Nach Kriegsende folgten noch Erich, geboren am 3. November 1919, und Lilly, geboren am 18. April 1923.
+<lb/>
+Als Herta Eisler 1917 geboren wurde, lebten in der Stadt noch zirka 30, Mitte der zwanziger Jahre nur noch 16 Jüdinnen und Juden. Ungeachtet der wenigen Jüdinnen und Juden in Mürzzuschlag gab es jedoch durch all die Jahre einen zum Teil rabiaten
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss22">Antisemitismus</ref>
+.
+<lb/>
+In diesem politischen Klima wuchs Herta Eisler auf. Sie besuchte die Pflichtschule in Mürzzuschlag, ehe sie Anfang der 1930er-Jahre nach Wien ging, wo sie die Handelsschule absolvierte und danach im elterlichen Geschäft in Mürzzuschlag arbeitete.
+<lb/>
+<lb/>
+<emph style="bold">Verfolgung und Flucht</emph>
+<lb/>
+Nach der Machtübernahme der Nationalsozialisten wurden von den neuen Machthabern behördliche Maßnahmen gesetzt, die die Eliminierung der jüdischen Bevölkerung aus dem öffentlichen Leben und der Berufswelt zum Ziel hatten. Mit der Entziehung ihrer Existenzgrundlage durch ein Netz von Berufsverboten und dem Raub ihres Vermögens durch die so genannte „Arisierung“ sollten die Jüdinnen und Juden zur Auswanderung gezwungen werden.
+<lb/>
+Auch Herta Eisler und ihre Familie sahen sich von einem Tag auf den anderen ausgegrenzt und ihre Existenz bedroht. Mitte August 1938 führten lokale Nationalsozialisten eine „Hausdurchsuchung“ und „Beschlagnahmung“ durch, wie Raubzüge der Nazis beschönigend umschrieben wurden. Das Geschäft wurde verwüstet, der Schmuck der Mutter und gesparte Goldstücke geraubt. Herta Eisler wurde verhaftet und nach Graz zur
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss62">Gestapo</ref>
+gebracht, wo sie am 23. August 1938 mit der Aufforderung, das Land binnen zweier Tage zu verlassen, entlassen wurde. Im Zuge des
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss9">Novemberpogroms</ref>
+, von den Nationalsozialisten verharmlosend als „Reichskristallnacht“ bezeichnet, wurden Herta Eislers Vater Ignaz und ihr Bruder Erich verhaftet und in das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss41">KZ Dachau</ref>
+deportiert.
+<lb/>
+Nach der Entlassung aus der Gestapohaft Ende August fuhr Herta Eisler nach Wien. Dort erfuhr sie, dass die Schweizer und die französische Grenze für jüdische Flüchtlinge gesperrt waren und sie entschloss sich ohne Hilfe nach Holland zu fliehen. Beim Versuch Deutschland mittels eines Schiffes zu verlassen, wurde sie aber verhaftet. Nach einigen Tagen Haft versuchte sie auf dem Landweg nach Belgien zu kommen. Gemeinsam mit Nonnen, die von Aachen aus eine Wallfahrt unternahmen, überquerte sie die belgische Grenze. In Brüssel lebte sie einen Monat lang illegal, ehe sie auf der Straße verhaftet und nach Deutschland abgeschoben wurde. Daraufhin ging sie erneut nach Wien.
+<lb/>
+In Wien hörte Herta Eisler das erste Mal von Palästina als möglichem Fluchtziel und sie ging deshalb zur Vorbereitung auf Hachschara (=Vorbereitung, Tauglichmachung) nach Moosbrunn. Dort erhielten die Palästina-AuswandererInnen auf einem Gutshof mit Feldern und Kühen eine knappe landwirtschaftliche Ausbildung. In der Zwischenzeit kam auch der Rest ihrer Familie nach Wien. Ignaz und Erich Eisler waren am 23. Dezember 1938 aus dem Konzentrationslager Dachau nach Mürzzuschlag zurückgekehrt, wo das Geschäft bereits „arisiert“, das bedeutet geraubt worden war. NSDAP-Kreisleiter Fritz Amreich und Bürgermeister Franz Neukirchner befahlen der Familie Eisler – unmittelbar nachdem die Männer aus dem KZ Dachau zurückgekehrt waren – unverzüglich die Stadt zu verlassen.
+<lb/>
+<lb/>
+<emph style="bold">Palästina als Hoffnung</emph>
+<lb/>
+War die Einwanderung nach Palästina durch die Beschränkungen der britischen Mandatsregierung bereits vor dem
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss4">„Anschluss“</ref>
+Österreichs an das Deutsche Reich schwierig gewesen, so wurde sie danach legal fast unmöglich. Um nach Palästina zu gelangen, mussten seit Kriegsbeginn illegale Transporte organisiert werden. So wurden von zionistischen Organisationen zu stark überhöhten Preisen alte, oft schrottreife Frachter erworben und für den Transport von Personen umgebaut. Nachdem die Länder rund um das Deutsche Reich keine Transitvisa mehr für jüdische Flüchtlinge ausstellten, konnten keine Schiffe von den Adriahäfen aus nach Palästina fahren, weshalb als neue Fluchtroute die Donau gewählt wurde, wo Flussdampfer bis zum Schwarzen Meer fuhren.
+<lb/>
+Durch die für die Jüdinnen und Juden immer schlimmer werdende Lage, kam es im Herbst 1939 zu der folgenschweren Entscheidung, die noch in Wien befindlichen Mitglieder der zionistischen Jugendorganisation Hechaluz außer Landes zu bringen, obwohl an der unteren Donau kein Hochseedampfer für ihren Weitertransport nach Palästina bereitstand. Am 25. November 1939 verließ Herta Eisler daher mit rund 800 Flüchtlingen Wien. In Bratislava kamen rund 200 jüdische Flüchtlinge aus Berlin und Danzig hinzu.
+<lb/>
+Nachdem sich plötzlich die Donaudampfschifffahrtsgesellschaft weigerte, die Fahrt nach Erreichen der ungarischen Grenze fortzusetzen, da eine Umschiffung an der Donaumündung noch immer nicht gesichert war, wurden die Passagiere einen Tag nach der Abreise am 14. Dezember auf drei jugoslawische Ausflugsschiffe transferiert. Doch auch diese Fahrt endete bald wieder, denn nun lehnte Rumänien die Durchreise mit dem Argument ab, dass kein Schiff zur Weiterfahrt an der Donaumündung warte. Am Silvestertag 1939 wurden die Schiffe, auf denen auf Grund der Enge unerträgliche hygienische Bedingungen herrschten, schließlich in den Winterhafen von Kladovo nahe dem Eisernen Tor eingewiesen.
+<lb/>
+Erst nach Wochen erhielten die Flüchtlinge die Erlaubnis, zeitlich begrenzt die Schiffe zu verlassen, und erst als die Schifffahrtsgesellschaft auf die Räumung der Schiffe drängte, konnten sie in Zeltlager und Baracken am Ufer übersiedeln. Da sich in der Nähe des so errichteten Lagers Sümpfe befanden, grassierte bald die Malaria.
+<lb/>
+Im September 1940 verließen die Flüchtlinge, unter ihnen Herta Eisler, Kladovo, doch nicht in Richtung Donaudelta, sondern stromaufwärts in die serbische Ortschaft Šabac. Obwohl die Flüchtlinge hier mehr Bewegungsfreiheit erhielten, blieb eines gleich: die Unsicherheit, was nun mit ihnen geschehen werde.
+<lb/>
+Herta Eisler, die im März 1941 Romek Reich geheiratet hatte, schloss sich der Gruppe von Romek an, die auf eigene Faust über den Landweg nach Palästina zu kommen versuchte. Nach einer abenteuerlichen Flucht trafen sich Herta und Romek Reich sowie die anderen der Gruppe Anfang Mai 1941 an der dalmatinischen Küste. Man beschloss, gemeinsam die Flucht über Italien fortzusetzen. Anfang Juni 1941 wurde illegal die jugoslawisch-italienische Grenze überquert. Über Triest und Venedig ging es dann weiter nach Rom. Als Herta und Romek Reich kein Geld und auch nichts mehr zu essen hatten und zudem noch Romek Reich schwer erkrankte, baten sie über das chilenische Konsulat, das die Interessen Polens in Italien vertrat, um Internierung. Am 10. August 1941 wurden sie von der Polizei abgeholt und als Kriegsinternierte in kleine Gebirgsdörfer in den Abruzzen geschickt. Herta, Romek und weitere Flüchtlinge kamen nach Bomba, wo sie bei einem Bauern zwei Zimmer erhielten und in der Landwirtschaft bzw. in einem Bergwerk und einer Zementfabrik außerhalb des Ortes arbeiteten.
+<lb/>
+Die in Šabac Gebliebenen wurden ebenfalls interniert. Anfang Oktober 1941 kam es in der Umgebung von Šabac zu Kämpfen zwischen der Wehrmacht und
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss118">Partisanen</ref>
+. Dabei wurden 21 Soldaten getötet, woraufhin alle Männer des Transports als „Sühnemaßnahme“ von einem Exekutionskommando der Deutschen Wehrmacht ermordet wurden. Die Frauen und Kinder kamen im Jänner 1942 in das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss233">KZ Sajmište</ref>
+bei Belgrad, wo sie mit tausend weiteren Frauen zwischen März und Juni 1942 in Lastkraftwagen, in deren Inneres Abgase geleitet wurden, ermordet wurden.
+<lb/>
+Als am 3. September 1943 alliierte Truppen in Süditalien landeten, wurde für die Gruppe die Lage wieder ernst, da den nur langsam nach Norden vorrückenden Engländern rasch die von Norden vorstoßenden Deutschen entgegenkamen. Noch in derselben Nacht verließen sie Bomba. Nach tage- und vor allem nächtelangen Fußmärschen erreichten sie Ende Oktober 1943 die englischen Stellungen und wurden weiter in den Süden; zunächst in eine kleine Stadt nahe Foggia und dann nach Bari gebracht, wo sie Arbeit fanden.
+<lb/>
+Viereinhalb Jahre nach Beginn ihrer illegalen Flucht nach Palästina erhielten Herta und Romek Reich am 26. Mai 1944 schließlich ein legales Einreisezertifikat nach Palästina. Von Taranto aus brachte sie ein Kriegsschiff nach Alexandria, wo sie am 5. Juni 1944 landeten. Mit dem Zug fuhren sie nach Tel-Aviv, wo Hertas Eltern in ärmlichen Verhältnissen lebten.
+<lb/>
+<lb/>
+<emph style="bold">Rückkehr und erneute Emigration</emph>
+<lb/>
+Die schlechte materielle Lage in Palästina war 1948 auch ein Beweggrund für die Rückkehr von Herta Reichs Eltern nach Österreich. Als kurz darauf Romek Reich im israelischen Unabhängigkeitskrieg – der Sohn Ronny war gerade ein Jahr alt – fiel, verschwieg Herta Reich zur Schonung der Eltern zwei Jahre lang den Tod ihres Mannes. 1950 kehrte sie zum Besuch der Eltern ein einziges Mal nach Mürzzuschlag zurück. Sie traf dort auch ihren Bruder Erich, der gerade von Schweden, wohin er 1939 hatte fliehen können, nach Israel übersiedelt war.
+<lb/>
+Abermals war es für sie deprimierend, wie ihre Eltern lebten: Auf einer kleinen Fläche des früheren Verkaufslokales bestritt ihr Vater seinen Lebensunterhalt mit Bürstenbinden. Nebenan führte der „Ariseur“ das Textilgeschäft weiter. Während ihres Besuchs starb der Vater.
+<lb/>
+Nach dem Tod von Ignaz Eisler folgte Katharina Eisler der Tochter nach Israel, wo sie bald darauf starb. Auch Erich Eisler ließ sich um diese Zeit in Israel nieder, wo er als Ingenieur arbeitete. Herta Reich hat ihren Sohn Ronny allein groß gezogen. Sie wohnte in Holon bei Tel Aviv und nähte in Heimarbeit Vorhänge. Später übersiedelte sie nach Jerusalem, wo sie 2012 starb.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Herta Reich, „Zwei Tage Zeit, um zwanzig Jahre meines jungen Lebens zurückzulassen“, in: Heimo Gruber, Heimo Halbrainer (Hrsg.), Zwei Tage Zeit. Herta Reich und die Spuren jüdischen Lebens in Mürzzuschlag, Graz 1999, S. 11–68.</item>
+<item>Heimo Gruber, Heimo Halbrainer (Hrsg.), Zwei Tage Zeit. Herta Reich und die Spuren jüdischen Lebens in Mürzzuschlag, Graz 1999.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Zwei Tage Zeit – Die Flucht der aus Mürzzuschlag vertriebenen Herta Eisler 1938–1944</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus erfährt durch die Implementierung biografischer Zugänge eine produktive Erweiterung. Die Beschäftigung mit Biografien eröffnet zusätzliche Perspektiven auf das historische Geschehen und ermöglicht es den Lernenden, sich über einen konkreten Lebensweg der Alterität der Vergangenheit anzunähern. Die Verbindung des biografischen Arbeitens mit Quellenarbeit ermöglicht dabei den Aufbau diverser historischer Kompetenzen, wie etwa der historischen Methodenkompetenzen und Orientierungskompetenzen.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Fasse die Selbstzeugnisse von Herta Reich (siehe Textquellen) bezüglich ihrer Äußerungen zu ihrer Jugend in der Obersteiermark und ihrem Verhältnis zu ihrer obersteirischen Heimat zusammen.</item>
+<item>Analysiere die Selbstzeugnisse hinsichtlich der Wahrnehmungen Reichs zum Antisemitismus und der Gefahr, die von diesem für ihre Familie ausging.</item>
+<item>Nimm Stellung zum Wert von Reichs Selbstzeugnissen für die historische Forschung – warum sind die Briefe Reichs für HistorikerInnen wichtige Quellen? Was könnte den Forschenden Schwierigkeiten mit dieser Quellengattung bereiten?</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Die Beschäftigung mit Herta Reichs Verfolgungsgeschichte soll in erster Linie über die Analyse ihrer Selbstzeugnisse geschehen. Daher werden diese auch in den ersten beiden Arbeitsaufträgen fokussiert. Im abschließend Arbeitsauftrag soll quellenkritisch der Frage nachgegangen werden, welche Bedeutung Selbstzeugnisse für die historische Forschung haben und weshalb diese als besondere Quellengattung zu behandeln sind.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich bewusst mit den Folgen der nationalsozialistischen Gewaltherrschaft.</item>
+<item>Die SchülerInnen reflektieren den Wert von literarischen Quellen für die historische Forschung.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<p>
+<emph style="bold">Passagen aus den Lebenserinnerungen von Herta Reich zu den einzelnen Stationen ihres Lebens.</emph>
+<lb/>
+<lb/>
+Herta Reich erinnert sich an ihr Leben:
+<lb/>
+„Ich war zwanzigeinhalb Jahre alt, als meine Jugend und Zukunft zerbrachen. Vor dem Krieg hatte ich eine äußerst glückliche Kindheit und Jugend voll Lebensfreude. Aufgewachsen bin ich in den Bergen und herrlicher Landschaft.
+<lb/>
+1938 dann der Zusammenbruch meiner Welt, meiner Jugend und Zukunft. So plötzlich auf grausame Weise allein. Zwei Tage Zeit, um 20 Jahre meines jungen Lebens zurückzulassen, um nie mehr wiederzukehren, einfach so unglaublich, alles zurückzulassen, was Glück, was Heimat war – nichts als Tränen und Trauer mitnehmend.
+<lb/>
+Während des Krieges bis 1944 auf der Flucht. Nach dem Krieg die Erkenntnis, dass Leben etwas Großes ist, dass Überleben alles ist, und äußere Güter und Besitz für mich keinen Wert mehr haben.“
+<lb/>
+<lb/>
+Erinnerungen and das bescheidene jüdische Leben in Mürzzuschlag:
+<lb/>
+„Wir hatten mit der Familie Haas freundschaftliche Beziehungen. Sonst kannte ich keine Juden außer Dr. Neumann im Krankenhaus, der mein Knie zusammennähte nach einem Schiunfall.
+<lb/>
+Das jüdische Leben beschränkte sich auf einen Sederabend gemeinsam mit Familie Haas und am Jom Kippur fuhren wir nach Wien in die Synagoge. Das Geschäft war am Sabbat geöffnet, so wie alle anderen Geschäfte. Am Sonntag mussten wir Religion lernen bei einem Lehrer, der aus Leoben kam. Mein Bruder, meine Schwester und ich waren in der ganzen Schule die einzigen Juden.“ (Brief von Herta Reich an Heimo Gruber, 16.8.1995.)
+<lb/>
+<lb/>
+Erinnerungen an den Antisemitismus und die Verfolgung:
+<lb/>
+„Wir haben nichts vom Antisemitismus gespürt. Bis knapp vor 1938. Es gab Geschäftsleute, welche Nazis waren, aber wir hatten nie irgendwelche Konflikte. Wir spürten leider nicht die Gefahr vor 1938. Und danach konnten wir es nicht fassen, erst bis die Gestapo mich im Sommer verhaftete und nach Graz brachte und ich dann binnen zwei Tagen Österreich verlassen musste und sie meinen Vater und Bruder am 10. November 1938 nach Dachau brachten, da haben wir endlich gewusst und begriffen.“ (Brief von Herta Reich an Heimo Gruber, 16.8.1995.)
+<lb/>
+<lb/>
+Herta Reich zu ihrer jüdischen Identität:
+<lb/>
+„Ich hatte nie das Gefühl des Andersseins; nicht vor und nicht nach 1938. In der Schule habe ich nie gelitten und habe die ausgezeichneten Lehrerinnen geliebt. Ich war da geboren, habe die Stadt, die Menschen und die Natur geliebt. Ich war so assimiliert, dass es unmöglich zu verstehen war, was da passierte – bis zu meiner Ausweisung. Binnen zweier Tage Österreich zu verlassen. Da habe ich so einigermaßen verstanden.” (Brief von Herta Reich an Heimo Gruber, 3.8.1998.)
+<lb/>
+<lb/>
+Zu den Verhältnissen in Kladovo:
+<lb/>
+„Wir überwinterten auf den primitiven Schiffen, die in der Donau einfroren. Das Wasser in den paar Duschen fror ebenfalls ein. Das Trinkwasser holte man aus dem Eis der Donau. Fast alle bekamen Dysenterie, Läuse und Skabies. Das Essen bekamen wir vom Land gebracht. Es wurde von den jugoslawischen Juden irgendwie organisiert. Jeden Tag dasselbe. Zweimal täglich Tee mit Schnaps, einmal Nudeln mit Powidl, abwechselnd mit faschiertem Fleisch. Die Menschen bekamen Skorbut, ich hatte eine schwere Furunkulose am ganzen Körper aus Vitaminmangel. Wir warteten. Aufs Frühjahr, auf ein bisschen Sonne und Wärme.“ (Herta Reich, „Zwei Tage Zeit“, 15.“
+<lb/>
+<lb/>
+Zur Situation in Italien nach der Landung der alliierten Truppen 1943:
+<lb/>
+„Es waren aufregende Tage. Jeden Tag verfolgten wir auf der Landkarte das Vorrücken der Engländer vom Süden nach Norden, und das der Deutschen vom Norden nach Süden. Wir in der Mitte hatten keinen anderen Ausweg, als zu den Engländern zu gelangen. [...] Nach dem Sturz Mussolinis betrachteten wir uns nicht mehr als Kriegsinternierte, gingen Mitte September zur Polizei, die ratlos war nach dem politischen Durcheinander, und verlangten eine Bestätigung mit Bild, dass wir in Bomba von August 1941 bis September 1943 interniert waren. Sie gaben uns die Bestätigung sofort. [...] Am selben Tag kam Hugo aufgeregt mit der Nachricht, dass die Deutschen im nächsten Dorf sind. Wir müssten weg, nur weg, so schnell als möglich. Bei den Engländern wären wir gerettet. Bei den Deutschen verloren.“ (Herta Reich, „Zwei Tage Zeit“, S. 30.)
+<lb/>
+<lb/>
+Zur Rückkehr nach Österreich 1950:
+<lb/>
+„Der Besuch 1950 bei meinen Eltern in Mürzzuschlag war deprimierend, es fällt mir schwer darüber zu schreiben, viel schwerer als über die fünfeinhalb Fluchtjahre. Sie lebten so ärmlich und bescheiden, und es tat mir sehr weh. Ich war sehr scheu und traf nur einmal ein paar alte Freunde – darunter Karl Lotter – in einem Kaffeehaus. An andere Begegnungen erinnere ich mich nicht. Vielleicht haben manche sich geschämt, mich anzusprechen. Geblieben ist nur Trauer und das Gefühl des Verlustes – bis heute.“ (Brief von Herta Reich an Heimo Gruber, 3.8.1998.)
+</p>
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p>Herta Reich, „Zwei Tage Zeit, um zwanzig Jahre meines jungen Lebens zurückzulassen“, in: Heimo Gruber, Heimo Halbrainer (Hrsg.), Zwei Tage Zeit. Herta Reich und die Spuren jüdischen Lebens in Mürzzuschlag, Graz 1999, S. 11–68.;Heimo Gruber, Heimo Halbrainer (Hrsg.), Zwei Tage Zeit. Herta Reich und die Spuren jüdischen Lebens in Mürzzuschlag, Graz 1999.</p>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty124" xml:id="IMAGE.1">
+<desc>Herta Reich, Käthe, Erich und Ignaz Eisler in Mürzzuschlag, 1950</desc>
+<desc type="title">Herta Reich, Käthe, Erich und Ignaz Eisler in Mürzzuschlag, 1950 (© Ronny Reich, Jerusalem)</desc>
+</graphic>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty124" xml:id="IMAGE.2">
+<desc>Für Herta Eisler brachte das Frühjahr 1940 trotz aller Widrigkeiten auch Erfreuliches, lernte sie doch ihren späteren Ehemann Romek Reich, der aus Polen geflohen war, kennen.</desc>
+<desc type="title">Herta Eisler heiratete Romek Reich am 24. März 1941 in Šabac. (© Ronny Reich, Jerusalem)</desc>
+</graphic>
+</facsimile>
+</TEI>

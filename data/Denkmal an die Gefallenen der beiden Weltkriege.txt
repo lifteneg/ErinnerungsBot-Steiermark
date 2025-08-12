@@ -1,0 +1,229 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Das „Ehren- und Mahnmal für die Gefallenen beider Weltkriege“</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty207</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty207</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty34</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty173</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty208</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty256</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die Beschäftigung mit dem „Ehren- und Mahnmal“ spannt den didaktischen Bogen von einer Interpretation und persönlichen Stellungnahme, über die Analyse der öffentlichen Rezeption der Aufstellung und Verlegung der Gedenkstätte, hin zu einem Recherche-Auftrag im öffentlichen Raum, der zur Reflexion der eigenen Wahrnehmung führen soll. Die subjektorientierten Arbeitsaufträge nehmen die Rezeption der SchülerInnen zum Ausgangspunkt und zielen darauf ab, diese durch die Erarbeitung des historischen Kontexts zu einer reflektierten Position zu entwickeln.</p>
+<p rend="Ort, Gemeinde EO/EZ">Stadt Graz (8010)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum bzw. (besser) öffentlicher Raum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Mit dem Jahr 1949 trat das Gedenken an den Widerstand und die Opfer des NS-Regimes in den Hintergrund. Erinnert wurden nun die gefallenen Soldaten, was durch eine Vielzahl an so genannten „Kriegerdenkmälern“ sichtbar wird. In Graz wurden Denkmalsetzungen etwa am Zentralfriedhof, in Don Bosco und auch in den Außenbezirken vollzogen. Im innerstädtischen Zentralraum fehlte allerdings noch ein entsprechendes Erinnerungszeichen. Der „Kameradschaftsbund“, der politisch einflussreiche Zusammenschluss ehemaliger Wehrmachtsangehöriger, forderte ab Mitte der 1950er-Jahre ein zentrales Denkmal und finanzierte auch einen großen Teil der Kosten durch Sammelaktionen.
+<lb/>
+Das „Ehren- und Mahnmal für die Gefallenen beider Weltkriege“ wurde schließlich 1961 errichtet, nachdem man sich lange nicht auf einen geeigneten Ort sowie die Gestaltung des Denkmals einigen konnte. Nach mehreren Wettbewerben wurde das Erinnerungszeichen nach den Entwürfen von Alexander Silveri am Karmeliterplatz errichtet.
+<lb/>
+Der künstlerische Entwurf des Denkmals wurde von der breiten Öffentlichkeit mit gemischten Gefühlen wahrgenommen, es wurde als zu modern oder unverständlich empfunden. Das 13 Meter lange und über vier Meter hohe Denkmal stellt die Schrecken des Krieges in fünf Bildern abstrahiert dar.
+<lb/>
+An der Einweihungsfeierlichkeit nahmen im Oktober 1961 rund 10.000 Menschen teil, darunter wichtige Akteure der steirischen Landespolitik und ca. 9.000 Kameradschaftsbundangehörige. Heidemarie Uhl spricht von 50 (!) Musikkapellen und 363 Ortsverbänden des „Kameradschaftsbundes“, die zu der Enthüllung gekommen waren. Auch die Spitzen des Stadt- und Landespolitik waren anwesend und Landeshauptmann Josef Krainer senior erinnerte in seiner Rede an die „soldatische Pflichterfüllung“ der hier Geehrten.
+<lb/>
+Die Erinnerung an die „eigenen“ Toten und das damit verbundene „Heldengedenken“ ist bezeichnend für die zweite Phase in Heidemarie Uhls dreischrittiger Konzeption der Erinnerungskultur bezüglich des Nationalsozialismus. War es in den 1940er-Jahren noch als opportun anerkannt worden, den antifaschistischen Widerstandskampf zu erinnern, so hatte sich das in den 1950er-Jahren grundlegend geändert: Die Rehabilitation der Gefallenen stand im Vordergrund des Gedenkens. Um dies zu ermöglichen, mussten deren GegnerInnen, sowie auch die Opfer des Nationalsozialismus, vergessen werden.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Heidemarie Uhl, Gedächtnisraum Graz. Zeitgeschichtliche Erinnerungszeichen im öffentlichen Raum nach 1945, in: Historisches Jahrbuch der Stadt Graz (Graz 1994), 625–642.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Das „Ehren- und Mahnmal für die Gefallenen beider Weltkriege“</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Die SchülerInnen beschäftigen sich vertieft mit dem Entstehungskontext und dem Erscheinungsbild des „Ehren- und Mahnmals für die Gefallenen beider Weltkriege“ und erschließen auf diese Weise einen wesentlichen Bestandteil der öffentlichen Erinnerungskultur in Graz. Die Entstehung des Denkmals erzählt viel über den Wandel des öffentlichen Gedenkens in den 1950er-Jahren, daher dient die Beschäftigung damit der Entwicklung von historischen Orientierungskompetenzen und Methodenkompetenzen der SchülerInnen.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Das Denkmal ist nicht ganz leicht zu verstehen; versuche gemeinsam mit einem Klassenkollegen/einer Klassenkollegin eine eigene Interpretation der Bildsprache von Alexander Silvretti! Findet gemeinsam Erklärungen für die fünf Teile des Monuments!</item>
+<item>Formuliere eine persönliche, subjektive Stellungnahme zu dem Mahnmal! Findest du es gelungen und passend gestaltet? Wer wird geehrt – wer nicht? Begründe deine Aussage!</item>
+<item>
+Erkläre anhand des Einführungstextes (siehe Mehr Erfahren), warum dieses Denkmal -trotz seiner recht modernen Gestaltung- von der Öffentlichkeit Anfang der 1960er viel positiver aufgenommen wurde als das
+<ref target="http://gams.uni-graz.at/o:derla.sty34">Widerstands-Denkmal Ende der 1940er</ref>
+!
+<emph style="cursive">[Anmerkung: Zur Einweihung kamen an die 10.000 Menschen und der Landeshauptmann ehrte in seiner Ansprache jene, „die zu jeder Zeit bereit sind, unter Einsatz ihres Lebens ihre Pflicht zu erfüllen.“]</emph>
+</item>
+<item>Als das Denkmal 2003 von seinem ursprünglichen Errichtungsort am Karmeliterplatz an den heutigen Standort übersiedelte, gab es zum Teil heftige Proteste. Verfasse eine Vermutung darüber, warum die Verlegung damals kritisiert und diskutiert wurde!</item>
+<item>Versuche, zwei oder drei Passant/inn/en zu einer Stellungnahme zu dem Denkmal zu gewinnen und bitte sie auch um eine Aussage zum heutigen Standort des Mahnmals. Vergleiche ihre Aussagen mit deiner eigenen Haltung (Nr.3)! Gibt es Unterschiede oder ähnliche Ansichten?</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Dem ersten Auftrag sollte eine intensive Beobachtungsphase vorangestellt werden, damit der angedachte Austausch möglichst viele Details umfasst, die dann auch für die Durchführung von Auftrag 2 genutzt werden können. Die Aufträge 3 und 4 dienen dazu, das Denkmal in der österreichischen Erinnerungskultur zu verorten. Zuletzt sollen über die Gespräche mit PassantInnen zusätzliche Perspektiven auf das „Ehren- und Mahnmal“ gewonnen werden.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich mit der Entwicklung des österreichischen Nachkriegsgedächtnisses.</item>
+<item>Die SchülerInnen erkennen die veränderte Bedeutung des öffentlichen Gefallenengedenkens ab den 1950er-Jahren,</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty207" xml:id="IMAGE.1">
+<desc>Ursprünglich befand sich das "Ehren- und Mahnmal" am südlichen Ende des Karmeliterplatzes. Im Zuge der Umbauten des Karmeliterplatzes im Jahr 2003 wurde es an den heutigen Standort verlegt. </desc>
+<desc type="title">© Kulturamt der Stadt Graz</desc>
+</graphic>
+</facsimile>
+</TEI>

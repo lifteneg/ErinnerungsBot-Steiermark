@@ -1,0 +1,444 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Erinnern befragen</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty137</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty137</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty127</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty135</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty136</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty323</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen erkunden das als Weg angelegte Erinnerungszeichen vor Ort und setzen sich mit Fragen der individuellen, kommunikativen und kulturellen Gedächtnisbildung auseinander.</p>
+<p rend="Ort, Gemeinde EO/EZ">Stadt Graz (8010, 8020)</p>
+<p rend="Zeitbedarf">ca. zwei Doppelstunden, eignet sich durch Zusatzoptionen auch für Projekttage</p>
+<p rend="Alter">13 - 18 Jahre</p>
+<p rend="Vermittlungsort">Außerschulischer Lernort und Klasse</p>
+</div>
+<div type="mehrErfahren">
+<p>
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss185">Temporäre Installation</ref>
+der Künstlerin
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss195">Catrin Bolt</ref>
+(in Zusammenarbeit mit dem
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss196">Institut für Kunst im öffentlichen Raum Steiermark</ref>
+) in Form eines Textbandes, aufgebracht in Blockschrift aus Straßenmarkierstoff auf den Gehsteig von der Radetzkystraße 8 über die Radetzkybrücke und den Grieskai bis zum Griesplatz 2.
+<space/>
+„Lauftext - Mahnmal“ wurde 2013 nicht nur Graz und den Menschen, die dort leben oder die Stadt besuchen, sondern auch der Zeit übergeben. Es ist Teil dieser
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss186">künstlerischen Intervention</ref>
+, dass das
+<ref target=" https://glossa.uni-graz.at/o:derla.thesaurus#concept3">Erinnerungszeichen</ref>
+sich verändert, beispielweise durch Straßenarbeiten, Witterungseinflüsse und Abnutzung durch FußgängerInnen, bis es sich irgendwann auflösen und nicht mehr sichtbar sein wird. Lange Abschnitte (Radetzkystraße, Radetzkybrücke; Griesplatz) sind bereits jetzt nicht mehr vorhanden.
+<space/>
+Für das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss187">Textband</ref>
+hat Catrin Bolt Ausschnitte aus den Lebenserinnerungen von
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss188">Rabbiner</ref>
+<ref target="https://gams.uni-graz.at/o:derla.perssty#perssty359">David Herzog</ref>
+(1869–1946) an die Nacht vom 9. auf den 10. November 1938 ausgewählt und zusammengestellt. Diese Nacht und auch teilweise die Tage und Nächte davor und danach werden heute als
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss9">Pogromnacht</ref>
+oder
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss122">Novemberpogrom</ref>
+bezeichnet.
+<space/>
+David Herzog lebte seit 1907 in Graz, war
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss189">Landesrabbiner</ref>
+für die Steiermark und Kärnten. Er lehrte an der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss197">Karl-Franzens-Universität</ref>
+sowie an verschiedenen Schulen in Graz. Zudem war er ein bedeutender Historiker der jüdischen Geschichte der Steiermark.
+<space/>
+Während des
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss9">Novemberpogroms</ref>
+1938 kam es zu organisierten Gewalttaten gegen die jüdische Bevölkerung, gegen Synagogen, Geschäfte und Betriebe von Jüdinnen und Juden sowie andere jüdische Einrichtungen im damaligen
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss46">Deutschen Reich</ref>
+und den von ihm besetzten Gebieten. Diese Gewalttaten waren von bis dahin unvorstellbarem Ausmaß, und nicht nur der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss190">Staatsapparat</ref>
+sowie die
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss107">NSDAP</ref>
+, sondern auch einfache Menschen gingen brutal in aller Öffentlichkeit gegen ihre jüdischen NachbarInnen vor. Das Ziel war die Radikalisierung der Verfolgung der jüdischen Bevölkerung und die Beschleunigung ihrer Vertreibung aus dem Reichsgebiet. Der Novemberpogrom gilt als extremes Ereignis in der Geschichte der Verfolgung der jüdischen Bevölkerung.
+<space/>
+David Herzog wurde, wie viele andere Jüdinnen und Juden, in dieser Nacht von
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss191">Nationalsozialisten</ref>
+aus der seiner Wohnung geholt. Sie jagten ihn von der Radetzkystraße 8, wo er wohnte, durch die Stadt bis zum Griesplatz 2. Auf dem Weg dorthin wurde er beleidigt, gequält und mehrmals mit dem Tod bedroht. Vom Griesplatz wurde er mit dem Auto zum Stadtrand von Graz gebracht, schwer misshandelt und bewusstlos liegengelassen. Am nächsten Tag konnte er nach Graz zurückkehren und wurde wie alle anderen jüdischen Männer verhaftet. Wegen seiner schweren Verletzungen entging er der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss192">Deportation</ref>
+in das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss91">Konzentrationslager (KZ)</ref>
+Dachau.
+<space/>
+Ende 1938 musste David Herzog Graz mit wenigen persönlichen Sachen verlassen und er konnte nach Großbritannien
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss193">emigrieren</ref>
+. In seinen Lebenserinnerungen, die er ab 1943 im
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss194">Exil</ref>
+schrieb, berichtet er bewegend von seinen Erlebnissen, Erfahrungen sowie den Ereignissen in Graz im Jahr 1938.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Catrin Bolt, Lauftext - Mahnmal, 2013, Universalmuseum Joanneum /Institut für Kunst im öffentlichen Raum Steiermark, URL: https://www.museum-joanneum.at/kioer/projekte/temporaere-projekte/events/event/2060/catrin-bolt (abgerufen am 6.11.2020).</item>
+<item>Elisabeth Fieder/Institut für Kunst im Öffentlichen Raum Steiermark (Hg.), Mahnmal Lauftext von Catrin Bolt in Graz. Wien 2013.</item>
+<item>Heimo, Halbrainer/Gerald Lamprecht, Gerald/Andreas Schweiger (Hg.), Meine Lebenswege. Die persönlichen Aufzeichnungen des Grazer Rabbiners David Herzog, Graz 2013.</item>
+<item>Walter Höflechner (Hg.), David Herzog. Erinnerungen eines Rabbiners 1932-1940, auf der Grundlage einer Diplomarbeit von Andreas Schweiger, Graz 1992.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Erinnern befragen</head>
+<caption>Didaktischer Kommentar</caption>
+<p>
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss185">Temporäre Installation</ref>
+der Künstlerin
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss195">Catrin Bolt</ref>
+(in Zusammenarbeit mit dem
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss196">Institut für Kunst im öffentlichen Raum Steiermark</ref>
+) in Form eines Textbandes, aufgebracht in Blockschrift aus Straßenmarkierstoff auf den Gehsteig von der Radetzkystraße 8 über die Radetzkybrücke und den Grieskai bis zum Griesplatz 2.
+<space/>
+„Lauftext - Mahnmal“ wurde 2013 nicht nur Graz und den Menschen, die dort leben oder die Stadt besuchen, sondern auch der Zeit übergeben. Es ist Teil dieser
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss186">künstlerischen Intervention</ref>
+, dass das
+<ref target=" https://glossa.uni-graz.at/o:derla.thesaurus#concept3">Erinnerungszeichen</ref>
+sich verändert, beispielweise durch Straßenarbeiten, Witterungseinflüsse und Abnutzung durch FußgängerInnen, bis es sich irgendwann auflösen und nicht mehr sichtbar sein wird. Lange Abschnitte (Radetzkystraße, Radetzkybrücke; Griesplatz) sind bereits jetzt nicht mehr vorhanden.
+<space/>
+Für das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss187">Textband</ref>
+hat Catrin Bolt Ausschnitte aus den Lebenserinnerungen von
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss188">Rabbiner</ref>
+<ref target="https://gams.uni-graz.at/o:derla.perssty#perssty359">David Herzog</ref>
+(1869–1946) an die Nacht vom 9. auf den 10. November 1938 ausgewählt und zusammengestellt. Diese Nacht und auch teilweise die Tage und Nächte davor und danach werden heute als
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss9">Pogromnacht</ref>
+oder
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss122">Novemberpogrom</ref>
+bezeichnet.
+<space/>
+David Herzog lebte seit 1907 in Graz, war
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss189">Landesrabbiner</ref>
+für die Steiermark und Kärnten. Er lehrte an der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss197">Karl-Franzens-Universität</ref>
+sowie an verschiedenen Schulen in Graz. Zudem war er ein bedeutender Historiker der jüdischen Geschichte der Steiermark.
+<space/>
+Während des
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss9">Novemberpogroms</ref>
+1938 kam es zu organisierten Gewalttaten gegen die jüdische Bevölkerung, gegen Synagogen, Geschäfte und Betriebe von Jüdinnen und Juden sowie andere jüdische Einrichtungen im damaligen
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss46">Deutschen Reich</ref>
+und den von ihm besetzten Gebieten. Diese Gewalttaten waren von bis dahin unvorstellbarem Ausmaß, und nicht nur der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss190">Staatsapparat</ref>
+sowie die
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss107">NSDAP</ref>
+, sondern auch einfache Menschen gingen brutal in aller Öffentlichkeit gegen ihre jüdischen NachbarInnen vor. Das Ziel war die Radikalisierung der Verfolgung der jüdischen Bevölkerung und die Beschleunigung ihrer Vertreibung aus dem Reichsgebiet. Der Novemberpogrom gilt als extremes Ereignis in der Geschichte der Verfolgung der jüdischen Bevölkerung.
+<space/>
+David Herzog wurde, wie viele andere Jüdinnen und Juden, in dieser Nacht von
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss191">Nationalsozialisten</ref>
+aus der seiner Wohnung geholt. Sie jagten ihn von der Radetzkystraße 8, wo er wohnte, durch die Stadt bis zum Griesplatz 2. Auf dem Weg dorthin wurde er beleidigt, gequält und mehrmals mit dem Tod bedroht. Vom Griesplatz wurde er mit dem Auto zum Stadtrand von Graz gebracht, schwer misshandelt und bewusstlos liegengelassen. Am nächsten Tag konnte er nach Graz zurückkehren und wurde wie alle anderen jüdischen Männer verhaftet. Wegen seiner schweren Verletzungen entging er der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss192">Deportation</ref>
+in das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss91">Konzentrationslager (KZ)</ref>
+Dachau.
+<space/>
+Ende 1938 musste David Herzog Graz mit wenigen persönlichen Sachen verlassen und er konnte nach Großbritannien
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss193">emigrieren</ref>
+. In seinen Lebenserinnerungen, die er ab 1943 im
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss194">Exil</ref>
+schrieb, berichtet er bewegend von seinen Erlebnissen, Erfahrungen sowie den Ereignissen in Graz im Jahr 1938.
+</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<emph style="color">Teil 1: Auf dem Weg sein | Den Dingen nachgehen</emph>
+<lb/>
+<list style="ordered">
+list style="ordered">
+<item>Informiere Dich mit Hilfe des Informationstextes (siehe Mehr Erfahren) und der DERLA-Website über das Erinnerungszeichen „Lauftext - Mahnmal”.</item>
+<item>Gehe den Weg von der Radetzkystraße 8 bis zum Griesplatz 2. Nimm bitte dein Handy mit.</item>
+<item>Suche dabei Spuren des Erinnerungszeichens „Lauftext – Mahnmal“.</item>
+<item>Nutze zur Dokumentation der Spuren die Videofunktion deines Handys.</item>
+<item>Sprich die gefundenen Worte und Wortgruppen laut aus.</item>
+</list>
+<space/>
+<emph style="color">Teil 2: Am Ende des Weges</emph>
+<lb/>
+<list style="ordered">
+<item>Notiere dir, an welche Worte und Wortgruppen du dich erinnerst? Notiere außerdem spontan deine Empfindungen, Fragen und Assoziationen.</item>
+<item>Beurteile, ob sich durch das laute Aussprechen der Worte und Wortgruppen auf dem Weg etwas verändert.</item>
+<item>Vergleiche deine gedankliche Erinnerung an den Weg von „Lauftext – Mahnmal” mit den Aufnahmen in deinem Handy. Formuliere und begründe, was du feststellst. Erläutere, was dies deiner Meinung nach für die Erinnerung an die Opfer des Nationalsozialismus bedeutet.</item>
+<item>Setze dich mit der Frage auseinander, ob der Text von „Lauftext - Mahnmal“ von Zeit zu Zeit erneuert werden sollte. Begründe deine Meinung.</item>
+<item>
+Setze dich anhand der folgenden und anderer Fragen mit dem Thema „Erinnern” auseinander. Nutze dafür auch deine Notizen.
+<list style="unordered">
+<item>Was erfährst du über David Herzog? Über den Menschen David Herzog?</item>
+<item>Welche Geschichte wird durch das Mahnmal selbst erzählt?</item>
+<item>Welche Geschichte wird durch den Zustand des Mahnmals und den Weg durch den Stadtraum heute erzählt? Über die Erinnerungskultur? Über Erinnerung selbst? Über Graz?</item>
+<item>Was verändert sich durch die allmähliche Auflösung und das langsame Verschwinden des Erinnerungszeichens?</item>
+</list>
+</item>
+</list>
+<space/>
+<emph style="color">Optionale Zusatzangebote</emph>
+<lb/>
+<list style="unordered">
+<item>Entwickle ausgehend von deinen Überlegungen und Erkenntnissen Fragen für ein Interview beispielsweise mit David Herzog oder einer Person aus dem Stadtrat der Stadt Graz oder einer Person, die du auf der Radetzkybrücke ansprechen könntest.</item>
+<item>Gestalte einen Zeitungsartikel zu deiner Perspektive auf das Erinnerungszeichen „Lauftext – Mahnmal“.</item>
+<item>Entwickle ein assoziatives Wortcluster zu einem Begriff aus „Lauftext – Mahnmal“ und präsentiere es vor anderen.</item>
+<item>Skizziere, ähnlich wie in einem Stadtplan, den Weg, den du gegangen bist. Zeichne ein, woran du dich erinnerst. Markiere, was neu für dich ist. Du kannst auch mit Beschriftungen arbeiten. Überlege, ob und wie sich deine Wahrnehmung von Graz durch „Lauftext – Mahnmal“ verändert hat. Vergleiche deine Arbeit mit anderen und leite Aussagen zu Erinnerung, Zeit und Wahrnehmung ab.</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>
+<emph style="color">Teil 1 des Angebotes</emph>
+<lb/>
+<list style="unordered">
+<item>Schwerpunkt: Erkundung | Rezeption</item>
+<item>ca. 90 Minuten einplanen</item>
+<item>örtlich gebunden an das Erinnerungszeichen</item>
+<item>der Informationstext kann auch im Vorfeld oder als Hausarbeit gelesen werden</item>
+<item>Arbeitsweise: einzeln oder mit anderen</item>
+</list>
+<space/>
+<emph style="color">Teil 2 des Angebotes</emph>
+<lb/>
+<list style="ordered">
+<item>Schwerpunkt: Reflexion</item>
+<item>mehr als 90 Minuten einplanen</item>
+<item>auch mit zeitlichem Abstand zum ersten Teil des Vermittlungsangebotes möglich</item>
+<item>ortsungebunden (beispielsweise in der folgenden Unterrichtsstunde)</item>
+<item>Arbeitsweise: einzeln oder mit anderen</item>
+<item>die notierten Fragen usw. bitte im Plenum besprechen bzw. bearbeiten</item>
+<item>bei den Arbeitsaufträgen ist auch eine Auswahl möglich (beispielsweise arbeitsteilig für Gruppenarbeit)</item>
+</list>
+<space/>
+<emph style="color">Optionale Zusatzangebote</emph>
+<lb/>
+<list style="unordered">
+<item>beispielsweise um einen gesamten Projekttag zu gestalten</item>
+<item>ca. 90 Minuten pro Arbeitsauftrag einplanen</item>
+<item>Arbeitsweise: einzeln oder mit anderen (Gruppen- oder PartnerInnenarbeit)</item>
+<item>erstes und letztes Zusatzangebot (Interview, mental mapping) besonders für die Arbeit in Gruppen geeignet)</item>
+</list>
+</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen haben bewusst teil am kulturellen Leben und am gesellschaftlichen Erbe.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+<item>Die SchülerInnen setzen sich verstärkt zum eigenen Tun und Handeln in Beziehung und erleben sich als reflexive und verantwortungsbewusste AkteurInnen der Gesellschaft.</item>
+<item>Die SchülerInnen setzen sich mit dem Zusammenhang von individueller (sinnlicher) Wahrnehmung und kollektiver (historischer) Gedächtnisbildung auseinander.</item>
+<item>Das Angebot möchte als Beitrag einer antisemitismus-, rassismus- und diskriminierungskritischen Bildungsarbeit verstanden werden.</item>
+<item>Das Angebot möchte Perspektivität erfahrbar machen.</item>
+<item>Das Angebot möchte das Vergessene und Vergessen, das Nicht-Wahrgenommene, das Nicht-Wahrnehmbare thematisieren, sichtbar und erfahrbar machen (unter anderem in zeitlicher, kultureller und politischer Dimension).</item>
+<item>Das Angebot möchte wenig betätigte und überformte kulturelle Bedeutungssysteme neu befragen und vergegenwärtigen und somit einen Beitrag zur ästhetischen Bildung leisten.</item>
+</list>
+<caption>Literatur</caption>
+<list>
+<item>Manfred Blohm et al. (Hg.), Über Ästhetische Forschung. Lektüre zu Texten von Helga Kämpf-Jansen. München 2006.</item>
+<item>Klaus-Peter Busse, Bildungsgangspiele: Kunst Unterrichten. Dortmund 2004.</item>
+<item>John Dewey, Kunst als Erfahrung. Frankfurt/M. 2010.</item>
+<item>Barbara Drinck (Hg.), Forschen in der Schule. Ein Lehrbuch für (angehende) Lehrerinnen und Lehrer. Opladen & Toronto 2013.</item>
+<item>Gert Selle, Gebrauch der Sinne. Eine kunstpädagogische Praxis. Reinbek 1993.</item>
+<item>Gert Selle/Wolfgang Zacharias /Hans-Peter Burmeister, Anstösse zum Ästhetischen Projekt. Eine neue Aktionsform kunst- und kulturpädagogischer Arbeit?. Unna 1994.</item>
+<item>Wolfgang Welsch, Ästhetisches Denken. Stuttgart 1993.</item>
+</list>
+</div>
+<div type="quellenText">
+<p>
+<emph style="bold">Gegen 1/2 3 Uhr nachts stürmte es an der Tür. Meine Frau war totenbleich vor Schrecken geworden</emph>
+, fiel zusammen und sagte mir, geh hinaus, SS-Leute stehen draußen und verlangen Einlass, widrigenfalls sie die Tür einbrechen werden.
+<emph style="bold">Ich nahm meinen Schlafrock und ging schlaftrunken zur Türe, an der der mit einer solchen Wucht gedroschen worden war, daß ich meinte, alles geht in Scherben. Als ich öffnete, stürmten 12 S.S. Leute, was sage ich Leute, vertierte Bestien, herein und schrien mich an, Mache dich fertig. kleide dich rasch an, denn jetzt soll Rache an dir, du Mörder, du Verbrecher, du Vampyr, genommen werden! Rasch, rasch. Da ich als alter Mann nicht so rasch mich ankleiden konnte als die Verbrecher es gewollt,</emph>
+später wußte ich, warum sie es so eilig hatten,
+<emph style="bold">
+ging ein Lausbub von etwa 18 Jahren her und schlug mich mit seiner Faust so stark ins Gesicht, daß mir das Nasenbein schwer verletzt wurde.
+<lb/>
+Inzwischen zündeten sie alle Lampen in der Wohnung an und schrien: Da schaut wie die Juden wohnen.
+</emph>
+Meine Frau weinte, sie wolle mit mir gehen. Doch die Verbrecher, es waren meistens Studenten der Universität und der Technischen Hochschule, schrien ihr zu, Sie können wir nicht brauchen. Inzwischen gingen 6 der Verbrecher weg, worauf dann einer der Banditen, ein feister, dick ausgefressener Student mit einem Schmiß am Kinn, zurückkam und den anderen sagte, hier wird nichts angerührt. Heute verstehe ich dieses Wort. Aber damals wußte ich nicht, was es bedeuten sollte.
+<lb/>
+Denn in den anderen jüdischen Wohnungen wurde alles klein und dünn geschlagen. Das sollte in meiner Wohnung nicht geschehen, weil man da Geheimschätze und Geheimdokumente vermutete. Als der Lümmel meine Beule on der Nase sah, fragte er, wer das gemacht habe, da sagte ihm einer, der und der und da sagte er, das sehe dem ähnlich.
+<emph style="bold">Nun wurde ich auf die Straße getrieben und zu laufen geheißen. Da ich als 70jähriger, seelisch gebrochener Mann nicht so laufen konnte, wurde ich mit Fußtritten reguliert, so daß ich zweimal schnurstracks hinfiel und mir beide Knie schwer verletzte. Wir kamen zur Murbrücke, da wollten mich 3 der Kerle in den Fluß werfen, aber 2 Frauen, die sich den brennenden Tempel anschauen wollten, schrien, lhr werdet doch den alten Mann nicht im Winter in das Wasser werfen. So trieben sie mich denn zum brennenden Tempel. Dort war ein Scheiterhaufen für mich aufgestellt worden. Doch bei der Rosenkranzgasse stand Polizeiwache und die ließen niemanden durch.</emph>
+Später erfuhr ich die Ursache. Es sollte verhindert werden, daß Menschen in einer Anwandlung von Scham ihrer Empörung Luft machen und manches hindern könnten. Eine andere Version, die mir zugemittelt worden war und diese ist die wahre, ist,
+<emph style="bold">da die Feuerwehr den Auftrag hatte, die neben dem Tempel stehenden Häuser zu schützen, was bei einem Andrang nur schwer durchführbar gewesen wäre,</emph>
+durfte niemand durchgelassen werden.
+<emph style="bold">
+Nur diesem Umstande hatte ich es zuzuschreiben, daß die zum Schauplatz Zugelassenen nicht Reigentänze um meinen verkohlten Leichnam aufgeführt haben. Nun wurde ich zum Griesplatz Nr.2 getrieben. Hier stand schon ein Auto, das auf uns wartete. Doch bevor ich ins Auto genommen wurde, umstellten mich die Banditen und fragten mich um die Adressen der anderen Rabbiner, Beamten und das ist das Bezeichnendste, nach der von reichen Juden. Ich sagte ihnen, ich kenne ihre Adressen nicht, denn ich habe mich um diese nicht gekümmert.
+<lb/>
+Da zupfte mir der Verbrecher, der mir die Beule an der Nase schlug, meinen Bart, riß mir die Hälfte der rechten Seite unter furchtbaren Schmerzen aus, so daß ich stark blutete.
+</emph>
+Da fragte mich der eine, wo der Jude Koppel, der allerdings schon längst tot war, wohne, worauf ich sagte, der wohnte dort und dort. Da schrie der Bengel: Du Judas, worauf ihm der eine zurief: Halt’s Maul.
+<lb/>
+<emph style="bold">
+Und nun sagten sie zu mir. ich wolle ihnen 10 Schilling geben. Ich sagte ihnen, Ich habe kein Geld bei mir, denn ich trug nur selten Geld bei mir. Daraufhin hießen sie mich ein bereits für meine Verschleppung bereitstehendes Auto, das am Griesplatz 2 stand, zu besteigen und zwei der Verbrecher setzten sich zu mir und nahmen mich in die Mitte.
+<lb/>
+Ich glaube, es gibt in keiner Sprache eine solche Flut von gemeinen Schimpfworten wie in der deutschen und diese alle wurden noch unterstützt mit wuchtigen Schlägen. Mit allen diesen wurde ich belegt. Mörder, Räuber, Saujude, Vampyr, Blutsauger und wer weiß noch alles. Wir werden dir schon zeigen, daß du kein Geld bei dir hast. Sie fuhren mich zu meiner Wohnung. Da ging der eine hinauf zu meiner Frau, die einen schweren Schüttelfrost hatte, schrie ihr zu, sie solle öffnen, und als sie öffnete, verlangte er 10 S.
+</emph>
+Meine Frau hatte zum Glück noch 10 S. bei sich und gab sie ihm. Wer weiß, was sie mit mir noch getan hätten, wenn ihnen diese 10 S. nicht gegeben worden wären!
+<emph style="bold">
+Nun kam er herunter und hieß den Chauffeur, mich zum jüdischen Friedhof fahren. Wir fuhren über die Radetzkybrücke, da zum ersten Male sah ich den in hellen Flammen lodernden Tempel, ich weinte fürchterlich, da schrien mir die Mordbuben zu: Nun jetzt soll dir dein Jehova, du Mörder, du Räuber, du Strolch, helfen. Da schau hin, wie dein Jehova brennt. Und nun wurde ich geohrfeigt, geschlagen, an den Haaren gerissen. Ich erwähne nochmals, da erst sah ich zum ersten Male die hellauflodernden Flammen meines heißgeliebten Tempels. Denn als sie mich zum ersten Male über die Brücke schlagend einhertrieben, konnte ich gar nicht hinschauen.
+<lb/>
+Als ich nun meinen heißgeliebten Tempel brennen sah, brach ich in tiefes Weinen aus, das, wie ich glaube, einen Stein hätte rühren müssen.
+<lb/>
+Aber die Bestien schrien mich an und sagten: da schau, wie der Saujude heult und ohrfeigten mich hin und her und schlugen auf mich ein. Und der Chauffeur, den ich nie vergessen werde, es war ein bebrillter Lump von etwa 50 Jahren, sekundierte und sagte, was man diesem Geschmeiß und Gesindel auch antut ist viel zu wenig. Man sollte sie alle kalten Blutes erschlagen. Und so ging das den ganzen Weg.
+</emph>
+Nun kamen wir zum jüdischen Friedhof und da sagten sie mir, jetzt wirst du dir dein eigenes Grab schaufeln und dein dreckiger Jehova soll dir das letzte Gebet sprechen. Doch die Friedhofshalle war gesperrt und sie wußten nicht, daß der Pförtner auf der anderen Seite des Terrains wohnte. Nun berieten sie, was mit mir zu machen. Noch geheimnisvollen Besprechungen gaben sie dem Chauffeur den Auftrag, mich weiterzufahren, und so fuhren sie mich weit hinaus, bis wir zu einem Felde mit Strohschobern kamen.
+<lb/>
+Da fragten sie den Chauffeur, was er bekomme, sagte er, 8 S., worauf sie ihm die 10 S. Note gaben, und er gab ihnen 2 S. zurück. Diese schmissen sie mir ins Gesicht und schrien, damit du Jude nicht sagst, wir haben dir dein Geld genommen. Ich mußte das Geld aufheben und dann trieben sie mich auf das Feld, weit abseits von der Straße. Vor einem Heuschober hießen sie mich, niederknien, und flankierten mich, je einer zur Rechten, der andere zur Linken mit Revolvern in der Hand. Ich verrichtete still, jetzt das neunte Mol, das Totengebet bzw. die Widdni, das Gebet des Sterbenden und nun fingen sie an, in mich einzuhämmern. Kopf, Rücken, Seiten, alles wurde weich in mir geschlagen. Noch hörte ich, wie die Bestien sagten, der braucht keinen Schuß mehr. Was dann mit mir geschehen, weiß ich nicht. Ich fiel in eine Bewußtlosigkeit und so mochte ich etwa eine halbe Stunde so dagelegen sein. Als ich erwachte, hatte ich rasende, nicht zu beschreibende, furchtbare Schmerzen und ich war noch immer benommen und wußte nicht, wo ich bin und was mit mir geschehen. Erst nach einer Viertelstunde kam ich zu mir, suchte mich aufzurichten, fiel aber immer wieder um, bis ich mich endlich aufraffte.
+<lb/>
+Ich wußte nicht, wo ich war. Ich fing an, mich zu orientieren, aber es war dunkel und ich konnte den Weg erst schwer finden. Erst noch etwa 10 Minuten kam ich auf den Straßenweg. Aber kaum da angekommen, fiel ich wieder in eine Ohnmacht, die etwa 7-8 Minuten gedauert haben mochte. Mühselig und von furchtbaren Schmerzen geplagt, raffte ich wieder meine Kräfte zusammen, schaute aus und da sah ich Lichter brennen. Da dachte ich, hier, in dieser Richtung müsse die Stadt liegen.
+<lb/>
+Ich ging und ging, es mochte etwa 4.35 h morgens gewesen sein, aber der Weg nahm kein Ende. Anfangs kam ich an einer Ziegelei vorbei, dann, wie gesagt, der Straße entlang. Noch ungefähr 1 1/4 Stunden kam ich, nachdem ich noch einmal in eine kurze Ohnmacht gefallen war, nach dem Orte, wo die Brauerei Reininghaus stand. Da traf ich einen Arbeiter, der zur Arbeit ging. Den fragte ich, wie ich zur Bahn kommen könne. Denn dort wollte ich mir ein Taxi nehmen und nach Hause fahren. Er wies mir den Weg, und durch schmale Wege mich hindurchschlängelnd kam ich endlich etwas vor 6 Uhr morgens zum Hauptbahnhof. Dort stand ein Taxi. Ich sagte dem Chauffeur, er möchte mich noch Hause fahren. Aber ich hatte noch nicht die Wagentür geöffnet, pfiff der Chauffeur und es waren keine 30 Sekunden verflossen, kamen 2 Gestapobestien, faßten mich und schleppten mich in einen Warteraum der Bahn. Was ich da zu sehen bekam, öffnete mir erst die Augen und ich wurde gewahr, daß nicht ich allein das Opfer war, sondern daß da ein ganz bestialischer Pogrom veranstaltet worden war. In der Halle fand ich bereits 15 Mitglieder meiner Gemeinde (…). Die meisten waren verletzt. Ich setzte mich auf eine Bonk, fiel aber zusammen und mußte mich auf die Bank legen. Keiner durfte ein Wort sprechen. Langsam, langsam füllte sich der Saal. Da kamen Männer mit gebrochenen Rippen (...), mit verwundeten Köpfen, mit verbrannten Schnurrbärten auf der einen Seite (...) usw. usw. Als etwa 30-40 Männer schon da waren, schrie ein etwa 18-20jähriger junger S.S. Mann, der drinnen die Wache über uns hielt, auf! zum Turnen! Ich natürlich konnte mich nicht rühren und sagte zu ihm, ich will nach Hause fahren. Da schrie er mich an: Du Saujude, du wirst schon nach Hause gehen müssen, wenn du es können wirst. Nun wurden die armen, verwundeten Menschen draußen am Bahnhofsplatz vor einer gaffenden und sich freuenden Menge trainiert. Kniebeugen, Laufen, und wie sonst all die Kommandos lauteten, und deren Geschrei mir ins Mark riss. Noch ungefähr 3/4 Stunden Exerzierübungen kamen Polizeiwagen, sie stießen alle die armen Opfer in den Wagen und nur ich allein blieb übrig. Da hörte ich, wie sie am Telephon verhandelten, was mit mir geschehen solle. Nach langem Hin-und Herverhandeln sagte mir der Lausbube, ich kann nach Hause gehen. Ich nahm ein Taxi, fuhr heim und statt der üblichen Taxe knöpfte mir der Verbrecher die doppelte Taxe ab, Wir waren ja Freiwild geworden.
+</p>
+<caption>Titel / Beschreibung</caption>
+<p>Vollständiger Text für „Mahnmal – Lauftext“ aus: David Herzog. Erinnerungen eines Rabbiners 1932-1940, herausgegeben von Walter Höflechner auf Grundlage einer Diplomarbeit von Andreas Schweiger, Band 32 der Publikationen aus dem Archiv der Universität Graz, Akademische Druck- und Verlagsanstalt Graz, 2. Auflage 1992 S. 46-49. Die Hervorhebungen kennzeichnen den für das Mahnmal verwendeten Text.</p>
+<caption>Quellenzitat</caption>
+<p>Zit. n. Elisabeth Fieder/Institut für Kunst im Öffentlichen Raum Steiermark (Hg.), Mahnmal Lauftext von Catrin Bolt in Graz. Wien 2013, 3-6.</p>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty137" xml:id="IMAGE.1">
+<desc>David Herzog (1869–1946) war Rabbiner in Graz und emigrierte nach Oxford.</desc>
+<desc type="title">David Herzog in Oxford (Centrum für jüdische Studien, Universität Graz)</desc>
+</graphic>
+</facsimile>
+</TEI>

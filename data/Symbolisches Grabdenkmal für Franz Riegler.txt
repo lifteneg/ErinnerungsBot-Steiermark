@@ -1,0 +1,261 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Franz Riegler: Nach Verbüßung der Haftstrafe ins KZ</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty17</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty17</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty16</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty18</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit der Biografie eines im Nationalsozialismus Verfolgten auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext Verfolgung und Widerstand.</p>
+<p rend="Ort, Gemeinde EO/EZ">Mürzzuschlag (8680)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Am Friedhof in Mürzzuschlag errichtete der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss216">KZ-Verband</ref>
+Mürzzuschlag einen symbolischen Grabstein für den 1942 in Auschwitz ermordeten Widerstandkämpfer Franz Riegler. 1979 wurde ebenfalls auf Initiative des KZ-Verbandes in Mürzzuschlag auch eine Gasse nach
+<ref target="http://gams.uni-graz.at/o:derla.sty16">Franz Riegler</ref>
+benannt.
+<lb/>
+<emph style="bold">Mitglied der Arbeiterbewegung</emph>
+<lb/>
+Franz Riegler wurde 1915 in Spital am Semmering geboren. Er wuchs in Mürzzuschlag auf und gehörte von früher Kindheit an verschiedenen Vereinen der Arbeiterbewegung an. Zunächst war er Mitglied der Kinderfreunde und später der Sozialistischen Arbeiterjugend. Nach dem Verbot der Sozialdemokratischen Partei und ihrer Organisationen in Folge der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss209">Februarkämpfe 1934</ref>
+trat er dem illegalen Kommunistischen Jugendverband (KJV) bei. Nach der Schule erlernte er das Schuhmacherhandwerk, wurde aber 1933 im Zuge der Wirtschaftskrise arbeitslos. Riegler betätigte sich nach seinem Beitritt zum KJV gemeinsam mit
+<ref target="https://gams.uni-graz.at/o:derla.perssty#perssty32">Johann Freidorfer</ref>
+1934/35 aktiv im Widerstand gegen das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss10">austrofaschistische Regime</ref>
+, weshalb er und Freidorfer vom Kreisgericht Leoben 1935 wegen des Verbrechens des Hochverrats zu einem Jahr Kerker verurteilt wurden.
+<lb/>
+Da Riegler und die anderen Jugendlichen begeisterte Sportler waren, traten sie 1936 dem Allgemeinen Turn- und Sportverein in Mürzzuschlag bei. Riegler und Freidorfer organisierten im Auftrag der Wiener Leitung des KJV innerhalb des Turnvereins eine Gruppe politisch interessierter Jugendlicher, die nicht nur gemeinsam turnten und wanderten, sondern auch politisch diskutierten. Aus dieser Gruppe ging später die gegen die Nationalsozialisten aktive Widerstandsgruppe des KJV in Mürzzuschlag hervor.
+<lb/>
+Schon bald nach dem
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss4">„Anschluss“</ref>
+1938 kam von der Führung des KJV aus Wien die Aufforderung, die kommunistische Jugendorganisation in Mürzzuschlag wieder aktiv werden zu lassen. Riegler informierte seine Freunde aus dem Turnverein darüber. Sie trafen sich, machten gemeinsame Ausflüge, bei denen sie die politische Lage diskutierten, informierten einander, was sie in den deutschsprachigen Sendungen aus Moskau gehört hatten, und sammelten Mitgliedsbeiträge ein. Als es zu Jahresende 1938 in Mürzzuschlag zu den ersten Verhaftungen von NS-Gegnern kam, sammelten sie zudem Spenden für die Angehörigen der Verhafteten. Nach der Übersiedlung von Freidorfer im September 1938 nach München übernahm Riegler die Führung des KJV.
+<lb/>
+<emph style="bold">Gestapo – Gericht – Auschwitz</emph>
+<lb/>
+Am 27. Juni 1939 verhaftete die
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss62">Gestapo</ref>
+Franz Riegler wegen kommunistischer Betätigung. Die Verhaftung traf ihn Mitte in den Vorbereitungen zu seiner Hochzeit, wie seine Braut Milla berichtete:
+<lb/>
+„Endlich war es so weit. Franzl hatte eine kleine Wohnung bekommen und wir konnten zusammen wohnen. Das Aufgebot wurde bestellt. Nur noch drei Tage und wir sind Mann und Frau. Ja, so hätte es kommen können, wenn Franzl nicht von der Gestapo geholt und verhaftet worden wäre.“ (Bericht von Milla Urisk für ein unveröffentlichtes Buch „Schicksalbuch der österreichischen Frau“ und Gespräch mit Milla Urisk, 10.11.1997.)
+<lb/>
+Mit Franz Riedler wurden noch weitere Mitglieder des KJV Mürzzuschlag verhaftet und wegen Vorbereitung zum Hochverrat angeklagt. Der Politische Senat am Oberlandesgericht Graz verurteilte Franz Riegler am 29. November 1940 zu zwei Jahren und vier Monaten Zuchthaus. Johann Freidorfer bekam drei Jahre, die anderen Jugendlichen Strafen bis zu eineinhalb Jahren. Während außer Freidorfer und Riegler alle nach der Urteilsverkündung freigelassen wurden, da die Strafe bereits durch die Untersuchungshaft als verbüßt galt, musste Franz Riegler noch für einige Monate in Haft bleiben. Dass die Strafe nicht höher ausfiel, freut seine Verlobte:
+<lb/>
+„Für uns war aber das schon eine Freude, weil wir jetzt mit dem Kalenderabstreichen beginnen konnten und der Oktober 1941 sollte Franzl die Freiheit bringen. Aber es kam wieder anders.“ (Bericht von Milla Urisk für ein unveröffentlichtes Buch „Schicksalbuch der österreichischen Frau“ und Gespräch mit Milla Urisk, 10.11.1997)
+<lb/>
+<space/>
+Franz Riegler kam vom Zuchthaus Karlau in Graz wieder zur Gestapo, die ihn jedoch nicht entließ. In einem vom Leiter des Reichssicherheitshauptamtes in Berlin am 19. Dezember 1941 gezeichneten Schutzhaftbefehl heißt es in Bezug auf Riegler:
+<lb/>
+„Er gefährdet nach dem Ergebnis der staatspolizeilichen Feststellungen durch sein Verhalten den Bestand und die Sicherheit des Volkes und Staates, indem er nach Strafverbüßung wegen hochverräterischer Betätigung erwarten lässt, er werde dem Reich, vornehmlich jetzt im Kriege, weiterhin auf jede erdenkliche Weise Schaden zuzufügen suchen.“ (Schutzhaftbefehl der Geheimen Staatspolizei gegen Franz Riegler, 19.12.1941.)
+<lb/>
+Franz Riegler wurde zur Verbüßung der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss144">„Schutzhaft“</ref>
+am 16. Jänner 1942 ins
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss25">KZ Auschwitz</ref>
+überstellt. Aus Auschwitz schrieb Franz seiner Braut im Juli 1942 noch einen Brief, in dem er ihr versicherte, sie müsse sich zu Hause keine unnötigen Sorgen machen, „denn dazu ist kein Grund, ich gehe nicht unter, ich habe meine Lebenszuversicht und Gründe, welche Du ja von jeher kennst, auch hier bewahrt, wenn es auch manchmal schwer ist. (…) Die Zeit wird kommen, wo auch ich kein Schutzhäftling mehr bin, sondern als freier Mensch wieder in meine Heimat zurückkehren kann.“ (Brief von Franz Riegler, 12.7.1942. Abgedruckt in: Heimo Halbrainer, „In der Gewißheit, daß Ihr den Kampf weiterführen werdet”. Briefe steirischer WiderstandskämpferInnen aus Todeszelle und KZ, Graz 2000, S. 185.)
+<lb/>
+Zwei Monate später erhielt seine Mutter aus Auschwitz die Todesmeldung, in der es hieß:
+<lb/>
+„Ihr Sohn Franz meldete sich am 27.8.1942 krank und wurde daraufhin unter Aufnahme in Krankenbau in ärztliche Behandlung genommen. Es wurde ihm die bestmögliche medikamentöse und pflegerische Behandlung zuteil. Trotz aller angewendeten ärztlichen Bemühungen gelang es nicht, der Krankheit Herr zu werden.“ (Brief des Kommandanten des KZ Auschwitz an Frau Hölpling, 10.9.1942. Abgedruckt in: Halbrainer, „In der Gewißheit, daß Ihr den Kampf weiterführen werdet”, S. 185)
+<lb/>
+Tatsächlich wurde Franz Riegler am 7. September 1942 in Auschwitz ermordet.
+</p>
+<caption>Literatur</caption>
+<list>
+<item><p>Am Friedhof in Mürzzuschlag errichtete der <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss216">KZ-Verband</ref> Mürzzuschlag einen symbolischen Grabstein für den 1942 in Auschwitz ermordeten Widerstandkämpfer Franz Riegler. 1979 wurde ebenfalls auf Initiative des KZ-Verbandes in Mürzzuschlag auch eine Gasse nach <ref target="http://gams.uni-graz.at/o:derla.sty16">Franz Riegler</ref> benannt.<lb></lb><emph style="bold">Mitglied der Arbeiterbewegung</emph><lb></lb>Franz Riegler wurde 1915 in Spital am Semmering geboren. Er wuchs in Mürzzuschlag auf und gehörte von früher Kindheit an verschiedenen Vereinen der Arbeiterbewegung an. Zunächst war er Mitglied der Kinderfreunde und später der Sozialistischen Arbeiterjugend. Nach dem Verbot der Sozialdemokratischen Partei und ihrer Organisationen in Folge der <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss209">Februarkämpfe 1934</ref> trat er dem illegalen Kommunistischen Jugendverband (KJV) bei. Nach der Schule erlernte er das Schuhmacherhandwerk, wurde aber 1933 im Zuge der Wirtschaftskrise arbeitslos. Riegler betätigte sich nach seinem Beitritt zum KJV gemeinsam mit <ref target="https://gams.uni-graz.at/o:derla.perssty#perssty32">Johann Freidorfer</ref> 1934/35 aktiv im Widerstand gegen das<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss10">austrofaschistische Regime</ref>, weshalb er und Freidorfer vom Kreisgericht Leoben 1935 wegen des Verbrechens des Hochverrats zu einem Jahr Kerker verurteilt wurden.<lb></lb>Da Riegler und die anderen Jugendlichen begeisterte Sportler waren, traten sie 1936 dem Allgemeinen Turn- und Sportverein in Mürzzuschlag bei. Riegler und Freidorfer organisierten im Auftrag der Wiener Leitung des KJV innerhalb des Turnvereins eine Gruppe politisch interessierter Jugendlicher, die nicht nur gemeinsam turnten und wanderten, sondern auch politisch diskutierten. Aus dieser Gruppe ging später die gegen die Nationalsozialisten aktive Widerstandsgruppe des KJV in Mürzzuschlag hervor.<lb></lb>Schon bald nach dem <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss4">„Anschluss“</ref> 1938 kam von der Führung des KJV aus Wien die Aufforderung, die kommunistische Jugendorganisation in Mürzzuschlag wieder aktiv werden zu lassen. Riegler informierte seine Freunde aus dem Turnverein darüber. Sie trafen sich, machten gemeinsame Ausflüge, bei denen sie die politische Lage diskutierten, informierten einander, was sie in den deutschsprachigen Sendungen aus Moskau gehört hatten, und sammelten Mitgliedsbeiträge ein. Als es zu Jahresende 1938 in Mürzzuschlag zu den ersten Verhaftungen von NS-Gegnern kam, sammelten sie zudem Spenden für die Angehörigen der Verhafteten. Nach der Übersiedlung von Freidorfer im September 1938 nach München übernahm Riegler die Führung des KJV. <lb></lb><emph style="bold">Gestapo – Gericht – Auschwitz</emph><lb></lb>Am 27. Juni 1939 verhaftete die <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss62">Gestapo</ref> Franz Riegler wegen kommunistischer Betätigung. Die Verhaftung traf ihn Mitte in den Vorbereitungen zu seiner Hochzeit, wie seine Braut Milla berichtete: <lb></lb>„Endlich war es so weit. Franzl hatte eine kleine Wohnung bekommen und wir konnten zusammen wohnen. Das Aufgebot wurde bestellt. Nur noch drei Tage und wir sind Mann und Frau. Ja, so hätte es kommen können, wenn Franzl nicht von der Gestapo geholt und verhaftet worden wäre.“ (Bericht von Milla Urisk für ein unveröffentlichtes Buch „Schicksalbuch der österreichischen Frau“ und Gespräch mit Milla Urisk, 10.11.1997.)<lb></lb>Mit Franz Riegler wurden noch weitere Mitglieder des KJV Mürzzuschlag verhaftet und wegen Vorbereitung zum Hochverrat angeklagt. Der Politische Senat am Oberlandesgericht Graz verurteilte Franz Riegler am 29. November 1940 zu zwei Jahren und vier Monaten Zuchthaus. Johann Freidorfer bekam drei Jahre, die anderen Jugendlichen Strafen bis zu eineinhalb Jahren. Während außer Freidorfer und Riegler alle nach der Urteilsverkündung freigelassen wurden, da die Strafe bereits durch die Untersuchungshaft als verbüßt galt, musste Franz Riegler noch für einige Monate in Haft bleiben. Dass die Strafe nicht höher ausfiel, freute seine Verlobte: <lb></lb>„Für uns war aber das schon eine Freude, weil wir jetzt mit dem Kalenderabstreichen beginnen konnten und der Oktober 1941 sollte Franzl die Freiheit bringen. Aber es kam wieder anders.“ (Bericht von Milla Urisk für ein unveröffentlichtes Buch „Schicksalbuch der österreichischen Frau“ und Gespräch mit Milla Urisk, 10.11.1997)<lb></lb><space></space>Franz Riegler kam vom Zuchthaus Karlau in Graz wieder zur Gestapo, die ihn jedoch nicht entließ. In einem vom Leiter des Reichssicherheitshauptamtes in Berlin am 19. Dezember 1941 gezeichneten Schutzhaftbefehl heißt es in Bezug auf Riegler:<lb></lb>„Er gefährdet nach dem Ergebnis der staatspolizeilichen Feststellungen durch sein Verhalten den Bestand und die Sicherheit des Volkes und Staates, indem er nach Strafverbüßung wegen hochverräterischer Betätigung erwarten lässt, er werde dem Reich, vornehmlich jetzt im Kriege, weiterhin auf jede erdenkliche Weise Schaden zuzufügen suchen.“ (Schutzhaftbefehl der Geheimen Staatspolizei gegen Franz Riegler, 19.12.1941.)<lb></lb>Franz Riegler wurde zur Verbüßung der <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss144">„Schutzhaft“</ref> am 16. Jänner 1942 ins <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss25">KZ Auschwitz</ref> überstellt. Aus Auschwitz schrieb Franz seiner Braut im Juli 1942 noch einen Brief, in dem er ihr versicherte, sie müsse sich zu Hause keine unnötigen Sorgen machen, „denn dazu ist kein Grund, ich gehe nicht unter, ich habe meine Lebenszuversicht und Gründe, welche Du ja von jeher kennst, auch hier bewahrt, wenn es auch manchmal schwer ist. (…) Die Zeit wird kommen, wo auch ich kein Schutzhäftling mehr bin, sondern als freier Mensch wieder in meine Heimat zurückkehren kann.“ (Brief von Franz Riegler, 12.7.1942. Abgedruckt in: Heimo Halbrainer, „In der Gewißheit, daß Ihr den Kampf weiterführen werdet”. Briefe steirischer WiderstandskämpferInnen aus Todeszelle und KZ, Graz 2000, S. 185.)<lb></lb>Zwei Monate später erhielt seine Mutter aus Auschwitz die Todesmeldung, in der es hieß: <lb></lb>„Ihr Sohn Franz meldete sich am 27.8.1942 krank und wurde daraufhin unter Aufnahme in Krankenbau in ärztliche Behandlung genommen. Es wurde ihm die bestmögliche medikamentöse und pflegerische Behandlung zuteil. Trotz aller angewendeten ärztlichen Bemühungen gelang es nicht, der Krankheit Herr zu werden.“ (Brief des Kommandanten des KZ Auschwitz an Frau Hölpling, 10.9.1942. Abgedruckt in: Halbrainer, „In der Gewißheit, daß Ihr den Kampf weiterführen werdet”, S. 185)<lb></lb>Tatsächlich wurde Franz Riegler am 7. September 1942 in Auschwitz ermordet.</p></item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Franz Riegler: Nach Verbüßung der Haftstrafe ins KZ</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus erfährt durch die Implementierung biografischer Zugänge eine produktive Erweiterung. Die Beschäftigung mit Biografien eröffnet zusätzliche Perspektiven auf das historische Geschehen und ermöglicht es den Lernenden, sich über einen konkreten Lebensweg der Alterität der Vergangenheit anzunähern. Die Verbindung des biografischen Arbeitens mit Quellenarbeit ermöglicht dabei den Aufbau diverser historischer Kompetenzen, wie etwa der historischen Methodenkompetenzen und Orientierungskompetenzen.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Arbeiten Sie aus der beigelegten Quelle (siehe Bildquellen) die Begründung für Franz Rieglers Übernahme in die „Schutzhaft“ heraus.</item>
+<item>Erläutern Sie anhand des biografischen Textes (siehe Mehr Erfahren), warum Riegler aus Sicht des NS-Staates eine Gefahr darstellte.</item>
+<item>Beurteilen Sie basierend auf dem biografischen Text Rieglers Engagement gegen das NS-Regime und begründen Sie Ihr Urteil mittels der Schilderung von Rieglers Lebensweg.</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Die Einheit beginnt mit der Analyse der Textquelle, anhand derer die Lernenden in die Biografie Franz Rieglers einsteigen. Die Aussage des Quellentextes soll im zweiten Auftrag anhand des biografischen Textes kontextualisiert werden. Mit dem dritten Auftrag sollen die Lernenden sich schließlich persönlich positionieren und Rieglers Engagement einordnen.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich bewusst mit den Folgen der nationalsozialistischen Gewaltherrschaft.</item>
+<item>Die SchülerInnen reflektieren die Gründe und Voraussetzungen von Widerstandshandlungen.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty17" xml:id="IMAGE.1">
+<desc>Franz Riegler (1915–1942)</desc>
+<desc type="title">Franz Riegler (1915–1942) © Heimo Halbrainer</desc>
+</graphic>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty17" xml:id="IMAGE.2">
+<desc>Franz Riegler wurde nach der Haftverbüßung nicht entlassen, sondern zur Verbüßung der „Schutzhaft“ ins KZ Auschwitz überstellt, wo er am 7. September 1942 ermordet wurde.</desc>
+<desc type="title">Schutzhaftbefehl, 19. Dezember 1941 © Heimo Halbrainer</desc>
+</graphic>
+</facsimile>
+</TEI>

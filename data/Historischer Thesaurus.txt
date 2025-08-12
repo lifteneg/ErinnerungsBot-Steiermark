@@ -1,0 +1,371 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<rdf:RDF xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+<skos:ConceptScheme rdf:about="https://gams.uni-graz.at/o:derla.thesaurus">
+<dc11:creator xml:lang="de">Sebastian Stoff</dc11:creator>
+<dc11:date xml:lang="de">2019-28-11</dc11:date>
+<dc11:title xml:lang="de">Konzepte im Erinnerungslandschaftsprojekt</dc11:title>
+<skos:hasTopConcept rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#placeOfRemembrance"/>
+</skos:ConceptScheme>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#placeOfRemembrance">
+<skos:definition xml:lang="de">Den Überlegungen von Pierre Nora folgend sind Erinnerungsorte Orte mit Bedeutung für das individuelle und kollektive Gedächtnis. Sie haben eine Sinngebungsfunktion und sind Teil des kulturellen Gedächtnisses. Erinnerungsorte sind Berührungspunkte zwischen Vergangenheit und Zukunft, Schnittstellen zwischen Geschichte und Gedächtnis. Setzt man die einzelnen Erinnerungsorte zueinander in Beziehung, so werden Erinnerungsräume aufgespannt. In DERLA sind diese unterschiedlichen Erinnerungsorte und Erinnerungsräume Teil einer Erinnerungslandkarte, die alle Erinnerungsorte an die Opfer und den Terror des Nationalsozialismus und Faschismus zum Zeitpunkt des Jahres 2020 sichtbar macht. Zentral ist hierbei, dass in der Erinnerungslandkarte die unterschiedlichen Zeitschichten der Erinnerung und damit auch die Transformationen der Erinnerung sichtbar gemacht werden. Während Pierre Nora jedoch unter Erinnerungsorten nicht nur physische Orte sondern auch immaterielle Orte, wie beispielsweise Musik, Konzepte, Texte, Erzählungen und Ideen versteht, arbeitet DERLA mit rein topographischen Orten, die mit GPS-Koordinaten versehen und auf der Erinnerungslandkarte verortet werden können. In DERLA wird hierbei zwischen manifesten und nicht-manifesten Erinnerungsorten unterschieden. Unter manifesten Erinnerungsorten werden jene verstanden, die durch spezifische Erinnerungszeichen als Erinnerungsorte in der Öffentlichkeit sichtbar gemacht werden. Nicht-manifeste Erinnerungsorte sind Erinnerungsorte, die bislang über kein öffentlich sichtbares Erinnerungszeichen verfügen, jedoch einen klaren historischen Bezug zu Opfern und/oder dem Terror des Nationalsozialismus und Faschismus aufweisen. Ihnen wird mit DERLA ein virtuelles Zeichen gesetzt. </skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Erinnerungsort</skos:prefLabel>
+<skos:prefLabel xml:lang="en">Place of remembrance</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#memorandum">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#placeOfRemembrance"/>
+<skos:definition xml:lang="de">Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch nachfolgende Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden. </skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Erinnerungszeichen</skos:prefLabel>
+<skos:prefLabel xml:lang="en">memorandum</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#memtype">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memorandum"/>
+<skos:definition xml:lang="de">Die Kategorie „Art des Erinnerungszeichens“ unterscheidet die Erinnerungszeichen in ihrer Form, Art und Materialität. Kategorien sind Straßen- und Ortsbezeichnungen, Denk- und Mahnmale sowie spezifische Formen der Erinnerungszeichen wie „Stolpersteine“.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Art des Erinnerungszeichens</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#img">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Erinnerungszeichen, das mit künstlerischen Mitteln auf einer Fläche gestaltet ist; beispielsweise Gemälde, Fotografie, Zeichnung.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Bild</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#fountain">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Brunnen, der nach einem Opfer des Nationalsozialismus benannt wurde.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Brunnen</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#denkmal">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Erinnerungszeichen, das unter anderem mit körperhaft-räumlichen Mitteln, also dreidimensional, gestaltet ist. Ein Denkmal hat meistens eine Hauptansicht und kann auch Schrift als Gestaltungselement enthalten.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Denkmal</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#freimonument">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Erinnerungszeichen, welches mit körperhaft-räumlichen Mitteln, also dreidimensional, gestaltet ist und welches im Unterschied zu einem Denkmal allansichtig ist und umschritten werden kann.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Freimonument</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#building">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Gebäude, das nach einem Opfer des Nationalsozialismus benannt wurde.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Gebäude</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#gedenktafel">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Tafel, die an Opfer des Nationalsozialismus oder Orte des NS-Terrors erinnert.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Gedenktafel</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#gedenkstein">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Gedenkstein, der an Opfer des Nationalsozialismus oder Orte des NS-Terrors erinnert.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Gedenkstein</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#grabstelle">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Einzelne Grabstelle eines Opfers des Nationalsozialismus.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Grabstelle</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#grabanlage">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Anlage von mehreren Gräbern von Opfern des Nationalsozialismus.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Grabanlage</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#inschrift">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Erinnerungszeichen, bei dem mittels Text auf Personen oder Ereignisse verwiesen wird. Die Schrift wird dabei direkt, ohne zusätzlichen Schriftträger, wie beispielsweise eine Gedenktafel, aufgebracht.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Inschrift</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#kriegerdenkmal">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Denkmal oder Denkmalanlage, die an gefallene Soldaten erinnert.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Kriegerdenkmal</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#intervention">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Künstlerische Arbeit, die beispielsweise im öffentlichen Raum, Parks, Kirchen und Amtsgebäuden gewohnte Anblicke und Zusammenhänge verändert, wodurch auch die Wahrnehmung verändert und auf bestimmte Dinge kritisch aufmerksam gemacht wird; ein anderes Wort für Intervention ist Eingriff.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Künstlerische Intervention</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#relzeichen">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Erinnerungszeichen, die im Kontext von Kirchen und Religionsgemeinschaften enstanden sind. </skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Religiöse Zeichen/Orte: Altar, Gipfelkreuz, Glasfenster, Glocke, Kapelle, Orgel</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#schriftskulptur">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Erinnerungszeichen, das mit Schriftgestaltung als primärem künstlerischen Ausdrucksmittel arbeitet und diese meistens in großformatigen Installationen präsentiert.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Schriftskulptur</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#skulptur">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Erinnerungszeichen, das mit körperhaft-räumlichen künstlerischen Mitteln, also dreidimensional, gestaltet ist. Heute werden die Begriffe Skulptur und Plastik oft gleich verwendet; ursprünglich bedeutet Skulptur, dass Material (beispielsweise Stein, Holz) durch Hauen und Schnitzen, abgetragen wird und Plastik, dass Material (beispielsweise Ton, Pappmaché) durch Auftragen und Modellieren geformt wird.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Skulptur</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#siedlung">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Siedlung, die in Erinnerung an Opfer des Nationalsozialismus sowie Mitglieder des Widerstandes benannt wurde.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Siedlung</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#statue">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Erinnerungszeichen mit skulpturalem Charakter, das eine Person, ein Tier oder eine allegorische Figur zeigt. Die meisten Stauen sind freistehend und können von allen Seiten betrachtet werden.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Statue</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#stolperstein">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Stolpersteine sind ein Erinnerungsprojekt des Künstlers Gunter Demnig, das seit 1992 in ganz Europa betrieben wird. Mit im Boden verlegten kleinen Gedenktafeln, sogenannten Stolpersteinen, vor den letzten Wohn- oder Arbeitsadressen soll an das Schicksal der Menschen erinnert werden, die in der Zeit des Nationalsozialismus verfolgt, ermordet, deportiert, vertrieben oder in den Suizid getrieben wurden.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Stolperstein</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#verkehrsflaechen">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memtype"/>
+<skos:definition xml:lang="de">Verkehrsflächen, die an Opfer des Nationalsozialimus oder Mitglieder des Widerstandes benannt wurden.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Verkehrsflächen: Arkade, Brücke, Gasse, Passage, Platz, Straße, Weg</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memorandum"/>
+<skos:definition xml:lang="de">Die Erinnerungszeichen werden nach Opfergruppen unterschieden. Ausschlaggebend für die Zuordnung zu einer oder mehreren Gruppen ist der Widmungsgrund des Erinnerungszeichens oder der Grund der Verfolgung der Erinnerten durch die NationalsozialistInnen. Auf Grund der Tatsache, dass Menschen teils mehrfach vom nationalsozialistischen Terror betroffen waren, werden manche Erinnerungszeichen mehreren Kategorien zugeordnet. Die Einteilung in Opfergruppen bedeutet jedoch keinerlei Hierarchisierung dieser.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Opfergruppen</skos:prefLabel>
+<skos:prefLabel xml:lang="en">victims</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#widerstand">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Es handelt sich um Erinnerungszeichen und Erinnerungsorte, die an den Widerstand gegen den Nationalsozialismus im Allgemeinen oder an einzelne oder mehrere WiderstandskämpferInnen als Personen oder Gruppen erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Widerstand</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#politisch">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#widerstand"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an politisch motivierten Widerstand erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">politisch</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#religiös">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#widerstand"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an religiös motivierten Widerstand erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Religiös</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#individuell">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#widerstand"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die weder an politisch noch an religiös motivierten Widerstand erinnern, sondern die auf Widerstandhandlungen aus individuellen, moralischen, ethischen Positionen beruhen.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">individuell</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#juedischeopfer">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Es handelt sich um Erinnerungszeichen und Erinnerungsorte, die an Menschen erinnern, die von den NationalsozialistInnen auf Basis der „Nürnberger Rassengesetze“ verfolgt wurden.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Jüdische Opfer</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#aspros">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#juedischeopfer"/>
+<skos:definition xml:lang="de">Erinnerungszeichen an Opfer der Nationalsozialisten, die sich selbst nicht als jüdische verstanden, doch auf Basis der „Nürnberger Rassengesetze“ verfolgt wurden.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Als Jude oder Jüdin verfolgt</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#einrichtung">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#juedischeopfer"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an von den NationalsozialistInnen entweihte oder zerstörte Einrichtungen der jüdischen Gemeinde oder an jüdische Einrichtungen erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Jüdische Einrichtung</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#ikg">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#juedischeopfer"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an verfolgte Jüdinnen und Juden erinnern, die Mitglieder der jüdischen Gemeinde im jeweiligen Bundesland waren oder vor 1938 in diesem Bundesland lebten, aus der jüdischen Religionsgemeinschaft ausgetreten waren und auf Grund der „Nürnberger Rassegesetze“ zu Opfern wurden.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Israelitische Kultusgemeinde</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#kz">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#juedischeopfer"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an jüdische KZ-Opfer erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Konzentrationslager – Jüdische Opfer</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#todesmarsch">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#juedischeopfer"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an die Opfer der „Todesmärsche“ ungarisch-jüdischer ZwangsarbeiterInnen erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Todesmarsch</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#zwangsarbeit">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#juedischeopfer"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an jüdische ZwangsarbeiterInnen erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Zwangsarbeit</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#roma">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Menschen erinnern, die von den NationalsozialistInnen auf Basis der „Nürnberger Rassegesetze“ als sogenannte „Zigeuner“ verfolgt wurden.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Roma/Romnija und Sinti/Sintize</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#jenische">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Menschen erinnern, die zur Gruppe der Jenischen zählten und von den Nationalsozialisten auf Grund ihrer Lebensweise als „nach Zigeunerart umherziehende Landfahrer“ verfolgt wurden.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Jenische</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#nseuthanasie">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Opfer der nationalsozialistischen „Euthanasie“ erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">NS-Euthanasie</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#kaerntnersloweninnen">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Menschen erinnern, die zur slowenischen Minderheit in Kärnten zählten.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Kärntner SlowenInnen</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#kaerntnerpartisaninnenwiderstand">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Menschen erinnern, die sich in Kärnten am bewaffneten Widerstand gegen das NS-Regime beteiligten oder diesen aktiv unterstützten.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Kärntner PartisanInnenwiderstand</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#euthanasie">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Opfer der nationalsozialistischen „Euthanasie“ erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Euthanasie</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#zwangsarbeiter">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an ZwangsarbeiterInnen erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">ZwangsarbeiterInnen </skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#terror">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Orte des nationalsozialistischen Terrors erinnern und/oder Ort des Terrors waren. </skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Orte des Terrors</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#gestapossnsdap">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#terror"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Terrorstätten, Einrichtungen der Gestapo, SS und NSDAP erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Gestapo/SS/NSDAP</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#hinrichtungsstätten">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#terror"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an nationalsozialistische Hinrichtungsstätten erinnern. </skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Hinrichtungsstätten </skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#gefängnis">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#terror"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Gefängnisse erinnern, in denen Opfer der NationalsozialistInnen inhaftiert waren.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Gefängnis</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#justiz">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#terror"/>
+<skos:definition xml:lang="de">Erinnerungszeichen an die NS-Unrechtsjustiz.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Justiz</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#kzlager">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#terror"/>
+<skos:definition xml:lang="de">Erinnerungszeichen an Konzentrationslager und KZ-Außenlager.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Konzentrationslager</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#soldaten">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Soldaten des Zeiten Weltkrieges erinnern. </skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Soldat</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#wehrmacht">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#soldaten"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Soldaten der Deutschen Wehrmacht erinnern. Diese Zeichen werden nur exemplarisch erfasst, soweit sie im Kontext des Vermittlungsangebotes von DERLA von Relevanz sind.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Wehrmacht</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#deserteure">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#soldaten"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Deserteure der Deutschen Wehrmacht erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Deserteure</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#alliierte">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#soldaten"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an gefallene oder ermordete Soldaten der Alliierten Truppen erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Allierte Soldaten</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#kriegsgefangene">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#soldaten"/>
+<skos:definition xml:lang="de">Erinnerungszeichen für Kriegsgefangene der Alliierten.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Kriegsgefangene</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#zivileopfer">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an zivile Opfer des von den NationalsozialistInnen ausgelösten Weltkrieges erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Zivile Opfer</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#homosexuelle">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Menschen erinnern, die von den NationalsozialistInnen auf Grund ihrer sexuellen Orientierung verfolgt oder ermordet wurden. </skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">als homosexuelle verfolgt</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#kollektiv">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die gleichzeitig an mehrere Opfer des Nationalsozialismus und Faschismus erinnern. Erinnert ein Zeichen an mehrere Opfer unterschiedlicher Opfergruppen, sind die individuellen Verfolgungsgründe im Personenglossar einsehbar.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Kollektiv</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#evakuierung">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an sogenannte "Evakuierungsmärsche von KZ-Häftlingen zu Kriegsende erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">sog. "Evakulierungsmärsche"</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#asozial">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#victimgroup"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die an Menschen erinnern, die von den Nationalsozialisten als sogenannte "Asoziale" verfogt wurden.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">als "asozial" verfolgt</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#publicity">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memorandum"/>
+<skos:definition xml:lang="de">Der Erinnerungsort, resp. das Erinnerungszeichen müssen zum Zeitpunkt der Aufnahme in DERLA (2020) öffentlich, d.h. ohne vorherige Einholung einer Genehmigung oder der Beschaffung von Schlüsseln zugänglich sein. Wenn sich Erinnerungszeichen in Einrichtungen mit spezifischen Öffnungszeiten (z.B. Museen, Kirchen, …) befinden, so gelten diese als öffentlich zugänglich.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Öffentliche Zugänglichkeit</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#women">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memorandum"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die explizit an weibliche Opfer erinnern.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Frauen</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="https://gams.uni-graz.at/o:derla.thesaurus#adolescents">
+<skos:broader rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus#memorandum"/>
+<skos:definition xml:lang="de">Erinnerungszeichen und Erinnerungsorte, die explizit an Jugendliche erinnern. Unter Jugendlichen werden all jene Personen verstanden, die der Definition der nationalsozialistischen Gesetzgebung nach zum Zeitpunkt ihrer Verfolgung nicht volljährig waren. Im „Deutschen Reich“ wurde die Volljährigkeit erst mit der Vollendung des 21. Lebensjahres erreicht.</skos:definition>
+<skos:inScheme rdf:resource="https://gams.uni-graz.at/o:derla.thesaurus"/>
+<skos:prefLabel xml:lang="de">Jugendliche</skos:prefLabel>
+</skos:Concept>
+</rdf:RDF>

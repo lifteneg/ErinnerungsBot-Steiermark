@@ -1,0 +1,293 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">David Herzog – Landesrabbiner und Universitätslehrer</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty136</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty136</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty127</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty135</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty137</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty322</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty323</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty 324</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty325</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die Schülerinnen beschäftigen sich mit der Biografie Rabbiner David Herzogs und bearbeiten Arbeitsaufträge basierend auf einem Quellentext.</p>
+<p rend="Ort, Gemeinde EO/EZ">Stadt Graz (8010)</p>
+<p rend="Zeitbedarf">15–30 Minuten</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klasse oder außerschulischer Ort in der Region</p>
+</div>
+<div type="mehrErfahren">
+<p>
+In Erinnerung an den ehemaligen
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss189">Landesrabbiner</ref>
+und Universitätslehrer David Herzog, der 1938/39 von den NationalsozialistInnen aus seiner Heimat vertrieben wurde, brachte die Stadt Graz im Jahr 2009 an seinem ehemaligen Wohnhaus eine dreisprachige Gedenktafel an. Sie ist eines von fünf Erinnerungszeichen an Rabbiner Herzog in Graz:
+<ref target="http://gams.uni-graz.at/o:derla.sty323">Stolperstein in der Radetzkystraße</ref>
+,
+<ref target="http://gams.uni-graz.at/o:derla.sty137">Mahnmal – Lauftext</ref>
+,
+<ref target="http://gams.uni-graz.at/o:derla.sty135">Gedenktafel Oeverseegymnasium</ref>
+,
+<ref target="http://gams.uni-graz.at/o:derla.sty127">David Herzog Platz</ref>
+.
+<lb/>
+<emph style="bold">Kindheit und Jugend – Ausbildung zum Rabbiner und Wissenschafter</emph>
+<lb/>
+David Herzog wurde am 7. November 1869 als erstes von acht Kindern von Leopold und Cäcilia Herzog in Tyrnau/Trnava in der heutigen Slowakei geboren. David Herzog wuchs in einer angesehenen und religiösen Familie auf. Seine Ausbildung begann er bereits im Alter von drei Jahren, indem ihm sein Vater Hebräisch beibrachte und in die Texte des Judentums einführte. Mit fünf Jahren wurde er zunächst als Zuhörer, später als Schüler in die jüdische Volksschule seines Heimatortes aufgenommen. Ab 1879 besuchte David Herzog das fürsterzbischöfliche Obergymnasium in Tyrnau/Trnava und gleichzeitig lernte er bei den
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss188">Rabbinern</ref>
+seiner Gemeinde. Nach der Matura schlug er auf Wunsch des Vaters die Rabbinerlaufbahn ein und besuchte in Berlin das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss203">Hildesheimer Rabbinerseminar</ref>
+, studierte Orientalistik und nahm im Abschlussjahr seiner Studien 1894 seine erste Rabbinatsstelle in Berlin an. In den folgenden Jahren hatte er Rabbinerstellen in Ungarisch-Ostrau/Uherský Ostroh (Tschechien) und ab 1901 in Smichov/Smíchov, einem damaligen Vorort von Prag, inne. Zugleich
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss204">habilitierte</ref>
+er sich an der Prager Universität im Bereich Semitische Philologie. Nachdem 1907 der Grazer Rabbiner Samuel Mühsam verstorben war, bewarb sich David Herzog als dessen Nachfolger und wurde aus mehr als 80 Kandidaten zum neuen Grazer Rabbiner gewählt.
+<lb/>
+<emph style="bold">Rabbiner in Graz</emph>
+<lb/>
+David Herzog übersiedelte 1908 mit seiner Frau
+<ref target="http://glossa.uni-graz.at/o:derla.sty322 ">Anna Reich</ref>
+und den beiden Kindern Robert und Friedrich nach Graz, um das Amt des Rabbiners,
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss208">Matrikenführers</ref>
+und Religionslehrers der aufstrebenden jüdischen Gemeinde zu übernehmen. Darüber hinaus unterrichtete er an der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss197">Karl-Franzens-Universität</ref>
+, er engagierte sich in zahlreichen jüdischen und nichtjüdischen Vereinen, gründete eine eigene Zeitschrift, den „Grazer Israelitischen Gemeindeboten“, und verfasste zudem historische Abhandlungen über die jüdische Geschichte der Steiermark im Mittelalter. Er wurde in den folgenden Jahren Mitglied des Stadt- und Landesschulrates und zudem mit zahlreichen Ehrungen ausgezeichnet. 1929 wurde er zum
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss202">Bürger der Stadt Graz</ref>
+ernannt.
+<lb/>
+David Herzog war eine angesehene Persönlichkeit und ein international respektierter Wissenschafter. Doch in Graz war er stets auch antisemitischen Angriffen ausgesetzt, die nicht selten von Schülern und Studenten ausgingen. So wurde er beispielsweise während eines Ausfluges zum Gasthaus „Häuserl im Wald“ von Studierenden und Mitgliedern der Akademischen Sängerschaft Gothia angepöbelt. Doch David Herzog ließ sich nicht einschüchtern und war stets einer der wichtigsten Mahner gegen die Intoleranz und ein Kämpfer gegen den
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss22">Antisemitismus</ref>
+. Er schrieb unermüdlich aufklärerische Texte in Zeitungen und Zeitschriften, protestierte bei den Behörden und engagiert sich in der Öffentlichkeit um den Antisemitismus zurückzudrängen und seine Irrationalität zu entlarven.
+<lb/>
+<emph style="bold">Opfer nationalsozialistischer Verfolgung – Flucht nach England</emph>
+<lb/>
+Gleich nach der Machtübernahme der Nationalsozialisten wurde der 69-jährige Rabbiner David Herzog einige Tage lang in Haft genommen. Obwohl er durch seine internationalen Kontakte Möglichkeiten zur Auswanderung gehabt hätte, blieb er in Graz, um seine Gemeindemitglieder zu betreuen und ihnen bei der Beschaffung notwendiger Papiere zu helfen.
+<lb/>
+Im November 1938 wurde David Herzog im Zuge der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss9">Pogromnacht</ref>
+aus seiner Wohnung in der Radetzkystraße gezerrt, bei der brennenden
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss163">Synagoge</ref>
+mit dem Umbringen bedroht, vor den Toren der Stadt schwer misshandelt und mitten in der Nacht auf einem Acker zurückgelassen. David Herzog überlebte die schweren Misshandlungen und wurde in den folgenden Wochen von seiner Ehefrau Anna gepflegt. Im Frühjahr 1939 übersiedelte er nach Wien und konnte schließlich von dort aus nach England emigrieren. Er lebte zunächst in London und schließlich in Oxford. Auch im Exil ging er seinen Forschungen nach und verfasste seine Lebenserinnerungen.
+<lb/>
+Herzogs Sohn
+<ref target="http://gams.uni-graz.at/o:derla.sty325 ">Robert</ref>
+, viele Jahre Journalist in Paris, wurde im März 1943 von
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss199">Drancy</ref>
+(Frankreich) aus nach
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss200">Sobibor</ref>
+bzw.
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss201">Majdanek</ref>
+deportiert und ermordet. Sein zweiter Sohn
+<ref target="http://gams.uni-graz.at/o:derla.sty324 ">Friedrich</ref>
+konnte nach Schweden und später in die USA emigrieren.
+<lb/>
+David Herzog starb am 6. März 1946 in Oxford. In Österreich geriet er über die Jahrzehnte hinweg in Vergessenheit. Erst in den 1980er-Jahren wurden seine Lebenserinnerungen „wiederentdeckt“.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Gerald Lamprecht, Rabbiner Dr. David Herzog – Leben und Werk, in: Heimo Halbrainer/Gerald Lamprecht/Andreas Schweiger (Hg.), Meine Lebenswege. Die Persönlichen Aufzeichnungen des Grazer Rabbiners David Herzog, Graz 2013, 165–194.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>David Herzog – Landesrabbiner und Universitätslehrer</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Die Beschäftigung mit historischen Biografien ist für die vertiefte Auseinandersetzung mit Verfolgung und Widerstand in der Zeit des Nationalsozialismus essenziell. Biografische Zugänge ermöglichen besondere Einblicke in die Geschichte, eröffnen sie doch Perspektiven auf das historische Geschehen. Die Orientierung an Bild- und Textquellen ermöglicht es, diese Perspektiven selbsttätig zu erschließen und sich auf diese Weise reflektiert mit der Vergangenheit auseinander.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Stellen Sie den Lebensweg David Herzogs grafisch auf einem Plakat dar.</item>
+<item>Arbeiten Sie aus dem autobiographischen Text Herzogs (siehe Textquellen) Beispiele für antisemitische Diskriminierung heraus.</item>
+<item>Formulieren Sie basierend darauf aufbauend ein Statement über die Situation der jüdischen Bevölkerung in Graz vor dem Jahr 1938.</item>
+<item>
+Beurteilen Sie vor dem Hintergrund der Schilderungen Herzog die Verbrechen im Rahmen des
+<ref target="https://gams.uni-graz.at/o:derla.diggloss#gloss110">Novemberpogroms</ref>
+– welche neuen Erkenntnisse konnten Sie dafür durch die Beschäftigung mit David Herzog gewinnen?
+</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Der erste Auftrag dient dazu, die Lernenden mit der Biografie David Herzogs vertraut zu machen. Mit dem zweiten und dritten Auftrag soll erreicht werden, eine vertiefte Kenntnis der antisemitischen Grundhaltung breiter Bevölkerungsschichten im Graz der 1930er-Jahre zu erlangen. Auf dieser Basis sollen schließlich die Verbrechen nach dem März 1938 (neu) beurteilt und mit den Entwicklungen davor in Relation gesetzt werden.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+<item>Die SchülerInnen erwerben historische Methodenkompetenzen.</item>
+<item>Die SchülerInnen stellen Zusammenhängen zwischen antisemitischen Grundhaltungen und dem nationalsozialistischen Genozid her.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<p>
+Das Schimpfen war überhaupt zu einer alltäglichen Gewohnheit geworden. „Saujud“ hin und her, das war schon so geläufig geworden, dass man es fast schon als selbstverständlich betrachtete. Was wir hier an Beleidigungen, Ehrabschneidereien, Gemeinheiten und Frechheiten zu erdulden hatten, spottet jeder Besprechung. Ich weiß wirklich nicht, wo ich da beginnen soll? Und ich kann nur einen geringen Ausschnitt hier wiedergeben von dem, was da gegen uns verbrochen worden ist. Nun, beginnen möchte ich damit, dass im Haus, Radetzkystraße 7, wir wohnten Nr. 8, gegenüber, sich schon im Jahre 1934 ein nationalsozialistisches Parteilokal etabliert hatte. Von da ab war es uns nur mehr möglich, in der Nacht die Fenster zu öffnen, weil die dort stets in Rudeln sich aufhaltenden Parteimitglieder in unflätigster Weise uns provozierten. Gingen ich, meine Frau oder mein jüngerer Sohn auf die Straße, wurden wir gar oft mit faulen Äpfeln oder Kartoffeln beworfen. Eines Tages ging ich zum Landesarchiv, über das ich noch zu sprechen kommen werde, um meine archivalischen Studien zu machen, da traf ich an der Ecke der Rauber- und Radetzkystraße eine Truppe dieser in nationalsozialistischer Uniform gekleideten Gestalten, da spieen sie mich in Begleitung von unflätigsten Schimpfworten an: „Warte du Saujude, wir werden dir schon die Ehrenbürgerschaft austreiben, wir werden dir schon das Genick brechen, usw.“ Ich kehrte um, denn an ein Arbeiten war an dem Tag ja nicht mehr zu denken. Diese Gesellen gaben damals auch ein Blatt heraus, dessen tiefes Niveau kaum zu schildern ist. Und ich empfehle jedermann, der sich über Nazikultur informieren will, diese in der Universitätsbibliothek und im Landesarchiv aufbewahrten Blätter sich vorlegen zu lassen, um zu sehen, wes Geistes Kinder diese Mitarbeiter waren. Die Hauptorte des Antisemitismus waren die beiden Hochschulen, die Universität und die technische Hochschule. Die Verhältnisse – namentlich an der letzteren – spotteten jeder Beschreibung. Wenn ein jüdischer Hörer seine großen Zeichenblätter, ähnlich wie das alle anderen Hörer taten, im Zeichensaal ließ, weil ja das Nachhausetragen so umständlich gewesen ist, konnte er sicher sein, dass sie am nächsten Tag beschädigt oder beschmutzt waren. Das Studium an diesen Hochschulen war wahrlich für den jüdischen Studenten eine harte Prüfung und ein dornenvoller Weg. Ich sagte einmal, wenn man uns Juden, allerdings fälschlicherweise, vorwirft, wir hätten den Dornenweg von Jesus am Gewissen, so war dieser noch überschattet von dem Wege, den die armen jüdischen Studenten auf dem Kalvarienberge zur Erlangung ihrer Hochschulstudien durchzugehen hatten.
+<lb/>
+Aber noch schlimmer ging es an den Mittelschulen zu. Was sich da Lehrer und Lehrerinnen – sie nannten sich Professoren – leisteten und zu welchen Schandtaten sie ihre Schüler anstifteten, spottet jeder Beschreibung. Natürlich gab es auch da einige, wenige rühmliche Ausnahmen, Männer, die in der Schule sich objektiv verhielten. Aber das waren weiße Raben! Besonders judenfeindlich waren die Landesoberrealschule, wo kein Jude aufgenommen worden ist, trotzdem die Anstalt von Landesmitteln, zu welchen auch Juden beigetragen haben, erhalten worden war, dann das Realgymnasium in der Lichtenfelsgasse. Hier erging es mir einmal so, dass, als ich als Mitglied der Prüfungskommission in den Prüfungssaal eintreten wollte, einige Lausbuben mir den Weg versperrten, so dass ich nur schwer hineinkonnte. Auf meinen energischen Protest an den Direktor geschah nichts, so dass ich mich entschlossen habe, nie mehr in diese Anstalt zu einer Prüfung zu gehen und tatsächlich nie mehr gegangen bin. Und das alles, obschon ich mitgewirkt habe, dass dieser Mann, der bei allen Schülern seiner Härte wegen geradezu verhasst war, nun Direktor geworden war, und obschon ich Mitglied des steiermärkischen Landesschulrates gewesen bin. Wes Geistes Kind dieser „Herr Direktor“ gewesen ist, will ich nur an einer Sache erweisen. Kaum hatte die Schuluhr acht Uhr geschlagen, da stellte sich der „Herr Direktor“ an den Treppenabsatz und bespitzelte jeden zu spät kommenden Schüler und konnte daraufhin nicht genug scharfe Strafen austeilen. Ach, wenn dieser Mann diesen Eifer besser an den moralischen und geistigen Entwicklungen der Schüler verschwendet hätte! Von solchen Stückchen aber könnte ich Tausende und Tausende, ja Tausende erzählen. Es war ja auch in den letzten Jahren das Niveau der Lehrerschaft an den Mittelschulen auf einen Tiefpunkt gesunken, dass die Direktoren oft verzweifelt dastanden. An der Universität wagten die Professoren nicht mehr, die Studenten so zu prüfen, wie es ihre Pflicht gewesen wäre, und so kamen Kandidaten da heraus, die selbst die Elemente ihres Faches nicht ordentlich beherrschten.
+</p>
+<caption>Titel / Beschreibung</caption>
+<p>Auszug aus den Lebenserinnerungen von Rabbiner David Herzog über seine Erfahrungen mit Antisemitismus in Graz.</p>
+<caption>Quellenzitat</caption>
+<p>David Herzog, Meine Lebenswege, in: Heimo Halbrainer/Gerald Lamprecht/Andreas Schweiger (Hg.), Meine Lebenswege. Die Persönlichen Aufzeichnungen des Grazer Rabbiners Davd Herzog, Graz 2013, 13–164, hier 16–19.</p>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty136" xml:id="IMAGE.1">
+<desc>David Herzog verbrachte seine letzten Lebensjahre im englischen Exil in Oxford, wo er an der berühmten Universität seine Studien fortsetze.</desc>
+<desc type="title">David Herzog in Oxford, gemalt von Leonid Pasternak 1945 © Andreas Schweiger</desc>
+</graphic>
+</facsimile>
+</TEI>

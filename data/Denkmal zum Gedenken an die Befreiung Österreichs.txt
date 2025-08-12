@@ -1,0 +1,224 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Das „Befreiungsdenkmal“ im Burggarten</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty208</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty208</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty34</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty173</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty207</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty256</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Im Rahmen der Beschäftigung mit dem „Befreiungsdenkmal“ im Burggarten setzen sich die SchülerInnen mit dem schwierigen Erinnern des Kriegsendes auseinander. Die Analyse des Denkmals soll deutlich machen, dass bei seiner Errichtung nicht das Kriegsende, sondern das Ende der Besatzungszeit mit dem Begriff „Befreiung“ gemeint war.</p>
+<p rend="Ort, Gemeinde EO/EZ">Stadt Graz (8010)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum bzw. (besser) öffentlicher Raum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Im Zentrum des Stadtparks, im sogenannten Burggarten, befindet sich seit 1960 das Befreiungsdenkmal. Dabei handelt es sich um eine etwa acht Meter hohe Skulptur aus Metall, die einen Käfig darstellen soll, aus dem sich ein Adler erhebt. Die Position des Erinnerungszeichens, unmittelbar an der Kante einer Böschung, die steil zum Stadtpark abfällt, wirkt dabei verstärkend auf die ohnehin dramatisch anmutende Szene.
+<lb/>
+Nur aus der Datumsangabe „26.10.1955“ geht jedoch hervor, dass hierbei an den Abzug der Besatzungsmächte erinnert werden soll. Das Denkmal von Wolfgang Skala verdeutlicht auch durch seine eindringliche Schlichtheit, dass die eigentliche Befreiung in der Wahrnehmung der Grazer Öffentlichkeit nicht im Mai 1945 stattfand, sondern erst zehn Jahre später, mit dem Abzug der Besatzungsmächte.
+<lb/>
+Es steht auch außer Zweifel, dass mit Skalas Denkmal dieser Abzug und weniger die Befreiung vom Nationalsozialismus erinnert werden sollte, wurde das Erinnerungszeichen doch am 14. September 1955 durch den Beschluss der Landesregierung in Auftrag gegeben. In derselben Sitzung wurde auch eine große Befreiungsfeier für den 25. Oktober 1955 beschlossen. Der Konnex zum Abzug der Besatzungssoldaten liegt also auf der Hand.
+<lb/>
+Allerdings kann auch das „Befreiungsdenkmal“ über den Wandel des österreichischen Gedächtnisses erzählen, wurde es doch Ende November 2008 nach einer öffentlichen Debatte durch eine Zusatztafel erweitert, auf der nun explizit auf den Entstehungszusammenhang hingewiesen wird. Interessanterweise wird auf der Tafel der Begriff „Freiheitsdenkmal“ verwendet und nicht der Begriff der Befreiung aufgegriffen. Die problematische Aussage wurde im Steirischen Herbst 2019 aufgegriffen, als das Denkmal im Rahmen einer künstlerischen Intervention mit dem Opfermythos in Verbindung gesetzt wurde.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Heidemarie Uhl, Gedächtnisraum Graz. Zeitgeschichtliche Erinnerungszeichen im öffentlichen Raum nach 1945, in: Historisches Jahrbuch der Stadt Graz (Graz 1994), 625–642. </item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Das „Befreiungsdenkmal“ im Burggarten</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Die Beschäftigung mit dem „Befreiungsdenkmal“ im Burggarten macht die SchülerInnen mit einem bedeutsamen Bestandteil der öffentlichen Erinnerungskultur in Graz vertraut. Die Besonderheit des Denkmals, dass den Begriff „Befreiung“ mit dem Ende der Besatzung und eben nicht mit der Befreiung vom Nationalsozialismus verknüpft, soll einen Reflexionsprozess darüber anstoßen, ob und auf welche Weise dem Ende der Besatzungszeit heute, über sechzig Jahre nach der Errichtung des Denkmals, erinnert wird.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Diskutiere die künstlerische Umsetzung des Denkmals (der aus dem Käfig aufsteigende Adler) in Verbindung mit der Inschrift „26.10.1955“! Welche Haltung nimmt der Künstler Wolfgang Skala 1960 zum Abzug der alliierten Besatzungsmächte ein? Und welche Befreiung hätte – ohne das angegebene Datum – außerdem gemeint sein können?</item>
+<item>Sprich Passant/inn/en im Stadtpark an und befrage sie, ob sie die Bedeutung des Denkmals kennen und ob sie das Denkmal mit dem Ende der Besatzungszeit verbinden könnten! Notiere deine Eindrücke und besprich sie anschließend mit einem Klassenkollegen/einer Klassenkollegin!</item>
+<item>Überlegt, wie man wohl ein Denkmal zur Wiedererlangung der österreichischen Selbstständigkeit im Jahr 2020 gestalten würde! Was müsste jedenfalls vorhanden sein? Diskutiert auch, ob ihr überhaupt einer Denkmal-Errichtung zustimmen würdet und begründet eure Meinung!</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Der erste Auftrag soll dazu anregen, über die Verknüpfung des Begriffs „Befreiung“ mit dem Ende der Besatzungszeit zu reflektieren. Mit dem zweiten Auftrag sollen die Wahrnehmungen der SchülerInnen um weitere Perspektiven (von PassantInnen) erweitert werden. Der abschließende Arbeitsauftrag will schließlich eine Reflexion darüber in Gang setzen, ob die SchülerInnen die Errichtung eines Denkmals für das Ende der Besatzungszeit heute überhaupt für notwendig erachten.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich mit der Entwicklung des österreichischen Nachkriegsgedächtnisses.</item>
+<item>Die SchülerInnen reflektieren die problematische Verwendung des Begriffes „Befreiung“ im Kontext des Denkmals.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty208" xml:id="IMAGE.1">
+<desc>Bevor das Denkmal an seinem jetzigen Ort aufgestellt wurde, suchte man mit Hilfe eine Attrappe den idealen Standort.</desc>
+<desc type="title">Neue Zeit, 28.2.1959.</desc>
+</graphic>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty208" xml:id="IMAGE.2">
+<desc>Bereits mit der Aufstellung des "Befreiungsdenkmals" meldeten sich immer wieder kritische Stimmen zu Wort, die das mit dem Denkmal zum Ausdruck gebrachte Geschichtsverständnis in Frage stellten.</desc>
+<desc type="title">Echo, Nr 46, 13.11.1960.</desc>
+</graphic>
+</facsimile>
+</TEI>

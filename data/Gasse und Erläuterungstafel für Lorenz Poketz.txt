@@ -1,0 +1,251 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Lorenz Poketz: „Mein größtes Verbrechen war, anderen was Gutes zu tun.“</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty37</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty37</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty89</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty95</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty176</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit der Biografie eines im Nationalsozialismus Verfolgten auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext Verfolgung und Widerstand.</p>
+<p rend="Ort, Gemeinde EO/EZ">Graz (8020)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Im Jahr 1991 benannte die Stadt Graz in Erinnerung an den von den Nationalsozialisten ermordeten Funktionär der Arbeiterkammer, Gewerkschaftssekretär und Widerstandkämpfer Lorenz Poketz eine Gasse in Eggenberg.
+<lb/>
+<lb/>
+<emph style="bold">Eine politische Biographie</emph>
+<lb/>
+Lorenz Poketz kam gemeinsam mit seinem Zwillingsbruder August am 5. August 1893 im untersteirischen St. Lorenzen/Lovrenc na Pohorju zur Welt. Dort wuchs er mit seinen vier Geschwistern in bescheidenen Verhältnissen auf. Als der Vater der Arbeit wegen 1905 nach Graz zog, begleitete ihn Lorenz, der hier die Bürgerschule absolvierte. Danach trat er als Bürolehrling in eine Kreditanstalt ein und arbeitet als Bankbeamter, bis er zum Militär eingezogen wird. Im Ersten Weltkrieg war er Rechnungsunteroffizier beim Pferdespital in Budapest.
+<lb/>
+Bereits 1912 trat er dem sozialistischen Verband Jugendlicher Arbeiter bei, ein Jahr später auch der Freien Gewerkschaft. Bald schon nach dem Ersten Weltkrieg übernahm er innerhalb der steirischen Arbeiterbewegung führende Funktionen. So war er etwa seit 1925 Sekretär der Freien Gewerkschaft für Handel und Transport, Beisitzer des Gewerbegerichts und ab 1930 Vorsitzender des sozialpolitischen Ausschusses der Arbeiterkammer in Graz. In all diesen Funktionen kämpfte er für soziale und politische Besserstellungen der ArbeiterInnen und Angestellten. So war er führend beim großen Streik der Grazer Straßenbahner im Oktober 1928 beteiligt, der nach 14 Tagen durch den Einsatz von
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss73">Heimwehrmännern</ref>
+als Streikbrecher mit einer Niederlage endete. Als die Führung der Sozialdemokratischen Partei am
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss209">12. Februar 1934</ref>
+den Generalstreik ausrief und die Kämpfe gegen das
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss10">Dollfuß-Regime</ref>
+begannen, wurde Poketz mit anderen Funktionären in Graz festgenommen. In der Folge wurden alle Funktionäre der Arbeiterkammer und der Gewerkschaft entlassen; so auch Lorenz Poketz. Er blieb lange Zeit arbeitslos, ehe er 1936 als Angestellter bei einer Siedlungsgenossenschaft erneut eine Anstellung fand.
+<lb/>
+<lb/>
+<emph style="bold">Solidarität auch in schweren Zeiten – die „Rote Gewerkschaft“</emph>
+<lb/>
+Bald nach den
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss209">Februarkämpfen 1934</ref>
+trafen sich die nun illegalen Gewerkschafter wieder. Poketz wurde erneut mit der Betreuung der Freien Gewerkschaftsfachgruppe der Handels-, Verkehrs- und Transportarbeiter betraut. Diese bestand vor allem darin, die verfolgten und gemaßregelten ArbeiterInnen zu unterstützen. Diese politische Tätigkeit setzte Poketz auch nach dem
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss4">„Anschluss“</ref>
+1938 fort.
+<lb/>
+Poketz fand bald nach dem „Anschluss“ als Redakteur des Grazer Adressbuches Arbeit. Bereits im Juli 1938 verhaftete ihn die
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss62">Gestapo</ref>
+, da er im Verdacht stand, gegen das NS-Regime zu arbeiten. Er wurde unter der schriftlich erteilten Auflage, „sich nicht mehr staatsfeindlich zu betätigen, verwarnt“ (7 J 205/43: Anklage gegen Lorenz Poketz u.a., 12.5.1943, S. 6.) und kam wieder frei. Poketz hielt sich aber nicht daran und gründete gemeinsam mit dem ehemaligen sozialdemokratischen Gemeinderat von Wetzelsdorf,
+<ref target="https://gams.uni-graz.at/o:derla.perssty#perssty866">Franz Strohmeier</ref>
+, und dem ehemaligen Vertrauensmann der kaufmännischen Angestellten in Graz,
+<ref target="https://gams.uni-graz.at/o:derla.perssty#perssty861">Johann Stelzer</ref>
+, 1940 die „Rote Gewerkschaft“, die eng mit der Leitung der illegalen KPÖ in Graz um
+<ref target="https://gams.uni-graz.at/o:derla.perssty#perssty319">Josef Neuhold</ref>
+zusammenarbeitete. Sie gründeten in mehreren Grazer Betrieben Zellen, kassierten Mitgliedsbeiträge ein, die sie an die Angehörigen von inhaftierten Kommunisten auszahlten. Zudem verteilten sie Flugblätter und die von Poketz verfasste Kampfschrift „Der Rote Sturm“. Darin heißt es:
+<lb/>
+„Genossen und Genossinnen!
+<lb/>
+Werbet tatkräftig für unsere Zielsetzung, die der Befreiung der Menschheit aus den Fesseln der faschistischen Blutherrschaft dienen, diesen Krieg zu beenden und den Weltfrieden verbreiten helfen soll.“ (Flugschrift „Der Rote Sturm. Kampfschrift der Kommunistischen Partei für die Steiermark“ zitiert nach 7 J 205/43: Anklage gegen Lorenz Poketz u.a., 12.5.1943, S. 12.)
+<lb/>
+<lb/>
+Im Sommer 1942 verhaftete die Gestapo Poketz und zahlreiche Mitglieder der „Roten Gewerkschaft“. Der Oberreichsanwalt am Volksgerichtshof klagte Poketz und die anderen führenden Vertreter der Widerstandsgruppe wegen „Vorbereitung zum Hochverrat“ an. Poketz wurde am 17. Juni 1943 zum Tode verurteilt und am 13. September 1943 in Graz hingerichtet.
+</p>
+<caption>Literatur</caption>
+<list>
+<item><p>Im Jahr 1991 benannte die Stadt Graz in Erinnerung an den von den Nationalsozialisten ermordeten Funktionär der Arbeiterkammer, Gewerkschaftssekretär und Widerstandkämpfer Lorenz Poketz eine Gasse in Eggenberg.<lb></lb><lb></lb><emph style="bold">Eine politische Biographie</emph><lb></lb>Lorenz Poketz kam gemeinsam mit seinem Zwillingsbruder August am 5. August 1893 im untersteirischen St. Lorenzen/Lovrenc na Pohorju zur Welt. Dort wuchs er mit seinen vier Geschwistern in bescheidenen Verhältnissen auf. Als der Vater der Arbeit wegen 1905 nach Graz zog, begleitete ihn Lorenz, der hier die Bürgerschule absolvierte. Danach trat er als Bürolehrling in eine Kreditanstalt ein und arbeitet als Bankbeamter, bis er zum Militär eingezogen wurde. Im Ersten Weltkrieg war er Rechnungsunteroffizier beim Pferdespital in Budapest.<lb></lb>Bereits 1912 trat er dem sozialistischen Verband Jugendlicher Arbeiter bei, ein Jahr später auch der Freien Gewerkschaft. Bald schon nach dem Ersten Weltkrieg übernahm er innerhalb der steirischen Arbeiterbewegung führende Funktionen. So war er etwa seit 1925 Sekretär der Freien Gewerkschaft für Handel und Transport, Beisitzer des Gewerbegerichts und ab 1930 Vorsitzender des sozialpolitischen Ausschusses der Arbeiterkammer in Graz. In all diesen Funktionen kämpfte er für soziale und politische Besserstellungen der ArbeiterInnen und Angestellten. So war er führend beim großen Streik der Grazer Straßenbahner im Oktober 1928 beteiligt, der nach 14 Tagen durch den Einsatz von <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss73">Heimwehrmännern</ref> als Streikbrecher mit einer Niederlage endete. Als die Führung der Sozialdemokratischen Partei am <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss209">12. Februar 1934</ref> den Generalstreik ausrief und die Kämpfe gegen das <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss10">Dollfuß-Regime</ref> begannen, wurde Poketz mit anderen Funktionären in Graz festgenommen. In der Folge wurden alle Funktionäre der Arbeiterkammer und der Gewerkschaft entlassen</item>
+<item> so auch Lorenz Poketz. Er blieb lange Zeit arbeitslos, ehe er 1936 als Angestellter bei einer Siedlungsgenossenschaft erneut eine Anstellung fand. <lb></lb><lb></lb><emph style="bold">Solidarität auch in schweren Zeiten – die „Rote Gewerkschaft“ </emph><lb></lb>Bald nach den <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss209">Februarkämpfen 1934</ref> trafen sich die nun illegalen Gewerkschafter wieder. Poketz wurde erneut mit der Betreuung der Freien Gewerkschaftsfachgruppe der Handels-, Verkehrs- und Transportarbeiter betraut. Diese bestand vor allem darin, die verfolgten und gemaßregelten ArbeiterInnen zu unterstützen. Diese politische Tätigkeit setzte Poketz auch nach dem <ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss4">„Anschluss“</ref> 1938 fort.<lb></lb>Poketz fand bald nach dem „Anschluss“ als Redakteur des Grazer Adressbuches Arbeit. Bereits im Juli 1938 verhaftete ihn die<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss62">Gestapo</ref>, da er im Verdacht stand, gegen das NS-Regime zu arbeiten. Er wurde unter der schriftlich erteilten Auflage, „sich nicht mehr staatsfeindlich zu betätigen, verwarnt“ (7 J 205/43: Anklage gegen Lorenz Poketz u.a., 12.5.1943, S. 6.) und kam wieder frei. Poketz hielt sich aber nicht daran und gründete gemeinsam mit dem ehemaligen sozialdemokratischen Gemeinderat von Wetzelsdorf, <ref target="https://gams.uni-graz.at/o:derla.perssty#perssty866">Franz Strohmeier</ref>, und dem ehemaligen Vertrauensmann der kaufmännischen Angestellten in Graz, <ref target="https://gams.uni-graz.at/o:derla.perssty#perssty861">Johann Stelzer</ref>, 1940 die „Rote Gewerkschaft“, die eng mit der Leitung der illegalen KPÖ in Graz um <ref target="https://gams.uni-graz.at/o:derla.perssty#perssty319">Josef Neuhold</ref> zusammenarbeitete. Sie gründeten in mehreren Grazer Betrieben Zellen, kassierten Mitgliedsbeiträge ein, die sie an die Angehörigen von inhaftierten Kommunisten auszahlten. Zudem verteilten sie Flugblätter und die von Poketz verfasste Kampfschrift „Der Rote Sturm“. Darin heißt es: <lb></lb>„Genossen und Genossinnen! <lb></lb>Werbet tatkräftig für unsere Zielsetzung, die der Befreiung der Menschheit aus den Fesseln der faschistischen Blutherrschaft dienen, diesen Krieg zu beenden und den Weltfrieden verbreiten helfen soll.“ (Flugschrift „Der Rote Sturm. Kampfschrift der Kommunistischen Partei für die Steiermark“ zitiert nach 7 J 205/43: Anklage gegen Lorenz Poketz u.a., 12.5.1943, S. 12.)<lb></lb><lb></lb>Im Sommer 1942 verhaftete die Gestapo Poketz und zahlreiche Mitglieder der „Roten Gewerkschaft“. Der Oberreichsanwalt am Volksgerichtshof klagte Poketz und die anderen führenden Vertreter der Widerstandsgruppe wegen „Vorbereitung zum Hochverrat“ an. Poketz wurde am 17. Juni 1943 zum Tode verurteilt und am 13. September 1943 in Graz hingerichtet.</p></item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Lorenz Poketz: „Mein größtes Verbrechen war, anderen was Gutes zu tun.“</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus erfährt durch die Implementierung biografischer Zugänge eine produktive Erweiterung. Die Beschäftigung mit Biografien eröffnet zusätzliche Perspektiven auf das historische Geschehen und ermöglicht es den Lernenden, sich über einen konkreten Lebensweg der Alterität der Vergangenheit anzunähern. Die Verbindung des biografischen Arbeitens mit Quellenarbeit ermöglicht dabei den Aufbau diverser historischer Kompetenzen, wie etwa der historischen Methodenkompetenzen und Orientierungskompetenzen.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Arbeite aus dem biografischen Text (siehe Mehr Erfahren) jene Tätigkeiten von Lorenz Poketz heraus, die ihn zu einem Widerstandkämpfer machten.</item>
+<item>Erkläre, basierend auf dem Abschiedsbrief von Poketz (siehe Bildquellen), dem Text des zitierten Flugblattes (siehe mehr Erfahren) sowie dem biografischen Text, die Motivation von Poketz, Widerstandshandlungen zu setzen.</item>
+<item>Verfasse eine persönliche Stellungnahme, in der du dich zu Poketz‘ Handlungen äußerst.</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Die Einheit basiert auf dem biografischen Einführungstext, anhand dessen die Lernenden in die Biografie von Lorenz Poketz einsteigen. Über die Beschäftigung mit dem Abschiedsbrief sowie dem Text des Flugblatts soll im zweiten Auftrag Poketz‘ Motivation ergründet werden. Mit dem dritten Auftrag sollen die Lernenden sich schließlich persönlich positionieren und Poketz‘ Engagement einordnen.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich bewusst mit den Folgen der nationalsozialistischen Gewaltherrschaft.</item>
+<item>Die SchülerInnen reflektieren die Gründe und Voraussetzungen von Widerstandshandlungen.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<caption>Titel / Beschreibung</caption>
+<p/>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty37" xml:id="IMAGE.1">
+<desc>In seinem letzten Brief vor der Hinrichtung schrieb Lorenz Poketz an seine Frau: „Wenn Du in den Besitz dieser Zeilen gelangt sein wirst, dann bin ich nicht mehr. Das Schicksal, dem ich ausgeliefert bin, wollte es nicht mehr, dass wir uns noch einmal sehen auf dieser Welt, der ich Alles gegeben habe und die mir das Leben nimmt. (…) Sei eingedenk dessen, dass Du einem Menschen nachweinst, dessen größtes Verbrechen es war, seinen Nächsten Gutes zu tun.“ (Brief von Lorenz Poketz an seine Frau, 13.9.1943, zit. nach Halbrainer, „In der Gewißheit,..“, S. 136.)</desc>
+<desc type="title">Lorenz Poketz (1893–1943) (© Heimo Halbrainer)</desc>
+</graphic>
+</facsimile>
+</TEI>

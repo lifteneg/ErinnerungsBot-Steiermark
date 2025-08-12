@@ -1,0 +1,219 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Ich Sigfried Uiberreither Landeshauptmann</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty173</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty173</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty34</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty207</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty208</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty256</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die Beschäftigung mit dem Erinnerungszeichen von Jochen Gerz im Burgtor soll zur Reflexion der Bedeutung des öffentlichen Erinnerns an den Nationalsozialismus anregen. Die Auseinandersetzung mit dem Denkmal soll den SchülerInnen deutlich machen, wie künstlerische Interventionen die Erinnerungskultur in einer Stadt bereichern und den öffentlichen Raum zum Aushandlungsort von gesellschaftspolitischen Debatten machen können.</p>
+<p rend="Ort, Gemeinde EO/EZ">Stadt Graz (8010)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">13–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum bzw. (besser) öffentlicher Raum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Wenige Meter vom
+<ref target="http://gams.uni-graz.at/o:derla.sty208">„Befreiungsdenkmal“</ref>
+entfernt, am „Burgtor“, wurde am 09.12.2008 das von Jochen Gerz geschaffene Erinnerungszeichen „Ich Sigfried Uiberreither Landeshauptmann“ enthüllt. Das Projekt geht auf einen einstimmigen Beschluss im Steiermärkischen Landtag zurück, einen
+<ref target="https://gams.uni-graz.at/o:derla.thesaurus#concept2">Erinnerungsort</ref>
+für die Opfer des Nationalsozialismus zu schaffen. Der bewusst gewählte Ort schlägt eine Brücke zur Vergangenheit, da die Grazer Burg sowohl im Nationalsozialismus als auch heute noch als Sitz des Landeshauptmanns fungiert(e).
+<lb/>
+An der Realisierung dieses Projektes kann man eine Neudefinition des Denkmalbegriffs erkennen, da Gerz als Denkmaltypus keine Gedenktafel wählte, sondern eine Inschrift in einem Bogen des mittelalterlichen Grazer Burgtors anbrachte, mittels derer PassantInnen direkt vom
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss206">NS-Gauleiter und Landeshauptmann Sigfried Uiberreither</ref>
+angesprochen werden. Eindringliche Fragen richten sich über die gesamte Spannbreite des Torbogens an die Vorübergehenden und „zwingen“ sie zum Erinnern.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>Werner Fenz (Hg.), Jochen Gerz: Arbeit mit der Öffentlichkeit, Wien 2016.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Ich Sigfried Uiberreither Landeshauptmann</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das ungewöhnliche Erinnerungszeichen im Burgtor kann aufgrund seiner Gestaltung eine intensive Diskussion darüber anstoßen, warum öffentliches Erinnern für eine Gesellschaft wichtig ist. Durch die Beschäftigung mit Jochen Gerz‘ Erinnerungszeichen soll den SchülerInnen das gesellschaftspolitische Potenzial von Erinnerungszeichen bewusst werden.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Lies den Text im Torbogen (Abschrift siehe Textquellen) und versuche, ihn schlüssig in drei Abschnitte zu gliedern!</item>
+<item>Smartphone-Recherche: Finde heraus, um wen es sich bei Sigfried Uiberreither handelt, welche Ämter und Aufgabenbereiche er im Nationalsozialisten innehatte! Verschaffe dir auch einen Überblick, welche Verbrechen er zu verantworten hat. Finde auch heraus, was es mit dem Alias-Namen auf sich hat!</item>
+<item>Konzentriere dich nun insbesondere auf die letzten vier Zeilen des Textes – was und wen klagt der Künstler Jochen Gerz hier an und warum tut er das? Was hat das mit Uiberreither (und auch mit dem Alias-Namen) zu tun?</item>
+<item>Der Text spricht jeden von uns, also auch dich direkt an. Was will der Künstler deiner Meinung nach dadurch erreichen, dass er uns direkt anspricht und uns so „in das Denkmal hineinholt“?</item>
+<item>Bewerte abschließend das Gesamterscheinungsbild des Denkmals! Ist es deiner Meinung nach gelungen? Glaubst du, dass es Passant/inn/en auf die Verbrechen in der NS-Zeit aufmerksam macht? Warum (nicht)?</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>Der erste Auftrag dient der genauen Rezeption des Erinnerungszeichens und soll – wie auch Auftrag 2 – die vertiefte Beschäftigung der SchülerInnen mit dem ehemaligen Gauleiter und Landeshauptmann anregen. Auftrag 3 will die Reflexion der Idee Jochen Gerz‘ anstoßen. Durch die beiden abschließenden Arbeitsaufträge sollen die SchülerInnen zur Entwicklung eines eigenen Urteils über das Erinnerungszeichen geleitet werden.</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich mit der Entwicklung des österreichischen Nachkriegsgedächtnisses.</item>
+<item>Die SchülerInnen setzen sich mit der besonderen Form des Erinnerungszeichens im Burgtor auseinander und vertiefen so ihr Verständnis des kollektiven Erinnerns in Graz.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<p>Passant, willst du wissen, wo du stehst? Willst du wissen, Unschuldiger, wer du bist? Wie du dich krümmst, wenn du der Macht verfällst, zu ihrem Spielball und Opfer wirst? Willst du wissen, wie du vor Schmerz schreist? Ich, Sigfried Uiberreither alias Friedrich Schönharting, ging hier vom 9. Juni 1938 bis 31. März 1940 meiner Arbeit nach. Ich brachte als Landeshauptmann der Steiermark und in der Ausübung meiner sonstigen Ämter viele Menschen um. Ich tat es nicht alleine. Ich tat es nicht selbst. Ich hatte Mitarbeiter. Wenn du durch das Tor gehst, schäme dich nicht nur für mich. Wer suchte nach mir? Wer stellte mich vor Gericht? Warum hast du geschwiegen? Wer hat dich zum Komplizen gemacht?</p>
+<caption>Titel / Beschreibung</caption>
+<p>Inschrift des Denkmals, gestaltet von Jochen Gerz</p>
+<caption>Quellenzitat</caption>
+<p/>
+</div>
+</body>
+</text>
+</TEI>

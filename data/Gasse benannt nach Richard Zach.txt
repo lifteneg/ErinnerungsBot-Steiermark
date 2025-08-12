@@ -1,0 +1,337 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="de">
+<teiHeader xml:lang="de">
+<fileDesc>
+<titleStmt>
+<title xml:lang="de">Richard Zach: „Ich bin den andern Weg gegangen!“</title>
+<respStmt ana="marcrelator:mrk">
+<resp>Erfassung der geografischen und historischen Daten</resp>
+<persName>
+<forename>Lukas</forename>
+<surname>Nievoll</surname>
+</persName>
+<persName>
+<forename>Victoria</forename>
+<surname>Kumar</surname>
+</persName>
+<persName>
+<forename>Heimo</forename>
+<surname>Halbrainer</surname>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:mrk">
+<resp>Daten- und Informationsmodellierung</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+<respStmt>
+<resp>Didaktische Aufarbeitung</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Marschnig</surname>
+</persName>
+<persName>
+<forename>Grit</forename>
+<surname>Oelschlegel</surname>
+</persName>
+</respStmt>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.zukunftsfonds.steiermark.at/">Land Steiermark: Zukunftsfonds Steiermark</orgName>
+<address>
+<addName>Friedrichgasse 9 8010 Graz</addName>
+</address>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.nationalfonds.org/startseite">Nationalfonds der Repuplik Österreich für Opfer des Nationalsozialismus</orgName>
+<idno type="wikidata">Q27949109</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="http://www.zukunftsfonds-austria.at/">Zukunftsfonds der Republik Österreich</orgName>
+<idno type="wikidata">Q228721</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://www.graz.at/">Stadt Graz</orgName>
+<idno type="wikidata">Q13298</idno>
+</funder>
+<funder ana="marcrelator:fnd">
+<orgName ref="https://vorarlberg.at/">Land Vorarlberg</orgName>
+<idno type="wikidata">Q38981</idno>
+</funder>
+</titleStmt>
+<publicationStmt>
+<publisher>
+<link target="https://juedischestudien.uni-graz.at/"/>
+<orgName ref="https://d-nb.info/gnd/10034042-8">Centrum für Jüdische Studien, Karl-Franzens-Universität Graz</orgName>
+</publisher>
+<authority>
+<link target="https://informationsmodellierung.uni-graz.at"/>
+<orgName ref="http://d-nb.info/gnd/1137284463">Zentrum für Informationsmodellierung - Austrian Centre for Digital Humanities, Karl-Franzens-Universität Graz</orgName>
+</authority>
+<distributor>
+<link target="https://gams.uni-graz.at"/>
+<orgName>GAMS - Geisteswissenschaftliches Asset Management System</orgName>
+</distributor>
+<date when="2019">2019</date>
+<pubPlace>Graz</pubPlace>
+<availability>
+<licence target="https://creativecommons.org/licenses/by-nc/4.0">Creative Commons BY-NC 4.0</licence>
+</availability>
+<idno type="PID">o:derla.fixsty38</idno>
+</publicationStmt>
+<seriesStmt>
+<title ref="https://gams.uni-graz.at/derla">DERLA: Digitale Erinnerungslandschaften</title>
+<respStmt ana="marcrelator:pdr">
+<resp>Projektleitung</resp>
+<persName>
+<forename>Gerald</forename>
+<surname>Lamprecht</surname>
+<idno type="orcid">0000-0002-9622-9269</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:rth">
+<resp>ZIM Forschungsleiter</resp>
+<persName>
+<forename>Georg</forename>
+<surname>Vogeler</surname>
+<idno type="orcid">0000-0002-1726-1712</idno>
+</persName>
+</respStmt>
+<respStmt ana="marcrelator:res">
+<resp>ZIM Mitarbeiter</resp>
+<persName>
+<forename>Sebastian</forename>
+<surname>Stoff</surname>
+<idno type="orcid">0000-0001-6941-113X</idno>
+</persName>
+</respStmt>
+</seriesStmt>
+<sourceDesc>
+<p>Fixiertes Vermittlungsangebot, born digital</p>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<settingDesc>
+<place>
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty38</idno>
+</place>
+<listPlace>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty29</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty46</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty451</idno>
+</place>
+<place type="additional">
+<idno type="URI">https://gams.uni-graz.at/o:derla.sty452</idno>
+</place>
+</listPlace>
+</settingDesc>
+</profileDesc>
+<encodingDesc>
+<geoDecl datum="WGS84" xml:id="WGS">World Geodetic System</geoDecl>
+<editorialDecl>
+<p>Born digital TEI Dokument zur Beschreibung eines Erinnerungsortes bzw. Erinnerungszeichens.</p>
+<p>Erinnerungszeichen markieren Erinnerungsorte und machen sie in der Öffentlichkeit sichtbar. Sie sind ein sichtbarer Verweis auf Ereignisse, Erfahrungen und Verbrechen, die der Nationalsozialismus und Faschismus zu verantworten haben und sind intentionaler Ausdruck der Erinnerungskultur einer bestimmten Gruppe. Sie können physische oder virtuelle Manifestationen sein. Zur genaueren Bestimmung und Analyse werden die einzelnen Erinnerungsorte/Erinnerungszeichen durch spezifische Kriterien genauer klassifiziert und mit Information angereichert. Hierbei kann es zu Überlappungen und in manchen Fällen zu Unschärfen kommen, weshalb teils Mehrfachzuordnungen in den einzelnen Kategorien vorgenommen werden.</p>
+</editorialDecl>
+<projectDesc>
+<p>Die digitale Erinnerungslandkarte Österreichs (DERLA) ist ein Dokumentations- und Vermittlungsprojekt. Es dokumentiert die Erinnerungsorte und -zeichen an die Opfer sowie die Orte des Terrors des Nationalsozialismus in Österreich und setzt sich die kritische Auseinandersetzung mit Nationalsozialismus und Faschismus und der Erinnerung daran zum Ziel. Die ständig neu zu stellenden Fragen, was, wann, wo und von wem wie erinnert wurde und wird, geben Einblicke in die Transformationen der Auseinandersetzungen mit dem Nationalsozialismus und sind Ausdruck unseres politischen und gesellschaftlichen Selbstverständnisses in der Gegenwart. „Gedächtnisorte“, Denk- und Mahnmäler, Gedenktafeln, Gedenkstätten sowie Straßenbezeichnungen nach WiderstandskämpferInnen und Opfern des NS-Regimes sind die Materialisationen des Geschichtsbewusstseins im Alltag. Der Blick auf die Erinnerungslandschaft in der Gegenwart gibt daher zum einen Einblick in das kollektive Gedächtnis der österreichischen Gesellschaft und zum anderen legt die Beschäftigung mit ihrer Entstehungsgeschichte die Konjunkturen dieser Beschäftigung offen.</p>
+</projectDesc>
+<listPrefixDef>
+<prefixDef ident="marcrelator" matchPattern="([a-z]+)" replacementPattern="http://id.loc.gov/vocabulary/relators/$1">
+<p>Institutionelle und Personale Rollen taxonomie</p>
+</prefixDef>
+<prefixDef ident="dcterms" matchPattern="([a-z]+)" replacementPattern="http://purl.org/dc/terms/$1">
+<p>Datums Taxonomie</p>
+</prefixDef>
+</listPrefixDef>
+</encodingDesc>
+</teiHeader>
+<text>
+<body>
+<ab>
+<ref target="context:derla" type="context">DERLA</ref>
+<ref target="context:derladidactics" type="context">DERLA didactics</ref>
+</ab>
+<div type="factbox">
+<p rend="Beschreibung">Die SchülerInnen setzen sich vertieft mit der Biografie eines im Nationalsozialismus Verfolgten auseinander und erarbeiten sich dadurch eine weitere Perspektive auf den Kontext Verfolgung und Widerstand.</p>
+<p rend="Ort, Gemeinde EO/EZ">Graz (8010)</p>
+<p rend="Zeitbedarf">30–45 Minuten, eignet sich für Supplierstunde</p>
+<p rend="Alter">16–18 Jahre</p>
+<p rend="Vermittlungsort">Klassenraum</p>
+</div>
+<div type="mehrErfahren">
+<p>
+Im Jahr 1970 wurde in der ehemaligen Lehrerbildungsanstalt eine
+<ref target="http://gams.uni-graz.at/o:derla.sty29">Gedenktafel für Othmar Schrausser, Richard Zach und Valesca Türner</ref>
+angebracht. Diese war das erste Erinnerungszeichen an den von den Nationalsozialisten ermordeten Lehrer, Schriftsteller und Widerstandkämpfer, Richard Zach, in Graz. Ein Jahr später, 1971, benannte die Stadt Graz eine Gasse und 1977 wurde in St. Radegund ein
+<ref target="http://gams.uni-graz.at/o:derla.sty46">Heim von Kinderland</ref>
+nach Zach benannt. 2013 folgte in der
+<ref target="http://gams.uni-graz.at/o:derla.sty451">Pestalozzigasse</ref>
+ein
+<ref target="https://glossa.uni-graz.at/o:derla.didgloss#gloss198">Stolperstein</ref>
+und 2019 auch ein
+<ref target="http://gams.uni-graz.at/o:derla.sty452">Stolperstein vor der PH Steiermark</ref>
+, der ehemaligen Ausbildungsstätte von Zach.
+<lb/>
+<lb/>
+Richard Zach wurde 1919 in Graz als zweiter Sohn einer Arbeiterfamilie geboren. Als er 13 Jahre alt war, starb seine Mutter und er wuchs bei seiner Tante auf. Ab 1933 besuchte er die Bundeslehrerbildungsanstalt am Hasnerplatz, wo er 1938 mit Auszeichnung maturierte. In die Jahre der
+<ref target="https://gams.uni-graz.at/o:derla.didgloss#gloss5">austrofaschistischen Diktatur</ref>
+fielen auch seine ersten literarischen Versuche und politischen Aktivitäten. Er war an der Lehrerbildungsanstalt mit dem etwas älteren Josef Martin Presterl befreundet, der führend im illegalen Kommunistischen Jugendverband aktiv war. Dennoch hielt Zach Distanz zum „polizeibekannten KJV“ und rief im christlichsozialen Verein Freiheitsbund eine Jugendgruppe ins Leben, den Jungfreiheitsbund. Ein Teil der Jugendgruppe gründete einen geheimen marxistischen Arbeitskreis, in dem die Schriften von Karl Marx, Friedrich Engels und August Bebel diskutiert wurden. Zudem studierten die Jugendlichen Theaterstücke ein, die sie bei einer Wanderung im Sommer 1937 durch die deutschsprachigen Gemeinden in Jugoslawien aufführten.
+<lb/>
+<lb/>
+<emph style="bold">Widerstand und Verhaftung</emph>
+<lb/>
+Nach der Matura im Frühjahr 1938 unterrichtete Richard Zach kurze Zeit an einer Volksschule, ehe er im November zur Deutschen Wehrmacht einrückte. Nach Kriegsausbruch täuschte er bei einem Heimaturlaub im Februar 1940 einen Schiunfall vor, indem er sich selbst das Schienbein brach. Er galt daraufhin für ein Jahr als wehrunfähig und wurde wieder als Lehrer eingestellt. In dieser Zeit intensivierte Richard Zach die Widerstandsaktivitäten der Gruppe. Die Mitglieder besorgten sich eine Schreibmaschine, einen Handsetzkasten und einen Vervielfältigungsapparat, den sie in Authal bei Graz in einer Hütte versteckten. Dort druckten sie ab Oktober 1940 die Flugschrift „Der Rote Stoßtrupp“, die sie selbst vor den Grazer Industriebetrieben streuten oder auf Zäune und Mauern klebten. Über die Landesleitung der KPÖ gelangte die Flugschrift bis in die Ober- und Weststeiermark. Sie enthielt Informationen von ausländischen Radiosendungen und NS-feindliche Analysen, die Richard Zach selbst verfasste.
+<lb/>
+Richard Zach gab auch die offizielle Zeitung der Grazer HJ heraus: „Soldatenbrief der Hitlerjugend“, für die er zahlreiche Texte schrieb. Auf diese Weise wollte er, wie auch die anderen Mitglieder der Widerstandsgruppe, Einfluss auf die Jugend nehmen.
+<lb/>
+Mit Kriegsbeginn gegen die Sowjetunion im Juni 1941 intensivierte die von ihm geleitete Gruppe ihre Aktivitäten. In Graz wurden hunderte Flug- und Streuzettel verteilt, auf denen „Nieder mit Hitlers Raubkrieg! Kämpft dagegen mit allen Mitteln!“, „Sieg der Roten Armee! Vernichtung den Naziausbeutern! Helft mit, Genossen!“ zu lesen war. Am 31. Oktober 1941 wurde Richard Zach schließlich gemeinsam mit anderen wegen des Verdachts, kommunistische Parolen geschrieben zu haben, festgenommen. Doch auch nach seiner Verhaftung blieb er aktiv und versteckte Zettel, so genannte Kassiber, in der Schmutzwäsche, um seine Mitstreiter, die noch nicht verhaftet worden waren, zu warnen. Richard Zach schrieb während seiner Haft auch Gedichte, die über die Nachbarzelle, wo ein Mitkämpfer saß, den Weg nach draußen fanden. Dadurch sind von ihm über 80 Kassiber-Gedichte erhalten geblieben.
+<lb/>
+<lb/>
+<emph style="bold">Hoffen und Bangen</emph>
+<lb/>
+Während seines Aufenthaltes im Grazer Polizeigefängnis am Paulustor und seiner Gefangenschaft ab April 1942 in Berlin-Moabit hoffte Richard Zach, bald wieder entlassen zu werden. Doch die Gestapo war bestens über die Aktivitäten seiner Gruppe unterrichtet. In all dieser Zeit des Hoffens, auch nach dem Urteilsspruch des Reichskriegsgerichts in Berlin, das ihn am 17. August 1942 zum Tode verurteilte, schrieb er fieberhaft über 600 Gedichte. Nach seiner Verlegung im Dezember 1942 nach Graz wurde Richard Zach am 27. Jänner 1943 – 23-jährig – in Berlin hingerichtet. Auch seine Mitstreiter kamen vor Gericht. Einer von ihnen wurde zum Tode verurteilt, die anderen fassten hohe Zuchthausstrafen aus. Zwei weitere wurden in ein Strafbataillon überstellt, wo sie umkamen.
+</p>
+<caption>Literatur</caption>
+<list>
+<item>DÖW 19.455: Sammlung Richard Zach (1919–1943), Briefe, Kassiber (Original und Abschriften)</item>
+<item>Christian Hawle, Richard Zach. „Gelebt habe ich doch!“, Wien 1989.</item>
+<item>Richard Zach: „Streut die Asche in den Wind“. Österreichische Literatur im Widerstand. Ausgewählte Gedichte. Hg. und eingeleitet von Christian Hawle, Stuttgart 1988 (= Stuttgarter Arbeiten zur Germanistik 198).</item>
+<item>Richard Zach, Die schönen Worte fallen welk und fremd… Kassibertexte. Gedichte und Briefe. Hg v. Christian Hawle, Weitra 1993.</item>
+<item>Heimo Halbrainer/Gerald Lamprecht, Nationalsozialismus in der Steiermark. Opfer – Täter – Gegner. Innsbruck-Wien-Bozen 2015.</item>
+<item>Richard Zach: Den anderen Weg gegangen. Ausgewählte Gedichte. Hg. und mit einem Nachwort von Karl Wimmler. Graz 2017.</item>
+</list>
+</div>
+<div type="mehrMachen">
+<head>Richard Zach: „Ich bin den andern Weg gegangen!“</head>
+<caption>Didaktischer Kommentar</caption>
+<p>Das Lernen über die Zeit des Nationalsozialismus erfährt durch die Implementierung biografischer Zugänge eine produktive Erweiterung. Die Beschäftigung mit Biografien eröffnet zusätzliche Perspektiven auf das historische Geschehen und ermöglicht es den Lernenden, sich über einen konkreten Lebensweg der Alterität der Vergangenheit anzunähern. Die Verbindung des biografischen Arbeitens mit Quellenarbeit ermöglicht dabei den Aufbau diverser historischer Kompetenzen, wie etwa der historischen Methodenkompetenzen und Orientierungskompetenzen.</p>
+<caption>Arbeitsaufträge</caption>
+<p>
+<list style="ordered">
+<item>Versuche eine Interpretation des Titels des Gedichts. „Was soll ich um mein Leben rechten?“ von Richard Zach (siehe Textquellen, der Begriff „rechten“ bedeutet so viel wie „rechtfertigen“) Verwende dafür ausschließlich den Inhalt des Gedichts.</item>
+<item> Das Gedicht hat einen autobiographischen Hintergrund. Lies den Text aufmerksam durch und formuliere danach drei Fragen, die dich an Zachs Leben interessieren.</item>
+<item>Weise anhand Zachs Lebensgeschichte (siehe Mehr Erfahren) den autobiographischen Charakter des Gedichts nach.</item>
+<item>Beurteile den Wert von (autobiographischen) Gedichten als Quellen für die historische Forschung.</item>
+</list>
+</p>
+<caption>Vermittlungshinweise</caption>
+<p>
+Das Gedicht „Was soll ich um mein Leben rechten?“ steht im Zentrum der Beschäftigung mit Richard Zach. Zunächst soll ausschließlich mit dem Text gearbeitet und eine Interpretation versucht werden. (Der Begriff „rechten“ ist hier im Sinne von „streiten“, „rechtfertigen“ zu verstehen.)
+<lb/>
+Anschließend wird der Text auch als Ausgangspunkt verwendet, und über selbst formulierte Fragen sollen die Jugendlichen einen eigenen Weg vom Text zum Lebensweg Zachs entwickeln. Die Bearbeitung dieser Fragen soll in weiterer Folge zu einem besseren Verständnis für den autobiographischen Charakter des Gedichts führen. Darauf soll schließlich der Reflexionsprozess über den Quellenwert des Textes fußen.
+</p>
+<caption>Vermittlungsziele</caption>
+<list>
+<item>Die SchülerInnen beschäftigen sich bewusst mit den Folgen der nationalsozialistischen Gewaltherrschaft.</item>
+<item>Die SchülerInnen reflektieren den Wert von literarischen Quellen für die historische Forschung.</item>
+<item>Die SchülerInnen gewinnen Orientierung für Gegenwart und Zukunft.</item>
+</list>
+<caption>Literatur</caption>
+<list/>
+</div>
+<div type="quellenText">
+<p>
+<emph style="bold">„Was soll ich um mein Leben rechten?“</emph>
+<lb/>
+<lb/>
+Was soll ich um mein Leben rechten?
+<lb/>
+Ich hab’ gewagt, hab’ nicht gefragt,
+<lb/>
+ob’s gut ist, wenn man alles wagt,
+<lb/>
+und ob die Taten Zinsen brächten!
+<lb/>
+<lb/>
+Bequemer wäre es gewesen,
+<lb/>
+den Kopf zu senken, klug zu lächeln,
+<lb/>
+die Knie verrenken, Demut fächeln
+<lb/>
+und kein verbot’nes Buch zu lesen.
+<lb/>
+<lb/>
+Die Möglichkeit stand häufig offen,
+<lb/>
+sich wirklich gut und weich zu betten,
+<lb/>
+den eigenen schönen Kopf zu retten
+<lb/>
+und auf Beförderung zu hoffen.
+<lb/>
+<lb/>
+Ich bin den andern Weg gegangen.
+<lb/>
+Verzeiht – es tut mir gar nicht leid,
+<lb/>
+obwohl es elend steht zur Zeit. –
+<lb/>
+Wird keiner um sein Leben bangen,
+<lb/>
+<lb/>
+der weiß, wozu er es verwendet,
+<lb/>
+bedachte, was sein Glaube wiegt.
+<lb/>
+Er hat am Ende doch gesiegt,
+<lb/>
+und wenn er auf der Richtstatt endet!
+<lb/>
+<lb/>
+Die Stunden vorher und die Tage –
+<lb/>
+Nicht ihre Zahl, nur ihr Gehalt –
+<lb/>
+Läßt trotzen jeglicher Gewalt,
+<lb/>
+gewährt uns Kraft in schwerster Lage.
+<lb/>
+<lb/>
+Es leben manche hundert Jahre,
+<lb/>
+das heißt, sie schlängeln sich dahin.
+<lb/>
+Gegönnt sei ihnen ihr Gewinn
+<lb/>
+Und eine schöne Totenbahre.
+<lb/>
+<lb/>
+Ich habe heute viel verloren,
+<lb/>
+wer weiß, verlier’ ich noch den Kopf.
+<lb/>
+Doch tauscht’ ich nicht mit solchem Tropf
+<lb/>
+und würd’ ich noch einmal geboren!
+<lb/>
+<lb/>
+Ich ahnte, wie die Feinde seien,
+<lb/>
+erhoffte nie ein leichtes Spiel.
+<lb/>
+Doch was ich will, ist viel, zu viel!
+<lb/>
+Was soll ich um mein Leben schreien?
+</p>
+<caption>Titel / Beschreibung</caption>
+<p>Kassiber-Gedicht von Richard Zach, Jänner 1942.</p>
+<caption>Quellenzitat</caption>
+<p>Richard Zach, Die schönen Worte fallen welk und fremd… Kassibertexte. Gedichte und Briefe. Hg v. Christian Hawle, Weitra 1993.</p>
+</div>
+</body>
+</text>
+<facsimile>
+<graphic mimeType="image/jpeg" url="info:fedora/o:derla.fixsty38" xml:id="IMAGE.1">
+<desc>Richard Zach (1919–1943)</desc>
+<desc type="title">Richard Zach (1919–1943) (© Geschwinder)</desc>
+</graphic>
+</facsimile>
+</TEI>
