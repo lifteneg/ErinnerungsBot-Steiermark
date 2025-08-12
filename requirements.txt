@@ -1,8 +1,14 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.2.1
 
-streamlit
+# WICHTIG: Transformers auf eine stabile Version pinnen,
+# die den Safe-Load-Check noch nicht erzwungen hat
+transformers==4.41.1
 sentence-transformers==2.6.1
+safetensors>=0.4.2
+huggingface-hub<0.25.0
+
+streamlit
 rank-bm25
 qdrant-client
 numpy>=1.24
