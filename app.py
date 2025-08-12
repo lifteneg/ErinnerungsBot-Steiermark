@@ -1,6 +1,5 @@
 # app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + BGE-M3)
 # Features: Rollen (Admin/Viewer), Repo-only Daten, Auto-Rebuild bei Datenänderung, CPU-only, OpenRouter-Header
-
 from __future__ import annotations
 import os
 import time
@@ -21,11 +20,14 @@ from rank_bm25 import BM25Okapi
 # ---------- Seite ----------
 st.set_page_config(page_title="🔒 ErinnerungsBot Steiermark", layout="wide")
 
-# Optional: stabilere HF-Caches auf Streamlit Cloud
-os.environ.setdefault("HF_HOME", "/mount/temp/hf")
-os.environ.setdefault("TRANSFORMERS_CACHE", "/mount/temp/hf/transformers")
-os.makedirs(os.environ["HF_HOME"], exist_ok=True)
-os.makedirs(os.environ["TRANSFORMERS_CACHE"], exist_ok=True)
+# ---------- Robuste HF-Caches (Streamlit Cloud) ----------
+HF_DIR = "/tmp/hf"
+os.environ["HF_HOME"] = HF_DIR
+os.environ["TRANSFORMERS_CACHE"] = str(Path(HF_DIR) / "transformers")
+os.environ["SENTENCE_TRANSFORMERS_HOME"] = str(Path(HF_DIR) / "sbert")
+Path(HF_DIR).mkdir(parents=True, exist_ok=True)
+Path(os.environ["TRANSFORMERS_CACHE"]).mkdir(parents=True, exist_ok=True)
+Path(os.environ["SENTENCE_TRANSFORMERS_HOME"]).mkdir(parents=True, exist_ok=True)
 
 # ---------- CPU-only ----------
 torch.set_num_threads(1)
@@ -71,7 +73,6 @@ def auth_gate() -> None:
         st.session_state["authed"] = True
         st.session_state["role"] = "admin"
         return
-
     if st.session_state.get("authed"):
         with st.sidebar:
             st.caption(f"Rolle: **{st.session_state.get('role', 'viewer')}**")
@@ -80,7 +81,6 @@ def auth_gate() -> None:
                 st.session_state["role"] = None
                 st.rerun()
         return
-
     st.title("🔐 Login")
     token = st.text_input("Access Token", type="password")
     if st.button("Anmelden"):
@@ -108,7 +108,7 @@ def get_reranker() -> CrossEncoder:
     try:
         return CrossEncoder("BAAI/bge-reranker-base", device=DEVICE)
     except Exception:
-        return None  # Notfalls ohne Reranker
+        return None
 
 embed_model = get_embedder()
 reranker = get_reranker()
@@ -128,7 +128,7 @@ def load_bm25() -> Tuple[BM25Okapi | None, List[DocChunk]]:
         return bm25, docs
     return None, []
 
-# ---------- Auto‑Rebuild bei Datenänderung ----------
+# ---------- Auto-Rebuild bei Datenänderung ----------
 def data_dir_hash() -> str:
     m = hashlib.sha256()
     if DATA_DIR.exists():
@@ -158,8 +158,6 @@ bm25, docs = load_bm25()
 # ---------- Suche ----------
 def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
     results: List[Tuple[str, float, Dict]] = []
-
-    # Sparse: BM25
     if bm25 and docs:
         tq = query.lower().split()
         scores = bm25.get_scores(tq)
@@ -168,8 +166,6 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
             if scores[i] <= 0: continue
             d: DocChunk = docs[i]
             results.append((d.text, float(scores[i]), {"source": d.source, "chunk_id": d.chunk_id, "kind": "bm25"}))
-
-    # Dense: Qdrant
     try:
         qv = embed_model.encode([query], normalize_embeddings=True)[0].tolist()
         hits = qdr.search(collection_name=QDRANT_COLLECTION, query_vector=qv, limit=top_k, with_payload=True)
@@ -179,13 +175,9 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
                             {"source": payload.get("source"), "chunk_id": payload.get("chunk_id"), "kind": "vector"}))
     except Exception as e:
         st.warning(f"Qdrant-Suche nicht möglich: {e}")
-
     if not results:
         return []
     pairs = [(query, r[0]) for r in results if r[0]]
-    if not pairs:
-        return []
-
     if reranker is not None:
         try:
             rr = reranker.predict(pairs)
@@ -198,7 +190,7 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
 # ---------- LLM ----------
 def call_llm(context: str, question: str) -> str:
     if not OSS_API_BASE or not OSS_API_KEY or not OSS_MODEL:
-        return "LLM nicht konfiguriert (OSS_API_BASE/OSS_API_KEY/OSS_MODEL fehlen)."
+        return "LLM nicht konfiguriert."
     headers = {
         "Authorization": f"Bearer {OSS_API_KEY}",
         "Content-Type": "application/json",
@@ -223,11 +215,11 @@ def call_llm(context: str, question: str) -> str:
 
 # ---------- UI ----------
 st.title("💬 ErinnerungsBot Steiermark")
-st.caption("Antwortet strikt nur aus den Dokumenten im Repository-Ordner `data/` (BGE‑M3 · Qdrant · BM25 · Reranker).")
+st.caption("Antwortet strikt nur aus den Dokumenten im Repository-Ordner `data/`.")
 
 with st.sidebar:
     st.header("Index verwalten")
-    st.caption("Datenquelle: 📁 `data/` im GitHub‑Repo (kein Upload im UI)")
+    st.caption("📁 Datenquelle: `data/` im GitHub-Repo")
     role = st.session_state.get("role", "viewer")
     if role == "admin":
         if st.button("🧱 Vollständiger Rebuild"):
@@ -249,7 +241,7 @@ if st.button("Senden") and question:
     with st.spinner("Suche relevante Textstellen …"):
         hits = hybrid_search(question, top_k=8)
     if not hits:
-        st.warning("Kein Kontext gefunden. Prüfe: Dateien in `data/`? Rebuild lief? Qdrant‑URL/Key korrekt?")
+        st.warning("Kein Kontext gefunden.")
     else:
         context = "\n\n".join([h[0] for h in hits if h[0]])
         answer = call_llm(context, question)
