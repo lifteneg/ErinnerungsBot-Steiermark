@@ -8,17 +8,17 @@ from typing import List, Dict
 import requests
 from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
+from qdrant_client.http.exceptions import UnexpectedResponse
 from rank_bm25 import BM25Okapi
 from PyPDF2 import PdfReader
 
 # ---------- CLI / ENV ----------
 def cli_env_value(cli_val: str | None, env_key: str, default: str = "") -> str:
-    if cli_val: return cli_val
-    return os.getenv(env_key, default)
+    return cli_val if cli_val is not None else os.getenv(env_key, default)
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--full-rebuild", action="store_true", help="BM25 neu + Vektoren neu")
-ap.add_argument("--clear", action="store_true", help="Collection vorher leeren")
+ap.add_argument("--clear", action="store_true", help="Collection vorher leeren (falls erlaubt)")
 # Fallback-Parameter (falls ENV/Secrets nicht greifen)
 ap.add_argument("--jina_api_key", type=str, default=None)
 ap.add_argument("--jina_model", type=str, default=None)
@@ -32,7 +32,7 @@ DATA_DIR = Path("./data"); DATA_DIR.mkdir(exist_ok=True)
 INDEX_DIR = Path("./index"); INDEX_DIR.mkdir(exist_ok=True)
 BM25_FILE = INDEX_DIR / "bm25.pkl"
 DOCS_FILE = INDEX_DIR / "docs.pkl"
-STATE_FILE = INDEX_DIR / "ingest_state.json"
+STATE_FILE = INDEX_DIR / "injest_state.json"  # Name egal, nur Timestamp
 
 # ---------- Konfiguration ----------
 def _normalize_qdrant_url(raw: str | None) -> str | None:
@@ -45,8 +45,8 @@ JINA_API_KEY = cli_env_value(args.jina_api_key, "JINA_API_KEY")
 JINA_MODEL   = cli_env_value(args.jina_model, "JINA_MODEL", "jina-embeddings-v2-base-de")
 JINA_URL     = os.getenv("JINA_EMBED_URL", "https://api.jina.ai/v1/embeddings")
 
-QDRANT_URL = _normalize_qdrant_url(cli_env_value(args.qdrant_url, "QDRANT_URL"))
-QDRANT_API_KEY = cli_env_value(args.qdrant_api_key, "QDRANT_API_KEY")
+QDRANT_URL        = _normalize_qdrant_url(cli_env_value(args.qdrant_url, "QDRANT_URL"))
+QDRANT_API_KEY    = cli_env_value(args.qdrant_api_key, "QDRANT_API_KEY")
 QDRANT_COLLECTION = cli_env_value(args.qdrant_collection, "QDRANT_COLLECTION", "docs_bge_m3")
 
 # ---------- Chunking ----------
@@ -120,29 +120,66 @@ def build_bm25(docs: List[Dict]):
     with open(BM25_FILE, "wb") as f: pickle.dump(bm25, f)
     with open(DOCS_FILE, "wb") as f: pickle.dump(docs, f)
 
-def build_qdrant(docs: List[Dict], clear: bool = False):
-    qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
-    if clear:
-        try: qdr.delete_collection(QDRANT_COLLECTION)
-        except: pass
-
-    dim = len(jina_embed(["probe"])[0])
-
-    recreate = False
+def ensure_collection(qdr: QdrantClient, dim: int, clear: bool):
+    # 1) Existiert die Collection?
+    exists = False
     try:
-        info = qdr.get_collection(QDRANT_COLLECTION)
-        current = info.config.params.vectors.size
-        if current != dim:
-            recreate = True
+        exists = qdr.collection_exists(QDRANT_COLLECTION)
     except Exception:
-        recreate = True
+        # ältere Clients ohne collection_exists
+        try:
+            qdr.get_collection(QDRANT_COLLECTION)
+            exists = True
+        except Exception:
+            exists = False
 
-    if recreate:
-        qdr.recreate_collection(
+    # 2) Bei Bedarf anlegen
+    if not exists:
+        qdr.create_collection(
             collection_name=QDRANT_COLLECTION,
             vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
         )
+        print(f"Collection '{QDRANT_COLLECTION}' erstellt (dim={dim}).")
+        return
 
+    # 3) Existiert bereits – Dimension prüfen
+    try:
+        info = qdr.get_collection(QDRANT_COLLECTION)
+        current = info.config.params.vectors.size
+    except Exception:
+        current = None
+
+    if current and current != dim:
+        # Dimension kann nicht geändert werden → Hinweis statt Delete
+        raise RuntimeError(
+            f"Collection '{QDRANT_COLLECTION}' hat dim={current}, benötigt dim={dim}. "
+            f"Löschen/Neu-Anlegen erforderlich (oder neuen Namen für QDRANT_COLLECTION wählen)."
+        )
+
+    # 4) Clear angefordert: versuchen zu löschen → bei 403 nur warnen
+    if clear:
+        try:
+            qdr.delete_collection(QDRANT_COLLECTION)
+            qdr.create_collection(
+                collection_name=QDRANT_COLLECTION,
+                vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
+            )
+            print(f"Collection '{QDRANT_COLLECTION}' geleert und neu erstellt.")
+        except UnexpectedResponse as e:
+            print(f"[WARN] Clear nicht erlaubt (403). Fahre ohne Clear fort. Details: {e}")
+        except Exception as e:
+            print(f"[WARN] Clear fehlgeschlagen ({e}). Fahre ohne Clear fort.")
+
+def build_qdrant(docs: List[Dict], clear: bool = False):
+    qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
+
+    # Dimension via Probe
+    dim = len(jina_embed(["probe"])[0])
+
+    # Collection sicherstellen (ohne recreate/delete – 403 vermeiden)
+    ensure_collection(qdr, dim, clear=clear)
+
+    # Upsert Vektoren
     vectors = jina_embed([d["text"] for d in docs])
     points = [
         qmodels.PointStruct(
