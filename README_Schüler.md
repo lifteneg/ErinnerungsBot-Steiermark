@@ -19,7 +19,8 @@ Ihr könnt ihn am Laptop, Tablet oder Smartphone nutzen.
 
 3. **Fragen stellen**  
    - Tippt eure Frage ins Feld.
-   - Der Bot sucht in unseren Dokumenten nach der Antwort.
+   - Der Bot sucht in nach Antworten in folgenden Quellen:
+      - Digitale Erinnerungslandschaft – DERLA – Universität Graz. (o. J.). Digitale Erinnerungslandschaft [Webseite]. GAMS – Geisteswissenschaftliches Asset             Management System. Abgerufen am 12. August 2025, von https://gams.uni-graz.at/context:derla
    - Ihr bekommt die Antwort direkt im Chatfenster angezeigt.
 
 ---
