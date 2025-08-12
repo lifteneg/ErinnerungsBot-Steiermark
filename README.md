@@ -29,6 +29,7 @@ Ein Streamlit-Chatbot, der **nur** auf deine eigenen Dokumente aus dem Ordner `d
 ├── index/          # Generierter BM25-Index und ingest_state.json
 ├── requirements.txt
 └── README.md
+└── README_Schüler.md
 ```
 
 ---
