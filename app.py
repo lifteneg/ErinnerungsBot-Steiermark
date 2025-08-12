@@ -1,6 +1,9 @@
-# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + Jina Embeddings + OpenRouter LLM)
+# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + Jina-Embeddings)
 from __future__ import annotations
-import os, time, pickle, hashlib
+import os
+import time
+import pickle
+import hashlib
 from pathlib import Path
 from dataclasses import dataclass
 from typing import List, Dict, Tuple
@@ -8,10 +11,11 @@ from typing import List, Dict, Tuple
 import numpy as np
 import requests
 import streamlit as st
-from qdrant_client import QdrantClient
 from rank_bm25 import BM25Okapi
+from qdrant_client import QdrantClient
 
-st.set_page_config(page_title="🔒 ErinnerungsBot Steiermark", layout="wide")
+# ---------- Seite ----------
+st.set_page_config(page_title="💬 ErinnerungsBot Steiermark", layout="wide")
 
 # ---------- Pfade ----------
 DATA_DIR = Path("./data")
@@ -20,61 +24,47 @@ BM25_FILE = INDEX_DIR / "bm25.pkl"
 DOCS_FILE = INDEX_DIR / "docs.pkl"
 
 # ---------- Qdrant ----------
-QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "docs_bge_m3")
-
-def _normalize_qdrant_url(raw: str | None) -> str | None:
-    if not raw:
-        return None
-    # Falls Cloud-URL ohne Port kommt → :6333 ergänzen
-    if raw.startswith("http") and ":" not in raw.split("//", 1)[1]:
-        return raw.rstrip("/") + ":6333"
-    return raw.rstrip("/")
-
-QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL", "http://localhost:6333"))
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "")
+QDRANT_URL = os.getenv("QDRANT_URL")
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+QDRANT_COLLECTION = "docs_bge_m3"
 qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
-# ---------- Jina Embeddings (extern) ----------
-JINA_API_KEY = os.getenv("JINA_API_KEY", "")
-JINA_MODEL   = os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de")
-JINA_URL     = os.getenv("JINA_EMBED_URL", "https://api.jina.ai/v1/embeddings")
+# ---------- Jina Embeddings ----------
+JINA_API_KEY = os.getenv("JINA_API_KEY")
+JINA_MODEL = os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de")
+JINA_URL = "https://api.jina.ai/v1/embeddings"
 
-def jina_embed(texts: List[str]) -> List[List[float]]:
-    """Ruft Jina-Embeddings per API ab. Wird NUR zur Laufzeit aufgerufen – kein Probe beim Start!"""
+def jina_embed(texts: list[str]) -> list[list[float]]:
     if not JINA_API_KEY:
-        raise RuntimeError("JINA_API_KEY ist nicht gesetzt (Streamlit Secrets).")
+        raise RuntimeError("JINA_API_KEY fehlt – bitte in Streamlit Secrets setzen.")
     headers = {"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"}
-    out: List[List[float]] = []
-    B = 128
-    for i in range(0, len(texts), B):
-        payload = {"model": JINA_MODEL, "input": texts[i:i+B], "encoding_format": "float"}
+    out = []
+    for i in range(0, len(texts), 128):
+        payload = {"model": JINA_MODEL, "input": texts[i:i+128], "encoding_format": "float"}
         r = requests.post(JINA_URL, headers=headers, json=payload, timeout=60)
         if r.status_code >= 400:
             raise RuntimeError(f"Jina-API Fehler {r.status_code}: {r.text[:200]}")
         out.extend([d["embedding"] for d in r.json()["data"]])
     return out
 
-# ---------- OpenRouter (LLM bleibt wie gewünscht) ----------
-OSS_API_BASE = os.getenv("OSS_API_BASE", "https://openrouter.ai/api")
-OSS_API_KEY  = os.getenv("OSS_API_KEY", "")
-OSS_MODEL    = os.getenv("OSS_MODEL", "openai/gpt-oss-20b:free")
-
-# ---------- Rollen / Auth ----------
+# ---------- Rollen / Tokens ----------
 def _split_tokens(value: str) -> list[str]:
     return [t.strip() for t in value.split(",") if t.strip()]
 
 ADMIN_SET = set(_split_tokens(os.getenv("ADMIN_TOKENS", "")))
-VIEW_SET  = set(_split_tokens(os.getenv("VIEW_TOKENS", "")))
-ALL_SET   = set(_split_tokens(os.getenv("AUTH_TOKENS", "")))
+VIEW_SET = set(_split_tokens(os.getenv("VIEW_TOKENS", "")))
+ALL_SET = set(_split_tokens(os.getenv("AUTH_TOKENS", "")))
 if ALL_SET and not ADMIN_SET and not VIEW_SET:
-    ADMIN_SET = ALL_SET  # Fallback
+    ADMIN_SET = ALL_SET  # Fallback: AUTH_TOKENS = Admin
 
+# ---------- Systemprompt ----------
 SYSTEM_PROMPT = (
     "Du bist ein präziser Assistent. Antworte ausschließlich mit Informationen, "
     "die im bereitgestellten KONTEXT enthalten sind. Wenn der Kontext keine Antwort zulässt, "
     "sage eindeutig: 'Dazu habe ich keine Information in meinen Daten.' Erfinde nichts."
 )
 
+# ---------- Auth ----------
 def auth_gate() -> None:
     if not (ADMIN_SET or VIEW_SET):
         st.session_state["authed"] = True
@@ -105,7 +95,7 @@ def auth_gate() -> None:
 
 auth_gate()
 
-# ---------- BM25 & Docs ----------
+# ---------- Dataclasses ----------
 @dataclass
 class DocChunk:
     text: str
@@ -113,6 +103,7 @@ class DocChunk:
     chunk_id: int
     meta: Dict[str, str]
 
+# ---------- BM25 Laden ----------
 def load_bm25() -> Tuple[BM25Okapi | None, List[DocChunk]]:
     if BM25_FILE.exists() and DOCS_FILE.exists():
         with open(BM25_FILE, "rb") as f: bm25 = pickle.load(f)
@@ -120,65 +111,38 @@ def load_bm25() -> Tuple[BM25Okapi | None, List[DocChunk]]:
         return bm25, docs
     return None, []
 
-# ---------- Automatischer Rebuild bei Datenänderung ----------
-def data_dir_hash() -> str:
-    m = hashlib.sha256()
-    if DATA_DIR.exists():
-        for path in sorted(DATA_DIR.rglob("*")):
-            if path.is_file():
-                m.update(path.name.encode())
-                m.update(str(path.stat().st_mtime).encode())
-                try:
-                    m.update(path.read_bytes())
-                except Exception:
-                    pass
-    return m.hexdigest()
-
-hash_file = INDEX_DIR / ".data_hash"
-current_hash = data_dir_hash()
-previous_hash = hash_file.read_text() if hash_file.exists() else ""
-
-if current_hash != previous_hash:
-    with st.spinner("📚 Datenänderung erkannt – baue Index neu auf …"):
-        os.system("python ingest.py --full-rebuild")
-    hash_file.write_text(current_hash)
-    st.success("Index wurde automatisch aktualisiert!")
-    time.sleep(0.6)
-
 bm25, docs = load_bm25()
 
 # ---------- Suche ----------
 def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
     results: List[Tuple[str, float, Dict]] = []
-
-    # BM25 (immer verfügbar)
+    # BM25
     if bm25 and docs:
         tq = query.lower().split()
         scores = bm25.get_scores(tq)
         top_idx = np.argsort(scores)[-top_k:][::-1]
         for i in top_idx:
-            if scores[i] <= 0: 
-                continue
+            if scores[i] <= 0: continue
             d: DocChunk = docs[i]
             results.append((d.text, float(scores[i]),
                             {"source": d.source, "chunk_id": d.chunk_id, "kind": "bm25"}))
-
-    # Dense (Jina → Qdrant)
+    # Qdrant
     try:
         qv = jina_embed([query])[0]
-        hits = qdr.search(collection_name=QDRANT_COLLECTION, query_vector=qv,
-                          limit=top_k, with_payload=True)
+        hits = qdr.search(collection_name=QDRANT_COLLECTION, query_vector=qv, limit=top_k, with_payload=True)
         for h in hits:
-            p = h.payload or {}
-            results.append((p.get("text",""), float(h.score),
-                            {"source": p.get("source"), "chunk_id": p.get("chunk_id"), "kind": "vector"}))
+            payload = h.payload or {}
+            results.append((payload.get("text", ""), float(h.score),
+                            {"source": payload.get("source"), "chunk_id": payload.get("chunk_id"), "kind": "vector"}))
     except Exception as e:
-        # Kein Absturz der App – stattdessen deutliche Warnung
         st.warning(f"Vektor-Suche nicht möglich: {e}")
-
-    return results[:top_k] if results else []
+    return results[:top_k]
 
 # ---------- LLM ----------
+OSS_API_BASE = os.getenv("OSS_API_BASE")
+OSS_API_KEY = os.getenv("OSS_API_KEY")
+OSS_MODEL = os.getenv("OSS_MODEL")
+
 def call_llm(context: str, question: str) -> str:
     if not OSS_API_BASE or not OSS_API_KEY or not OSS_MODEL:
         return "LLM nicht konfiguriert."
@@ -197,8 +161,7 @@ def call_llm(context: str, question: str) -> str:
         "temperature": 0.2,
     }
     try:
-        r = requests.post(OSS_API_BASE.rstrip("/") + "/v1/chat/completions",
-                          headers=headers, json=payload, timeout=120)
+        r = requests.post(OSS_API_BASE.rstrip("/") + "/v1/chat/completions", headers=headers, json=payload, timeout=120)
         if r.status_code >= 400:
             return f"LLM-Fehler ({r.status_code}): {r.text[:500]}"
         return r.json()["choices"][0]["message"]["content"]
@@ -212,8 +175,24 @@ st.caption("Antwortet strikt nur aus den Dokumenten im Repository-Ordner `data/`
 with st.sidebar:
     st.header("Index verwalten")
     st.caption("📁 Datenquelle: `data/` im GitHub-Repo")
-    st.write(f"🔌 Qdrant: `{QDRANT_URL or '—'}` · Collection: `{QDRANT_COLLECTION}`")
-    st.write(f"🧠 Embeddings: `Jina · {JINA_MODEL}`")
+
+    # --- Statusanzeige ---
+    try:
+        count = qdr.count(QDRANT_COLLECTION, exact=True).count
+    except Exception:
+        count = None
+    last_ingest_time = None
+    state_file = INDEX_DIR / "ingest_state.json"
+    if state_file.exists():
+        last_ingest_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(state_file.stat().st_mtime))
+    num_data_files = len(list(DATA_DIR.rglob("*.*")))
+
+    st.subheader("📊 Index-Status")
+    st.write(f"**Qdrant Chunks:** {count if count is not None else '—'}")
+    st.write(f"**Letzter Ingest:** {last_ingest_time or '—'}")
+    st.write(f"**Dateien in data/:** {num_data_files}")
+    st.write(f"**BM25 geladen:** {'✅' if bm25 else '❌'}")
+
     role = st.session_state.get("role", "viewer")
     if role == "admin":
         if st.button("🧱 Vollständiger Rebuild"):
