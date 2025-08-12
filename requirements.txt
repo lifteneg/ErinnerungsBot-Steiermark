@@ -1,18 +1,13 @@
+# CPU-Build von PyTorch (vermeidet GPU/NotImplementedError auf Streamlit Cloud)
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.2.1
 
-# WICHTIG: Transformers auf eine stabile Version pinnen,
-# die den Safe-Load-Check noch nicht erzwungen hat
-transformers==4.41.1
+streamlit==1.36.0
 sentence-transformers==2.6.1
-safetensors>=0.4.2
-huggingface-hub<0.25.0
-
-streamlit
-rank-bm25
-qdrant-client
+rank-bm25==0.2.2
+qdrant-client==1.7.3
 numpy>=1.24
-requests
-pypdf
-lxml
-rdflib
+requests==2.32.3
+pypdf==4.3.1
+lxml==5.2.2
+rdflib==7.0.0
