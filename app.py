@@ -1,9 +1,9 @@
-# app.py – Streamlit RAG-Chatbot (Qdrant + BM25 + BGE-M3) – CPU-only & Streamlit Cloud fixes
+# app.py – Streamlit RAG-Chatbot (Qdrant + BM25 + BGE-M3)
+# CPU-only, OpenRouter-Header, Rollen (Admin/Viewer), nur 1x set_page_config
 
 from __future__ import annotations
 import os
 import pickle
-import hashlib
 from pathlib import Path
 from dataclasses import dataclass
 from typing import List, Dict, Tuple
@@ -14,7 +14,6 @@ import requests
 import streamlit as st
 from sentence_transformers import SentenceTransformer, CrossEncoder
 from qdrant_client import QdrantClient
-from qdrant_client.http import models as qmodels
 from rank_bm25 import BM25Okapi
 
 # ---------- Streamlit Page ----------
@@ -41,6 +40,22 @@ OSS_API_BASE = os.getenv("OSS_API_BASE", "https://openrouter.ai/api")
 OSS_API_KEY = os.getenv("OSS_API_KEY", "")
 OSS_MODEL    = os.getenv("OSS_MODEL", "openai/gpt-oss-20b:free")  # dein Wunschmodell
 
+# ---------- Rollen / Tokens ----------
+ADMIN_TOKENS = os.getenv("ADMIN_TOKENS", "")
+VIEW_TOKENS  = os.getenv("VIEW_TOKENS", "")
+# Fallback: einheitliche AUTH_TOKENS (alles Admin)
+AUTH_TOKENS  = os.getenv("AUTH_TOKENS", "")
+
+def _split_tokens(value: str) -> list[str]:
+    return [t.strip() for t in value.split(",") if t.strip()]
+
+ADMIN_SET = set(_split_tokens(ADMIN_TOKENS))
+VIEW_SET  = set(_split_tokens(VIEW_TOKENS))
+ALL_SET   = set(_split_tokens(AUTH_TOKENS))
+if ALL_SET and not ADMIN_SET and not VIEW_SET:
+    # Wenn nur AUTH_TOKENS gesetzt sind → behandle sie als Admin-Tokens
+    ADMIN_SET = ALL_SET
+
 # ---------- Systemprompt ----------
 SYSTEM_PROMPT = (
     "Du bist ein präziser Assistent. Antworte ausschließlich mit Informationen, "
@@ -50,23 +65,31 @@ SYSTEM_PROMPT = (
 
 # ---------- Auth-Gate ----------
 def auth_gate() -> None:
-    tokens_raw = os.getenv("AUTH_TOKENS", "").strip()
-    tokens = [t.strip() for t in tokens_raw.split(",") if t.strip()]
-    if not tokens:
-        return  # Auth deaktiviert
+    if not (ADMIN_SET or VIEW_SET):
+        # Keine Tokens gesetzt → Auth deaktiviert
+        st.session_state["authed"] = True
+        st.session_state["role"] = "admin"
+        return
 
     if st.session_state.get("authed"):
         with st.sidebar:
+            st.caption(f"Rolle: **{st.session_state.get('role', 'viewer')}**")
             if st.button("Logout"):
                 st.session_state["authed"] = False
+                st.session_state["role"] = None
                 st.rerun()
         return
 
     st.title("🔐 Login")
     token = st.text_input("Access Token", type="password")
     if st.button("Anmelden"):
-        if token in tokens:
+        if token in ADMIN_SET:
             st.session_state["authed"] = True
+            st.session_state["role"] = "admin"
+            st.rerun()
+        elif token in VIEW_SET:
+            st.session_state["authed"] = True
+            st.session_state["role"] = "viewer"
             st.rerun()
         else:
             st.error("Ungültiger Token")
@@ -182,24 +205,28 @@ st.caption("Antwortet strikt nur aus deinen Dokumenten. (BGE-M3 · Qdrant · BM2
 
 with st.sidebar:
     st.header("Index verwalten")
-    uploaded_files = st.file_uploader("Dateien hochladen", accept_multiple_files=True)
-    if uploaded_files:
-        DATA_DIR.mkdir(exist_ok=True)
-        for f in uploaded_files:
-            (DATA_DIR / f.name).write_bytes(f.getbuffer())
-        st.success(f"{len(uploaded_files)} Datei(en) gespeichert.")
+    role = st.session_state.get("role", "viewer")
+    if role == "admin":
+        uploaded_files = st.file_uploader("Dateien hochladen", accept_multiple_files=True)
+        if uploaded_files:
+            DATA_DIR.mkdir(exist_ok=True)
+            for f in uploaded_files:
+                (DATA_DIR / f.name).write_bytes(f.getbuffer())
+            st.success(f"{len(uploaded_files)} Datei(en) gespeichert.")
 
-    if st.button("🧱 Vollständiger Rebuild"):
-        with st.spinner("Baue Index neu auf …"):
-            os.system("python ingest.py --full-rebuild")
-        st.success("Index neu aufgebaut.")
-        st.rerun()
+        if st.button("🧱 Vollständiger Rebuild"):
+            with st.spinner("Baue Index neu auf …"):
+                os.system("python ingest.py --full-rebuild")
+            st.success("Index neu aufgebaut.")
+            st.rerun()
 
-    if st.button("🔄 Inkrementelles Update"):
-        with st.spinner("Aktualisiere Index …"):
-            os.system("python ingest.py")
-        st.success("Index aktualisiert.")
-        st.rerun()
+        if st.button("🔄 Inkrementelles Update"):
+            with st.spinner("Aktualisiere Index …"):
+                os.system("python ingest.py")
+            st.success("Index aktualisiert.")
+            st.rerun()
+    else:
+        st.info("Nur Ansicht: Upload & Re-Index ist Administratoren vorbehalten.")
 
 # Chat
 question = st.text_input("Frage eingeben")
@@ -218,9 +245,9 @@ if st.button("Senden") and question:
 
         with st.expander("🔎 Verwendete Ausschnitte"):
             for text, score, meta in hits:
-                src = meta.get("source", "—")
+                src = Path(str(meta.get("source", "—"))).name
                 cid = meta.get("chunk_id", "—")
                 kind = meta.get("kind", "—")
-                st.markdown(f"**Quelle:** {Path(str(src)).name} · Chunk {cid} · {kind} · Score={score:.3f}")
+                st.markdown(f"**Quelle:** {src} · Chunk {cid} · {kind} · Score={score:.3f}")
                 st.write(text[:1200])
                 st.markdown("---")
