@@ -1,5 +1,5 @@
 # ingest.py – Index-Aufbau für ErinnerungsBot Steiermark
-# Formate: PDF, TXT, MD  (leicht erweiterbar)
+# Formate: PDF, TXT, MD
 
 import os, argparse, pickle, json, time, hashlib
 from pathlib import Path
@@ -9,16 +9,14 @@ import requests
 from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
 from rank_bm25 import BM25Okapi
-from PyPDF2 import PdfReader  # PDF-Support
+from PyPDF2 import PdfReader
 
-# ---------- Pfade ----------
 DATA_DIR = Path("./data"); DATA_DIR.mkdir(exist_ok=True)
 INDEX_DIR = Path("./index"); INDEX_DIR.mkdir(exist_ok=True)
 BM25_FILE = INDEX_DIR / "bm25.pkl"
 DOCS_FILE = INDEX_DIR / "docs.pkl"
 STATE_FILE = INDEX_DIR / "ingest_state.json"
 
-# ---------- Qdrant ----------
 def _normalize_qdrant_url(raw: str | None) -> str | None:
     if not raw: return None
     if raw.startswith("http") and ":" not in raw.split("//", 1)[1]:
@@ -29,17 +27,14 @@ QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL"))
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "docs_bge_m3")
 
-# ---------- Jina ----------
 JINA_API_KEY = os.getenv("JINA_API_KEY")
 JINA_MODEL   = os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de")
 JINA_URL     = os.getenv("JINA_EMBED_URL", "https://api.jina.ai/v1/embeddings")
 
-# ---------- Chunking ----------
 CHUNK_CHARS   = 900
 CHUNK_OVERLAP = 150
 
 def jina_embed(texts: List[str]) -> List[List[float]]:
-    """Embeddings von Jina holen (ohne extra Felder → 422 vermeiden)."""
     if not JINA_API_KEY:
         raise RuntimeError("JINA_API_KEY fehlt.")
     headers = {"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"}
@@ -64,7 +59,6 @@ def chunk_text(text: str) -> List[str]:
     return chunks
 
 def read_pdf(path: Path) -> str:
-    """Extrahiert Text aus PDF. Scans (ohne Text) liefern leeren String."""
     try:
         reader = PdfReader(str(path))
         pages = []
@@ -82,7 +76,6 @@ def load_text_from_file(path: Path) -> str:
         return read_pdf(path)
     if suf in {".txt", ".md"}:
         return path.read_text(encoding="utf-8", errors="ignore")
-    # Fallback (sollte hier nicht landen)
     return path.read_text(encoding="utf-8", errors="ignore")
 
 def collect_documents() -> List[Dict]:
@@ -96,7 +89,7 @@ def collect_documents() -> List[Dict]:
         except Exception as e:
             print(f"[WARN] {p.name}: {e}"); continue
         if not raw.strip():
-            print(f"[WARN] {p.name}: kein extrahierbarer Text (evtl. Scan-PDF).")
+            print(f"[WARN] {p.name}: kein extrahierbarer Text.")
             continue
         for j, ch in enumerate(chunk_text(raw)):
             docs.append({"text": ch, "source": str(p), "chunk_id": j})
@@ -113,11 +106,7 @@ def build_qdrant(docs: List[Dict], clear: bool = False):
     if clear:
         try: qdr.delete_collection(QDRANT_COLLECTION)
         except: pass
-
-    # Dimension via Probe
     dim = len(jina_embed(["probe"])[0])
-
-    # Collection passend (re)anlegen
     recreate = False
     try:
         info = qdr.get_collection(QDRANT_COLLECTION)
@@ -126,14 +115,11 @@ def build_qdrant(docs: List[Dict], clear: bool = False):
             recreate = True
     except Exception:
         recreate = True
-
     if recreate:
         qdr.recreate_collection(
             collection_name=QDRANT_COLLECTION,
             vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
         )
-
-    # Punkte upserten
     vectors = jina_embed([d["text"] for d in docs])
     points = [
         qmodels.PointStruct(
@@ -146,12 +132,12 @@ def build_qdrant(docs: List[Dict], clear: bool = False):
         qdr.upsert(collection_name=QDRANT_COLLECTION, points=points)
         print(f"Upserted {len(points)} Punkte → {QDRANT_COLLECTION}")
     else:
-        print("Keine Punkte zum Upsert (keine passenden Dateien/kein Text gefunden).")
+        print("Keine Punkte zum Upsert.")
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--full-rebuild", action="store_true", help="BM25 neu + Vektoren neu")
-    ap.add_argument("--clear", action="store_true", help="Collection vorher leeren")
+    ap.add_argument("--full-rebuild", action="store_true")
+    ap.add_argument("--clear", action="store_true")
     args = ap.parse_args()
 
     if not QDRANT_URL or not QDRANT_API_KEY:
@@ -169,7 +155,7 @@ def main():
         print("🧠 Erstelle/aktualisiere Qdrant …")
         build_qdrant(docs, clear=args.clear)
     else:
-        print("➕ Inkrementelles Update (Upsert) …")
+        print("➕ Inkrementelles Update …")
         build_qdrant(docs, clear=False)
 
     STATE_FILE.write_text(json.dumps({"timestamp": time.time(), "docs": len(docs)}))
