@@ -1,9 +1,11 @@
-# app.py – Streamlit RAG-Chatbot (Qdrant + BM25 + BGE-M3)
-# CPU-only, OpenRouter-Header, Rollen (Admin/Viewer), nur 1x set_page_config
+# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + BGE-M3)
+# Features: Rollen (Admin/Viewer), Repo-only Daten, Auto-Rebuild bei Datenänderung, CPU-only, OpenRouter-Header
 
 from __future__ import annotations
 import os
+import time
 import pickle
+import hashlib
 from pathlib import Path
 from dataclasses import dataclass
 from typing import List, Dict, Tuple
@@ -16,12 +18,18 @@ from sentence_transformers import SentenceTransformer, CrossEncoder
 from qdrant_client import QdrantClient
 from rank_bm25 import BM25Okapi
 
-# ---------- Streamlit Page ----------
-st.set_page_config(page_title="💬 ErinnerungsBot Steiermark", layout="wide")
+# ---------- Seite ----------
+st.set_page_config(page_title="🔒 ErinnerungsBot Steiermark", layout="wide")
 
-# ---------- CPU-only & Performance ----------
-torch.set_num_threads(1)   # stabiler Start auf Streamlit Cloud
-DEVICE = "cpu"             # explizit CPU
+# Optional: stabilere HF-Caches auf Streamlit Cloud
+os.environ.setdefault("HF_HOME", "/mount/temp/hf")
+os.environ.setdefault("TRANSFORMERS_CACHE", "/mount/temp/hf/transformers")
+os.makedirs(os.environ["HF_HOME"], exist_ok=True)
+os.makedirs(os.environ["TRANSFORMERS_CACHE"], exist_ok=True)
+
+# ---------- CPU-only ----------
+torch.set_num_threads(1)
+DEVICE = "cpu"
 
 # ---------- Pfade ----------
 DATA_DIR = Path("./data")
@@ -37,24 +45,18 @@ qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
 # ---------- OpenAI-kompatible API (OpenRouter) ----------
 OSS_API_BASE = os.getenv("OSS_API_BASE", "https://openrouter.ai/api")
-OSS_API_KEY = os.getenv("OSS_API_KEY", "")
-OSS_MODEL    = os.getenv("OSS_MODEL", "openai/gpt-oss-20b:free")  # dein Wunschmodell
+OSS_API_KEY  = os.getenv("OSS_API_KEY", "")
+OSS_MODEL    = os.getenv("OSS_MODEL", "openai/gpt-oss-20b:free")
 
 # ---------- Rollen / Tokens ----------
-ADMIN_TOKENS = os.getenv("ADMIN_TOKENS", "")
-VIEW_TOKENS  = os.getenv("VIEW_TOKENS", "")
-# Fallback: einheitliche AUTH_TOKENS (alles Admin)
-AUTH_TOKENS  = os.getenv("AUTH_TOKENS", "")
-
 def _split_tokens(value: str) -> list[str]:
     return [t.strip() for t in value.split(",") if t.strip()]
 
-ADMIN_SET = set(_split_tokens(ADMIN_TOKENS))
-VIEW_SET  = set(_split_tokens(VIEW_TOKENS))
-ALL_SET   = set(_split_tokens(AUTH_TOKENS))
+ADMIN_SET = set(_split_tokens(os.getenv("ADMIN_TOKENS", "")))
+VIEW_SET  = set(_split_tokens(os.getenv("VIEW_TOKENS", "")))
+ALL_SET   = set(_split_tokens(os.getenv("AUTH_TOKENS", "")))
 if ALL_SET and not ADMIN_SET and not VIEW_SET:
-    # Wenn nur AUTH_TOKENS gesetzt sind → behandle sie als Admin-Tokens
-    ADMIN_SET = ALL_SET
+    ADMIN_SET = ALL_SET  # Fallback: AUTH_TOKENS = Admin
 
 # ---------- Systemprompt ----------
 SYSTEM_PROMPT = (
@@ -63,10 +65,9 @@ SYSTEM_PROMPT = (
     "sage eindeutig: 'Dazu habe ich keine Information in meinen Daten.' Erfinde nichts."
 )
 
-# ---------- Auth-Gate ----------
+# ---------- Auth ----------
 def auth_gate() -> None:
     if not (ADMIN_SET or VIEW_SET):
-        # Keine Tokens gesetzt → Auth deaktiviert
         st.session_state["authed"] = True
         st.session_state["role"] = "admin"
         return
@@ -97,14 +98,17 @@ def auth_gate() -> None:
 
 auth_gate()
 
-# ---------- Modelle (CPU) ----------
-@st.cache_resource(show_spinner=False)
+# ---------- Modelle (CPU, gecached) ----------
+@st.cache_resource(show_spinner=True)
 def get_embedder() -> SentenceTransformer:
     return SentenceTransformer("BAAI/bge-m3", device=DEVICE)
 
-@st.cache_resource(show_spinner=False)
+@st.cache_resource(show_spinner=True)
 def get_reranker() -> CrossEncoder:
-    return CrossEncoder("BAAI/bge-reranker-base", device=DEVICE)
+    try:
+        return CrossEncoder("BAAI/bge-reranker-base", device=DEVICE)
+    except Exception:
+        return None  # Notfalls ohne Reranker
 
 embed_model = get_embedder()
 reranker = get_reranker()
@@ -119,16 +123,39 @@ class DocChunk:
 
 def load_bm25() -> Tuple[BM25Okapi | None, List[DocChunk]]:
     if BM25_FILE.exists() and DOCS_FILE.exists():
-        with open(BM25_FILE, "rb") as f:
-            bm25 = pickle.load(f)
-        with open(DOCS_FILE, "rb") as f:
-            docs = pickle.load(f)
+        with open(BM25_FILE, "rb") as f: bm25 = pickle.load(f)
+        with open(DOCS_FILE, "rb") as f: docs = pickle.load(f)
         return bm25, docs
     return None, []
 
+# ---------- Auto‑Rebuild bei Datenänderung ----------
+def data_dir_hash() -> str:
+    m = hashlib.sha256()
+    if DATA_DIR.exists():
+        for path in sorted(DATA_DIR.rglob("*")):
+            if path.is_file():
+                m.update(path.name.encode())
+                m.update(str(path.stat().st_mtime).encode())
+                try:
+                    m.update(path.read_bytes())
+                except Exception:
+                    pass
+    return m.hexdigest()
+
+hash_file = INDEX_DIR / ".data_hash"
+current_hash = data_dir_hash()
+previous_hash = hash_file.read_text() if hash_file.exists() else ""
+
+if current_hash != previous_hash:
+    with st.spinner("📚 Datenänderung erkannt – baue Index neu auf …"):
+        os.system("python ingest.py --full-rebuild")
+    hash_file.write_text(current_hash)
+    st.success("Index wurde automatisch aktualisiert!")
+    time.sleep(0.8)
+
 bm25, docs = load_bm25()
 
-# ---------- Hybrid Search ----------
+# ---------- Suche ----------
 def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
     results: List[Tuple[str, float, Dict]] = []
 
@@ -138,8 +165,7 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
         scores = bm25.get_scores(tq)
         top_idx = np.argsort(scores)[-top_k:][::-1]
         for i in top_idx:
-            if scores[i] <= 0:
-                continue
+            if scores[i] <= 0: continue
             d: DocChunk = docs[i]
             results.append((d.text, float(scores[i]), {"source": d.source, "chunk_id": d.chunk_id, "kind": "bm25"}))
 
@@ -149,74 +175,66 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
         hits = qdr.search(collection_name=QDRANT_COLLECTION, query_vector=qv, limit=top_k, with_payload=True)
         for h in hits:
             payload = h.payload or {}
-            results.append((payload.get("text", ""), float(h.score), {
-                "source": payload.get("source"), "chunk_id": payload.get("chunk_id"), "kind": "vector"
-            }))
+            results.append((payload.get("text", ""), float(h.score),
+                            {"source": payload.get("source"), "chunk_id": payload.get("chunk_id"), "kind": "vector"}))
     except Exception as e:
         st.warning(f"Qdrant-Suche nicht möglich: {e}")
 
-    # Rerank auf Textbasis
     if not results:
         return []
     pairs = [(query, r[0]) for r in results if r[0]]
     if not pairs:
         return []
-    try:
-        rr = reranker.predict(pairs)
-        reranked = sorted(zip(results, rr), key=lambda x: x[1], reverse=True)
-        top = [(r[0][0], float(score), r[0][2]) for r, score in reranked[:top_k]]
-        return top
-    except Exception as e:
-        st.warning(f"Reranker-Fehler: {e}. Zeige ungeordnete Ergebnisse.")
-        return results[:top_k]
 
-# ---------- LLM Call ----------
+    if reranker is not None:
+        try:
+            rr = reranker.predict(pairs)
+            reranked = sorted(zip(results, rr), key=lambda x: x[1], reverse=True)
+            return [(r[0][0], float(score), r[0][2]) for r, score in reranked[:top_k]]
+        except Exception as e:
+            st.warning(f"Reranker-Fehler: {e}. Zeige ungeordnete Ergebnisse.")
+    return results[:top_k]
+
+# ---------- LLM ----------
 def call_llm(context: str, question: str) -> str:
     if not OSS_API_BASE or not OSS_API_KEY or not OSS_MODEL:
         return "LLM nicht konfiguriert (OSS_API_BASE/OSS_API_KEY/OSS_MODEL fehlen)."
-
     headers = {
         "Authorization": f"Bearer {OSS_API_KEY}",
         "Content-Type": "application/json",
-        # OpenRouter erwartet diese Header, sonst 401/403 möglich
         "HTTP-Referer": os.getenv("APP_URL", "https://streamlit.io"),
-        "X-Title": "Erinnerungsbot Steiermark"
+        "X-Title": "ErinnerungsBot Steiermark",
     }
     payload = {
         "model": OSS_MODEL,
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": f"KONTEXT:\n{context}\n\nFRAGE:\n{question}"}
+            {"role": "user", "content": f"KONTEXT:\n{context}\n\nFRAGE:\n{question}"},
         ],
-        "temperature": 0.2
+        "temperature": 0.2,
     }
     try:
         r = requests.post(OSS_API_BASE.rstrip("/") + "/v1/chat/completions", headers=headers, json=payload, timeout=120)
         if r.status_code >= 400:
             return f"LLM-Fehler ({r.status_code}): {r.text[:500]}"
-        data = r.json()
-        return data["choices"][0]["message"]["content"]
+        return r.json()["choices"][0]["message"]["content"]
     except Exception as e:
         return f"LLM-Fehler: {e}"
 
 # ---------- UI ----------
 st.title("💬 ErinnerungsBot Steiermark")
-st.caption("Antwortet strikt nur aus deinen Dokumenten. (BGE-M3 · Qdrant · BM25 · Reranker)")
+st.caption("Antwortet strikt nur aus den Dokumenten im Repository-Ordner `data/` (BGE‑M3 · Qdrant · BM25 · Reranker).")
 
 with st.sidebar:
     st.header("Index verwalten")
+    st.caption("Datenquelle: 📁 `data/` im GitHub‑Repo (kein Upload im UI)")
     role = st.session_state.get("role", "viewer")
-
-    # Hinweis: Datenquelle ist NUR das Repo-Verzeichnis ./data
-    st.caption("Datenquelle: 📁 Repository-Ordner `data/` (kein Upload im UI)")
-
     if role == "admin":
         if st.button("🧱 Vollständiger Rebuild"):
             with st.spinner("Baue Index neu auf …"):
                 os.system("python ingest.py --full-rebuild")
             st.success("Index neu aufgebaut.")
             st.rerun()
-
         if st.button("🔄 Inkrementelles Update"):
             with st.spinner("Aktualisiere Index …"):
                 os.system("python ingest.py")
@@ -230,21 +248,18 @@ question = st.text_input("Frage eingeben")
 if st.button("Senden") and question:
     with st.spinner("Suche relevante Textstellen …"):
         hits = hybrid_search(question, top_k=8)
-
     if not hits:
-        st.warning("Kein Kontext gefunden. Bitte prüfe: Daten hochgeladen? Rebuild ausgeführt? Qdrant-URL/Key korrekt?")
+        st.warning("Kein Kontext gefunden. Prüfe: Dateien in `data/`? Rebuild lief? Qdrant‑URL/Key korrekt?")
     else:
         context = "\n\n".join([h[0] for h in hits if h[0]])
         answer = call_llm(context, question)
-
         st.subheader("Antwort")
         st.write(answer)
-
         with st.expander("🔎 Verwendete Ausschnitte"):
             for text, score, meta in hits:
                 src = Path(str(meta.get("source", "—"))).name
                 cid = meta.get("chunk_id", "—")
                 kind = meta.get("kind", "—")
                 st.markdown(f"**Quelle:** {src} · Chunk {cid} · {kind} · Score={score:.3f}")
-                st.write(text[:1200])
+                st.write((text or "")[:1200])
                 st.markdown("---")
