@@ -1,11 +1,13 @@
+# Pinned CPU build of PyTorch to avoid NotImplementedError on Streamlit Cloud
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.1
+
 streamlit
-faiss-cpu
 sentence-transformers==2.6.1
+rank-bm25
+qdrant-client
 numpy>=1.24
+requests
 pypdf
 lxml
 rdflib
-requests
-qdrant-client
-rank-bm25
-torch
