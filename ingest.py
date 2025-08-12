@@ -1,5 +1,7 @@
 # ingest.py – Index-Aufbau für ErinnerungsBot Steiermark
 # Unterstützte Formate: PDF, TXT, MD
+# Erzeugt BM25 + pushed Vektoren nach Qdrant (Jina-Embeddings)
+# Fehlt die Collection, wird sie automatisch (dim=768, Cosine) angelegt.
 
 import os, argparse, pickle, json, time, hashlib
 from pathlib import Path
@@ -32,7 +34,7 @@ DATA_DIR = Path("./data"); DATA_DIR.mkdir(exist_ok=True)
 INDEX_DIR = Path("./index"); INDEX_DIR.mkdir(exist_ok=True)
 BM25_FILE = INDEX_DIR / "bm25.pkl"
 DOCS_FILE = INDEX_DIR / "docs.pkl"
-STATE_FILE = INDEX_DIR / "injest_state.json"  # Name egal, nur Timestamp
+STATE_FILE = INDEX_DIR / "ingest_state.json"
 
 # ---------- Konfiguration ----------
 def _normalize_qdrant_url(raw: str | None) -> str | None:
@@ -120,29 +122,42 @@ def build_bm25(docs: List[Dict]):
     with open(BM25_FILE, "wb") as f: pickle.dump(bm25, f)
     with open(DOCS_FILE, "wb") as f: pickle.dump(docs, f)
 
+# ---------- Qdrant Helpers ----------
 def ensure_collection(qdr: QdrantClient, dim: int, clear: bool):
-    # 1) Existiert die Collection?
+    """Sichert, dass die Collection existiert; legt sie bei Bedarf an.
+       Bei fehlenden Rechten zum Create/Delete gibt es klare Hinweise."""
+    # Existenz prüfen
     exists = False
     try:
         exists = qdr.collection_exists(QDRANT_COLLECTION)
     except Exception:
-        # ältere Clients ohne collection_exists
         try:
             qdr.get_collection(QDRANT_COLLECTION)
             exists = True
         except Exception:
             exists = False
 
-    # 2) Bei Bedarf anlegen
     if not exists:
-        qdr.create_collection(
-            collection_name=QDRANT_COLLECTION,
-            vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
-        )
-        print(f"Collection '{QDRANT_COLLECTION}' erstellt (dim={dim}).")
-        return
+        # versuchen, neu zu erstellen
+        try:
+            qdr.create_collection(
+                collection_name=QDRANT_COLLECTION,
+                vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
+            )
+            print(f"Collection '{QDRANT_COLLECTION}' erstellt (dim={dim}, cosine).")
+            return
+        except UnexpectedResponse as e:
+            if "403" in str(e):
+                raise RuntimeError(
+                    "Qdrant: Collection existiert nicht und dein API-Key darf sie nicht anlegen (403 Forbidden).\n"
+                    f"→ Bitte im Qdrant-Dashboard die Collection **{QDRANT_COLLECTION}** manuell anlegen "
+                    "mit **Vector size=768** und **Distance=Cosine**, oder einen API-Key mit Create-Rechten verwenden."
+                )
+            raise
+        except Exception as e:
+            raise RuntimeError(f"Create-Collection fehlgeschlagen: {e}")
 
-    # 3) Existiert bereits – Dimension prüfen
+    # existiert: Dimension prüfen
     try:
         info = qdr.get_collection(QDRANT_COLLECTION)
         current = info.config.params.vectors.size
@@ -150,13 +165,12 @@ def ensure_collection(qdr: QdrantClient, dim: int, clear: bool):
         current = None
 
     if current and current != dim:
-        # Dimension kann nicht geändert werden → Hinweis statt Delete
         raise RuntimeError(
             f"Collection '{QDRANT_COLLECTION}' hat dim={current}, benötigt dim={dim}. "
-            f"Löschen/Neu-Anlegen erforderlich (oder neuen Namen für QDRANT_COLLECTION wählen)."
+            f"Lösche sie manuell im Dashboard und lege sie neu an (oder ändere QDRANT_COLLECTION)."
         )
 
-    # 4) Clear angefordert: versuchen zu löschen → bei 403 nur warnen
+    # optionales Clear
     if clear:
         try:
             qdr.delete_collection(QDRANT_COLLECTION)
@@ -166,20 +180,29 @@ def ensure_collection(qdr: QdrantClient, dim: int, clear: bool):
             )
             print(f"Collection '{QDRANT_COLLECTION}' geleert und neu erstellt.")
         except UnexpectedResponse as e:
-            print(f"[WARN] Clear nicht erlaubt (403). Fahre ohne Clear fort. Details: {e}")
+            if "403" in str(e):
+                print("[WARN] Clear/Delete ist mit diesem API-Key nicht erlaubt (403). Fahre ohne Clear fort.")
+            else:
+                print(f"[WARN] Clear fehlgeschlagen: {e}. Fahre ohne Clear fort.")
         except Exception as e:
-            print(f"[WARN] Clear fehlgeschlagen ({e}). Fahre ohne Clear fort.")
+            print(f"[WARN] Clear fehlgeschlagen: {e}. Fahre ohne Clear fort.")
 
 def build_qdrant(docs: List[Dict], clear: bool = False):
-    qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
+    qdr = QdrantClient(
+        url=QDRANT_URL,
+        api_key=QDRANT_API_KEY,
+        timeout=60,
+        prefer_grpc=False,
+        check_compatibility=False,  # vermeidet Versionswarnung
+    )
 
-    # Dimension via Probe
+    # Dimension via Probe (Jina v2 base de = 768)
     dim = len(jina_embed(["probe"])[0])
 
-    # Collection sicherstellen (ohne recreate/delete – 403 vermeiden)
+    # Collection anlegen/absichern
     ensure_collection(qdr, dim, clear=clear)
 
-    # Upsert Vektoren
+    # Upsert der Punkte
     vectors = jina_embed([d["text"] for d in docs])
     points = [
         qmodels.PointStruct(
