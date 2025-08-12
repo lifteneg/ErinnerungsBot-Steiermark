@@ -17,7 +17,7 @@ from qdrant_client import QdrantClient
 from rank_bm25 import BM25Okapi
 
 # ---------- Streamlit Page ----------
-st.set_page_config(page_title="🔒 Privater Daten-Chatbot – Skalierbar", layout="wide")
+st.set_page_config(page_title="💬 ErinnerungsBot Steiermark", layout="wide")
 
 # ---------- CPU-only & Performance ----------
 torch.set_num_threads(1)   # stabiler Start auf Streamlit Cloud
@@ -200,7 +200,7 @@ def call_llm(context: str, question: str) -> str:
         return f"LLM-Fehler: {e}"
 
 # ---------- UI ----------
-st.title("💬 Privater Daten-Chatbot")
+st.title("💬 ErinnerungsBot Steiermark")
 st.caption("Antwortet strikt nur aus deinen Dokumenten. (BGE-M3 · Qdrant · BM25 · Reranker)")
 
 with st.sidebar:
