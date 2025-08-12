@@ -1,6 +1,6 @@
 # 💬 ErinnerungsBot Steiermark – Schüleranleitung
 
-Dieser Chatbot beantwortet Fragen **nur** aus den Dokumenten, die wir für euch hinterlegt haben.  
+Dieser Chatbot beantwortet Fragen **nur** aus verschiedenen Quellen zu österreichische Erinnerungsorten und -zeichen für die Opfer sowie die Orte des Terrors des Nationalsozialismus. 
 Ihr könnt ihn am Laptop, Tablet oder Smartphone nutzen.
 
 ---
