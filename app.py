@@ -1,50 +1,111 @@
-# ingest.py – Ingest für Qdrant + BM25 (Jina Embeddings)
+# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + Jina Embeddings + OpenRouter LLM)
 from __future__ import annotations
-import os, json, pickle, hashlib, argparse
-from dataclasses import dataclass
-from typing import List, Dict
+import os, time, pickle, hashlib
 from pathlib import Path
+from dataclasses import dataclass
+from typing import List, Dict, Tuple
 
+import numpy as np
 import requests
+import streamlit as st
 from qdrant_client import QdrantClient
-from qdrant_client.http import models as qmodels
+from rank_bm25 import BM25Okapi
+
+st.set_page_config(page_title="🔒 ErinnerungsBot Steiermark", layout="wide")
 
 # ---------- Pfade ----------
-DATA_DIR = Path("./data"); DATA_DIR.mkdir(exist_ok=True)
-STATE_DIR = Path("./index"); STATE_DIR.mkdir(exist_ok=True)
-BM25_FILE = STATE_DIR / "bm25.pkl"
-DOCS_FILE = STATE_DIR / "docs.pkl"
-INGEST_STATE = STATE_DIR / "ingest_state.json"
+DATA_DIR = Path("./data")
+INDEX_DIR = Path("./index"); INDEX_DIR.mkdir(exist_ok=True)
+BM25_FILE = INDEX_DIR / "bm25.pkl"
+DOCS_FILE = INDEX_DIR / "docs.pkl"
 
-# ---------- Jina ----------
+# ---------- Qdrant ----------
+QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "docs_bge_m3")
+
+def _normalize_qdrant_url(raw: str | None) -> str | None:
+    if not raw:
+        return None
+    # Falls Cloud-URL ohne Port kommt → :6333 ergänzen
+    if raw.startswith("http") and ":" not in raw.split("//", 1)[1]:
+        return raw.rstrip("/") + ":6333"
+    return raw.rstrip("/")
+
+QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL", "http://localhost:6333"))
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "")
+qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
+
+# ---------- Jina Embeddings (extern) ----------
 JINA_API_KEY = os.getenv("JINA_API_KEY", "")
 JINA_MODEL   = os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de")
 JINA_URL     = os.getenv("JINA_EMBED_URL", "https://api.jina.ai/v1/embeddings")
 
 def jina_embed(texts: List[str]) -> List[List[float]]:
+    """Ruft Jina-Embeddings per API ab. Wird NUR zur Laufzeit aufgerufen – kein Probe beim Start!"""
     if not JINA_API_KEY:
-        raise RuntimeError("JINA_API_KEY ist nicht gesetzt.")
+        raise RuntimeError("JINA_API_KEY ist nicht gesetzt (Streamlit Secrets).")
     headers = {"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"}
     out: List[List[float]] = []
     B = 128
     for i in range(0, len(texts), B):
-        batch = texts[i:i+B]
-        payload = {"model": JINA_MODEL, "input": batch, "encoding_format": "float"}
+        payload = {"model": JINA_MODEL, "input": texts[i:i+B], "encoding_format": "float"}
         r = requests.post(JINA_URL, headers=headers, json=payload, timeout=60)
         if r.status_code >= 400:
             raise RuntimeError(f"Jina-API Fehler {r.status_code}: {r.text[:200]}")
-        data = r.json()["data"]
-        out.extend([d["embedding"] for d in data])
+        out.extend([d["embedding"] for d in r.json()["data"]])
     return out
 
-def _normalize_qdrant_url(raw: str | None) -> str | None:
-    if not raw:
-        return None
-    if raw.startswith("http") and ":" not in raw.split("//", 1)[1]:
-        return raw.rstrip("/") + ":6333"
-    return raw.rstrip("/")
+# ---------- OpenRouter (LLM bleibt wie gewünscht) ----------
+OSS_API_BASE = os.getenv("OSS_API_BASE", "https://openrouter.ai/api")
+OSS_API_KEY  = os.getenv("OSS_API_KEY", "")
+OSS_MODEL    = os.getenv("OSS_MODEL", "openai/gpt-oss-20b:free")
 
-# ---------- Dataklassen ----------
+# ---------- Rollen / Auth ----------
+def _split_tokens(value: str) -> list[str]:
+    return [t.strip() for t in value.split(",") if t.strip()]
+
+ADMIN_SET = set(_split_tokens(os.getenv("ADMIN_TOKENS", "")))
+VIEW_SET  = set(_split_tokens(os.getenv("VIEW_TOKENS", "")))
+ALL_SET   = set(_split_tokens(os.getenv("AUTH_TOKENS", "")))
+if ALL_SET and not ADMIN_SET and not VIEW_SET:
+    ADMIN_SET = ALL_SET  # Fallback
+
+SYSTEM_PROMPT = (
+    "Du bist ein präziser Assistent. Antworte ausschließlich mit Informationen, "
+    "die im bereitgestellten KONTEXT enthalten sind. Wenn der Kontext keine Antwort zulässt, "
+    "sage eindeutig: 'Dazu habe ich keine Information in meinen Daten.' Erfinde nichts."
+)
+
+def auth_gate() -> None:
+    if not (ADMIN_SET or VIEW_SET):
+        st.session_state["authed"] = True
+        st.session_state["role"] = "admin"
+        return
+    if st.session_state.get("authed"):
+        with st.sidebar:
+            st.caption(f"Rolle: **{st.session_state.get('role', 'viewer')}**")
+            if st.button("Logout"):
+                st.session_state["authed"] = False
+                st.session_state["role"] = None
+                st.rerun()
+        return
+    st.title("🔐 Login")
+    token = st.text_input("Access Token", type="password")
+    if st.button("Anmelden"):
+        if token in ADMIN_SET:
+            st.session_state["authed"] = True
+            st.session_state["role"] = "admin"
+            st.rerun()
+        elif token in VIEW_SET:
+            st.session_state["authed"] = True
+            st.session_state["role"] = "viewer"
+            st.rerun()
+        else:
+            st.error("Ungültiger Token")
+    st.stop()
+
+auth_gate()
+
+# ---------- BM25 & Docs ----------
 @dataclass
 class DocChunk:
     text: str
@@ -52,171 +113,139 @@ class DocChunk:
     chunk_id: int
     meta: Dict[str, str]
 
-# ---------- Parser ----------
-def load_text_from_file(path: Path) -> str:
-    suf = path.suffix.lower()
-    if suf == ".pdf":
-        from pypdf import PdfReader
-        reader = PdfReader(str(path))
-        return "\n".join(page.extract_text() or "" for page in reader.pages)
-    if suf in {".txt", ".md"}:
-        return path.read_text(encoding="utf-8", errors="ignore")
-    if suf in {".xml", ".gml"}:
-        from lxml import etree
-        parser = etree.XMLParser(remove_blank_text=True, recover=True)
-        tree = etree.parse(str(path), parser)
-        root = tree.getroot()
-        def tjoin(elems): return "\n\n".join(
-            [" ".join(" ".join(x.itertext()).split()) for x in elems if " ".join(" ".join(x.itertext()).split())]
-        )
-        header = tree.xpath("//tei:teiHeader", namespaces={'tei':'http://www.tei-c.org/ns/1.0'})
-        body = tree.xpath("//tei:body//tei:p | //tei:text//tei:p | //tei:div//tei:p",
-                          namespaces={'tei':'http://www.tei-c.org/ns/1.0'})
-        if header or body:
-            return (f"[TEI] {path.name}\n\n" + tjoin(header) + ("\n\n" if header else "") + tjoin(body)).strip()
-        texts = []
-        for elem in root.iter():
-            t = (elem.text or "").strip()
-            if t:
-                texts.append(f"{elem.tag}: {' '.join(t.split())}")
-        return f"[XML] {path.name}\n" + "\n".join(texts)
-    if suf in {".rdf", ".ttl", ".nt"} or (suf == ".xml" and "rdf" in path.name.lower()):
-        import rdflib
-        g = rdflib.Graph(); g.parse(str(path))
-        def qn(x):
-            try: return g.namespace_manager.normalizeUri(x)
-            except Exception: return str(x)
-        lines = []
-        for i, (s,p,o) in enumerate(g):
-            if i > 15000: break
-            lines.append(f"{qn(s)} {qn(p)} {qn(o)}")
-        return f"[RDF] {path.name}\n" + "\n".join(lines)
-    return path.read_text(encoding="utf-8", errors="ignore")
+def load_bm25() -> Tuple[BM25Okapi | None, List[DocChunk]]:
+    if BM25_FILE.exists() and DOCS_FILE.exists():
+        with open(BM25_FILE, "rb") as f: bm25 = pickle.load(f)
+        with open(DOCS_FILE, "rb") as f: docs = pickle.load(f)
+        return bm25, docs
+    return None, []
 
-# ---------- Chunking ----------
-def chunk_text(text: str, max_chars: int = 900, overlap: int = 150) -> List[str]:
-    text = "\n".join([line.strip() for line in text.splitlines() if line.strip()])
-    chunks, i = [], 0
-    while i < len(text):
-        end = min(i + max_chars, len(text))
-        chunks.append(text[i:end])
-        if end == len(text): break
-        i = max(0, end - overlap)
-    return chunks
+# ---------- Automatischer Rebuild bei Datenänderung ----------
+def data_dir_hash() -> str:
+    m = hashlib.sha256()
+    if DATA_DIR.exists():
+        for path in sorted(DATA_DIR.rglob("*")):
+            if path.is_file():
+                m.update(path.name.encode())
+                m.update(str(path.stat().st_mtime).encode())
+                try:
+                    m.update(path.read_bytes())
+                except Exception:
+                    pass
+    return m.hexdigest()
 
-def file_sig(path: Path) -> str:
-    stat = path.stat()
-    return f"{stat.st_mtime_ns}-{stat.st_size}"
+hash_file = INDEX_DIR / ".data_hash"
+current_hash = data_dir_hash()
+previous_hash = hash_file.read_text() if hash_file.exists() else ""
 
-def save_bm25(bm25, docs: List[DocChunk]):
-    with open(BM25_FILE, 'wb') as f: pickle.dump(bm25, f)
-    with open(DOCS_FILE, 'wb') as f: pickle.dump(docs, f)
+if current_hash != previous_hash:
+    with st.spinner("📚 Datenänderung erkannt – baue Index neu auf …"):
+        os.system("python ingest.py --full-rebuild")
+    hash_file.write_text(current_hash)
+    st.success("Index wurde automatisch aktualisiert!")
+    time.sleep(0.6)
 
-# ---------- Main ----------
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument('--collection', default=os.getenv("QDRANT_COLLECTION", "docs_bge_m3"))
-    ap.add_argument('--full-rebuild', action='store_true')
-    ap.add_argument('--clear', action='store_true', help='Collection vorher leeren')
-    ap.add_argument('--batch', type=int, default=128)
-    ap.add_argument('--max-chars', type=int, default=900)
-    ap.add_argument('--overlap', type=int, default=150)
-    args = ap.parse_args()
+bm25, docs = load_bm25()
 
-    qdr = QdrantClient(
-        url=_normalize_qdrant_url(os.getenv('QDRANT_URL', 'http://localhost:6333')),
-        api_key=os.getenv('QDRANT_API_KEY')
-    )
+# ---------- Suche ----------
+def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
+    results: List[Tuple[str, float, Dict]] = []
 
-    # Dateien sammeln
-    paths = [p for p in DATA_DIR.rglob('*') if p.is_file() and p.suffix.lower() in {
-        '.pdf','.txt','.md','.xml','.gml','.rdf','.ttl','.nt'
-    }]
+    # BM25 (immer verfügbar)
+    if bm25 and docs:
+        tq = query.lower().split()
+        scores = bm25.get_scores(tq)
+        top_idx = np.argsort(scores)[-top_k:][::-1]
+        for i in top_idx:
+            if scores[i] <= 0: 
+                continue
+            d: DocChunk = docs[i]
+            results.append((d.text, float(scores[i]),
+                            {"source": d.source, "chunk_id": d.chunk_id, "kind": "bm25"}))
 
-    # Vorab: eine Embedding-Probe bestimmt die Dimension
-    probe_vec = jina_embed(["probe"])[0]
-    dim = len(probe_vec)
-
-    # Collection vorbereiten
-    recreate = False
+    # Dense (Jina → Qdrant)
     try:
-        col = qdr.get_collection(args.collection)
-        try:
-            current = col.config.params.vectors.size  # qdrant-client >=1.6
-        except Exception:
-            current = None
-        if args.clear or (current and current != dim):
-            recreate = True
-    except Exception:
-        recreate = True
+        qv = jina_embed([query])[0]
+        hits = qdr.search(collection_name=QDRANT_COLLECTION, query_vector=qv,
+                          limit=top_k, with_payload=True)
+        for h in hits:
+            p = h.payload or {}
+            results.append((p.get("text",""), float(h.score),
+                            {"source": p.get("source"), "chunk_id": p.get("chunk_id"), "kind": "vector"}))
+    except Exception as e:
+        # Kein Absturz der App – stattdessen deutliche Warnung
+        st.warning(f"Vektor-Suche nicht möglich: {e}")
 
-    if recreate:
-        qdr.recreate_collection(
-            collection_name=args.collection,
-            vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE),
-            optimizers_config=qmodels.OptimizersConfigDiff(indexing_threshold=20000),
-            hnsw_config=qmodels.HnswConfigDiff(m=16, ef_construct=256)
-        )
+    return results[:top_k] if results else []
 
-    # Ingest-State
-    state = {}
-    if INGEST_STATE.exists() and not args.full_rebuild:
-        try: state = json.loads(INGEST_STATE.read_text())
-        except Exception: state = {}
+# ---------- LLM ----------
+def call_llm(context: str, question: str) -> str:
+    if not OSS_API_BASE or not OSS_API_KEY or not OSS_MODEL:
+        return "LLM nicht konfiguriert."
+    headers = {
+        "Authorization": f"Bearer {OSS_API_KEY}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": os.getenv("APP_URL", "https://streamlit.io"),
+        "X-Title": "ErinnerungsBot Steiermark",
+    }
+    payload = {
+        "model": OSS_MODEL,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": f"KONTEXT:\n{context}\n\nFRAGE:\n{question}"},
+        ],
+        "temperature": 0.2,
+    }
+    try:
+        r = requests.post(OSS_API_BASE.rstrip("/") + "/v1/chat/completions",
+                          headers=headers, json=payload, timeout=120)
+        if r.status_code >= 400:
+            return f"LLM-Fehler ({r.status_code}): {r.text[:500]}"
+        return r.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        return f"LLM-Fehler: {e}"
 
-    # Upsert vorbereiten
-    new_docs: List[DocChunk] = []
-    to_upsert = []
+# ---------- UI ----------
+st.title("💬 ErinnerungsBot Steiermark")
+st.caption("Antwortet strikt nur aus den Dokumenten im Repository-Ordner `data/`.")
 
-    for path in sorted(paths):
-        sig = file_sig(path)
-        if (not args.full_rebuild) and state.get(str(path)) == sig:
-            continue
-        try:
-            raw = load_text_from_file(path)
-        except Exception as e:
-            print(f"[WARN] {path.name}: {e}"); continue
-        chunks = chunk_text(raw, max_chars=args.max_chars, overlap=args.overlap)
-        if not chunks: 
-            state[str(path)] = sig; continue
-
-        embs = jina_embed(chunks)
-        for j, (txt, vec) in enumerate(zip(chunks, embs)):
-            meta = {"source": str(path), "chunk_id": j}
-            new_docs.append(DocChunk(txt, str(path), j, meta))
-            pid = int(hashlib.blake2b(f"{path}-{j}".encode(), digest_size=8).hexdigest(), 16)
-            to_upsert.append(qmodels.PointStruct(id=pid, vector=vec, payload={"text": txt, **meta}))
-        state[str(path)] = sig
-
-    if to_upsert:
-        qdr.upsert(collection_name=args.collection, points=to_upsert)
-        print(f"Upserted {len(to_upsert)} Punkte → {args.collection}")
+with st.sidebar:
+    st.header("Index verwalten")
+    st.caption("📁 Datenquelle: `data/` im GitHub-Repo")
+    st.write(f"🔌 Qdrant: `{QDRANT_URL or '—'}` · Collection: `{QDRANT_COLLECTION}`")
+    st.write(f"🧠 Embeddings: `Jina · {JINA_MODEL}`")
+    role = st.session_state.get("role", "viewer")
+    if role == "admin":
+        if st.button("🧱 Vollständiger Rebuild"):
+            with st.spinner("Baue Index neu auf …"):
+                os.system("python ingest.py --full-rebuild --clear")
+            st.success("Index neu aufgebaut.")
+            st.rerun()
+        if st.button("🔄 Inkrementelles Update"):
+            with st.spinner("Aktualisiere Index …"):
+                os.system("python ingest.py")
+            st.success("Index aktualisiert.")
+            st.rerun()
     else:
-        print("Keine neuen/aktualisierten Punkte für Qdrant.")
+        st.info("Nur Ansicht: Re-Index ist Administratoren vorbehalten.")
 
-    # BM25
-    from rank_bm25 import BM25Okapi
-    if args.full_rebuild:
-        all_docs: List[DocChunk] = []
-        for path in sorted(paths):
-            try: raw = load_text_from_file(path)
-            except Exception: continue
-            for j, ch in enumerate(chunk_text(raw, max_chars=args.max_chars, overlap=args.overlap)):
-                all_docs.append(DocChunk(ch, str(path), j, {"source": str(path), "chunk_id": j}))
-        tokenized = [d.text.lower().split() for d in all_docs] or [[]]
-        bm25 = BM25Okapi(tokenized); docs = all_docs
+# Chat
+question = st.text_input("Frage eingeben")
+if st.button("Senden") and question:
+    with st.spinner("Suche relevante Textstellen …"):
+        hits = hybrid_search(question, top_k=8)
+    if not hits:
+        st.warning("Kein Kontext gefunden.")
     else:
-        if DOCS_FILE.exists():
-            with open(DOCS_FILE, 'rb') as f: docs = pickle.load(f)
-        else:
-            docs = []
-        docs.extend(new_docs)
-        tokenized = [d.text.lower().split() for d in docs] or [[]]
-        bm25 = BM25Okapi(tokenized)
-
-    save_bm25(bm25, docs)
-    INGEST_STATE.write_text(json.dumps(state))
-    print(f"BM25 gespeichert: {BM25_FILE}, Docs: {len(docs)}")
-
-if __name__ == '__main__':
-    main()
+        context = "\n\n".join([h[0] for h in hits if h[0]])
+        answer = call_llm(context, question)
+        st.subheader("Antwort")
+        st.write(answer)
+        with st.expander("🔎 Verwendete Ausschnitte"):
+            for text, score, meta in hits:
+                src = Path(str(meta.get("source", "—"))).name
+                cid = meta.get("chunk_id", "—")
+                kind = meta.get("kind", "—")
+                st.markdown(f"**Quelle:** {src} · Chunk {cid} · {kind} · Score={score:.3f}")
+                st.write((text or "")[:1200])
+                st.markdown("---")
