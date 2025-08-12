@@ -1,7 +1,7 @@
 # app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + Jina-Embeddings + PDF-Support)
 
 from __future__ import annotations
-import os, sys, time, pickle, hashlib, subprocess
+import os, sys, time, pickle, subprocess
 from pathlib import Path
 from dataclasses import dataclass
 from typing import List, Dict, Tuple
@@ -11,7 +11,6 @@ import requests
 import streamlit as st
 from rank_bm25 import BM25Okapi
 from qdrant_client import QdrantClient
-from qdrant_client.http import models as qmodels
 
 # ---------- Seite ----------
 st.set_page_config(page_title="💬 ErinnerungsBot Steiermark", layout="wide")
@@ -30,13 +29,13 @@ def _normalize_qdrant_url(raw: str | None) -> str | None:
         return raw.rstrip("/") + ":6333"
     return raw.rstrip("/")
 
-QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL", st.secrets.get("QDRANT_URL")))
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", st.secrets.get("QDRANT_API_KEY"))
+QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL", st.secrets.get("QDRANT_URL", "")))
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", st.secrets.get("QDRANT_API_KEY", ""))
 QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", st.secrets.get("QDRANT_COLLECTION", "docs_bge_m3"))
 qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
 # ---------- Jina Embeddings ----------
-JINA_API_KEY = os.getenv("JINA_API_KEY", st.secrets.get("JINA_API_KEY"))
+JINA_API_KEY = os.getenv("JINA_API_KEY", st.secrets.get("JINA_API_KEY", ""))
 JINA_MODEL = os.getenv("JINA_MODEL", st.secrets.get("JINA_MODEL", "jina-embeddings-v2-base-de"))
 JINA_URL = os.getenv("JINA_EMBED_URL", "https://api.jina.ai/v1/embeddings")
 
@@ -67,7 +66,7 @@ ADMIN_SET = set(_split_tokens(os.getenv("ADMIN_TOKENS", st.secrets.get("ADMIN_TO
 VIEW_SET  = set(_split_tokens(os.getenv("VIEW_TOKENS", st.secrets.get("VIEW_TOKENS", ""))))
 ALL_SET   = set(_split_tokens(os.getenv("AUTH_TOKENS", st.secrets.get("AUTH_TOKENS", ""))))
 if ALL_SET and not ADMIN_SET and not VIEW_SET:
-    ADMIN_SET = ALL_SET  # Fallback
+    ADMIN_SET = ALL_SET
 
 SYSTEM_PROMPT = (
     "Du bist ein präziser Assistent. Antworte ausschließlich mit Informationen, "
@@ -174,14 +173,41 @@ def call_llm(context: str, question: str) -> str:
 def run_ingest(incremental: bool = False, clear: bool = False):
     env = os.environ.copy()
 
-    # Secrets explizit ins env übernehmen
+    # Alle Secrets explizit ins env übernehmen (wichtiger Fix)
     for key, value in st.secrets.items():
         env[str(key)] = str(value)
+
+    # Zusätzlich sicherstellen (überschreibt ggf. mit expliziten Werten)
+    env["QDRANT_URL"] = QDRANT_URL or env.get("QDRANT_URL", "")
+    env["QDRANT_API_KEY"] = QDRANT_API_KEY or env.get("QDRANT_API_KEY", "")
+    env["QDRANT_COLLECTION"] = QDRANT_COLLECTION or env.get("QDRANT_COLLECTION", "docs_bge_m3")
+    env["JINA_API_KEY"] = JINA_API_KEY or env.get("JINA_API_KEY", "")
+    env["JINA_MODEL"] = JINA_MODEL or env.get("JINA_MODEL", "jina-embeddings-v2-base-de")
+
+    # Diagnose-Log (maskiert)
+    def _mask(s: str) -> str:
+        if not s: return "—"
+        return s[:4] + "…" + s[-4:] if len(s) > 8 else "•••"
+    st.caption(
+        f"Übergabewerte: JINA_API_KEY={_mask(env.get('JINA_API_KEY',''))} · "
+        f"QDRANT_API_KEY={_mask(env.get('QDRANT_API_KEY',''))} · "
+        f"QDRANT_URL={env.get('QDRANT_URL','—')} · "
+        f"JINA_MODEL={env.get('JINA_MODEL','—')}"
+    )
 
     st.write("### 🧱 In-App Rebuild (Logs)")
     args = [sys.executable, "ingest.py"]
     if not incremental: args += ["--full-rebuild"]
     if clear: args += ["--clear"]
+
+    # Fallback: Keys zusätzlich als CLI-Args übergeben
+    args += [
+        f"--jina_api_key={env.get('JINA_API_KEY','')}",
+        f"--jina_model={env.get('JINA_MODEL','jina-embeddings-v2-base-de')}",
+        f"--qdrant_url={env.get('QDRANT_URL','')}",
+        f"--qdrant_api_key={env.get('QDRANT_API_KEY','')}",
+        f"--qdrant_collection={env.get('QDRANT_COLLECTION','docs_bge_m3')}",
+    ]
 
     log_box = st.empty()
     lines = []
@@ -237,11 +263,3 @@ if st.button("Senden") and question:
         answer = call_llm(context, question)
         st.subheader("Antwort")
         st.write(answer)
-        with st.expander("🔎 Verwendete Ausschnitte"):
-            for text, score, meta in hits:
-                src = Path(str(meta.get("source", "—"))).name
-                cid = meta.get("chunk_id", "—")
-                kind = meta.get("kind", "—")
-                st.markdown(f"**Quelle:** {src} · Chunk {cid} · {kind} · Score={score:.3f}")
-                st.write((text or "")[:1200])
-                st.markdown("---")
