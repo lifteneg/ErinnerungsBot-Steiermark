@@ -10,15 +10,11 @@ Ihr könnt ihn am Laptop, Tablet oder Smartphone nutzen.
 1. **Webseite aufrufen**  
    Öffnet den Link:  
    ```
-   https://dein-bot.streamlit.app
+   https://erinnerungsbot-steiermark.streamlit.app/
    ```
-   (Den genauen Link bekommt ihr von eurer Lehrkraft.)
-
+   
 2. **Einloggen**  
-   - Wenn ihr Schüler seid, gebt euer **Zugangstoken** ein:  
-     ```
-     Schule
-     ```
+   - Wenn ihr Schüler seid, gebt euer **Zugangstoken** ein. Diese bekommt ihr von eurer Lehrkraft.  
    - Bestätigen und einloggen.
 
 3. **Fragen stellen**  
