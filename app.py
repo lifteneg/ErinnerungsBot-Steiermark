@@ -1,5 +1,4 @@
-# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + BGE-M3)
-# Features: Rollen (Admin/Viewer), Repo-only Daten, Auto-Rebuild bei Datenänderung, CPU-only, OpenRouter-Header
+# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + BGE-M3, Lazy Load)
 from __future__ import annotations
 import os
 import time
@@ -17,10 +16,9 @@ from sentence_transformers import SentenceTransformer, CrossEncoder
 from qdrant_client import QdrantClient
 from rank_bm25 import BM25Okapi
 
-# ---------- Seite ----------
 st.set_page_config(page_title="🔒 ErinnerungsBot Steiermark", layout="wide")
 
-# ---------- Robuste HF-Caches (Streamlit Cloud) ----------
+# ---------- HF Cache (Streamlit Cloud freundlich) ----------
 HF_DIR = "/tmp/hf"
 os.environ["HF_HOME"] = HF_DIR
 os.environ["TRANSFORMERS_CACHE"] = str(Path(HF_DIR) / "transformers")
@@ -39,10 +37,21 @@ INDEX_DIR = Path("./index"); INDEX_DIR.mkdir(exist_ok=True)
 BM25_FILE = INDEX_DIR / "bm25.pkl"
 DOCS_FILE = INDEX_DIR / "docs.pkl"
 
-# ---------- Qdrant ----------
-QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+# ---------- ENV / Modelle ----------
+EMBED_MODEL_NAME = os.getenv("EMBED_MODEL_NAME", "BAAI/bge-m3")
+RERANK_MODEL_NAME = os.getenv("RERANK_MODEL_NAME", "BAAI/bge-reranker-base")
+QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "docs_bge_m3")
+
+def _normalize_qdrant_url(raw: str | None) -> str | None:
+    if not raw:
+        return None
+    # Qdrant Cloud braucht i. d. R. :6333 am Ende
+    if raw.startswith("http") and ":" not in raw.split("//", 1)[1]:
+        return raw.rstrip("/") + ":6333"
+    return raw.rstrip("/")
+
+QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL", "http://localhost:6333"))
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "")
-QDRANT_COLLECTION = "docs_bge_m3"
 qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
 # ---------- OpenAI-kompatible API (OpenRouter) ----------
@@ -98,20 +107,33 @@ def auth_gate() -> None:
 
 auth_gate()
 
-# ---------- Modelle (CPU, gecached) ----------
+# ---------- Modelle (Lazy Load, gecached) ----------
 @st.cache_resource(show_spinner=True)
-def get_embedder() -> SentenceTransformer:
-    return SentenceTransformer("BAAI/bge-m3", device=DEVICE)
+def _load_embedder() -> SentenceTransformer:
+    # cache_folder nutzt /tmp/hf → vermeidet erneute Downloads
+    return SentenceTransformer(EMBED_MODEL_NAME, device=DEVICE, cache_folder=HF_DIR)
 
 @st.cache_resource(show_spinner=True)
-def get_reranker() -> CrossEncoder:
+def _load_reranker() -> CrossEncoder | None:
     try:
-        return CrossEncoder("BAAI/bge-reranker-base", device=DEVICE)
-    except Exception:
+        return CrossEncoder(RERANK_MODEL_NAME, device=DEVICE, cache_folder=HF_DIR)
+    except Exception as e:
+        st.warning(f"Reranker nicht verfügbar: {e}")
         return None
 
-embed_model = get_embedder()
-reranker = get_reranker()
+def ensure_embedder() -> SentenceTransformer | None:
+    if "embed_model" not in st.session_state:
+        try:
+            st.session_state["embed_model"] = _load_embedder()
+        except Exception as e:
+            st.session_state["embed_model"] = None
+            st.warning(f"Embedding-Modell konnte nicht geladen werden ({EMBED_MODEL_NAME}): {e}")
+    return st.session_state["embed_model"]
+
+def ensure_reranker() -> CrossEncoder | None:
+    if "reranker" not in st.session_state:
+        st.session_state["reranker"] = _load_reranker()
+    return st.session_state["reranker"]
 
 # ---------- BM25 & Docs ----------
 @dataclass
@@ -151,34 +173,53 @@ if current_hash != previous_hash:
         os.system("python ingest.py --full-rebuild")
     hash_file.write_text(current_hash)
     st.success("Index wurde automatisch aktualisiert!")
-    time.sleep(0.8)
+    time.sleep(0.6)
 
 bm25, docs = load_bm25()
 
 # ---------- Suche ----------
 def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
     results: List[Tuple[str, float, Dict]] = []
+
+    # BM25 (immer verfügbar)
     if bm25 and docs:
         tq = query.lower().split()
         scores = bm25.get_scores(tq)
         top_idx = np.argsort(scores)[-top_k:][::-1]
         for i in top_idx:
-            if scores[i] <= 0: continue
+            if scores[i] <= 0: 
+                continue
             d: DocChunk = docs[i]
-            results.append((d.text, float(scores[i]), {"source": d.source, "chunk_id": d.chunk_id, "kind": "bm25"}))
+            results.append(
+                (d.text, float(scores[i]),
+                 {"source": d.source, "chunk_id": d.chunk_id, "kind": "bm25"})
+            )
+
+    # Dense (falls Embedder verfügbar)
     try:
-        qv = embed_model.encode([query], normalize_embeddings=True)[0].tolist()
-        hits = qdr.search(collection_name=QDRANT_COLLECTION, query_vector=qv, limit=top_k, with_payload=True)
-        for h in hits:
-            payload = h.payload or {}
-            results.append((payload.get("text", ""), float(h.score),
-                            {"source": payload.get("source"), "chunk_id": payload.get("chunk_id"), "kind": "vector"}))
+        embed_model = ensure_embedder()
+        if embed_model is not None:
+            qv = embed_model.encode([query], normalize_embeddings=True)[0].tolist()
+            hits = qdr.search(
+                collection_name=QDRANT_COLLECTION,
+                query_vector=qv, limit=top_k, with_payload=True
+            )
+            for h in hits:
+                payload = h.payload or {}
+                results.append(
+                    (payload.get("text", ""), float(h.score),
+                     {"source": payload.get("source"), "chunk_id": payload.get("chunk_id"), "kind": "vector"})
+                )
     except Exception as e:
-        st.warning(f"Qdrant-Suche nicht möglich: {e}")
+        st.warning(f"Vektor-Suche nicht möglich: {e}")
+
     if not results:
         return []
+
+    # Reranking (optional)
     pairs = [(query, r[0]) for r in results if r[0]]
-    if reranker is not None:
+    reranker = ensure_reranker()
+    if reranker is not None and pairs:
         try:
             rr = reranker.predict(pairs)
             reranked = sorted(zip(results, rr), key=lambda x: x[1], reverse=True)
@@ -206,7 +247,8 @@ def call_llm(context: str, question: str) -> str:
         "temperature": 0.2,
     }
     try:
-        r = requests.post(OSS_API_BASE.rstrip("/") + "/v1/chat/completions", headers=headers, json=payload, timeout=120)
+        r = requests.post(OSS_API_BASE.rstrip("/") + "/v1/chat/completions",
+                          headers=headers, json=payload, timeout=120)
         if r.status_code >= 400:
             return f"LLM-Fehler ({r.status_code}): {r.text[:500]}"
         return r.json()["choices"][0]["message"]["content"]
@@ -220,11 +262,14 @@ st.caption("Antwortet strikt nur aus den Dokumenten im Repository-Ordner `data/`
 with st.sidebar:
     st.header("Index verwalten")
     st.caption("📁 Datenquelle: `data/` im GitHub-Repo")
+    # Statusanzeigen
+    st.write(f"🔌 Qdrant: `{QDRANT_URL or '—'}` · Collection: `{QDRANT_COLLECTION}`")
+    st.write(f"🔤 Embedder: `{EMBED_MODEL_NAME}`")
     role = st.session_state.get("role", "viewer")
     if role == "admin":
         if st.button("🧱 Vollständiger Rebuild"):
             with st.spinner("Baue Index neu auf …"):
-                os.system("python ingest.py --full-rebuild")
+                os.system("python ingest.py --full-rebuild --clear")
             st.success("Index neu aufgebaut.")
             st.rerun()
         if st.button("🔄 Inkrementelles Update"):
