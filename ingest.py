@@ -11,6 +11,22 @@ from qdrant_client.http import models as qmodels
 from rank_bm25 import BM25Okapi
 from PyPDF2 import PdfReader
 
+# ---------- CLI / ENV ----------
+def cli_env_value(cli_val: str | None, env_key: str, default: str = "") -> str:
+    if cli_val: return cli_val
+    return os.getenv(env_key, default)
+
+ap = argparse.ArgumentParser()
+ap.add_argument("--full-rebuild", action="store_true", help="BM25 neu + Vektoren neu")
+ap.add_argument("--clear", action="store_true", help="Collection vorher leeren")
+# Fallback-Parameter (falls ENV/Secrets nicht greifen)
+ap.add_argument("--jina_api_key", type=str, default=None)
+ap.add_argument("--jina_model", type=str, default=None)
+ap.add_argument("--qdrant_url", type=str, default=None)
+ap.add_argument("--qdrant_api_key", type=str, default=None)
+ap.add_argument("--qdrant_collection", type=str, default=None)
+args, _ = ap.parse_known_args()
+
 # ---------- Pfade ----------
 DATA_DIR = Path("./data"); DATA_DIR.mkdir(exist_ok=True)
 INDEX_DIR = Path("./index"); INDEX_DIR.mkdir(exist_ok=True)
@@ -18,29 +34,26 @@ BM25_FILE = INDEX_DIR / "bm25.pkl"
 DOCS_FILE = INDEX_DIR / "docs.pkl"
 STATE_FILE = INDEX_DIR / "ingest_state.json"
 
-# ---------- Qdrant ----------
+# ---------- Konfiguration ----------
 def _normalize_qdrant_url(raw: str | None) -> str | None:
     if not raw: return None
-    # Qdrant Cloud benötigt Port 6333; wenn fehlt, ergänzen
     if raw.startswith("http") and ":" not in raw.split("//", 1)[1]:
         return raw.rstrip("/") + ":6333"
     return raw.rstrip("/")
 
-QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL"))
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
-QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "docs_bge_m3")
-
-# ---------- Jina ----------
-JINA_API_KEY = os.getenv("JINA_API_KEY")
-JINA_MODEL   = os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de")
+JINA_API_KEY = cli_env_value(args.jina_api_key, "JINA_API_KEY")
+JINA_MODEL   = cli_env_value(args.jina_model, "JINA_MODEL", "jina-embeddings-v2-base-de")
 JINA_URL     = os.getenv("JINA_EMBED_URL", "https://api.jina.ai/v1/embeddings")
+
+QDRANT_URL = _normalize_qdrant_url(cli_env_value(args.qdrant_url, "QDRANT_URL"))
+QDRANT_API_KEY = cli_env_value(args.qdrant_api_key, "QDRANT_API_KEY")
+QDRANT_COLLECTION = cli_env_value(args.qdrant_collection, "QDRANT_COLLECTION", "docs_bge_m3")
 
 # ---------- Chunking ----------
 CHUNK_CHARS   = 900
 CHUNK_OVERLAP = 150
 
 def jina_embed(texts: List[str]) -> List[List[float]]:
-    """Embeddings von Jina holen (ohne Zusatzfelder → 422 vermeiden)."""
     if not JINA_API_KEY:
         raise RuntimeError("JINA_API_KEY nicht gesetzt.")
     headers = {"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"}
@@ -65,7 +78,6 @@ def chunk_text(text: str) -> List[str]:
     return chunks
 
 def read_pdf(path: Path) -> str:
-    """Extrahiert Text aus PDF. Leere/Scans liefern ggf. leere Strings."""
     try:
         reader = PdfReader(str(path))
         pages = []
@@ -83,7 +95,6 @@ def load_text_from_file(path: Path) -> str:
         return read_pdf(path)
     if suf in {".txt", ".md"}:
         return path.read_text(encoding="utf-8", errors="ignore")
-    # Fallback (sollte hier nicht landen)
     return path.read_text(encoding="utf-8", errors="ignore")
 
 def collect_documents() -> List[Dict]:
@@ -97,7 +108,7 @@ def collect_documents() -> List[Dict]:
         except Exception as e:
             print(f"[WARN] {p.name}: {e}"); continue
         if not raw.strip():
-            print(f"[WARN] {p.name}: kein extrahierbarer Text (evtl. Scan-PDF).")
+            print(f"[WARN] {p.name}: kein extrahierbarer Text.")
             continue
         for j, ch in enumerate(chunk_text(raw)):
             docs.append({"text": ch, "source": str(p), "chunk_id": j})
@@ -115,10 +126,8 @@ def build_qdrant(docs: List[Dict], clear: bool = False):
         try: qdr.delete_collection(QDRANT_COLLECTION)
         except: pass
 
-    # Dimension via Probe
     dim = len(jina_embed(["probe"])[0])
 
-    # Collection anlegen/angleichen
     recreate = False
     try:
         info = qdr.get_collection(QDRANT_COLLECTION)
@@ -134,7 +143,6 @@ def build_qdrant(docs: List[Dict], clear: bool = False):
             vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
         )
 
-    # Upsert der Punkte
     vectors = jina_embed([d["text"] for d in docs])
     points = [
         qmodels.PointStruct(
@@ -147,14 +155,9 @@ def build_qdrant(docs: List[Dict], clear: bool = False):
         qdr.upsert(collection_name=QDRANT_COLLECTION, points=points)
         print(f"Upserted {len(points)} Punkte → {QDRANT_COLLECTION}")
     else:
-        print("Keine Punkte zum Upsert (keine passenden Dateien/kein Text gefunden).")
+        print("Keine Punkte zum Upsert.")
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--full-rebuild", action="store_true", help="BM25 neu + Vektoren neu")
-    ap.add_argument("--clear", action="store_true", help="Collection vorher leeren")
-    args = ap.parse_args()
-
     if not QDRANT_URL or not QDRANT_API_KEY:
         raise RuntimeError("QDRANT_URL / QDRANT_API_KEY nicht gesetzt.")
     if not JINA_API_KEY:
