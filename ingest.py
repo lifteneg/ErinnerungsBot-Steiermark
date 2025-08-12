@@ -1,28 +1,8 @@
-"""
-Ingest-CLI für die Streamlit RAG-App (Qdrant + BM25)
-
-Funktionen:
-- Lädt Dokumente aus ./data (PDF/TXT/MD/TEI/XML/GML/RDF/TTL/NT)
-- Parst → chunked → Embeddings (BAAI/bge-m3) → upsert nach Qdrant
-- Baut/aktualisiert lokalen BM25-Index (index/bm25.pkl, index/docs.pkl)
-
-Nutzung:
-  python ingest.py --full-rebuild           # alles neu aufbauen
-  python ingest.py                          # inkrementelles Update
-
-ENV Variablen (wie App):
-  QDRANT_URL, QDRANT_API_KEY
-
-Optional:
-  --collection NAME        (default: docs_bge_m3)
-  --batch 64               (Embedding-Batchgröße)
-  --max-chars 900 --overlap 150
-  --clear                  (Collection vorher leeren)
-"""
+# ingest.py – Ingest für Qdrant + BM25 (ENV: EMBED_MODEL_NAME, QDRANT_URL/API_KEY)
 from __future__ import annotations
 import os, json, pickle, hashlib, argparse
 from dataclasses import dataclass
-from typing import List, Dict, Tuple
+from typing import List, Dict
 from pathlib import Path
 
 from sentence_transformers import SentenceTransformer
@@ -37,7 +17,8 @@ DOCS_FILE = STATE_DIR / "docs.pkl"
 INGEST_STATE = STATE_DIR / "ingest_state.json"
 
 # ---------- Modelle ----------
-EMBED_MODEL_NAME = "BAAI/bge-m3"
+EMBED_MODEL_NAME = os.getenv("EMBED_MODEL_NAME", "BAAI/bge-m3")
+HF_DIR = "/tmp/hf"  # passt zur App
 
 # ---------- Dataklassen ----------
 @dataclass
@@ -51,31 +32,24 @@ class DocChunk:
 def load_text_from_file(path: Path) -> str:
     suf = path.suffix.lower()
     if suf == ".pdf":
-        try:
-            from pypdf import PdfReader
-        except Exception:
-            raise RuntimeError("Für PDF-Unterstützung: pip install pypdf")
+        from pypdf import PdfReader
         reader = PdfReader(str(path))
         return "\n".join(page.extract_text() or "" for page in reader.pages)
     if suf in {".txt", ".md"}:
         return path.read_text(encoding="utf-8", errors="ignore")
     if suf in {".xml", ".gml"}:
-        try:
-            from lxml import etree
-        except Exception:
-            raise RuntimeError("Für XML-Unterstützung: pip install lxml")
+        from lxml import etree
         parser = etree.XMLParser(remove_blank_text=True, recover=True)
         tree = etree.parse(str(path), parser)
         root = tree.getroot()
         nsmap = {k if k is not None else 'ns': v for k, v in (root.nsmap or {}).items()}
-        tag_lower = etree.QName(root).localname.lower()
         def tjoin(elems):
             out = []
             for x in elems:
                 s = " ".join(" ".join(x.itertext()).split())
-                if s:
-                    out.append(s)
+                if s: out.append(s)
             return "\n\n".join(out)
+        tag_lower = etree.QName(root).localname.lower()
         # TEI
         if "tei" in tag_lower or any("tei" in (v or "") for v in nsmap.values()):
             teins = nsmap.get('tei', 'http://www.tei-c.org/ns/1.0')
@@ -83,27 +57,6 @@ def load_text_from_file(path: Path) -> str:
             header = tree.xpath("//tei:teiHeader", namespaces=ns)
             body = tree.xpath("//tei:body//tei:p | //tei:text//tei:p | //tei:div//tei:p", namespaces=ns)
             return (f"[TEI] {path.name}\n\n" + tjoin(header) + ("\n\n" if header else "") + tjoin(body)).strip()
-        # GML
-        if any("opengis.net/gml" in (v or "") for v in nsmap.values()) or tag_lower == "gml":
-            gns = None
-            for k, v in nsmap.items():
-                if v and "opengis.net/gml" in v:
-                    gns = k or 'gml'; break
-            ns = {gns: nsmap.get(gns)} if gns else {"gml": "http://www.opengis.net/gml"}
-            names = tree.xpath(f"//{list(ns.keys())[0]}:name", namespaces=ns)
-            descs = tree.xpath(f"//{list(ns.keys())[0]}:description", namespaces=ns)
-            other = [" ".join(" ".join(e.itertext()).split()) for e in tree.xpath(
-                "//*[not(self::gml:name or self::gml:description)]",
-                namespaces={"gml": ns[list(ns.keys())[0]]})]
-            parts = []
-            if names:
-                parts.append("Namen: " + "; ".join([" ".join(n.itertext()).strip() for n in names if "".join(n.itertext()).strip()]))
-            if descs:
-                parts.append("Beschreibungen: " + "; ".join([" ".join(d.itertext()).strip() for d in descs if "".join(d.itertext()).strip()]))
-            more = " | ".join([t for t in other if t])
-            if more:
-                parts.append("Weitere Attribute: " + more[:5000])
-            return f"[GML] {path.name}\n" + "\n".join(parts)
         # Generisches XML
         texts = []
         for elem in root.iter():
@@ -115,12 +68,8 @@ def load_text_from_file(path: Path) -> str:
                     pth = elem.tag
                 texts.append(f"{pth}: {' '.join(t.split())}")
         return f"[XML] {path.name}\n" + "\n".join(texts)
-    # RDF / Turtle / N-Triples
     if suf in {".rdf", ".ttl", ".nt"} or (suf == ".xml" and "rdf" in path.name.lower()):
-        try:
-            import rdflib
-        except Exception:
-            raise RuntimeError("Für RDF-Unterstützung: pip install rdflib")
+        import rdflib
         g = rdflib.Graph(); g.parse(str(path))
         def qn(x):
             try:
@@ -132,7 +81,6 @@ def load_text_from_file(path: Path) -> str:
             if i > 15000: break
             lines.append(f"{qn(s)} {qn(p)} {qn(o)}")
         return f"[RDF] {path.name}\n" + "\n".join(lines)
-    # Fallback
     return path.read_text(encoding="utf-8", errors="ignore")
 
 # ---------- Chunking ----------
@@ -146,21 +94,25 @@ def chunk_text(text: str, max_chars: int = 900, overlap: int = 150) -> List[str]
         i = max(0, end - overlap)
     return chunks
 
-# ---------- Helpers ----------
 def file_sig(path: Path) -> str:
     stat = path.stat()
     return f"{stat.st_mtime_ns}-{stat.st_size}"
 
-# ---------- BM25 ----------
 def save_bm25(bm25, docs: List[DocChunk]):
-    import pickle
     with open(BM25_FILE, 'wb') as f: pickle.dump(bm25, f)
     with open(DOCS_FILE, 'wb') as f: pickle.dump(docs, f)
+
+def _normalize_qdrant_url(raw: str | None) -> str | None:
+    if not raw:
+        return None
+    if raw.startswith("http") and ":" not in raw.split("//", 1)[1]:
+        return raw.rstrip("/") + ":6333"
+    return raw.rstrip("/")
 
 # ---------- Main ----------
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--collection', default='docs_bge_m3')
+    ap.add_argument('--collection', default=os.getenv("QDRANT_COLLECTION", "docs_bge_m3"))
     ap.add_argument('--full-rebuild', action='store_true')
     ap.add_argument('--clear', action='store_true', help='Collection vorher leeren')
     ap.add_argument('--batch', type=int, default=64)
@@ -168,22 +120,31 @@ def main():
     ap.add_argument('--overlap', type=int, default=150)
     args = ap.parse_args()
 
-    embed = SentenceTransformer(EMBED_MODEL_NAME)
-    qdr = QdrantClient(url=os.getenv('QDRANT_URL', 'http://localhost:6333'), api_key=os.getenv('QDRANT_API_KEY'))
-
+    embed = SentenceTransformer(EMBED_MODEL_NAME, cache_folder=HF_DIR)
     dim = embed.get_sentence_embedding_dimension()
+
+    qdr = QdrantClient(
+        url=_normalize_qdrant_url(os.getenv('QDRANT_URL', 'http://localhost:6333')),
+        api_key=os.getenv('QDRANT_API_KEY')
+    )
+
     # Collection vorbereiten
+    recreate = False
     try:
-        qdr.get_collection(args.collection)
-        if args.clear:
-            qdr.delete_collection(args.collection)
-            qdr.recreate_collection(
-                collection_name=args.collection,
-                vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE),
-                optimizers_config=qmodels.OptimizersConfigDiff(indexing_threshold=20000),
-                hnsw_config=qmodels.HnswConfigDiff(m=16, ef_construct=256)
-            )
+        col = qdr.get_collection(args.collection)
+        # Falls Dimension nicht passt → neu anlegen
+        current = col.vectors_count and col.vectors_config and col.vectors_config.size or None
+        # qdrant-client liefert size je nach Version anders; sichere Variante:
+        try:
+            current = col.config.params.vectors.size  # type: ignore
+        except Exception:
+            pass
+        if args.clear or (current and current != dim):
+            recreate = True
     except Exception:
+        recreate = True
+
+    if recreate:
         qdr.recreate_collection(
             collection_name=args.collection,
             vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE),
@@ -200,7 +161,9 @@ def main():
             state = {}
 
     # Sammle Dateien
-    paths = [p for p in DATA_DIR.rglob('*') if p.is_file() and p.suffix.lower() in {'.pdf','.txt','.md','.xml','.gml','.rdf','.ttl','.nt'}]
+    paths = [p for p in DATA_DIR.rglob('*') if p.is_file() and p.suffix.lower() in {
+        '.pdf','.txt','.md','.xml','.gml','.rdf','.ttl','.nt'
+    }]
 
     new_docs: List[DocChunk] = []
     to_upsert = []
@@ -221,15 +184,14 @@ def main():
         for j, (txt, vec) in enumerate(zip(chunks, embs)):
             meta = {"source": str(path), "chunk_id": j}
             new_docs.append(DocChunk(txt, str(path), j, meta))
-            to_upsert.append(qmodels.PointStruct(
-                id=int(hashlib.blake2b(f"{path}-{j}".encode(), digest_size=8).hexdigest(), 16),
-                vector=vec.tolist(), payload={"text": txt, **meta}
-            ))
+            pid = int(hashlib.blake2b(f"{path}-{j}".encode(), digest_size=8).hexdigest(), 16)
+            to_upsert.append(qmodels.PointStruct(id=pid, vector=vec.tolist(),
+                                                 payload={"text": txt, **meta}))
         state[str(path)] = sig
 
     if to_upsert:
         qdr.upsert(collection_name=args.collection, points=to_upsert)
-        print(f"Upserted {len(to_upsert)} Punkte nach Qdrant → {args.collection}")
+        print(f"Upserted {len(to_upsert)} Punkte → {args.collection}")
     else:
         print("Keine neuen/aktualisierten Punkte für Qdrant.")
 
