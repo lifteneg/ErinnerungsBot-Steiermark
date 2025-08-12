@@ -27,9 +27,9 @@ Ihr könnt ihn am Laptop, Tablet oder Smartphone nutzen.
 
 ## 🔍 Beispiele für gute Fragen
 
-✅ „Wann fand die Veranstaltung in Graz statt?“  
-✅ „Wer war Bürgermeister im Jahr 1980?“  
-✅ „Welche Themen behandelt das Dokument zur Landesgeschichte?“
+✅ „Welche Erinnerungsorte gibt es in Leoben?“  
+✅ „Wer war Adele Kurzweil?“  
+✅ „Erzähle mir etwas über das Denkmal für Josef Gadolla?“
 
 ---
 
