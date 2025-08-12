@@ -1,4 +1,5 @@
-# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + Jina-Embeddings + Diagnose + PDF)
+# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + Jina-Embeddings + PDF-Support)
+
 from __future__ import annotations
 import os, sys, time, pickle, hashlib, subprocess
 from pathlib import Path
@@ -29,14 +30,14 @@ def _normalize_qdrant_url(raw: str | None) -> str | None:
         return raw.rstrip("/") + ":6333"
     return raw.rstrip("/")
 
-QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL"))
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
-QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "docs_bge_m3")
+QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL", st.secrets.get("QDRANT_URL")))
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", st.secrets.get("QDRANT_API_KEY"))
+QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", st.secrets.get("QDRANT_COLLECTION", "docs_bge_m3"))
 qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
 # ---------- Jina Embeddings ----------
-JINA_API_KEY = os.getenv("JINA_API_KEY")
-JINA_MODEL = os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de")
+JINA_API_KEY = os.getenv("JINA_API_KEY", st.secrets.get("JINA_API_KEY"))
+JINA_MODEL = os.getenv("JINA_MODEL", st.secrets.get("JINA_MODEL", "jina-embeddings-v2-base-de"))
 JINA_URL = os.getenv("JINA_EMBED_URL", "https://api.jina.ai/v1/embeddings")
 
 def jina_embed(texts: list[str]) -> list[list[float]]:
@@ -46,32 +47,25 @@ def jina_embed(texts: list[str]) -> list[list[float]]:
     out: list[list[float]] = []
     B = 128
     for i in range(0, len(texts), B):
-        payload = {"model": JINA_MODEL, "input": texts[i:i+B]}  # keine Extra-Felder → 422 vermeiden
+        payload = {"model": JINA_MODEL, "input": texts[i:i+B]}
         r = requests.post(JINA_URL, headers=headers, json=payload, timeout=60)
         if r.status_code >= 400:
             raise RuntimeError(f"Jina-API Fehler {r.status_code}: {r.text[:200]}")
         out.extend([d["embedding"] for d in r.json()["data"]])
     return out
 
-def probe_jina_dim() -> Tuple[int | None, str | None]:
-    try:
-        v = jina_embed(["probe"])[0]
-        return len(v), None
-    except Exception as e:
-        return None, str(e)
-
 # ---------- OpenRouter (LLM) ----------
-OSS_API_BASE = os.getenv("OSS_API_BASE", "https://openrouter.ai/api")
-OSS_API_KEY  = os.getenv("OSS_API_KEY", "")
-OSS_MODEL    = os.getenv("OSS_MODEL", "openai/gpt-oss-20b:free")
+OSS_API_BASE = os.getenv("OSS_API_BASE", st.secrets.get("OSS_API_BASE", "https://openrouter.ai/api"))
+OSS_API_KEY  = os.getenv("OSS_API_KEY", st.secrets.get("OSS_API_KEY", ""))
+OSS_MODEL    = os.getenv("OSS_MODEL", st.secrets.get("OSS_MODEL", "openai/gpt-oss-20b:free"))
 
 # ---------- Rollen / Tokens ----------
 def _split_tokens(value: str) -> list[str]:
     return [t.strip() for t in value.split(",") if t.strip()]
 
-ADMIN_SET = set(_split_tokens(os.getenv("ADMIN_TOKENS", "")))
-VIEW_SET  = set(_split_tokens(os.getenv("VIEW_TOKENS", "")))
-ALL_SET   = set(_split_tokens(os.getenv("AUTH_TOKENS", "")))
+ADMIN_SET = set(_split_tokens(os.getenv("ADMIN_TOKENS", st.secrets.get("ADMIN_TOKENS", ""))))
+VIEW_SET  = set(_split_tokens(os.getenv("VIEW_TOKENS", st.secrets.get("VIEW_TOKENS", ""))))
+ALL_SET   = set(_split_tokens(os.getenv("AUTH_TOKENS", st.secrets.get("AUTH_TOKENS", ""))))
 if ALL_SET and not ADMIN_SET and not VIEW_SET:
     ADMIN_SET = ALL_SET  # Fallback
 
@@ -179,14 +173,13 @@ def call_llm(context: str, question: str) -> str:
 # ---------- Admin: In-App Rebuild ----------
 def run_ingest(incremental: bool = False, clear: bool = False):
     env = os.environ.copy()
-    env["QDRANT_URL"] = QDRANT_URL or ""
-    env["QDRANT_API_KEY"] = QDRANT_API_KEY or ""
-    env["QDRANT_COLLECTION"] = QDRANT_COLLECTION
-    env["JINA_API_KEY"] = JINA_API_KEY or ""
-    env["JINA_MODEL"] = JINA_MODEL or "jina-embeddings-v2-base-de"
+
+    # Secrets explizit ins env übernehmen
+    for key, value in st.secrets.items():
+        env[str(key)] = str(value)
 
     st.write("### 🧱 In-App Rebuild (Logs)")
-    args = [sys.executable, "ingest.py"]  # gleicher Interpreter!
+    args = [sys.executable, "ingest.py"]
     if not incremental: args += ["--full-rebuild"]
     if clear: args += ["--clear"]
 
@@ -200,7 +193,7 @@ def run_ingest(incremental: bool = False, clear: bool = False):
             bufsize=1,
             universal_newlines=True,
             env=env,
-            cwd=str(Path(__file__).parent)  # korrektes Arbeitsverzeichnis
+            cwd=str(Path(__file__).parent)
         )
         for line in proc.stdout:
             lines.append(line.rstrip("\n"))
