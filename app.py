@@ -1,6 +1,6 @@
-# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + Jina-Embeddings + Diagnose)
+# app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + Jina-Embeddings + Diagnose + PDF)
 from __future__ import annotations
-import os, time, pickle, hashlib, subprocess
+import os, sys, time, pickle, hashlib, subprocess
 from pathlib import Path
 from dataclasses import dataclass
 from typing import List, Dict, Tuple
@@ -25,7 +25,6 @@ DOCS_FILE = INDEX_DIR / "docs.pkl"
 def _normalize_qdrant_url(raw: str | None) -> str | None:
     if not raw:
         return None
-    # Cloud-URL ohne Port → :6333 ergänzen
     if raw.startswith("http") and ":" not in raw.split("//", 1)[1]:
         return raw.rstrip("/") + ":6333"
     return raw.rstrip("/")
@@ -55,7 +54,6 @@ def jina_embed(texts: list[str]) -> list[list[float]]:
     return out
 
 def probe_jina_dim() -> Tuple[int | None, str | None]:
-    """Gibt (dimension, fehlertext) zurück."""
     try:
         v = jina_embed(["probe"])[0]
         return len(v), None
@@ -133,7 +131,6 @@ bm25, docs = load_bm25()
 # ---------- Suche ----------
 def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
     results: List[Tuple[str, float, Dict]] = []
-
     # BM25
     if bm25 and docs:
         tq = query.lower().split()
@@ -144,8 +141,7 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
             d: DocChunk = docs[i]
             results.append((d.text, float(scores[i]),
                             {"source": d.source, "chunk_id": d.chunk_id, "kind": "bm25"}))
-
-    # Qdrant (dichte Suche)
+    # Vektor-Suche über Qdrant
     try:
         qv = jina_embed([query])[0]
         hits = qdr.search(collection_name=QDRANT_COLLECTION, query_vector=qv, limit=top_k, with_payload=True)
@@ -155,7 +151,6 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
                             {"source": p.get("source"), "chunk_id": p.get("chunk_id"), "kind": "vector"}))
     except Exception as e:
         st.warning(f"Vektor-Suche nicht möglich: {e}")
-
     return results[:top_k] if results else []
 
 # ---------- LLM ----------
@@ -181,61 +176,8 @@ def call_llm(context: str, question: str) -> str:
     except Exception as e:
         return f"LLM-Fehler: {e}"
 
-# ---------- Diagnose & Admin-Tools ----------
-def _masked(s: str) -> str:
-    if not s: return "—"
-    return s[:4] + "…" + s[-4:] if len(s) > 8 else "•••"
-
-def diagnose():
-    st.write("### 🔎 Diagnose")
-    c1, c2 = st.columns(2)
-
-    # Jina-Check
-    with c1:
-        st.caption("Jina Embeddings")
-        dim, err = probe_jina_dim()
-        if dim:
-            st.success(f"Erreichbar ✅ – Vektordimension: {dim}")
-        else:
-            st.error(f"Fehler: {err}")
-
-    # Qdrant-Check
-    with c2:
-        st.caption("Qdrant Cloud")
-        try:
-            info = qdr.get_collection(QDRANT_COLLECTION)
-            st.success("Collection vorhanden ✅")
-            st.code(str(info)[:600])
-        except Exception as e:
-            st.warning(f"Collection '{QDRANT_COLLECTION}' fehlt oder nicht erreichbar: {e}")
-            # Angebot: Collection anlegen (Dimension via Jina-Probe)
-            if st.button("➕ Collection jetzt anlegen"):
-                dim2, err2 = probe_jina_dim()
-                if not dim2:
-                    st.error(f"Jina-Probe fehlgeschlagen: {err2}")
-                else:
-                    try:
-                        qdr.recreate_collection(
-                            collection_name=QDRANT_COLLECTION,
-                            vectors_config=qmodels.VectorParams(size=dim2, distance=qmodels.Distance.COSINE),
-                        )
-                        st.success(f"Collection '{QDRANT_COLLECTION}' angelegt (dim={dim2})")
-                    except Exception as e2:
-                        st.error(f"Anlegen fehlgeschlagen: {e2}")
-
+# ---------- Admin: In-App Rebuild ----------
 def run_ingest(incremental: bool = False, clear: bool = False):
-    if not QDRANT_URL or not QDRANT_API_KEY:
-        st.error("QDRANT_URL / QDRANT_API_KEY nicht gesetzt.")
-        return
-    if not JINA_API_KEY:
-        st.error("JINA_API_KEY nicht gesetzt.")
-        return
-
-    st.write("### 🧱 In-App Rebuild (Logs)")
-    args = ["python", "ingest.py"]
-    if not incremental: args += ["--full-rebuild"]
-    if clear: args += ["--clear"]
-
     env = os.environ.copy()
     env["QDRANT_URL"] = QDRANT_URL or ""
     env["QDRANT_API_KEY"] = QDRANT_API_KEY or ""
@@ -243,18 +185,29 @@ def run_ingest(incremental: bool = False, clear: bool = False):
     env["JINA_API_KEY"] = JINA_API_KEY or ""
     env["JINA_MODEL"] = JINA_MODEL or "jina-embeddings-v2-base-de"
 
+    st.write("### 🧱 In-App Rebuild (Logs)")
+    args = [sys.executable, "ingest.py"]  # gleicher Interpreter!
+    if not incremental: args += ["--full-rebuild"]
+    if clear: args += ["--clear"]
+
     log_box = st.empty()
     lines = []
     try:
-        proc = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                bufsize=1, universal_newlines=True, env=env)
+        proc = subprocess.Popen(
+            args,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            bufsize=1,
+            universal_newlines=True,
+            env=env,
+            cwd=str(Path(__file__).parent)  # korrektes Arbeitsverzeichnis
+        )
         for line in proc.stdout:
             lines.append(line.rstrip("\n"))
             log_box.code("\n".join(lines[-200:]), language="bash")
         ret = proc.wait()
         if ret == 0:
             st.success("Ingest abgeschlossen ✅")
-            # BM25 neu laden
             global bm25, docs
             bm25, docs = load_bm25()
         else:
@@ -268,42 +221,14 @@ st.caption("Antwortet strikt nur aus den Dokumenten im Repository-Ordner `data/`
 
 with st.sidebar:
     st.header("Index verwalten")
-    st.caption("📁 Datenquelle: `data/` im GitHub-Repo")
-
-    # Status
-    try:
-        count = qdr.count(QDRANT_COLLECTION, exact=True).count
-    except Exception:
-        count = None
-    last_ingest_time = None
-    state_file = INDEX_DIR / "ingest_state.json"
-    if state_file.exists():
-        last_ingest_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(state_file.stat().st_mtime))
-    num_data_files = len(list(DATA_DIR.rglob("*.*")))
-
-    st.subheader("📊 Index-Status")
-    st.write(f"**Qdrant Chunks:** {count if count is not None else '—'}")
-    st.write(f"**Letzter Ingest:** {last_ingest_time or '—'}")
-    st.write(f"**Dateien in data/:** {num_data_files}")
-    st.write(f"**BM25 geladen:** {'✅' if bm25 else '❌'}")
-    st.write(f"🔌 Qdrant: `{QDRANT_URL or '—'}` · Collection: `{QDRANT_COLLECTION}`")
-    st.write(f"🧠 Embeddings: `Jina · {JINA_MODEL}`")
-    st.write(f"🔑 Keys: Jina={_masked(JINA_API_KEY)}, Qdrant={_masked(QDRANT_API_KEY)}, OpenRouter={_masked(OSS_API_KEY)}")
-
     role = st.session_state.get("role", "viewer")
     if role == "admin":
-        if st.button("🔎 Diagnose ausführen"):
-            diagnose()
-        colA, colB, colC = st.columns(3)
-        with colA:
-            if st.button("🧱 Vollständiger Rebuild (CLEAR)"):
-                run_ingest(incremental=False, clear=True)
-        with colB:
-            if st.button("🧱 Vollständiger Rebuild"):
-                run_ingest(incremental=False, clear=False)
-        with colC:
-            if st.button("🔄 Inkrementelles Update"):
-                run_ingest(incremental=True, clear=False)
+        if st.button("🧱 Vollständiger Rebuild (CLEAR)"):
+            run_ingest(incremental=False, clear=True)
+        if st.button("🧱 Vollständiger Rebuild"):
+            run_ingest(incremental=False, clear=False)
+        if st.button("🔄 Inkrementelles Update"):
+            run_ingest(incremental=True, clear=False)
     else:
         st.info("Nur Ansicht: Re-Index ist Administratoren vorbehalten.")
 
