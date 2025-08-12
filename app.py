@@ -93,12 +93,12 @@ if uploaded_files:
 if st.sidebar.button("🧱 Vollständiger Rebuild"):
     os.system("python ingest.py --full-rebuild")
     st.sidebar.success("Index neu aufgebaut.")
-    st.experimental_rerun()
+    st.rerun()
 
 if st.sidebar.button("🔄 Inkrementelles Update"):
     os.system("python ingest.py")
     st.sidebar.success("Index aktualisiert.")
-    st.experimental_rerun()
+    st.rerun()
 
 st.title("💬 Privater Daten-Chatbot")
 user_query = st.text_input("Frage eingeben")
