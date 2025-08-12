@@ -206,14 +206,11 @@ st.caption("Antwortet strikt nur aus deinen Dokumenten. (BGE-M3 · Qdrant · BM2
 with st.sidebar:
     st.header("Index verwalten")
     role = st.session_state.get("role", "viewer")
-    if role == "admin":
-        uploaded_files = st.file_uploader("Dateien hochladen", accept_multiple_files=True)
-        if uploaded_files:
-            DATA_DIR.mkdir(exist_ok=True)
-            for f in uploaded_files:
-                (DATA_DIR / f.name).write_bytes(f.getbuffer())
-            st.success(f"{len(uploaded_files)} Datei(en) gespeichert.")
 
+    # Hinweis: Datenquelle ist NUR das Repo-Verzeichnis ./data
+    st.caption("Datenquelle: 📁 Repository-Ordner `data/` (kein Upload im UI)")
+
+    if role == "admin":
         if st.button("🧱 Vollständiger Rebuild"):
             with st.spinner("Baue Index neu auf …"):
                 os.system("python ingest.py --full-rebuild")
@@ -226,7 +223,7 @@ with st.sidebar:
             st.success("Index aktualisiert.")
             st.rerun()
     else:
-        st.info("Nur Ansicht: Upload & Re-Index ist Administratoren vorbehalten.")
+        st.info("Nur Ansicht: Re-Index ist Administratoren vorbehalten.")
 
 # Chat
 question = st.text_input("Frage eingeben")
