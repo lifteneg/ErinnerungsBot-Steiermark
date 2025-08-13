@@ -1,5 +1,7 @@
 streamlit
-requests
-rank-bm25
 qdrant-client
+rank-bm25
+requests
 PyPDF2
+openai
+tiktoken
