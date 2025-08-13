@@ -15,10 +15,10 @@ from qdrant_client import QdrantClient
 from rank_bm25 import BM25Okapi
 
 # -----------------------------
-# Konstante Feineinstellungen
+# Feineinstellungen
 # -----------------------------
-TOP_K = 10          # Maximale Trefferzahl für Hybrid-Suche
-LOG_TAIL = 1000     # Anzahl der Logzeilen, die im UI angezeigt werden
+TOP_K = 10          # maximale Trefferzahl für Hybrid-Suche
+LOG_TAIL = 1000     # wie viele Logzeilen im UI angezeigt werden
 
 # -----------------------------
 # UI-Setup
@@ -119,7 +119,7 @@ def jina_embed(texts: List[str]) -> List[List[float]]:
     return out
 
 # -----------------------------
-# Hybrid-Suche (BM25 + Qdrant) – ohne harte Schwelle
+# Hybrid-Suche (BM25 + Qdrant)
 # -----------------------------
 def hybrid_search(query: str, top_k: int = TOP_K) -> List[Tuple[str, float, Dict[str, Any]]]:
     results: List[Tuple[str, float, Dict[str, Any]]] = []
@@ -152,7 +152,7 @@ def hybrid_search(query: str, top_k: int = TOP_K) -> List[Tuple[str, float, Dict
         except Exception as e:
             st.warning(f"Vektor-Suche nicht möglich: {e}")
 
-    # Deduplizieren nach Text & sortieren
+    # Deduplizieren & sortieren
     seen = set()
     unique: List[Tuple[str, float, Dict[str, Any]]] = []
     for text, score, meta in sorted(results, key=lambda x: x[1], reverse=True):
@@ -201,7 +201,7 @@ def call_llm(question: str, context: str) -> str:
         return f"LLM-Fehler: {e}"
 
 # -----------------------------
-# In-App Rebuild (ingest.py aufrufen) – mit Live-Logs & Reload
+# In-App Rebuild (ingest.py aufrufen) – Live-Logs & Reload
 # -----------------------------
 def run_ingest(full_rebuild: bool = True, clear: bool = False):
     env = os.environ.copy()
@@ -211,4 +211,85 @@ def run_ingest(full_rebuild: bool = True, clear: bool = False):
     st.caption(
         "Übergabewerte: "
         f"JINA_API_KEY={_mask(env.get('JINA_API_KEY',''))} · "
-        f"Q
+        f"QDRANT_API_KEY={_mask(env.get('QDRANT_API_KEY',''))} · "
+        f"QDRANT_URL={env.get('QDRANT_URL','—')} · "
+        f"JINA_MODEL={env.get('JINA_MODEL','—')} · "
+        f"OSS_API_KEY={_mask(env.get('OSS_API_KEY',''))}"
+    )
+
+    args = [sys.executable, "ingest.py"]
+    if full_rebuild:
+        args.append("--full-rebuild")
+    if clear:
+        args.append("--clear")
+
+    log_box = st.empty()
+    lines: List[str] = []
+    try:
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+        for line in proc.stdout:
+            lines.append(line.rstrip("\n"))
+            log_box.code("\n".join(lines[-LOG_TAIL:]), language="bash")
+        ret = proc.wait()
+        if ret == 0:
+            st.success("Ingest abgeschlossen ✅")
+            # Index nachladen
+            global bm25, docs
+            bm25, docs = load_index()
+        else:
+            st.error(f"Ingest fehlgeschlagen (exit {ret})")
+    except Exception as e:
+        st.error(f"Ingest-Aufruf fehlgeschlagen: {e}")
+
+# -----------------------------
+# Auto-Bootstrap: Wenn kein Index da ist → (nur Admin) Rebuild starten
+# -----------------------------
+if not (bm25 and docs):
+    if role == "admin":
+        st.info("📦 Kein lokaler Index gefunden – starte automatischen Rebuild …")
+        run_ingest(full_rebuild=True, clear=False)
+        bm25, docs = load_index()
+        if not (bm25 and docs):
+            st.error("Index konnte nicht aufgebaut werden. Bitte Logs oben prüfen.")
+            st.stop()
+    else:
+        st.warning("ℹ️ Kein lokaler Index vorhanden. Bitte einen Admin um einen Rebuild.")
+        st.stop()
+
+# -----------------------------
+# Sidebar: Admin-Aktionen
+# -----------------------------
+with st.sidebar:
+    st.header("Index verwalten")
+    if role == "admin":
+        c1, c2 = st.columns(2)
+        with c1:
+            if st.button("🧱 Rebuild"):
+                run_ingest(full_rebuild=True, clear=False)
+        with c2:
+            if st.button("🧱 Rebuild (CLEAR)"):
+                run_ingest(full_rebuild=True, clear=True)
+
+# -----------------------------
+# Chat
+# -----------------------------
+question = st.text_input("Frage eingeben")
+if st.button("Senden") and question:
+    with st.spinner("Suche relevante Textstellen …"):
+        hits = hybrid_search(question, top_k=TOP_K)
+
+    if not hits:
+        st.warning("Dazu habe ich keine Information in meinen Daten.")
+    else:
+        context = "\n\n".join([h[0] for h in hits if h[0]])
+        answer = call_llm(question, context)
+        st.subheader("Antwort")
+        st.write(answer)
+
+        with st.expander("🔎 Verwendete Ausschnitte"):
+            for text, score, meta in hits:
+                src = Path(str(meta.get("source", "—"))).name
+                kind = meta.get("kind", "—")
+                st.markdown(f"**Quelle:** {src} · {kind} · Score={score:.3f}")
+                st.write((text or "")[:1200])
+                st.markdown("---")
