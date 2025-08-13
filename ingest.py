@@ -2,6 +2,7 @@ import os
 import argparse
 import pickle
 import glob
+import time
 import requests
 from rank_bm25 import BM25Okapi
 from qdrant_client import QdrantClient
@@ -19,17 +20,26 @@ JINA_API_KEY = os.getenv("JINA_API_KEY")
 JINA_MODEL = os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de")
 
 # -----------------------------
-# Embedding-Funktion
+# Embedding-Funktion mit Retry
 # -----------------------------
-def jina_embed(texts):
+def jina_embed(texts, retries=3, delay=5):
     if not JINA_API_KEY:
         raise RuntimeError("JINA_API_KEY nicht gesetzt.")
     url = "https://api.jina.ai/v1/embeddings"
     headers = {"Authorization": f"Bearer {JINA_API_KEY}"}
     payload = {"model": JINA_MODEL, "input": texts}
-    r = requests.post(url, headers=headers, json=payload, timeout=60)
-    r.raise_for_status()
-    return [d["embedding"] for d in r.json()["data"]]
+
+    for attempt in range(1, retries + 1):
+        try:
+            r = requests.post(url, headers=headers, json=payload, timeout=60)
+            r.raise_for_status()
+            return [d["embedding"] for d in r.json()["data"]]
+        except requests.exceptions.Timeout:
+            print(f"⏳ Timeout bei Jina (Versuch {attempt}/{retries}), warte {delay}s …")
+            time.sleep(delay)
+        except Exception as e:
+            raise RuntimeError(f"Jina-API Fehler: {e}")
+    raise RuntimeError("Jina-API wiederholt fehlgeschlagen.")
 
 # -----------------------------
 # PDF-Text extrahieren
@@ -81,12 +91,13 @@ def ensure_collection(qdr, dim, clear=False):
     try:
         if clear:
             qdr.delete_collection(QDRANT_COLLECTION)
-        qdr.create_collection(
-            collection_name=QDRANT_COLLECTION,
-            vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
-        )
+        if not qdr.collection_exists(QDRANT_COLLECTION):
+            qdr.create_collection(
+                collection_name=QDRANT_COLLECTION,
+                vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
+            )
     except Exception as e:
-        print(f"⚠️ Qdrant-Collection konnte nicht erstellt werden: {e}")
+        raise RuntimeError(f"⚠️ Qdrant-Collection konnte nicht erstellt werden: {e}")
 
 # -----------------------------
 # Main Indexing
@@ -123,10 +134,7 @@ def main():
     for idx, (vec, doc) in enumerate(zip(vectors, chunks)):
         points.append(qmodels.PointStruct(id=idx, vector=vec, payload=doc))
 
-    qdr.upsert(
-        collection_name=QDRANT_COLLECTION,
-        points=points
-    )
+    qdr.upsert(collection_name=QDRANT_COLLECTION, points=points)
     print("✅ Ingest abgeschlossen.")
 
 if __name__ == "__main__":
