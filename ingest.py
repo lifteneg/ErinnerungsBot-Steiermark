@@ -1,7 +1,7 @@
 # ingest.py – Index-Aufbau für ErinnerungsBot Steiermark
 # Unterstützte Formate: PDF, TXT, MD
-# Erzeugt BM25 + pushed Vektoren nach Qdrant (Jina-Embeddings)
-# Fehlt die Collection, wird sie automatisch (dim=768, Cosine) angelegt.
+# Erzeugt BM25 + pushed Vektoren nach Qdrant (Jina-Embeddings).
+# Fehlt die Collection, wird sie automatisch (dim=768, Cosine) angelegt – ohne Delete.
 
 import os, argparse, pickle, json, time, hashlib
 from pathlib import Path
@@ -16,6 +16,7 @@ from PyPDF2 import PdfReader
 
 # ---------- CLI / ENV ----------
 def cli_env_value(cli_val: str | None, env_key: str, default: str = "") -> str:
+    """Nimmt CLI-Arg, sonst ENV, sonst Default."""
     return cli_val if cli_val is not None else os.getenv(env_key, default)
 
 ap = argparse.ArgumentParser()
@@ -56,6 +57,7 @@ CHUNK_CHARS   = 900
 CHUNK_OVERLAP = 150
 
 def jina_embed(texts: List[str]) -> List[List[float]]:
+    """Embeddings vom Jina-API holen (ohne Zusatzfelder → 422 vermeiden)."""
     if not JINA_API_KEY:
         raise RuntimeError("JINA_API_KEY nicht gesetzt.")
     headers = {"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"}
@@ -80,6 +82,7 @@ def chunk_text(text: str) -> List[str]:
     return chunks
 
 def read_pdf(path: Path) -> str:
+    """Extrahiert Text aus PDF. (Hinweis: Scan-PDFs haben evtl. keinen Text)"""
     try:
         reader = PdfReader(str(path))
         pages = []
@@ -97,6 +100,7 @@ def load_text_from_file(path: Path) -> str:
         return read_pdf(path)
     if suf in {".txt", ".md"}:
         return path.read_text(encoding="utf-8", errors="ignore")
+    # Fallback
     return path.read_text(encoding="utf-8", errors="ignore")
 
 def collect_documents() -> List[Dict]:
@@ -170,7 +174,7 @@ def ensure_collection(qdr: QdrantClient, dim: int, clear: bool):
             f"Lösche sie manuell im Dashboard und lege sie neu an (oder ändere QDRANT_COLLECTION)."
         )
 
-    # optionales Clear
+    # optionales Clear – nur wenn erlaubt
     if clear:
         try:
             qdr.delete_collection(QDRANT_COLLECTION)
@@ -193,13 +197,13 @@ def build_qdrant(docs: List[Dict], clear: bool = False):
         api_key=QDRANT_API_KEY,
         timeout=60,
         prefer_grpc=False,
-        check_compatibility=False,  # vermeidet Versionswarnung
+        check_compatibility=False,  # vermeidet Versionswarnung/Check
     )
 
     # Dimension via Probe (Jina v2 base de = 768)
     dim = len(jina_embed(["probe"])[0])
 
-    # Collection anlegen/absichern
+    # Collection anlegen/prüfen (ohne Delete)
     ensure_collection(qdr, dim, clear=clear)
 
     # Upsert der Punkte
