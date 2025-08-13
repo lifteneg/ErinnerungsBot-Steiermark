@@ -1,13 +1,17 @@
-# app.py – ErinnerungsBot Steiermark (Streamlit + BM25 + Qdrant/Jina + OpenRouter)
+# app.py – ErinnerungsBot Steiermark
+# Zeigt unter „Verwendete Ausschnitte“ NUR die TEI-URIs aus <place>…</place> (ohne type="additional")
+
 from __future__ import annotations
 
 import os
 import sys
 import time
+import re
 import pickle
 import subprocess
 from pathlib import Path
 from typing import List, Dict, Tuple, Any
+from urllib.parse import urlparse
 
 import requests
 import numpy as np
@@ -18,22 +22,31 @@ from rank_bm25 import BM25Okapi
 # -----------------------------
 # Feineinstellungen
 # -----------------------------
-TOP_K = 10              # maximale Trefferzahl für Hybrid-Suche
-LOG_TAIL = 1000         # wie viele Logzeilen im UI angezeigt werden
-MAX_CONTEXT_CHARS = 6000  # LLM-Kontext begrenzen (sicher für viele Modelle)
+TOP_K = 10
+LOG_TAIL = 1000
+MAX_CONTEXT_CHARS = 6000
 
 PRIMARY_MODEL   = "deepseek/deepseek-r1-0528:free"
 FALLBACK_MODEL  = "openai/gpt-oss-20b:free"
 
 # -----------------------------
-# UI-Setup
+# UI
 # -----------------------------
-st.set_page_config(page_title="💬 ErinnerungsBot Steiermark",  layout="wide")
+st.set_page_config(page_title="💬 ErinnerungsBot Steiermark", page_icon="💬", layout="wide")
 st.title("💬 ErinnerungsBot Steiermark")
 
 # -----------------------------
 # Helpers
 # -----------------------------
+TAG_RE = re.compile(r"<[^>]+>")
+
+def strip_markup(s: str) -> str:
+    if not s:
+        return ""
+    s = TAG_RE.sub(" ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
 def _get_secret_env(name: str, default: str = "") -> str:
     val = os.getenv(name, st.secrets.get(name, default))
     return (val or "").strip()
@@ -43,15 +56,21 @@ def _mask(s: str) -> str:
         return "—"
     return s[:4] + "…" + s[-4:] if len(s) > 8 else "•••"
 
+def host_of(url: str) -> str:
+    try:
+        return urlparse(url).netloc or url
+    except Exception:
+        return url
+
 # -----------------------------
 # Secrets / Konfig
 # -----------------------------
-ADMIN_TOKENS = _get_secret_env("ADMIN_TOKENS")   # z.B. "Marlene"
-VIEW_TOKENS  = _get_secret_env("VIEW_TOKENS")    # z.B. "Schule"
+ADMIN_TOKENS = _get_secret_env("ADMIN_TOKENS")
+VIEW_TOKENS  = _get_secret_env("VIEW_TOKENS")
 
 OSS_API_BASE = _get_secret_env("OSS_API_BASE", "https://openrouter.ai/api").rstrip("/")
 OSS_API_KEY  = _get_secret_env("OSS_API_KEY")
-OSS_MODEL    = _get_secret_env("OSS_MODEL", PRIMARY_MODEL)  # falls du es in den Secrets überschreiben willst
+OSS_MODEL    = _get_secret_env("OSS_MODEL", PRIMARY_MODEL)
 
 QDRANT_URL        = _get_secret_env("QDRANT_URL")
 QDRANT_API_KEY    = _get_secret_env("QDRANT_API_KEY")
@@ -71,7 +90,7 @@ if (role == "admin" and ADMIN_TOKENS and token != ADMIN_TOKENS) or (role == "vie
     st.stop()
 
 # -----------------------------
-# Index laden (falls vorhanden)
+# Index laden
 # -----------------------------
 INDEX_DIR = Path("index")
 BM25_PATH = INDEX_DIR / "bm25.pkl"
@@ -99,7 +118,7 @@ if QDRANT_URL and QDRANT_API_KEY:
         st.warning(f"Qdrant-Client konnte nicht initialisiert werden: {e}")
 
 # -----------------------------
-# Jina Embeddings für Query
+# Jina Query-Embeddings
 # -----------------------------
 def jina_embed(texts: List[str]) -> List[List[float]]:
     if not JINA_API_KEY:
@@ -140,7 +159,10 @@ def hybrid_search(query: str, top_k: int = TOP_K) -> List[Tuple[str, float, Dict
             results.append((
                 d.get("text", ""),
                 float(scores[i]),
-                {"source": d.get("source", ""), "kind": "bm25"}
+                {
+                    "kind": "bm25",
+                    "tei_uris": d.get("tei_uris", []),  # nur diese interessieren uns
+                }
             ))
 
     # Qdrant
@@ -153,7 +175,10 @@ def hybrid_search(query: str, top_k: int = TOP_K) -> List[Tuple[str, float, Dict
                 results.append((
                     p.get("text", ""),
                     float(h.score),
-                    {"source": p.get("source", ""), "kind": "vector"}
+                    {
+                        "kind": "vector",
+                        "tei_uris": p.get("tei_uris", []),
+                    }
                 ))
         except Exception as e:
             st.warning(f"Vektor-Suche nicht möglich: {e}")
@@ -164,32 +189,30 @@ def hybrid_search(query: str, top_k: int = TOP_K) -> List[Tuple[str, float, Dict
     for text, score, meta in sorted(results, key=lambda x: x[1], reverse=True):
         if not text:
             continue
-        if text in seen:
+        key = text[:400]
+        if key in seen:
             continue
-        seen.add(text)
+        seen.add(key)
         unique.append((text, score, meta))
         if len(unique) >= top_k:
             break
-
     return unique
 
 # -----------------------------
-# LLM (OpenRouter) – Retry + Fallback + Kontextlimit
+# LLM (OpenRouter) – Retry + Fallback, ohne Quellen in Antwort
 # -----------------------------
 SYSTEM_PROMPT = (
     "Du bist ein präziser Assistent. Antworte ausschließlich mit Informationen, "
-    "die im bereitgestellten KONTEXT enthalten sind. Wenn der Kontext keine Antwort zulässt, "
-    "sage eindeutig: 'Dazu habe ich keine Information in meinen Daten.' Erfinde nichts."
+    "die im bereitgestellten KONTEXT enthalten sind. "
+    "Füge KEINE Quellenangaben in deine Antwort ein; die Quellen werden separat angezeigt. "
+    "Wenn der Kontext keine Antwort zulässt, sage eindeutig: 'Dazu habe ich keine Information in meinen Daten.' "
+    "Erfinde nichts."
 )
 
 def call_llm_with_models(question: str, context: str, models: List[str]) -> Tuple[str, str]:
-    """Versucht nacheinander die angegebenen Modelle. Gibt (Antwort, verwendetes_modell) zurück.
-       Bei dauerhaftem Fehler kommt eine Fehlermeldung als Antworttext und verwendetes Modell = ''.
-    """
     if not OSS_API_KEY:
         return "LLM nicht konfiguriert: OSS_API_KEY fehlt.", ""
 
-    # Kontext begrenzen
     if len(context) > MAX_CONTEXT_CHARS:
         context = context[:MAX_CONTEXT_CHARS]
 
@@ -221,24 +244,21 @@ def call_llm_with_models(question: str, context: str, models: List[str]) -> Tupl
                     return "LLM-Fehler (401 Unauthorized): Prüfe OSS_API_KEY in den Secrets.", ""
                 if r.status_code in RETRY_STATUSES:
                     if attempt == MAX_TRIES:
-                        # nächstes Modell versuchen
                         break
                     time.sleep(2 ** attempt)
                     continue
                 if r.status_code >= 400:
-                    # nicht-retrybarer Fehler → nächstes Modell
                     break
                 return r.json()["choices"][0]["message"]["content"], mdl
             except requests.RequestException:
                 if attempt == MAX_TRIES:
-                    # nächstes Modell probieren
                     break
                 time.sleep(2 ** attempt)
 
     return "LLM derzeit nicht erreichbar. Bitte später erneut versuchen.", ""
 
 # -----------------------------
-# In-App Rebuild (ingest.py aufrufen) – Live-Logs & Reload
+# In-App Rebuild
 # -----------------------------
 def run_ingest(full_rebuild: bool = True, clear: bool = False):
     env = os.environ.copy()
@@ -270,7 +290,6 @@ def run_ingest(full_rebuild: bool = True, clear: bool = False):
         ret = proc.wait()
         if ret == 0:
             st.success("Ingest abgeschlossen ✅")
-            # Index nachladen
             global bm25, docs
             bm25, docs = load_index()
         else:
@@ -279,7 +298,7 @@ def run_ingest(full_rebuild: bool = True, clear: bool = False):
         st.error(f"Ingest-Aufruf fehlgeschlagen: {e}")
 
 # -----------------------------
-# Auto-Bootstrap: Wenn kein Index da ist → (nur Admin) Rebuild starten
+# Auto-Bootstrap
 # -----------------------------
 if not (bm25 and docs):
     if role == "admin":
@@ -294,7 +313,7 @@ if not (bm25 and docs):
         st.stop()
 
 # -----------------------------
-# Sidebar: Admin-Aktionen
+# Sidebar: Admin
 # -----------------------------
 with st.sidebar:
     st.header("Index verwalten")
@@ -317,7 +336,6 @@ if "last_context" not in st.session_state:
 
 question = st.text_input("Frage eingeben")
 colA, colB = st.columns([1, 1])
-
 send_clicked = colA.button("Senden")
 retry_clicked = colB.button("Erneut senden")
 
@@ -329,7 +347,6 @@ if send_clicked and question:
         st.warning("Dazu habe ich keine Information in meinen Daten.")
     else:
         context = "\n\n".join([h[0] for h in hits if h[0]])
-        # merken für „Erneut senden“
         st.session_state.last_question = question
         st.session_state.last_context = context
 
@@ -338,6 +355,7 @@ if send_clicked and question:
             context,
             models=[OSS_MODEL or PRIMARY_MODEL, FALLBACK_MODEL],
         )
+
         st.subheader("Antwort")
         st.write(answer)
         if used_model:
@@ -345,10 +363,14 @@ if send_clicked and question:
 
         with st.expander("🔎 Verwendete Ausschnitte"):
             for text, score, meta in hits:
-                src = Path(str(meta.get("source", "—"))).name
+                clean = strip_markup(text)
                 kind = meta.get("kind", "—")
-                st.markdown(f"**Quelle:** {src} · {kind} · Score={score:.3f}")
-                st.write((text or "")[:1200])
+                tei_uris = meta.get("tei_uris", []) or []
+                st.markdown(f"**Score={score:.3f} · {kind}**")
+                # Nur die (chunk-genauen) TEI-URIs anzeigen:
+                for u in tei_uris:
+                    st.markdown(f"- [{host_of(u)}]({u})")
+                st.write((clean or "")[:1200])
                 st.markdown("---")
 
 elif retry_clicked:
