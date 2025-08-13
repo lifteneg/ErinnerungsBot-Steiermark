@@ -28,7 +28,8 @@ def _get_secret_env(name: str, default: str = "") -> str:
     return (val or "").strip()
 
 def _mask(s: str) -> str:
-    if not s: return "—"
+    if not s:
+        return "—"
     return s[:4] + "…" + s[-4:] if len(s) > 8 else "•••"
 
 # -----------------------------
