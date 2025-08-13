@@ -69,10 +69,10 @@ def load_index() -> Tuple[BM25Okapi | None, List[Dict[str, Any]]]:
     if not (BM25_PATH.exists() and DOCS_PATH.exists()):
         return None, []
     with open(BM25_PATH, "rb") as f:
-        bm25 = pickle.load(f)
+        bm25_idx = pickle.load(f)
     with open(DOCS_PATH, "rb") as f:
-        docs = pickle.load(f)
-    return bm25, docs
+        docs_list = pickle.load(f)
+    return bm25_idx, docs_list
 
 bm25, docs = load_index()
 
@@ -238,19 +238,29 @@ def run_ingest(full_rebuild: bool = True, clear: bool = False):
 # -----------------------------
 with st.sidebar:
     st.header("Index verwalten")
-    if role == "admin":
-        c1, c2 = st.columns(2)
-        with c1:
-            if st.button("🧱 Rebuild"):
-                run_ingest(full_rebuild=True, clear=False)
-        with c2:
-            if st.button("🧱 Rebuild (CLEAR)"):
-                run_ingest(full_rebuild=True, clear=True)
+    c1, c2 = st.columns(2)
+    with c1:
+        if st.button("🧱 Rebuild"):
+            run_ingest(full_rebuild=True, clear=False)
+    with c2:
+        if st.button("🧱 Rebuild (CLEAR)"):
+            run_ingest(full_rebuild=True, clear=True)
 
-# Hinweis, falls Index fehlt
+# -----------------------------
+# Auto-Rebuild bei fehlendem Index (nur Admin)
+# -----------------------------
 if not (bm25 and docs):
-    st.warning("ℹ️ Kein lokaler Index geladen. Bitte als Admin einen Rebuild ausführen.")
-    st.stop()
+    if role == "admin":
+        st.info("Kein lokaler Index gefunden – starte automatischen Rebuild …")
+        run_ingest(full_rebuild=True, clear=False)
+        # Nach Rebuild erneut prüfen
+        bm25, docs = load_index()
+        if not (bm25 and docs):
+            st.error("Index konnte nicht geladen werden. Prüfe die Rebuild-Logs oben.")
+            st.stop()
+    else:
+        st.warning("Der Index fehlt. Bitte wende dich an einen Admin (Rebuild ausführen).")
+        st.stop()
 
 # -----------------------------
 # Chat
