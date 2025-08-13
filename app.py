@@ -21,58 +21,104 @@ INDEX_DIR = Path("./index"); INDEX_DIR.mkdir(exist_ok=True)
 BM25_FILE = INDEX_DIR / "bm25.pkl"
 DOCS_FILE = INDEX_DIR / "docs.pkl"
 
-# ---------- Qdrant ----------
+# ---------- Helper ----------
 def _normalize_qdrant_url(raw: str | None) -> str | None:
     if not raw:
         return None
+    raw = raw.strip()
     if raw.startswith("http") and ":" not in raw.split("//", 1)[1]:
         return raw.rstrip("/") + ":6333"
     return raw.rstrip("/")
 
-QDRANT_URL = _normalize_qdrant_url(os.getenv("QDRANT_URL", st.secrets.get("QDRANT_URL", "")))
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", st.secrets.get("QDRANT_API_KEY", ""))
-QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", st.secrets.get("QDRANT_COLLECTION", "docs_bge_m3"))
+def _get_secret_env(name: str, default: str = "") -> str:
+    val = os.getenv(name, st.secrets.get(name, default))
+    return (val or "").strip()
+
+def _mask(s: str) -> str:
+    if not s: return "—"
+    return s[:4] + "…" + s[-4:] if len(s) > 8 else "•••"
+
+# ---------- Qdrant ----------
+QDRANT_URL = _normalize_qdrant_url(_get_secret_env("QDRANT_URL"))
+QDRANT_API_KEY = _get_secret_env("QDRANT_API_KEY")
+QDRANT_COLLECTION = _get_secret_env("QDRANT_COLLECTION", "docs_bge_m3")
 qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
 # ---------- Jina Embeddings ----------
-JINA_API_KEY = os.getenv("JINA_API_KEY", st.secrets.get("JINA_API_KEY", ""))
-JINA_MODEL = os.getenv("JINA_MODEL", st.secrets.get("JINA_MODEL", "jina-embeddings-v2-base-de"))
-JINA_URL = os.getenv("JINA_EMBED_URL", "https://api.jina.ai/v1/embeddings")
+JINA_API_KEY = _get_secret_env("JINA_API_KEY")
+JINA_MODEL   = _get_secret_env("JINA_MODEL", "jina-embeddings-v2-base-de")
+JINA_URL     = _get_secret_env("JINA_EMBED_URL") or "https://api.jina.ai/v1/embeddings"
 
 def jina_embed(texts: list[str]) -> list[list[float]]:
     if not JINA_API_KEY:
         raise RuntimeError("JINA_API_KEY fehlt – bitte in Streamlit Secrets setzen.")
     headers = {"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"}
     out: list[list[float]] = []
-    B = 128
+    B = 32  # kleiner für Stabilität
     for i in range(0, len(texts), B):
         payload = {"model": JINA_MODEL, "input": texts[i:i+B]}
-        r = requests.post(JINA_URL, headers=headers, json=payload, timeout=60)
-        if r.status_code >= 400:
-            raise RuntimeError(f"Jina-API Fehler {r.status_code}: {r.text[:200]}")
-        out.extend([d["embedding"] for d in r.json()["data"]])
+        tries = 0
+        while tries < 3:
+            try:
+                r = requests.post(JINA_URL, headers=headers, json=payload, timeout=120)
+                if r.status_code >= 400:
+                    raise RuntimeError(f"Jina-API Fehler {r.status_code}: {r.text[:200]}")
+                out.extend([d["embedding"] for d in r.json()["data"]])
+                break
+            except requests.exceptions.ReadTimeout:
+                tries += 1
+                if tries >= 3:
+                    raise
     return out
 
 # ---------- OpenRouter (LLM) ----------
-OSS_API_BASE = os.getenv("OSS_API_BASE", st.secrets.get("OSS_API_BASE", "https://openrouter.ai/api"))
-OSS_API_KEY  = os.getenv("OSS_API_KEY", st.secrets.get("OSS_API_KEY", ""))
-OSS_MODEL    = os.getenv("OSS_MODEL", st.secrets.get("OSS_MODEL", "openai/gpt-oss-20b:free"))
-
-# ---------- Rollen / Tokens ----------
-def _split_tokens(value: str) -> list[str]:
-    return [t.strip() for t in value.split(",") if t.strip()]
-
-ADMIN_SET = set(_split_tokens(os.getenv("ADMIN_TOKENS", st.secrets.get("ADMIN_TOKENS", ""))))
-VIEW_SET  = set(_split_tokens(os.getenv("VIEW_TOKENS", st.secrets.get("VIEW_TOKENS", ""))))
-ALL_SET   = set(_split_tokens(os.getenv("AUTH_TOKENS", st.secrets.get("AUTH_TOKENS", ""))))
-if ALL_SET and not ADMIN_SET and not VIEW_SET:
-    ADMIN_SET = ALL_SET
+OSS_API_BASE = (_get_secret_env("OSS_API_BASE") or "https://openrouter.ai/api").rstrip("/")
+OSS_API_KEY  = _get_secret_env("OSS_API_KEY")
+OSS_MODEL    = _get_secret_env("OSS_MODEL", "openai/gpt-oss-20b:free")
 
 SYSTEM_PROMPT = (
     "Du bist ein präziser Assistent. Antworte ausschließlich mit Informationen, "
     "die im bereitgestellten KONTEXT enthalten sind. Wenn der Kontext keine Antwort zulässt, "
     "sage eindeutig: 'Dazu habe ich keine Information in meinen Daten.' Erfinde nichts."
 )
+
+def call_llm(context: str, question: str) -> str:
+    if not OSS_API_KEY:
+        return "LLM nicht konfiguriert: OSS_API_KEY fehlt."
+    headers = {
+        "Authorization": f"Bearer {OSS_API_KEY}",
+        "Content-Type": "application/json",
+        # OpenRouter empfiehlt Referer & X-Title:
+        "HTTP-Referer": os.getenv("APP_URL", "https://streamlit.io"),
+        "X-Title": "ErinnerungsBot Steiermark",
+    }
+    payload = {
+        "model": OSS_MODEL,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": f"KONTEXT:\n{context}\n\nFRAGE:\n{question}"},
+        ],
+        "temperature": 0.2,
+    }
+    try:
+        r = requests.post(OSS_API_BASE + "/v1/chat/completions", headers=headers, json=payload, timeout=60)
+        if r.status_code == 401:
+            return "LLM-Fehler (401 Unauthorized): Prüfe OSS_API_KEY in den Secrets."
+        if r.status_code >= 400:
+            return f"LLM-Fehler ({r.status_code}): {r.text[:500]}"
+        return r.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        return f"LLM-Fehler: {e}"
+
+# ---------- Rollen / Tokens ----------
+def _split_tokens(value: str) -> list[str]:
+    return [t.strip() for t in (value or "").split(",") if t.strip()]
+
+ADMIN_SET = set(_split_tokens(_get_secret_env("ADMIN_TOKENS")))
+VIEW_SET  = set(_split_tokens(_get_secret_env("VIEW_TOKENS")))
+ALL_SET   = set(_split_tokens(_get_secret_env("AUTH_TOKENS")))
+if ALL_SET and not ADMIN_SET and not VIEW_SET:
+    ADMIN_SET = ALL_SET
 
 def auth_gate() -> None:
     if not (ADMIN_SET or VIEW_SET):
@@ -104,7 +150,7 @@ def auth_gate() -> None:
 
 auth_gate()
 
-# ---------- Datatypes ----------
+# ---------- Datatypes & BM25 ----------
 @dataclass
 class DocChunk:
     text: str
@@ -112,7 +158,6 @@ class DocChunk:
     chunk_id: int
     meta: Dict[str, Any]
 
-# ---------- BM25 laden ----------
 def load_bm25() -> Tuple[BM25Okapi | None, List]:
     if not (BM25_FILE.exists() and DOCS_FILE.exists()):
         return None, []
@@ -128,7 +173,6 @@ bm25, docs = load_bm25()
 def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
     results: List[Tuple[str, float, Dict]] = []
 
-    # robust lesen (dict oder Objekt)
     def read_chunk(x):
         if isinstance(x, dict):
             return x.get("text", ""), x.get("source", ""), int(x.get("chunk_id", 0))
@@ -146,7 +190,7 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
             results.append((text, float(scores[i]),
                             {"source": source, "chunk_id": cid, "kind": "bm25"}))
 
-    # Vektor-Suche
+    # Vektor-Suche (Qdrant + Jina-Query-Embed)
     try:
         qv = jina_embed([query])[0]
         hits = qdr.search(collection_name=QDRANT_COLLECTION, query_vector=qv, limit=top_k, with_payload=True)
@@ -159,43 +203,18 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
 
     return results[:top_k] if results else []
 
-# ---------- LLM ----------
-def call_llm(context: str, question: str) -> str:
-    if not OSS_API_BASE or not OSS_API_KEY or not OSS_MODEL:
-        return "LLM nicht konfiguriert."
-    headers = {
-        "Authorization": f"Bearer {OSS_API_KEY}",
-        "Content-Type": "application/json",
-        "HTTP-Referer": os.getenv("APP_URL", "https://streamlit.io"),
-        "X-Title": "ErinnerungsBot Steiermark",
-    }
-    payload = {"model": OSS_MODEL, "messages": [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": f"KONTEXT:\n{context}\n\nFRAGE:\n{question}"},
-    ], "temperature": 0.2}
-    try:
-        r = requests.post(OSS_API_BASE.rstrip("/") + "/v1/chat/completions",
-                          headers=headers, json=payload, timeout=120)
-        if r.status_code >= 400:
-            return f"LLM-Fehler ({r.status_code}): {r.text[:500]}"
-        return r.json()["choices"][0]["message"]["content"]
-    except Exception as e:
-        return f"LLM-Fehler: {e}"
-
 # ---------- Admin: In-App Rebuild ----------
 def run_ingest(incremental: bool = False, clear: bool = False):
     env = os.environ.copy()
     for key, value in st.secrets.items():
         env[str(key)] = str(value)
 
-    def _mask(s: str) -> str:
-        if not s: return "—"
-        return s[:4] + "…" + s[-4:] if len(s) > 8 else "•••"
     st.caption(
         f"Übergabewerte: JINA_API_KEY={_mask(env.get('JINA_API_KEY',''))} · "
         f"QDRANT_API_KEY={_mask(env.get('QDRANT_API_KEY',''))} · "
         f"QDRANT_URL={env.get('QDRANT_URL','—')} · "
-        f"JINA_MODEL={env.get('JINA_MODEL','—')}"
+        f"JINA_MODEL={env.get('JINA_MODEL','—')} · "
+        f"OSS_API_KEY={_mask(env.get('OSS_API_KEY',''))}"
     )
 
     args = [sys.executable, "ingest.py"]
@@ -242,9 +261,35 @@ with st.sidebar:
             run_ingest(incremental=False, clear=False)
         if st.button("🔄 Inkrementelles Update"):
             run_ingest(incremental=True, clear=False)
+
+        st.divider()
+        # 🧪 LLM Direkt-Test (prüft OSS_API_KEY + Modell)
+        if st.button("🧪 LLM-Test (OpenRouter)"):
+            if not OSS_API_KEY:
+                st.error("OSS_API_KEY fehlt in den Secrets.")
+            else:
+                try:
+                    test = requests.post(
+                        OSS_API_BASE + "/v1/chat/completions",
+                        headers={
+                            "Authorization": f"Bearer {OSS_API_KEY}",
+                            "Content-Type": "application/json",
+                            "HTTP-Referer": os.getenv("APP_URL", "https://streamlit.io"),
+                            "X-Title": "ErinnerungsBot Steiermark",
+                        },
+                        json={"model": OSS_MODEL, "messages":[{"role":"user","content":"Antworte mit 'OK'."}], "temperature":0},
+                        timeout=30
+                    )
+                    if test.status_code == 200:
+                        st.success("OpenRouter OK ✅")
+                    else:
+                        st.error(f"OpenRouter Fehler {test.status_code}: {test.text[:300]}")
+                except Exception as e:
+                    st.error(f"OpenRouter-Request fehlgeschlagen: {e}")
     else:
         st.info("Nur Ansicht: Re-Index ist Administratoren vorbehalten.")
 
+# Chat
 question = st.text_input("Frage eingeben")
 if st.button("Senden") and question:
     with st.spinner("Suche relevante Textstellen …"):
