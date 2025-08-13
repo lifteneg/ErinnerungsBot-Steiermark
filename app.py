@@ -22,8 +22,8 @@ TOP_K = 10              # maximale Trefferzahl für Hybrid-Suche
 LOG_TAIL = 1000         # wie viele Logzeilen im UI angezeigt werden
 MAX_CONTEXT_CHARS = 6000  # LLM-Kontext begrenzen (sicher für viele Modelle)
 
-PRIMARY_MODEL   = "openai/gpt-oss-20b:free"
-FALLBACK_MODEL  = "deepseek/deepseek-chat-v3-0324:free"
+PRIMARY_MODEL   = "deepseek/deepseek-r1-0528:free"
+FALLBACK_MODEL  = "openai/gpt-oss-20b:free"
 
 # -----------------------------
 # UI-Setup
