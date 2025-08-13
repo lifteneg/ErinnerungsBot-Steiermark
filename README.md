@@ -52,8 +52,8 @@ pip install -r requirements.txt
 ### 3️⃣ Streamlit-Secrets setzen  
 Im Streamlit Cloud Dashboard oder in `.streamlit/secrets.toml`:
 ```toml
-ADMIN_TOKENS = "Marlene"
-VIEW_TOKENS  = "Schule"
+ADMIN_TOKENS = "Passwort Administrator*in"
+VIEW_TOKENS  = "Passwort Schüler*innen"
 
 OSS_API_BASE = "https://openrouter.ai/api"
 OSS_API_KEY  = "<dein_openrouter_key>"
