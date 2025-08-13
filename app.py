@@ -1,4 +1,4 @@
-# app.py – ErinnerungsBot Steiermark
+# app.py – ErinnerungsBot Steiermark (Streamlit + BM25 + Qdrant/Jina + OpenRouter)
 from __future__ import annotations
 
 import os
@@ -22,47 +22,36 @@ st.title("💬 ErinnerungsBot Steiermark")
 st.caption("Antwortet strikt nur aus den Dokumenten im Repository-Ordner `data/`.")
 
 # -----------------------------
-# Helpers (Secrets/Env & Maskierung)
+# Helpers
 # -----------------------------
 def _get_secret_env(name: str, default: str = "") -> str:
     val = os.getenv(name, st.secrets.get(name, default))
     return (val or "").strip()
 
 def _mask(s: str) -> str:
-    if not s:
-        return "—"
+    if not s: return "—"
     return s[:4] + "…" + s[-4:] if len(s) > 8 else "•••"
 
-def _normalize_qdrant_url(raw: str | None) -> str:
-    if not raw:
-        return ""
-    raw = raw.strip().rstrip("/")
-    # Falls Port fehlt (Cloud-HTTP), NICHT automatisch :6333 anhängen – Cloud-URL ist bereits vollständig
-    return raw
-
 # -----------------------------
-# Secrets / Konfig laden
+# Secrets / Konfig
 # -----------------------------
 ADMIN_TOKENS = _get_secret_env("ADMIN_TOKENS")   # z.B. "Marlene"
 VIEW_TOKENS  = _get_secret_env("VIEW_TOKENS")    # z.B. "Schule"
 
-# OpenRouter (LLM)
 OSS_API_BASE = _get_secret_env("OSS_API_BASE", "https://openrouter.ai/api").rstrip("/")
 OSS_API_KEY  = _get_secret_env("OSS_API_KEY")
 OSS_MODEL    = _get_secret_env("OSS_MODEL", "openai/gpt-oss-20b:free")
 
-# Qdrant
-QDRANT_URL        = _normalize_qdrant_url(_get_secret_env("QDRANT_URL"))
+QDRANT_URL        = _get_secret_env("QDRANT_URL")
 QDRANT_API_KEY    = _get_secret_env("QDRANT_API_KEY")
 QDRANT_COLLECTION = _get_secret_env("QDRANT_COLLECTION", "docs_bge_m3")
 
-# Jina (Embeddings)
 JINA_API_KEY = _get_secret_env("JINA_API_KEY")
 JINA_MODEL   = _get_secret_env("JINA_MODEL", "jina-embeddings-v2-base-de")
 JINA_URL     = "https://api.jina.ai/v1/embeddings"
 
 # -----------------------------
-# Auth (einfach: Rolle wählen + Token prüfen)
+# Auth
 # -----------------------------
 role = st.sidebar.selectbox("Rolle wählen", ["viewer", "admin"])
 token = st.sidebar.text_input("Access Token", type="password", placeholder="Token eingeben")
@@ -71,7 +60,7 @@ if (role == "admin" and ADMIN_TOKENS and token != ADMIN_TOKENS) or (role == "vie
     st.stop()
 
 # -----------------------------
-# Index-Dateien prüfen & laden
+# Index laden (falls vorhanden)
 # -----------------------------
 INDEX_DIR = Path("index")
 BM25_PATH = INDEX_DIR / "bm25.pkl"
@@ -89,7 +78,7 @@ def load_index() -> Tuple[BM25Okapi | None, List[Dict[str, Any]]]:
 bm25, docs = load_index()
 
 # -----------------------------
-# Qdrant-Client (nur wenn URL & Key da sind)
+# Qdrant-Client
 # -----------------------------
 qdr = None
 if QDRANT_URL and QDRANT_API_KEY:
@@ -99,7 +88,7 @@ if QDRANT_URL and QDRANT_API_KEY:
         st.warning(f"Qdrant-Client konnte nicht initialisiert werden: {e}")
 
 # -----------------------------
-# Embeddings (Jina) – Query-Embeddings
+# Jina Embeddings für Query
 # -----------------------------
 def jina_embed(texts: List[str]) -> List[List[float]]:
     if not JINA_API_KEY:
@@ -124,7 +113,7 @@ def jina_embed(texts: List[str]) -> List[List[float]]:
     return out
 
 # -----------------------------
-# Hybrid-Suche (BM25 + Vektor) – ohne harte Score-Grenzen
+# Hybrid-Suche (BM25 + Qdrant) – ohne harte Schwelle
 # -----------------------------
 def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict[str, Any]]]:
     results: List[Tuple[str, float, Dict[str, Any]]] = []
@@ -133,7 +122,7 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict[str
     if bm25 and docs:
         tq = query.lower().split()
         scores = bm25.get_scores(tq)
-        top_idx = np.argsort(scores)[-max(top_k, 8):][::-1]  # etwas breiter holen
+        top_idx = np.argsort(scores)[-max(top_k, 8):][::-1]
         for i in top_idx:
             d = docs[i]
             results.append((
@@ -142,7 +131,7 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict[str
                 {"source": d.get("source", ""), "kind": "bm25"}
             ))
 
-    # Qdrant (optional, falls konfiguriert)
+    # Qdrant
     if qdr is not None:
         try:
             qv = jina_embed([query])[0]
@@ -157,7 +146,7 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict[str
         except Exception as e:
             st.warning(f"Vektor-Suche nicht möglich: {e}")
 
-    # Deduplizieren (nach Text) & nach Score sortieren
+    # Deduplizieren nach Text & sortieren
     seen = set()
     unique: List[Tuple[str, float, Dict[str, Any]]] = []
     for text, score, meta in sorted(results, key=lambda x: x[1], reverse=True):
@@ -173,7 +162,7 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict[str
     return unique
 
 # -----------------------------
-# LLM-Aufruf (OpenRouter)
+# LLM (OpenRouter)
 # -----------------------------
 SYSTEM_PROMPT = (
     "Du bist ein präziser Assistent. Antworte ausschließlich mit Informationen, "
@@ -188,7 +177,6 @@ def call_llm(question: str, context: str) -> str:
     headers = {
         "Authorization": f"Bearer {OSS_API_KEY}",
         "Content-Type": "application/json",
-        # OpenRouter empfiehlt zusätzlich:
         "HTTP-Referer": os.getenv("APP_URL", "https://streamlit.io"),
         "X-Title": "ErinnerungsBot Steiermark",
     }
@@ -207,11 +195,10 @@ def call_llm(question: str, context: str) -> str:
         return f"LLM-Fehler: {e}"
 
 # -----------------------------
-# Admin: In-App Rebuild (ingest.py aufrufen, Logs live anzeigen)
+# In-App Rebuild (ingest.py aufrufen)
 # -----------------------------
 def run_ingest(full_rebuild: bool = True, clear: bool = False):
     env = os.environ.copy()
-    # Secrets in Subprozess übergeben
     for k, v in st.secrets.items():
         env[str(k)] = str(v)
 
@@ -240,7 +227,6 @@ def run_ingest(full_rebuild: bool = True, clear: bool = False):
         ret = proc.wait()
         if ret == 0:
             st.success("Ingest abgeschlossen ✅")
-            # Index nachladen
             global bm25, docs
             bm25, docs = load_index()
         else:
@@ -249,27 +235,26 @@ def run_ingest(full_rebuild: bool = True, clear: bool = False):
         st.error(f"Ingest-Aufruf fehlgeschlagen: {e}")
 
 # -----------------------------
-# Sidebar: Admin-Bereich
+# Sidebar: Admin-Aktionen
 # -----------------------------
 with st.sidebar:
     st.header("Index verwalten")
     if role == "admin":
-        col_a, col_b = st.columns(2)
-        with col_a:
+        c1, c2 = st.columns(2)
+        with c1:
             if st.button("🧱 Rebuild"):
                 run_ingest(full_rebuild=True, clear=False)
-        with col_b:
+        with c2:
             if st.button("🧱 Rebuild (CLEAR)"):
                 run_ingest(full_rebuild=True, clear=True)
-        st.caption("Tipps: 'Rebuild (CLEAR)' setzt die Collection zurück (falls dein Qdrant-Key das darf).")
 
-# Hinweis/Abbruch, falls Index noch fehlt
+# Hinweis, falls Index fehlt
 if not (bm25 and docs):
     st.warning("ℹ️ Kein lokaler Index geladen. Bitte als Admin einen Rebuild ausführen.")
     st.stop()
 
 # -----------------------------
-# Chat-Eingabe & Antwort
+# Chat
 # -----------------------------
 question = st.text_input("Frage eingeben")
 if st.button("Senden") and question:
