@@ -1,151 +1,133 @@
-# ingest.py – Index-Aufbau für ErinnerungsBot Steiermark
-from __future__ import annotations
-import os, sys, re, pickle, argparse, time
-from pathlib import Path
-from typing import List, Dict
+import os
+import argparse
+import pickle
+import glob
 import requests
+from rank_bm25 import BM25Okapi
 from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
-from rank_bm25 import BM25Okapi
 from PyPDF2 import PdfReader
 
-# ---------- CLI-Parameter ----------
-parser = argparse.ArgumentParser()
-parser.add_argument("--full-rebuild", action="store_true")
-parser.add_argument("--clear", action="store_true")
-parser.add_argument("--jina_api_key", type=str, default=os.getenv("JINA_API_KEY"))
-parser.add_argument("--jina_model", type=str, default=os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de"))
-parser.add_argument("--qdrant_url", type=str, default=os.getenv("QDRANT_URL"))
-parser.add_argument("--qdrant_api_key", type=str, default=os.getenv("QDRANT_API_KEY"))
-parser.add_argument("--qdrant_collection", type=str, default=os.getenv("QDRANT_COLLECTION", "docs_bge_m3"))
-args = parser.parse_args()
+# -----------------------------
+# Secrets / Env laden
+# -----------------------------
+QDRANT_URL = os.getenv("QDRANT_URL")
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "docs_bge_m3")
 
-JINA_API_KEY = (args.jina_api_key or "").strip()
-JINA_MODEL   = (args.jina_model or "").strip()
-QDRANT_URL   = (args.qdrant_url or "").strip()
-QDRANT_API_KEY = (args.qdrant_api_key or "").strip()
-QDRANT_COLLECTION = (args.qdrant_collection or "docs_bge_m3").strip()
+JINA_API_KEY = os.getenv("JINA_API_KEY")
+JINA_MODEL = os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de")
 
-if not JINA_API_KEY:
-    raise RuntimeError("JINA_API_KEY nicht gesetzt.")
-if not QDRANT_URL or not QDRANT_API_KEY:
-    raise RuntimeError("Qdrant-URL oder API-Key fehlen.")
+# -----------------------------
+# Embedding-Funktion
+# -----------------------------
+def jina_embed(texts):
+    if not JINA_API_KEY:
+        raise RuntimeError("JINA_API_KEY nicht gesetzt.")
+    url = "https://api.jina.ai/v1/embeddings"
+    headers = {"Authorization": f"Bearer {JINA_API_KEY}"}
+    payload = {"model": JINA_MODEL, "input": texts}
+    r = requests.post(url, headers=headers, json=payload, timeout=60)
+    r.raise_for_status()
+    return [d["embedding"] for d in r.json()["data"]]
 
-DATA_DIR = Path("./data")
-INDEX_DIR = Path("./index"); INDEX_DIR.mkdir(exist_ok=True)
-BM25_FILE = INDEX_DIR / "bm25.pkl"
-DOCS_FILE = INDEX_DIR / "docs.pkl"
-
-# ---------- Jina Embeddings ----------
-JINA_URL = "https://api.jina.ai/v1/embeddings"
-
-def jina_embed(texts: list[str]) -> list[list[float]]:
-    headers = {"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"}
-    out: list[list[float]] = []
-    B = 32
-    for i in range(0, len(texts), B):
-        payload = {"model": JINA_MODEL, "input": texts[i:i+B]}
-        tries = 0
-        while tries < 3:
-            try:
-                r = requests.post(JINA_URL, headers=headers, json=payload, timeout=120)
-                if r.status_code >= 400:
-                    raise RuntimeError(f"Jina-API Fehler {r.status_code}: {r.text[:200]}")
-                out.extend([d["embedding"] for d in r.json()["data"]])
-                break
-            except requests.exceptions.ReadTimeout:
-                tries += 1
-                if tries >= 3:
-                    raise
-    return out
-
-# ---------- Dateien lesen ----------
-def read_text_file(path: Path) -> str:
-    try:
-        return path.read_text(encoding="utf-8")
-    except UnicodeDecodeError:
-        return path.read_text(encoding="latin-1", errors="ignore")
-
-def read_pdf_file(path: Path) -> str:
+# -----------------------------
+# PDF-Text extrahieren
+# -----------------------------
+def load_pdf(path):
     text = ""
     with open(path, "rb") as f:
         reader = PdfReader(f)
         for page in reader.pages:
-            text += page.extract_text() or ""
-    return text
+            txt = page.extract_text()
+            if txt:
+                text += txt + "\n"
+    return text.strip()
 
-def load_documents() -> List[Dict]:
+# -----------------------------
+# Dokumente laden
+# -----------------------------
+def load_documents():
     docs = []
-    for file in DATA_DIR.glob("**/*"):
-        if file.suffix.lower() in [".txt", ".md"]:
-            text = read_text_file(file)
-        elif file.suffix.lower() == ".pdf":
-            text = read_pdf_file(file)
+    for file in glob.glob("data/**/*", recursive=True):
+        if file.lower().endswith(".pdf"):
+            content = load_pdf(file)
+        elif file.lower().endswith(".txt") or file.lower().endswith(".md"):
+            with open(file, "r", encoding="utf-8", errors="ignore") as f:
+                content = f.read()
         else:
             continue
-        text = re.sub(r"\s+", " ", text).strip()
-        if not text:
-            continue
-        chunk_size = 900
-        overlap = 150
-        for i in range(0, len(text), chunk_size - overlap):
-            chunk = text[i:i+chunk_size]
-            docs.append({"text": chunk, "source": str(file), "chunk_id": len(docs)})
+        if content.strip():
+            docs.append({"text": content.strip(), "source": os.path.basename(file)})
     return docs
 
-# ---------- BM25 ----------
-def build_bm25(docs: List[Dict]):
-    bm25 = BM25Okapi([d["text"].lower().split() for d in docs])
-    with open(BM25_FILE, "wb") as f:
-        pickle.dump(bm25, f)
-    with open(DOCS_FILE, "wb") as f:
-        pickle.dump(docs, f)
+# -----------------------------
+# Chunking
+# -----------------------------
+def chunk_text(text, chunk_size=900, overlap=150):
+    chunks = []
+    start = 0
+    while start < len(text):
+        end = min(len(text), start + chunk_size)
+        chunk = text[start:end]
+        chunks.append(chunk)
+        start += chunk_size - overlap
+    return chunks
 
-# ---------- Qdrant ----------
-def ensure_collection(qdr: QdrantClient, dim: int, clear: bool = False):
+# -----------------------------
+# Qdrant Collection sicherstellen
+# -----------------------------
+def ensure_collection(qdr, dim, clear=False):
     try:
-        exists = qdr.collection_exists(QDRANT_COLLECTION)
-    except Exception:
-        exists = False
-    if exists and clear:
-        try:
+        if clear:
             qdr.delete_collection(QDRANT_COLLECTION)
-        except Exception:
-            pass
-        exists = False
-    if not exists:
-        try:
-            qdr.create_collection(
-                collection_name=QDRANT_COLLECTION,
-                vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
-            )
-        except Exception as e:
-            raise RuntimeError(
-                f"Qdrant: Collection existiert nicht und dein API-Key darf sie nicht anlegen: {e}\n"
-                f"→ Bitte im Qdrant-Dashboard Collection '{QDRANT_COLLECTION}' anlegen "
-                f"(Vector size={dim}, Distance=Cosine) oder Key mit Create-Rechten nutzen."
-            )
+        qdr.create_collection(
+            collection_name=QDRANT_COLLECTION,
+            vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE)
+        )
+    except Exception as e:
+        print(f"⚠️ Qdrant-Collection konnte nicht erstellt werden: {e}")
 
-def build_qdrant(docs: List[Dict], clear: bool = False):
-    qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
-    dim = 768
-    ensure_collection(qdr, dim, clear=clear)
-    vectors = jina_embed([d["text"] for d in docs])
-    points = []
-    for i, (doc, vec) in enumerate(zip(docs, vectors)):
-        points.append(qmodels.PointStruct(id=i, vector=vec, payload=doc))
-    qdr.upsert(collection_name=QDRANT_COLLECTION, points=points)
-
-# ---------- Main ----------
+# -----------------------------
+# Main Indexing
+# -----------------------------
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--full-rebuild", action="store_true")
+    parser.add_argument("--clear", action="store_true")
+    args = parser.parse_args()
+
     print("📂 Sammle & chunke Dokumente …")
-    docs = load_documents()
-    print(f"Dokument-Chunks: {len(docs)}")
+    raw_docs = load_documents()
+    chunks = []
+    for d in raw_docs:
+        for c in chunk_text(d["text"]):
+            chunks.append({"text": c, "source": d["source"]})
+
+    print(f"Dokument-Chunks: {len(chunks)}")
+
     print("🔄 Erstelle BM25 …")
-    build_bm25(docs)
+    bm25 = BM25Okapi([c["text"].lower().split() for c in chunks])
+    os.makedirs("index", exist_ok=True)
+    with open("index/bm25.pkl", "wb") as f:
+        pickle.dump(bm25, f)
+    with open("index/docs.pkl", "wb") as f:
+        pickle.dump(chunks, f)
+
     print("🧠 Erstelle/aktualisiere Qdrant …")
-    build_qdrant(docs, clear=args.clear)
-    print("✅ Fertig.")
+    qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
+    vectors = jina_embed([c["text"] for c in chunks])
+    ensure_collection(qdr, dim=len(vectors[0]), clear=args.clear)
+
+    points = []
+    for idx, (vec, doc) in enumerate(zip(vectors, chunks)):
+        points.append(qmodels.PointStruct(id=idx, vector=vec, payload=doc))
+
+    qdr.upsert(
+        collection_name=QDRANT_COLLECTION,
+        points=points
+    )
+    print("✅ Ingest abgeschlossen.")
 
 if __name__ == "__main__":
     main()
