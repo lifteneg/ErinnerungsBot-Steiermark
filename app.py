@@ -19,7 +19,6 @@ from rank_bm25 import BM25Okapi
 # -----------------------------
 st.set_page_config(page_title="💬 ErinnerungsBot Steiermark", page_icon="💬", layout="wide")
 st.title("💬 ErinnerungsBot Steiermark")
-st.caption("Antwortet strikt nur aus den Dokumenten im Repository-Ordner `data/`.")
 
 # -----------------------------
 # Helpers
