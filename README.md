@@ -23,13 +23,13 @@ Ein Streamlit-Chatbot, der **nur** auf deine eigenen Dokumente aus dem Ordner `d
 
 ## 📂 Projektstruktur
 ```
-├── app.py          # Streamlit-App (UI, Auth, Suche, LLM-Aufruf)
-├── ingest.py       # CLI-Tool zum Erstellen/Aktualisieren des Indexes
-├── data/           # Deine eigenen Dokumente (.txt, .md)
-├── index/          # Generierter BM25-Index und ingest_state.json
+├── app.py            # Streamlit-App (UI, Auth, Suche, LLM-Aufruf)
+├── ingest.py         # CLI-Tool zum Erstellen/Aktualisieren des Indexes
+├── data/             # Deine eigenen Dokumente (.txt, .md, .pdf)
+├── index/            # Generierter BM25-Index und ingest_state.json
 ├── requirements.txt
-└── README.md
-└── README_Schüler.md
+└── README.md         # Wichtige Hinweise für Administrator*innen
+└── README_Schüler.md # Anleitung für Schüler*innen
 ```
 
 ---
