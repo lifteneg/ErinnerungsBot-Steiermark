@@ -28,7 +28,7 @@ FALLBACK_MODEL  = "openai/gpt-oss-20b:free"
 # -----------------------------
 # UI-Setup
 # -----------------------------
-st.set_page_config(page_title="💬 ErinnerungsBot Steiermark", page_icon="💬", layout="wide")
+st.set_page_config(page_title="💬 ErinnerungsBot Steiermark",  layout="wide")
 st.title("💬 ErinnerungsBot Steiermark")
 
 # -----------------------------
