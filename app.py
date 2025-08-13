@@ -69,10 +69,10 @@ def load_index() -> Tuple[BM25Okapi | None, List[Dict[str, Any]]]:
     if not (BM25_PATH.exists() and DOCS_PATH.exists()):
         return None, []
     with open(BM25_PATH, "rb") as f:
-        bm25_idx = pickle.load(f)
+        bm25 = pickle.load(f)
     with open(DOCS_PATH, "rb") as f:
-        docs_list = pickle.load(f)
-    return bm25_idx, docs_list
+        docs = pickle.load(f)
+    return bm25, docs
 
 bm25, docs = load_index()
 
@@ -194,7 +194,7 @@ def call_llm(question: str, context: str) -> str:
         return f"LLM-Fehler: {e}"
 
 # -----------------------------
-# In-App Rebuild (ingest.py aufrufen)
+# In-App Rebuild (ingest.py aufrufen) – mit Live-Logs & Reload
 # -----------------------------
 def run_ingest(full_rebuild: bool = True, clear: bool = False):
     env = os.environ.copy()
@@ -226,6 +226,7 @@ def run_ingest(full_rebuild: bool = True, clear: bool = False):
         ret = proc.wait()
         if ret == 0:
             st.success("Ingest abgeschlossen ✅")
+            # Index nachladen
             global bm25, docs
             bm25, docs = load_index()
         else:
@@ -234,33 +235,33 @@ def run_ingest(full_rebuild: bool = True, clear: bool = False):
         st.error(f"Ingest-Aufruf fehlgeschlagen: {e}")
 
 # -----------------------------
+# Auto-Bootstrap: Wenn kein Index da ist → (nur für Admin) sofort Rebuild starten
+# -----------------------------
+if not (bm25 and docs):
+    if role == "admin":
+        st.info("📦 Kein lokaler Index gefunden – starte automatischen Rebuild …")
+        run_ingest(full_rebuild=True, clear=False)
+        bm25, docs = load_index()
+        if not (bm25 and docs):
+            st.error("Index konnte nicht aufgebaut werden. Bitte Logs oben prüfen.")
+            st.stop()
+    else:
+        st.warning("ℹ️ Kein lokaler Index vorhanden. Bitte einen Admin um einen Rebuild.")
+        st.stop()
+
+# -----------------------------
 # Sidebar: Admin-Aktionen
 # -----------------------------
 with st.sidebar:
     st.header("Index verwalten")
-    c1, c2 = st.columns(2)
-    with c1:
-        if st.button("🧱 Rebuild"):
-            run_ingest(full_rebuild=True, clear=False)
-    with c2:
-        if st.button("🧱 Rebuild (CLEAR)"):
-            run_ingest(full_rebuild=True, clear=True)
-
-# -----------------------------
-# Auto-Rebuild bei fehlendem Index (nur Admin)
-# -----------------------------
-if not (bm25 and docs):
     if role == "admin":
-        st.info("Kein lokaler Index gefunden – starte automatischen Rebuild …")
-        run_ingest(full_rebuild=True, clear=False)
-        # Nach Rebuild erneut prüfen
-        bm25, docs = load_index()
-        if not (bm25 and docs):
-            st.error("Index konnte nicht geladen werden. Prüfe die Rebuild-Logs oben.")
-            st.stop()
-    else:
-        st.warning("Der Index fehlt. Bitte wende dich an einen Admin (Rebuild ausführen).")
-        st.stop()
+        c1, c2 = st.columns(2)
+        with c1:
+            if st.button("🧱 Rebuild"):
+                run_ingest(full_rebuild=True, clear=False)
+        with c2:
+            if st.button("🧱 Rebuild (CLEAR)"):
+                run_ingest(full_rebuild=True, clear=True)
 
 # -----------------------------
 # Chat
