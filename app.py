@@ -28,7 +28,7 @@ FALLBACK_MODEL  = "deepseek/deepseek-chat-v3-0324:free"
 # -----------------------------
 # UI-Setup
 # -----------------------------
-st.set_page_config(page_title="💬 ErinnerungsBot Steiermark", page_icon="💬", layout="wide")
+st.set_page_config(page_title="💬 ErinnerungsBot Steiermark", layout="wide")
 st.title("💬 ErinnerungsBot Steiermark")
 
 # -----------------------------
