@@ -1,5 +1,6 @@
-# ingest.py – stabiler Ingest mit PDF/TXT/MD, Jina-Embeddings (Batch+Retry+Sanitizing),
-# Qdrant-Upsert, BM25-Build und automatischer Collection-Erstellung (falls erlaubt)
+# ingest.py – Ingest mit PDF/TXT/MD, Jina-Embeddings, Qdrant-Upsert, BM25-Build
+# Extrahiert NUR TEI-Links aus <place>...</place> OHNE type="additional"
+# und speichert sie chunk-genau als tei_uris (Liste) im Payload.
 
 from __future__ import annotations
 
@@ -9,13 +10,13 @@ import time
 import pickle
 import argparse
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict
 
 import requests
 from tqdm import tqdm
 from rank_bm25 import BM25Okapi
 
-# PDF: PyMuPDF (fitz) ist robust; fällt zurück auf PyPDF2, falls nötig
+# PDF: PyMuPDF (fitz) ist robust; Fallback auf PyPDF2
 try:
     import fitz  # PyMuPDF
     _PDF_ENGINE = "pymupdf"
@@ -29,7 +30,7 @@ from qdrant_client.http import models as qmodels
 from qdrant_client.http.exceptions import UnexpectedResponse
 
 # -----------------------------
-# Konfiguration aus ENV/Secrets
+# Konfiguration
 # -----------------------------
 QDRANT_URL        = (os.getenv("QDRANT_URL") or "").strip().rstrip("/")
 QDRANT_API_KEY    = (os.getenv("QDRANT_API_KEY") or "").strip()
@@ -46,19 +47,39 @@ DOCS_FILE = INDEX_DIR / "docs.pkl"
 DATA_DIR = Path("data")
 
 # -----------------------------
-# Utilities
+# Helpers
 # -----------------------------
+# Erfasst NUR <place>...</place> ohne type="additional" und holt darin <idno type="URI">...</idno>
+PRIMARY_PLACE_URI_RE = re.compile(
+    r'<place(?![^>]*\btype=["\']additional["\'])[^>]*>\s*?.*?<idno[^>]*\btype=["\']URI["\'][^>]*>(.*?)</idno>.*?</place>',
+    re.IGNORECASE | re.DOTALL
+)
+
+TAG_RE = re.compile(r"<[^>]+>")
+
+def extract_primary_place_uris(text: str) -> List[str]:
+    """Alle URIs aus <place>…</place> OHNE type='additional' extrahieren (Reihenfolge beibehalten)."""
+    if not text:
+        return []
+    uris: List[str] = []
+    seen = set()
+    for m in PRIMARY_PLACE_URI_RE.findall(text):
+        u = (m or "").strip().rstrip(".,;: )]")
+        if u and u not in seen:
+            seen.add(u)
+            uris.append(u)
+    return uris
+
 def sanitize_text(s: str) -> str:
-    """Whitespace normalisieren, Steuerzeichen entfernen."""
     if not s:
         return ""
+    # Markup nicht komplett entfernen (LLM-Kontext kann dennoch Nutzen ziehen),
+    # aber Whitespace stabilisieren und Steuerzeichen raus.
     s = re.sub(r"\s+", " ", s)
-    # Steuerzeichen raus (außer \n lassen wir ohnehin nicht drin)
     s = "".join(ch for ch in s if ord(ch) >= 32)
     return s.strip()
 
 def read_pdf(path: Path) -> str:
-    """PDF-Text robust extrahieren (PyMuPDF bevorzugt, sonst PyPDF2)."""
     try:
         if fitz is not None:
             doc = fitz.open(path)
@@ -83,7 +104,7 @@ def read_pdf(path: Path) -> str:
         return ""
 
 def load_documents() -> List[Dict]:
-    """Sammelt alle .txt, .md, .pdf aus data/ rekursiv."""
+    """Sammelt .txt/.md/.pdf rekursiv und bereitet Rohtexte vor (noch ohne Chunking)."""
     docs: List[Dict] = []
     if not DATA_DIR.exists():
         print(f"[WARN] Datenordner '{DATA_DIR}' existiert nicht.")
@@ -93,24 +114,25 @@ def load_documents() -> List[Dict]:
         if not p.is_file():
             continue
         suf = p.suffix.lower()
-        text = ""
+        raw = ""
         if suf == ".pdf":
-            text = read_pdf(p)
+            raw = read_pdf(p)
         elif suf in (".txt", ".md"):
             try:
-                text = p.read_text(encoding="utf-8", errors="ignore")
+                raw = p.read_text(encoding="utf-8", errors="ignore")
             except Exception:
-                text = p.read_text(encoding="latin-1", errors="ignore")
+                raw = p.read_text(encoding="latin-1", errors="ignore")
         else:
             continue
 
-        text = sanitize_text(text)
-        if text:
-            docs.append({"text": text, "source": str(p)})
+        raw = sanitize_text(raw)
+        if not raw:
+            continue
+
+        docs.append({"text": raw, "source": str(p)})
     return docs
 
 def chunk_text(text: str, chunk_size: int = 700, overlap: int = 100) -> List[str]:
-    """Kleinere Chunks, um Jina-422 zu vermeiden."""
     chunks: List[str] = []
     n = len(text)
     i = 0
@@ -123,20 +145,17 @@ def chunk_text(text: str, chunk_size: int = 700, overlap: int = 100) -> List[str
     return chunks
 
 # -----------------------------
-# Jina Embeddings – robust (Batch, Retry, 422-Split)
+# Jina Embeddings (robust)
 # -----------------------------
 def _jina_embed_batch(inputs: List[str], headers: Dict[str, str], timeout: int = 120) -> List[List[float]]:
-    """Sendet einen Batch an Jina, behandelt Timeout/Fehler. Gibt Embedding-Liste zurück."""
     payload = {"model": JINA_MODEL, "input": inputs}
     r = requests.post(JINA_URL, headers=headers, json=payload, timeout=timeout)
     if r.status_code == 422:
-        # Eingabe problematisch – wir splitten auf Einzelsätze und überspringen fehlerhafte
         vectors: List[List[float]] = []
         for t in inputs:
             try:
                 r1 = requests.post(JINA_URL, headers=headers, json={"model": JINA_MODEL, "input": [t]}, timeout=timeout)
                 if r1.status_code == 422:
-                    # Diesen Text überspringen, ist z.B. zu lang/leer
                     print(f"[WARN] Jina 422 für Eintrag (gekürzt): {t[:120]}… – übersprungen.")
                     continue
                 r1.raise_for_status()
@@ -148,12 +167,10 @@ def _jina_embed_batch(inputs: List[str], headers: Dict[str, str], timeout: int =
     return [d["embedding"] for d in r.json()["data"]]
 
 def jina_embed(texts: List[str], batch_size: int = 32, max_chars: int = 6000, max_retries: int = 3) -> List[List[float]]:
-    """Bereitet Texte vor (sanitize, truncate), schickt sie in Batches an Jina mit Retries."""
     if not JINA_API_KEY:
         raise RuntimeError("JINA_API_KEY nicht gesetzt.")
     headers = {"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"}
 
-    # Preprocess
     cleaned: List[str] = []
     for t in texts:
         tt = sanitize_text(t)
@@ -176,7 +193,6 @@ def jina_embed(texts: List[str], batch_size: int = 32, max_chars: int = 6000, ma
                 tries += 1
                 if tries >= max_retries:
                     print(f"[ERR] Timeout (Batch {i//batch_size+1}), gebe auf.")
-                    # wir geben auf, fahren aber mit nächsten Batches fort
                     break
                 print(f"[WARN] Timeout (Batch {i//batch_size+1}), erneuter Versuch in 3s …")
                 time.sleep(3)
@@ -202,7 +218,7 @@ def save_bm25_and_docs(chunks: List[Dict]):
     print(f"[OK] BM25 gespeichert: {BM25_FILE.name}, Docs: {len(chunks)}")
 
 # -----------------------------
-# Qdrant – Collection sicherstellen
+# Qdrant – Collection
 # -----------------------------
 def ensure_collection(qdr: QdrantClient, dim: int, clear: bool = False):
     exists = False
@@ -222,7 +238,7 @@ def ensure_collection(qdr: QdrantClient, dim: int, clear: bool = False):
             print(f"[OK] Collection '{QDRANT_COLLECTION}' gelöscht (CLEAR).")
         except UnexpectedResponse as e:
             if "403" in str(e):
-                print("[WARN] Delete/CLEAR nicht erlaubt (403). Fahre ohne Clear fort.")
+                print("[WARN] CLEAR nicht erlaubt (403). Fahre ohne Clear fort.")
             else:
                 print(f"[WARN] Delete fehlgeschlagen: {e}. Fahre ohne Clear fort.")
 
@@ -249,21 +265,17 @@ def ensure_collection(qdr: QdrantClient, dim: int, clear: bool = False):
             if current and current != dim:
                 raise RuntimeError(
                     f"Collection '{QDRANT_COLLECTION}' hat dim={current}, benötigt dim={dim}. "
-                    f"Bitte löschen und neu anlegen (oder anderen Namen verwenden)."
+                    f"Bitte löschen & neu anlegen (oder anderen Namen verwenden)."
                 )
         except Exception:
             pass
 
-# -----------------------------
-# Qdrant – Upsert in Batches
-# -----------------------------
 def upsert_points(qdr: QdrantClient, vectors: List[List[float]], chunks: List[Dict], batch_size: int = 1000):
     n = min(len(vectors), len(chunks))
     if n == 0:
         print("[WARN] Keine Punkte zum Upsert (0).")
         return
     print(f"[OK] Upsert {n} Punkte → {QDRANT_COLLECTION}")
-
     for start in tqdm(range(0, n, batch_size), desc="Qdrant Upsert", unit="batch"):
         end = min(n, start + batch_size)
         points = [
@@ -298,8 +310,15 @@ def main():
     for d in raw_docs:
         for ch in chunk_text(d["text"], 700, 100):
             ch = sanitize_text(ch)
-            if ch:
-                chunks.append({"text": ch, "source": d["source"]})
+            if not ch:
+                continue
+            # NUR Links aus <place>…</place> ohne type="additional" im jeweiligen Chunk
+            tei_uris_chunk = extract_primary_place_uris(ch)
+            chunks.append({
+                "text": ch,
+                "source": d["source"],   # optional als Fallback/Debug
+                "tei_uris": tei_uris_chunk,
+            })
     print(f"[OK] Dokument-Chunks: {len(chunks)}")
 
     print("🧮 BM25 bauen & speichern …")
@@ -315,10 +334,14 @@ def main():
     )
 
     print("🧪 Probe-Embedding (Dimension ermitteln) …")
-    probe = jina_embed(["probe"])
-    if not probe or not probe[0]:
-        raise RuntimeError("Konnte keine Probe-Embeddings von Jina erhalten.")
-    dim = len(probe[0])
+    probe = requests.post(
+        JINA_URL,
+        headers={"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"},
+        json={"model": JINA_MODEL, "input": ["probe"]},
+        timeout=60
+    )
+    probe.raise_for_status()
+    dim = len(probe.json()["data"][0]["embedding"])
     print(f"[OK] Embedding-Dimension: {dim}")
 
     print("📦 Collection prüfen/erstellen …")
