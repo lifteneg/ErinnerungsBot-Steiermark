@@ -57,18 +57,28 @@ CHUNK_CHARS   = 900
 CHUNK_OVERLAP = 150
 
 def jina_embed(texts: List[str]) -> List[List[float]]:
-    """Embeddings vom Jina-API holen (ohne Zusatzfelder → 422 vermeiden)."""
+    """Embeddings vom Jina-API holen, mit kleineren Batches und Retry."""
     if not JINA_API_KEY:
         raise RuntimeError("JINA_API_KEY nicht gesetzt.")
     headers = {"Authorization": f"Bearer {JINA_API_KEY}", "Content-Type": "application/json"}
     out: List[List[float]] = []
-    B = 128
+    B = 32  # kleinere Batchgröße gegen Timeout
     for i in range(0, len(texts), B):
         payload = {"model": JINA_MODEL, "input": texts[i:i+B]}
-        r = requests.post(JINA_URL, headers=headers, json=payload, timeout=60)
-        if r.status_code >= 400:
-            raise RuntimeError(f"Jina-API Fehler {r.status_code}: {r.text[:200]}")
-        out.extend([d["embedding"] for d in r.json()["data"]])
+        tries = 0
+        while tries < 3:  # max. 3 Versuche
+            try:
+                r = requests.post(JINA_URL, headers=headers, json=payload, timeout=120)
+                if r.status_code >= 400:
+                    raise RuntimeError(f"Jina-API Fehler {r.status_code}: {r.text[:200]}")
+                out.extend([d["embedding"] for d in r.json()["data"]])
+                break
+            except requests.exceptions.ReadTimeout:
+                tries += 1
+                if tries >= 3:
+                    raise
+                print(f"[WARN] Timeout bei Batch {i//B+1}, neuer Versuch {tries}/3 …")
+                time.sleep(3)
     return out
 
 def chunk_text(text: str) -> List[str]:
