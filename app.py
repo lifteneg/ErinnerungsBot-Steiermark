@@ -1,11 +1,12 @@
 import os
 import pickle
 from pathlib import Path
+import requests
 import streamlit as st
-# … deine restlichen Imports …
+from qdrant_client import QdrantClient
 
 # -----------------------------
-# Index-Dateien prüfen
+# Index-Dateien prüfen & laden
 # -----------------------------
 if not Path("index/bm25.pkl").exists() or not Path("index/docs.pkl").exists():
     st.error("❌ Index nicht gefunden. Bitte als Admin einen In-App Rebuild durchführen oder ingest.py lokal ausführen.")
@@ -32,14 +33,6 @@ QDRANT_COLLECTION = st.secrets.get("QDRANT_COLLECTION", os.getenv("QDRANT_COLLEC
 
 JINA_API_KEY = st.secrets.get("JINA_API_KEY", os.getenv("JINA_API_KEY", ""))
 JINA_MODEL = st.secrets.get("JINA_MODEL", os.getenv("JINA_MODEL", "jina-embeddings-v2-base-de"))
-
-# -----------------------------
-# Lade BM25-Index und Dokumente
-# -----------------------------
-with open("index/bm25.pkl", "rb") as f:
-    bm25 = pickle.load(f)
-with open("index/docs.pkl", "rb") as f:
-    docs = pickle.load(f)
 
 # -----------------------------
 # Qdrant-Setup
