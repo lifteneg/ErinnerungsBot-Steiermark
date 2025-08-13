@@ -1,7 +1,6 @@
 streamlit
-qdrant-client
-rank-bm25
 requests
+rank-bm25
+qdrant-client
 PyPDF2
-openai
-tiktoken
+numpy
