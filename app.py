@@ -1,10 +1,10 @@
 # app.py – ErinnerungsBot Steiermark (RAG: Qdrant + BM25 + Jina-Embeddings + PDF-Support)
 
 from __future__ import annotations
-import os, sys, time, pickle, subprocess
+import os, sys, pickle, subprocess
 from pathlib import Path
 from dataclasses import dataclass
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Any
 
 import numpy as np
 import requests
@@ -104,37 +104,49 @@ def auth_gate() -> None:
 
 auth_gate()
 
-# ---------- Dataclasses & BM25 ----------
+# ---------- Datatypes ----------
 @dataclass
 class DocChunk:
     text: str
     source: str
     chunk_id: int
-    meta: Dict[str, str]
+    meta: Dict[str, Any]
 
-def load_bm25() -> Tuple[BM25Okapi | None, List[DocChunk]]:
-    if BM25_FILE.exists() and DOCS_FILE.exists():
-        with open(BM25_FILE, "rb") as f: bm25 = pickle.load(f)
-        with open(DOCS_FILE, "rb") as f: docs = pickle.load(f)
-        return bm25, docs
-    return None, []
+# ---------- BM25 laden ----------
+def load_bm25() -> Tuple[BM25Okapi | None, List]:
+    if not (BM25_FILE.exists() and DOCS_FILE.exists()):
+        return None, []
+    with open(BM25_FILE, "rb") as f:
+        bm25 = pickle.load(f)
+    with open(DOCS_FILE, "rb") as f:
+        docs_raw = pickle.load(f)
+    return bm25, docs_raw
 
 bm25, docs = load_bm25()
 
 # ---------- Suche ----------
 def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
     results: List[Tuple[str, float, Dict]] = []
+
+    # robust lesen (dict oder Objekt)
+    def read_chunk(x):
+        if isinstance(x, dict):
+            return x.get("text", ""), x.get("source", ""), int(x.get("chunk_id", 0))
+        return getattr(x, "text", ""), getattr(x, "source", ""), int(getattr(x, "chunk_id", 0))
+
     # BM25
     if bm25 and docs:
         tq = query.lower().split()
         scores = bm25.get_scores(tq)
         top_idx = np.argsort(scores)[-top_k:][::-1]
         for i in top_idx:
-            if scores[i] <= 0: continue
-            d: DocChunk = docs[i]
-            results.append((d.text, float(scores[i]),
-                            {"source": d.source, "chunk_id": d.chunk_id, "kind": "bm25"}))
-    # Vektor-Suche über Qdrant
+            if scores[i] <= 0:
+                continue
+            text, source, cid = read_chunk(docs[i])
+            results.append((text, float(scores[i]),
+                            {"source": source, "chunk_id": cid, "kind": "bm25"}))
+
+    # Vektor-Suche
     try:
         qv = jina_embed([query])[0]
         hits = qdr.search(collection_name=QDRANT_COLLECTION, query_vector=qv, limit=top_k, with_payload=True)
@@ -144,6 +156,7 @@ def hybrid_search(query: str, top_k: int = 8) -> List[Tuple[str, float, Dict]]:
                             {"source": p.get("source"), "chunk_id": p.get("chunk_id"), "kind": "vector"}))
     except Exception as e:
         st.warning(f"Vektor-Suche nicht möglich: {e}")
+
     return results[:top_k] if results else []
 
 # ---------- LLM ----------
@@ -172,19 +185,9 @@ def call_llm(context: str, question: str) -> str:
 # ---------- Admin: In-App Rebuild ----------
 def run_ingest(incremental: bool = False, clear: bool = False):
     env = os.environ.copy()
-
-    # Alle Secrets explizit ins env übernehmen (wichtiger Fix)
     for key, value in st.secrets.items():
         env[str(key)] = str(value)
 
-    # Zusätzlich sicherstellen (überschreibt ggf. mit expliziten Werten)
-    env["QDRANT_URL"] = QDRANT_URL or env.get("QDRANT_URL", "")
-    env["QDRANT_API_KEY"] = QDRANT_API_KEY or env.get("QDRANT_API_KEY", "")
-    env["QDRANT_COLLECTION"] = QDRANT_COLLECTION or env.get("QDRANT_COLLECTION", "docs_bge_m3")
-    env["JINA_API_KEY"] = JINA_API_KEY or env.get("JINA_API_KEY", "")
-    env["JINA_MODEL"] = JINA_MODEL or env.get("JINA_MODEL", "jina-embeddings-v2-base-de")
-
-    # Diagnose-Log (maskiert)
     def _mask(s: str) -> str:
         if not s: return "—"
         return s[:4] + "…" + s[-4:] if len(s) > 8 else "•••"
@@ -195,12 +198,9 @@ def run_ingest(incremental: bool = False, clear: bool = False):
         f"JINA_MODEL={env.get('JINA_MODEL','—')}"
     )
 
-    st.write("### 🧱 In-App Rebuild (Logs)")
     args = [sys.executable, "ingest.py"]
     if not incremental: args += ["--full-rebuild"]
     if clear: args += ["--clear"]
-
-    # Fallback: Keys zusätzlich als CLI-Args übergeben
     args += [
         f"--jina_api_key={env.get('JINA_API_KEY','')}",
         f"--jina_model={env.get('JINA_MODEL','jina-embeddings-v2-base-de')}",
@@ -209,17 +209,11 @@ def run_ingest(incremental: bool = False, clear: bool = False):
         f"--qdrant_collection={env.get('QDRANT_COLLECTION','docs_bge_m3')}",
     ]
 
-    log_box = st.empty()
-    lines = []
+    log_box = st.empty(); lines = []
     try:
         proc = subprocess.Popen(
-            args,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            bufsize=1,
-            universal_newlines=True,
-            env=env,
-            cwd=str(Path(__file__).parent)
+            args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            bufsize=1, universal_newlines=True, env=env, cwd=str(Path(__file__).parent)
         )
         for line in proc.stdout:
             lines.append(line.rstrip("\n"))
@@ -251,7 +245,6 @@ with st.sidebar:
     else:
         st.info("Nur Ansicht: Re-Index ist Administratoren vorbehalten.")
 
-# Chat
 question = st.text_input("Frage eingeben")
 if st.button("Senden") and question:
     with st.spinner("Suche relevante Textstellen …"):
@@ -263,3 +256,11 @@ if st.button("Senden") and question:
         answer = call_llm(context, question)
         st.subheader("Antwort")
         st.write(answer)
+        with st.expander("🔎 Verwendete Ausschnitte"):
+            for text, score, meta in hits:
+                src = Path(str(meta.get("source", "—"))).name
+                cid = meta.get("chunk_id", "—")
+                kind = meta.get("kind", "—")
+                st.markdown(f"**Quelle:** {src} · Chunk {cid} · {kind} · Score={score:.3f}")
+                st.write((text or "")[:1200])
+                st.markdown("---")
