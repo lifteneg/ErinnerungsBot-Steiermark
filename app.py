@@ -1,10 +1,20 @@
 import os
 import pickle
+from pathlib import Path
 import streamlit as st
-from rank_bm25 import BM25Okapi
-from qdrant_client import QdrantClient
-from qdrant_client.http import models as qmodels
-import requests
+# … deine restlichen Imports …
+
+# -----------------------------
+# Index-Dateien prüfen
+# -----------------------------
+if not Path("index/bm25.pkl").exists() or not Path("index/docs.pkl").exists():
+    st.error("❌ Index nicht gefunden. Bitte als Admin einen In-App Rebuild durchführen oder ingest.py lokal ausführen.")
+    st.stop()
+
+with open("index/bm25.pkl", "rb") as f:
+    bm25 = pickle.load(f)
+with open("index/docs.pkl", "rb") as f:
+    docs = pickle.load(f)
 
 # -----------------------------
 # Streamlit-Secrets / Env-Variablen laden
