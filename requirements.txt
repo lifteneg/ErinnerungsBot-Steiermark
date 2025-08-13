@@ -1,9 +1,5 @@
 streamlit
+requests
 rank-bm25
 qdrant-client
-numpy
-requests
 PyPDF2
-pandas
-tqdm
-jinja2
