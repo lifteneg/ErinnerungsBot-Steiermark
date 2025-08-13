@@ -1,6 +1,7 @@
 streamlit
-requests
-rank-bm25
 qdrant-client
-PyPDF2
+rank-bm25
 numpy
+requests
+tqdm
+PyMuPDF
