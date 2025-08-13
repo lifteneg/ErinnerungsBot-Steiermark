@@ -18,9 +18,6 @@ from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
 from qdrant_client.http.exceptions import UnexpectedResponse
 
-# -----------------------------
-# Secrets / Env laden
-# -----------------------------
 QDRANT_URL        = (os.getenv("QDRANT_URL") or "").strip().rstrip("/")
 QDRANT_API_KEY    = (os.getenv("QDRANT_API_KEY") or "").strip()
 QDRANT_COLLECTION = (os.getenv("QDRANT_COLLECTION") or "docs_bge_m3").strip()
@@ -33,11 +30,7 @@ INDEX_DIR = Path("index"); INDEX_DIR.mkdir(exist_ok=True)
 BM25_FILE = INDEX_DIR / "bm25.pkl"
 DOCS_FILE = INDEX_DIR / "docs.pkl"
 
-# -----------------------------
-# Utils
-# -----------------------------
 def sanitize_text(s: str) -> str:
-    # Normalisiere Whitespace, entferne Steuerzeichen
     s = re.sub(r"\s+", " ", s or "").strip()
     return s
 
@@ -89,9 +82,6 @@ def chunk_text(text: str, chunk_size: int = 900, overlap: int = 150) -> List[str
         start += chunk_size - overlap
     return chunks
 
-# -----------------------------
-# Jina Embeddings (Batch + Retry + Sanitizing + Truncation)
-# -----------------------------
 def jina_embed(texts: List[str], batch_size: int = 32, max_chars: int = 6000) -> List[List[float]]:
     if not JINA_API_KEY:
         raise RuntimeError("JINA_API_KEY nicht gesetzt.")
@@ -100,8 +90,6 @@ def jina_embed(texts: List[str], batch_size: int = 32, max_chars: int = 6000) ->
     vectors: List[List[float]] = []
     for i in range(0, len(texts), batch_size):
         batch_raw = texts[i:i + batch_size]
-
-        # Vorbereiten: leere entfernen, hart kürzen (gegen 422)
         batch: List[str] = []
         for t in batch_raw:
             tt = sanitize_text(t)
@@ -120,13 +108,11 @@ def jina_embed(texts: List[str], batch_size: int = 32, max_chars: int = 6000) ->
             try:
                 r = requests.post(JINA_URL, headers=headers, json=payload, timeout=120)
                 if r.status_code >= 400:
-                    # Debug-Ausschnitt anzeigen
                     print(f"[ERR] Jina HTTP {r.status_code}: {r.text[:500]}")
                     if r.status_code == 422:
                         raise RuntimeError("Jina-API 422: Ein Batch enthält unzulässige Eingaben (z. B. zu lang).")
                     r.raise_for_status()
                 data = r.json().get("data", [])
-                # Es kann passieren, dass weniger Embeddings zurückkommen (falls Jina intern filtert)
                 if len(data) != len(batch):
                     print(f"[WARN] Embeddings Anzahl abweichend: expected={len(batch)} got={len(data)}")
                 vectors.extend([d["embedding"] for d in data])
@@ -139,9 +125,6 @@ def jina_embed(texts: List[str], batch_size: int = 32, max_chars: int = 6000) ->
                 raise RuntimeError(f"Jina-API Fehler: {e}")
     return vectors
 
-# -----------------------------
-# Qdrant
-# -----------------------------
 def ensure_collection(qdr: QdrantClient, dim: int, clear: bool = False):
     exists = False
     try:
@@ -191,9 +174,6 @@ def ensure_collection(qdr: QdrantClient, dim: int, clear: bool = False):
         except Exception:
             pass
 
-# -----------------------------
-# BM25 speichern
-# -----------------------------
 def save_bm25_and_docs(chunks: List[Dict]):
     tokenized = [c["text"].lower().split() for c in chunks] or [[]]
     bm25 = BM25Okapi(tokenized)
@@ -202,9 +182,6 @@ def save_bm25_and_docs(chunks: List[Dict]):
     with open(DOCS_FILE, "wb") as f:
         pickle.dump(chunks, f)
 
-# -----------------------------
-# Main
-# -----------------------------
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--full-rebuild", action="store_true")
@@ -234,7 +211,6 @@ def main():
     print("🧠 Erstelle/aktualisiere Qdrant …")
     qdr = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY, timeout=60, prefer_grpc=False, check_compatibility=False)
 
-    # Query-Embedding-Länge ermitteln (sicher 768, aber wir prüfen):
     probe_vec = jina_embed(["probe"])
     if not probe_vec or not probe_vec[0]:
         raise RuntimeError("Konnte keine Probe-Embeddings von Jina erhalten.")
@@ -242,20 +218,14 @@ def main():
 
     ensure_collection(qdr, dim, clear=args.clear)
 
-    # Embeddings für alle Chunks:
     vectors = jina_embed([c["text"] for c in chunks])
 
-    # Falls aufgrund von Sanitizing/Filter die Anzahl abweicht, syncen:
     if len(vectors) != len(chunks):
         print(f"[WARN] Vektor-Anzahl ({len(vectors)}) != Chunk-Anzahl ({len(chunks)}). Kürze auf Minimum.")
     n = min(len(vectors), len(chunks))
 
     points = [
-        qmodels.PointStruct(
-            id=i,
-            vector=vectors[i],
-            payload=chunks[i]
-        )
+        qmodels.PointStruct(id=i, vector=vectors[i], payload=chunks[i])
         for i in range(n)
     ]
 
