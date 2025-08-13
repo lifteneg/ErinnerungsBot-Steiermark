@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 import sys
+import time
 import pickle
 import subprocess
 from pathlib import Path
@@ -17,8 +18,12 @@ from rank_bm25 import BM25Okapi
 # -----------------------------
 # Feineinstellungen
 # -----------------------------
-TOP_K = 10          # maximale Trefferzahl für Hybrid-Suche
-LOG_TAIL = 1000     # wie viele Logzeilen im UI angezeigt werden
+TOP_K = 10              # maximale Trefferzahl für Hybrid-Suche
+LOG_TAIL = 1000         # wie viele Logzeilen im UI angezeigt werden
+MAX_CONTEXT_CHARS = 6000  # LLM-Kontext begrenzen (sicher für viele Modelle)
+
+PRIMARY_MODEL   = "openai/gpt-oss-20b:free"
+FALLBACK_MODEL  = "deepseek/deepseek-chat-v3-0324:free"
 
 # -----------------------------
 # UI-Setup
@@ -46,7 +51,7 @@ VIEW_TOKENS  = _get_secret_env("VIEW_TOKENS")    # z.B. "Schule"
 
 OSS_API_BASE = _get_secret_env("OSS_API_BASE", "https://openrouter.ai/api").rstrip("/")
 OSS_API_KEY  = _get_secret_env("OSS_API_KEY")
-OSS_MODEL    = _get_secret_env("OSS_MODEL", "openai/gpt-oss-20b:free")
+OSS_MODEL    = _get_secret_env("OSS_MODEL", PRIMARY_MODEL)  # falls du es in den Secrets überschreiben willst
 
 QDRANT_URL        = _get_secret_env("QDRANT_URL")
 QDRANT_API_KEY    = _get_secret_env("QDRANT_API_KEY")
@@ -116,6 +121,7 @@ def jina_embed(texts: List[str]) -> List[List[float]]:
                 tries += 1
                 if tries >= 3:
                     raise
+                time.sleep(2 ** tries)
     return out
 
 # -----------------------------
@@ -168,7 +174,7 @@ def hybrid_search(query: str, top_k: int = TOP_K) -> List[Tuple[str, float, Dict
     return unique
 
 # -----------------------------
-# LLM (OpenRouter)
+# LLM (OpenRouter) – Retry + Fallback + Kontextlimit
 # -----------------------------
 SYSTEM_PROMPT = (
     "Du bist ein präziser Assistent. Antworte ausschließlich mit Informationen, "
@@ -176,9 +182,17 @@ SYSTEM_PROMPT = (
     "sage eindeutig: 'Dazu habe ich keine Information in meinen Daten.' Erfinde nichts."
 )
 
-def call_llm(question: str, context: str) -> str:
+def call_llm_with_models(question: str, context: str, models: List[str]) -> Tuple[str, str]:
+    """Versucht nacheinander die angegebenen Modelle. Gibt (Antwort, verwendetes_modell) zurück.
+       Bei dauerhaftem Fehler kommt eine Fehlermeldung als Antworttext und verwendetes Modell = ''.
+    """
     if not OSS_API_KEY:
-        return "LLM nicht konfiguriert: OSS_API_KEY fehlt."
+        return "LLM nicht konfiguriert: OSS_API_KEY fehlt.", ""
+
+    # Kontext begrenzen
+    if len(context) > MAX_CONTEXT_CHARS:
+        context = context[:MAX_CONTEXT_CHARS]
+
     url = OSS_API_BASE + "/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {OSS_API_KEY}",
@@ -190,15 +204,38 @@ def call_llm(question: str, context: str) -> str:
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": f"KONTEXT:\n{context}\n\nFRAGE:\n{question}"},
     ]
-    try:
-        r = requests.post(url, headers=headers, json={"model": OSS_MODEL, "messages": messages, "temperature": 0.2}, timeout=60)
-        if r.status_code == 401:
-            return "LLM-Fehler (401 Unauthorized): Prüfe OSS_API_KEY in den Secrets."
-        if r.status_code >= 400:
-            return f"LLM-Fehler ({r.status_code}): {r.text[:400]}"
-        return r.json()["choices"][0]["message"]["content"]
-    except Exception as e:
-        return f"LLM-Fehler: {e}"
+
+    RETRY_STATUSES = {429, 502, 503, 504}
+    MAX_TRIES = 4
+
+    for mdl in models:
+        for attempt in range(1, MAX_TRIES + 1):
+            try:
+                r = requests.post(
+                    url,
+                    headers=headers,
+                    json={"model": mdl, "messages": messages, "temperature": 0.2},
+                    timeout=90,
+                )
+                if r.status_code == 401:
+                    return "LLM-Fehler (401 Unauthorized): Prüfe OSS_API_KEY in den Secrets.", ""
+                if r.status_code in RETRY_STATUSES:
+                    if attempt == MAX_TRIES:
+                        # nächstes Modell versuchen
+                        break
+                    time.sleep(2 ** attempt)
+                    continue
+                if r.status_code >= 400:
+                    # nicht-retrybarer Fehler → nächstes Modell
+                    break
+                return r.json()["choices"][0]["message"]["content"], mdl
+            except requests.RequestException:
+                if attempt == MAX_TRIES:
+                    # nächstes Modell probieren
+                    break
+                time.sleep(2 ** attempt)
+
+    return "LLM derzeit nicht erreichbar. Bitte später erneut versuchen.", ""
 
 # -----------------------------
 # In-App Rebuild (ingest.py aufrufen) – Live-Logs & Reload
@@ -273,8 +310,18 @@ with st.sidebar:
 # -----------------------------
 # Chat
 # -----------------------------
+if "last_question" not in st.session_state:
+    st.session_state.last_question = ""
+if "last_context" not in st.session_state:
+    st.session_state.last_context = ""
+
 question = st.text_input("Frage eingeben")
-if st.button("Senden") and question:
+colA, colB = st.columns([1, 1])
+
+send_clicked = colA.button("Senden")
+retry_clicked = colB.button("Erneut senden")
+
+if send_clicked and question:
     with st.spinner("Suche relevante Textstellen …"):
         hits = hybrid_search(question, top_k=TOP_K)
 
@@ -282,9 +329,19 @@ if st.button("Senden") and question:
         st.warning("Dazu habe ich keine Information in meinen Daten.")
     else:
         context = "\n\n".join([h[0] for h in hits if h[0]])
-        answer = call_llm(question, context)
+        # merken für „Erneut senden“
+        st.session_state.last_question = question
+        st.session_state.last_context = context
+
+        answer, used_model = call_llm_with_models(
+            question,
+            context,
+            models=[OSS_MODEL or PRIMARY_MODEL, FALLBACK_MODEL],
+        )
         st.subheader("Antwort")
         st.write(answer)
+        if used_model:
+            st.caption(f"LLM: {used_model}")
 
         with st.expander("🔎 Verwendete Ausschnitte"):
             for text, score, meta in hits:
@@ -293,3 +350,19 @@ if st.button("Senden") and question:
                 st.markdown(f"**Quelle:** {src} · {kind} · Score={score:.3f}")
                 st.write((text or "")[:1200])
                 st.markdown("---")
+
+elif retry_clicked:
+    if not st.session_state.last_question or not st.session_state.last_context:
+        st.warning("Es gibt noch keine vorherige Anfrage zum erneuten Senden.")
+    else:
+        q = st.session_state.last_question
+        ctx = st.session_state.last_context
+        answer, used_model = call_llm_with_models(
+            q,
+            ctx,
+            models=[OSS_MODEL or PRIMARY_MODEL, FALLBACK_MODEL],
+        )
+        st.subheader("Antwort (erneut gesendet)")
+        st.write(answer)
+        if used_model:
+            st.caption(f"LLM: {used_model}")
