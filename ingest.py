@@ -1,6 +1,6 @@
 # ingest.py – Ingest mit PDF/TXT/MD, Jina-Embeddings, Qdrant-Upsert, BM25-Build
 # Extrahiert NUR TEI-Links aus <place>...</place> OHNE type="additional"
-# und speichert sie chunk-genau als tei_uris (Liste) im Payload.
+# und hängt diese dokumentweit an JEDEN Chunk (zuverlässige Anzeige im UI).
 
 from __future__ import annotations
 
@@ -55,10 +55,8 @@ PRIMARY_PLACE_URI_RE = re.compile(
     re.IGNORECASE | re.DOTALL
 )
 
-TAG_RE = re.compile(r"<[^>]+>")
-
 def extract_primary_place_uris(text: str) -> List[str]:
-    """Alle URIs aus <place>…</place> OHNE type='additional' extrahieren (Reihenfolge beibehalten)."""
+    """Alle URIs aus <place>…</place> OHNE type='additional' extrahieren (Reihenfolge, dedupliziert)."""
     if not text:
         return []
     uris: List[str] = []
@@ -73,8 +71,6 @@ def extract_primary_place_uris(text: str) -> List[str]:
 def sanitize_text(s: str) -> str:
     if not s:
         return ""
-    # Markup nicht komplett entfernen (LLM-Kontext kann dennoch Nutzen ziehen),
-    # aber Whitespace stabilisieren und Steuerzeichen raus.
     s = re.sub(r"\s+", " ", s)
     s = "".join(ch for ch in s if ord(ch) >= 32)
     return s.strip()
@@ -129,7 +125,14 @@ def load_documents() -> List[Dict]:
         if not raw:
             continue
 
-        docs.append({"text": raw, "source": str(p)})
+        # *** NEU: dokumentweit URIs extrahieren ***
+        tei_uris_doc = extract_primary_place_uris(raw)
+
+        docs.append({
+            "text": raw,
+            "source": str(p),
+            "tei_uris_doc": tei_uris_doc,  # dokumentweite Liste
+        })
     return docs
 
 def chunk_text(text: str, chunk_size: int = 700, overlap: int = 100) -> List[str]:
@@ -308,16 +311,16 @@ def main():
     print("🔪 Chunking …")
     chunks: List[Dict] = []
     for d in raw_docs:
+        tei_uris_doc = d.get("tei_uris_doc", [])  # *** dokumentweit ***
         for ch in chunk_text(d["text"], 700, 100):
             ch = sanitize_text(ch)
             if not ch:
                 continue
-            # NUR Links aus <place>…</place> ohne type="additional" im jeweiligen Chunk
-            tei_uris_chunk = extract_primary_place_uris(ch)
+            # *** WICHTIG: dokumentweite TEI-URIs an JEDEN Chunk anhängen ***
             chunks.append({
                 "text": ch,
-                "source": d["source"],   # optional als Fallback/Debug
-                "tei_uris": tei_uris_chunk,
+                "source": d["source"],     # optional als Fallback/Debug
+                "tei_uris": tei_uris_doc,  # dokumentweite Links – zuverlässig im UI
             })
     print(f"[OK] Dokument-Chunks: {len(chunks)}")
 
