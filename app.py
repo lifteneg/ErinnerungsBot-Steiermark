@@ -1,5 +1,6 @@
 # app.py – ErinnerungsBot Steiermark
 # Zeigt unter „Verwendete Ausschnitte“ NUR die TEI-URIs aus <place>…</place> (ohne type="additional")
+# KEIN Score, KEIN Snippet-Text, KEIN Dateiname – nur die URLs (dedupliziert).
 
 from __future__ import annotations
 
@@ -11,7 +12,6 @@ import pickle
 import subprocess
 from pathlib import Path
 from typing import List, Dict, Tuple, Any
-from urllib.parse import urlparse
 
 import requests
 import numpy as np
@@ -38,15 +38,6 @@ st.title("💬 ErinnerungsBot Steiermark")
 # -----------------------------
 # Helpers
 # -----------------------------
-TAG_RE = re.compile(r"<[^>]+>")
-
-def strip_markup(s: str) -> str:
-    if not s:
-        return ""
-    s = TAG_RE.sub(" ", s)
-    s = re.sub(r"\s+", " ", s).strip()
-    return s
-
 def _get_secret_env(name: str, default: str = "") -> str:
     val = os.getenv(name, st.secrets.get(name, default))
     return (val or "").strip()
@@ -55,12 +46,6 @@ def _mask(s: str) -> str:
     if not s:
         return "—"
     return s[:4] + "…" + s[-4:] if len(s) > 8 else "•••"
-
-def host_of(url: str) -> str:
-    try:
-        return urlparse(url).netloc or url
-    except Exception:
-        return url
 
 # -----------------------------
 # Secrets / Konfig
@@ -339,6 +324,17 @@ colA, colB = st.columns([1, 1])
 send_clicked = colA.button("Senden")
 retry_clicked = colB.button("Erneut senden")
 
+def collect_all_tei_urls(hits: List[Tuple[str, float, Dict[str, Any]]]) -> List[str]:
+    """Sammelt alle TEI-URIs aus den Treffer-Metas, dedupliziert und behält Reihenfolge."""
+    seen = set()
+    out: List[str] = []
+    for _, __, meta in hits:
+        for u in meta.get("tei_uris", []) or []:
+            if u and u not in seen:
+                seen.add(u)
+                out.append(u)
+    return out
+
 if send_clicked and question:
     with st.spinner("Suche relevante Textstellen …"):
         hits = hybrid_search(question, top_k=TOP_K)
@@ -346,6 +342,7 @@ if send_clicked and question:
     if not hits:
         st.warning("Dazu habe ich keine Information in meinen Daten.")
     else:
+        # Kontext (für LLM) – wir verwenden weiterhin die Texte, zeigen sie aber nicht im UI.
         context = "\n\n".join([h[0] for h in hits if h[0]])
         st.session_state.last_question = question
         st.session_state.last_context = context
@@ -361,17 +358,14 @@ if send_clicked and question:
         if used_model:
             st.caption(f"LLM: {used_model}")
 
+        # NUR URL-Liste anzeigen (kein Score, kein Text)
+        urls = collect_all_tei_urls(hits)
         with st.expander("🔎 Verwendete Ausschnitte"):
-            for text, score, meta in hits:
-                clean = strip_markup(text)
-                kind = meta.get("kind", "—")
-                tei_uris = meta.get("tei_uris", []) or []
-                st.markdown(f"**Score={score:.3f} · {kind}**")
-                # Nur die (chunk-genauen) TEI-URIs anzeigen:
-                for u in tei_uris:
-                    st.markdown(f"- [{host_of(u)}]({u})")
-                st.write((clean or "")[:1200])
-                st.markdown("---")
+            if urls:
+                for u in urls:
+                    st.markdown(f"- {u}")
+            else:
+                st.markdown("_Keine TEI-URIs im Kontext gefunden._")
 
 elif retry_clicked:
     if not st.session_state.last_question or not st.session_state.last_context:
@@ -388,3 +382,6 @@ elif retry_clicked:
         st.write(answer)
         if used_model:
             st.caption(f"LLM: {used_model}")
+
+        # Falls erneut gewünscht: URLs aus der letzten Trefferliste sind nicht gespeichert,
+        # deshalb hier keine erneute Anzeige der „Verwendeten Ausschnitte“.
