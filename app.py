@@ -1,6 +1,8 @@
-# app.py – ErinnerungsBot Steiermark
-# Zeigt unter „Verwendete Ausschnitte“ NUR die TEI-URIs aus <place>…</place> (ohne type="additional")
-# KEIN Score, KEIN Snippet-Text, KEIN Dateiname – nur die URLs (dedupliziert).
+# app.py – ErinnerungsBot Steiermark (ausführlichere Antworten)
+# - Höheres TOP_K und smarter Kontext-Builder (mehr Details, pro-Dokument-Limit)
+# - Größeres MAX_CONTEXT_CHARS, dynamisch nach „Antwortstil“
+# - Prompting für ausführliche, strukturierte Antworten (ohne Quellen im Text)
+# - „Verwendete Ausschnitte“ zeigt weiterhin nur TEI-URIs
 
 from __future__ import annotations
 
@@ -20,11 +22,12 @@ from qdrant_client import QdrantClient
 from rank_bm25 import BM25Okapi
 
 # -----------------------------
-# Feineinstellungen
+# Feineinstellungen (Default)
 # -----------------------------
-TOP_K = 10
+DEFAULT_TOP_K = 24          # mehr Treffer einsammeln
+BASE_CONTEXT_CHARS = 12000  # höherer Grundwert
+PER_DOC_LIMIT = 5           # max. Snippets pro Dokument (mehr Tiefe, aber keine Einzeldok-Dominanz)
 LOG_TAIL = 1000
-MAX_CONTEXT_CHARS = 6000
 
 PRIMARY_MODEL   = "deepseek/deepseek-r1-0528:free"
 FALLBACK_MODEL  = "openai/gpt-oss-20b:free"
@@ -73,6 +76,30 @@ token = st.sidebar.text_input("Access Token", type="password", placeholder="Toke
 if (role == "admin" and ADMIN_TOKENS and token != ADMIN_TOKENS) or (role == "viewer" and VIEW_TOKENS and token != VIEW_TOKENS):
     st.error("Falsches oder fehlendes Token.")
     st.stop()
+
+# Antwortstil / Steuerung
+st.sidebar.markdown("### Antwortstil")
+style = st.sidebar.radio("Detailgrad", ["Kurz", "Mittel", "Ausführlich"], index=2)
+if style == "Kurz":
+    TOP_K = 12
+    MAX_CONTEXT_CHARS = BASE_CONTEXT_CHARS // 2  # ~6k
+    STYLE_HINT = (
+        "Fasse dich relativ kurz, antworte in 1–2 Absätzen, nur die wichtigsten Fakten."
+    )
+elif style == "Mittel":
+    TOP_K = DEFAULT_TOP_K
+    MAX_CONTEXT_CHARS = BASE_CONTEXT_CHARS  # ~12k
+    STYLE_HINT = (
+        "Gib eine ausgewogene, vollständige Antwort in mehreren Absätzen mit klarer Struktur."
+    )
+else:  # Ausführlich
+    TOP_K = 32
+    MAX_CONTEXT_CHARS = int(BASE_CONTEXT_CHARS * 1.6)  # ~19k (Achtung: Modellkontext)
+    STYLE_HINT = (
+        "Liefere eine ausführliche, strukturierte Darstellung mit Abschnitten "
+        "(z. B. Biografie, Kontext/Verfolgung, Orte/Zeiten, Gedenken). "
+        "Nutze alle relevanten Details aus dem Kontext."
+    )
 
 # -----------------------------
 # Index laden
@@ -129,9 +156,9 @@ def jina_embed(texts: List[str]) -> List[List[float]]:
     return out
 
 # -----------------------------
-# Hybrid-Suche (BM25 + Qdrant)
+# Retrieval
 # -----------------------------
-def hybrid_search(query: str, top_k: int = TOP_K) -> List[Tuple[str, float, Dict[str, Any]]]:
+def hybrid_search(query: str, top_k: int) -> List[Tuple[str, float, Dict[str, Any]]]:
     results: List[Tuple[str, float, Dict[str, Any]]] = []
 
     # BM25
@@ -146,7 +173,8 @@ def hybrid_search(query: str, top_k: int = TOP_K) -> List[Tuple[str, float, Dict
                 float(scores[i]),
                 {
                     "kind": "bm25",
-                    "tei_uris": d.get("tei_uris", []),  # nur diese interessieren uns
+                    "tei_uris": d.get("tei_uris", []),  # nur diese zeigen wir später
+                    "source": d.get("source", ""),
                 }
             ))
 
@@ -163,30 +191,66 @@ def hybrid_search(query: str, top_k: int = TOP_K) -> List[Tuple[str, float, Dict
                     {
                         "kind": "vector",
                         "tei_uris": p.get("tei_uris", []),
+                        "source": p.get("source", ""),
                     }
                 ))
         except Exception as e:
             st.warning(f"Vektor-Suche nicht möglich: {e}")
 
-    # Deduplizieren & sortieren
-    seen = set()
-    unique: List[Tuple[str, float, Dict[str, Any]]] = []
+    # Deduplizieren nach Text (grobe Heuristik)
+    seen_text = set()
+    deduped: List[Tuple[str, float, Dict[str, Any]]] = []
     for text, score, meta in sorted(results, key=lambda x: x[1], reverse=True):
         if not text:
             continue
-        key = text[:400]
-        if key in seen:
+        key = text[:500]
+        if key in seen_text:
             continue
-        seen.add(key)
-        unique.append((text, score, meta))
-        if len(unique) >= top_k:
+        seen_text.add(key)
+        deduped.append((text, score, meta))
+    return deduped[:max(top_k, 8)]
+
+def build_context(hits: List[Tuple[str, float, Dict[str, Any]]],
+                  max_chars: int,
+                  per_doc_limit: int = PER_DOC_LIMIT) -> Tuple[str, List[Tuple[str, float, Dict[str, Any]]]]:
+    """Nimmt die besten Snippets, begrenzt pro Dokument, und baut einen großen Kontext."""
+    by_doc_count: Dict[str, int] = {}
+    chosen: List[Tuple[str, float, Dict[str, Any]]] = []
+    total = 0
+
+    for text, score, meta in hits:
+        src = meta.get("source", "")
+        if by_doc_count.get(src, 0) >= per_doc_limit:
+            continue
+        tclean = re.sub(r"\s+", " ", text).strip()
+        if not tclean:
+            continue
+        if total + len(tclean) > max_chars:
+            continue
+        chosen.append((tclean, score, meta))
+        by_doc_count[src] = by_doc_count.get(src, 0) + 1
+        total += len(tclean)
+        if total >= max_chars:
             break
-    return unique
+
+    context = "\n\n".join([c[0] for c in chosen])
+    return context, chosen
+
+def collect_all_tei_urls(hits: List[Tuple[str, float, Dict[str, Any]]]) -> List[str]:
+    """Sammelt nur TEI-URIs aus den Treffer-Metas, dedupliziert und behält Reihenfolge."""
+    seen = set()
+    out: List[str] = []
+    for _, __, meta in hits:
+        for u in meta.get("tei_uris", []) or []:
+            if u and u not in seen:
+                seen.add(u)
+                out.append(u)
+    return out
 
 # -----------------------------
-# LLM (OpenRouter) – Retry + Fallback, ohne Quellen in Antwort
+# LLM (OpenRouter) – Retry + Fallback
 # -----------------------------
-SYSTEM_PROMPT = (
+SYSTEM_PROMPT_BASE = (
     "Du bist ein präziser Assistent. Antworte ausschließlich mit Informationen, "
     "die im bereitgestellten KONTEXT enthalten sind. "
     "Füge KEINE Quellenangaben in deine Antwort ein; die Quellen werden separat angezeigt. "
@@ -194,12 +258,9 @@ SYSTEM_PROMPT = (
     "Erfinde nichts."
 )
 
-def call_llm_with_models(question: str, context: str, models: List[str]) -> Tuple[str, str]:
+def call_llm_with_models(question: str, context: str, models: List[str], style_hint: str) -> Tuple[str, str]:
     if not OSS_API_KEY:
         return "LLM nicht konfiguriert: OSS_API_KEY fehlt.", ""
-
-    if len(context) > MAX_CONTEXT_CHARS:
-        context = context[:MAX_CONTEXT_CHARS]
 
     url = OSS_API_BASE + "/v1/chat/completions"
     headers = {
@@ -208,9 +269,19 @@ def call_llm_with_models(question: str, context: str, models: List[str]) -> Tupl
         "HTTP-Referer": os.getenv("APP_URL", "https://streamlit.io"),
         "X-Title": "ErinnerungsBot Steiermark",
     }
+
+    # Stilhinweis ergänzen
+    system_prompt = SYSTEM_PROMPT_BASE + " " + style_hint
+
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": f"KONTEXT:\n{context}\n\nFRAGE:\n{question}"},
+        {"role": "system", "content": system_prompt},
+        {
+            "role": "user",
+            "content": (
+                "Verarbeite den folgenden KONTEXT vollständig, fasse zusammen und strukturiere:\n\n"
+                f"KONTEXT:\n{context}\n\nFRAGE:\n{question}"
+            ),
+        },
     ]
 
     RETRY_STATUSES = {429, 502, 503, 504}
@@ -223,7 +294,7 @@ def call_llm_with_models(question: str, context: str, models: List[str]) -> Tupl
                     url,
                     headers=headers,
                     json={"model": mdl, "messages": messages, "temperature": 0.2},
-                    timeout=90,
+                    timeout=120,
                 )
                 if r.status_code == 401:
                     return "LLM-Fehler (401 Unauthorized): Prüfe OSS_API_KEY in den Secrets.", ""
@@ -324,26 +395,15 @@ colA, colB = st.columns([1, 1])
 send_clicked = colA.button("Senden")
 retry_clicked = colB.button("Erneut senden")
 
-def collect_all_tei_urls(hits: List[Tuple[str, float, Dict[str, Any]]]) -> List[str]:
-    """Sammelt alle TEI-URIs aus den Treffer-Metas, dedupliziert und behält Reihenfolge."""
-    seen = set()
-    out: List[str] = []
-    for _, __, meta in hits:
-        for u in meta.get("tei_uris", []) or []:
-            if u and u not in seen:
-                seen.add(u)
-                out.append(u)
-    return out
-
 if send_clicked and question:
     with st.spinner("Suche relevante Textstellen …"):
-        hits = hybrid_search(question, top_k=TOP_K)
+        hits_all = hybrid_search(question, top_k=TOP_K)
 
-    if not hits:
+    if not hits_all:
         st.warning("Dazu habe ich keine Information in meinen Daten.")
     else:
-        # Kontext (für LLM) – wir verwenden weiterhin die Texte, zeigen sie aber nicht im UI.
-        context = "\n\n".join([h[0] for h in hits if h[0]])
+        # Kontext groß & sinnvoll bauen (mehr Details, pro Dokument begrenzen)
+        context, hits_used = build_context(hits_all, max_chars=MAX_CONTEXT_CHARS, per_doc_limit=PER_DOC_LIMIT)
         st.session_state.last_question = question
         st.session_state.last_context = context
 
@@ -351,6 +411,7 @@ if send_clicked and question:
             question,
             context,
             models=[OSS_MODEL or PRIMARY_MODEL, FALLBACK_MODEL],
+            style_hint=STYLE_HINT,
         )
 
         st.subheader("Antwort")
@@ -358,8 +419,8 @@ if send_clicked and question:
         if used_model:
             st.caption(f"LLM: {used_model}")
 
-        # NUR URL-Liste anzeigen (kein Score, kein Text)
-        urls = collect_all_tei_urls(hits)
+        # NUR URL-Liste anzeigen (kein Score, kein Text, nur TEI-URIs)
+        urls = collect_all_tei_urls(hits_used)
         with st.expander("🔎 Verwendete Ausschnitte"):
             if urls:
                 for u in urls:
@@ -377,11 +438,9 @@ elif retry_clicked:
             q,
             ctx,
             models=[OSS_MODEL or PRIMARY_MODEL, FALLBACK_MODEL],
+            style_hint=STYLE_HINT,
         )
         st.subheader("Antwort (erneut gesendet)")
         st.write(answer)
         if used_model:
             st.caption(f"LLM: {used_model}")
-
-        # Falls erneut gewünscht: URLs aus der letzten Trefferliste sind nicht gespeichert,
-        # deshalb hier keine erneute Anzeige der „Verwendeten Ausschnitte“.
